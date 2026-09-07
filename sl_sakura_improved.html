@@ -1,0 +1,2720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SL Sakura 🌸 - Japanese Language Resources</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="SL Sakura - Your Gateway to Japanese Language, Classes, Exams and Life in Japan. JLPT, NAT, JFT resources." />
+    <meta name="keywords" content="Japanese, JLPT, NAT, JFT, SSW, Japanese language, Sri Lanka, Japan, Study in Japan" />
+    <meta name="author" content="SL Sakura" />
+    <link rel="canonical" href="https://slsakura.vercel.app" />
+
+    <!-- Open Graph (Facebook, LinkedIn) -->
+    <meta property="og:title" content="SL Sakura 🌸 - Japanese Language Resources" />
+    <meta property="og:description" content="Your Gateway to Japanese Language, Classes & Life in Japan" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://slsakura.vercel.app" />
+    <meta property="og:image" content="https://slsakura.vercel.app/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="SL Sakura 🌸 - Japanese Language Resources" />
+    <meta name="twitter:description" content="Your Gateway to Japanese Language, Classes & Life in Japan" />
+    <meta name="twitter:image" content="https://slsakura.vercel.app/og-image.jpg" />
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#e11d48" />
+    <link rel="apple-touch-icon" href="icon-192.png" />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+
+    <style>
+        :root {
+            --bg: #0c0204;
+            --bg2: #160509;
+            --rose: #e11d48;
+            --rose2: #f43f5e;
+            --text: #fff1f2;
+            --muted: #fda4af;
+            --border: rgba(244, 63, 94, .20);
+            --shadow: rgba(225, 29, 72, .15);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background:
+                radial-gradient(circle at 15% 10%, rgba(225, 29, 72, .13), transparent 30%),
+                radial-gradient(circle at 90% 20%, rgba(244, 63, 94, .08), transparent 28%),
+                linear-gradient(180deg, var(--bg), var(--bg2));
+            color: var(--text);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Glassmorphism */
+        .glass {
+            background: rgba(255, 255, 255, .045);
+            border: 1px solid var(--border);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+
+        .glass-dark {
+            background: rgba(0, 0, 0, .4);
+            border: 1px solid var(--border);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        .neon {
+            box-shadow: 0 0 25px rgba(225, 29, 72, .10), inset 0 0 20px rgba(225, 29, 72, .025);
+        }
+
+        .rose-btn {
+            background: linear-gradient(135deg, #e11d48, #be123c);
+            box-shadow: 0 8px 25px rgba(225, 29, 72, .22);
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border: none;
+            cursor: pointer;
+        }
+
+        .rose-btn:hover {
+            filter: brightness(1.1);
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 12px 35px rgba(225, 29, 72, .35);
+        }
+
+        .tab-active {
+            background: rgba(225, 29, 72, .20) !important;
+            border-color: rgba(244, 63, 94, .55) !important;
+            color: #fff !important;
+            box-shadow: 0 0 20px rgba(225, 29, 72, .12);
+        }
+
+        /* Sakura */
+        .sakura {
+            position: fixed;
+            top: -30px;
+            pointer-events: none;
+            z-index: 1;
+            animation: fall linear infinite;
+            opacity: .6;
+            font-size: 14px;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-30px) rotate(0deg) scale(0.8);
+            }
+            100% {
+                transform: translateY(110vh) rotate(720deg) scale(1.2);
+            }
+        }
+
+        .page {
+            position: relative;
+            z-index: 5;
+        }
+
+        /* Drawer */
+        .drawer {
+            transition: transform .3s cubic-bezier(0.34, 1.56, 0.64, 1), opacity .3s ease;
+        }
+        .drawer-hidden {
+            transform: translateX(110%);
+            opacity: 0;
+            pointer-events: none;
+        }
+        .drawer-overlay {
+            transition: opacity .3s ease;
+        }
+
+        /* Modal */
+        .modal-bg {
+            background: rgba(0, 0, 0, .85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        /* Media Frame */
+        .media-frame {
+            min-height: 380px;
+            background: #050102;
+            border: 1px solid rgba(244, 63, 94, .16);
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .media-frame iframe,
+        .media-frame video {
+            width: 100%;
+            height: 380px;
+            border: 0;
+        }
+
+        #pdfViewerContainer {
+            width: 100%;
+            height: 380px;
+            overflow: auto;
+            background: #1a1a2e;
+            padding: 10px;
+        }
+
+        #pdfViewerContainer canvas {
+            display: block;
+            margin: 0 auto;
+            max-width: 100%;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, .5);
+            background: #ffffff;
+            border-radius: 8px;
+        }
+
+        .pdf-controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 10px;
+            background: rgba(0, 0, 0, .5);
+            border-bottom: 1px solid rgba(244, 63, 94, .15);
+            flex-wrap: wrap;
+        }
+
+        .pdf-controls button {
+            background: rgba(225, 29, 72, .15);
+            border: 1px solid rgba(244, 63, 94, .2);
+            border-radius: 10px;
+            padding: 4px 14px;
+            color: #fff;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: .2s;
+        }
+
+        .pdf-controls button:hover {
+            background: rgba(225, 29, 72, .3);
+        }
+
+        /* Toast */
+        .toast {
+            animation: toastIn .3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        @keyframes toastIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .line-clamp-2 {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .line-clamp-3 {
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        /* Spinner */
+        .spinner {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            border: 3px solid rgba(244, 63, 94, .15);
+            border-radius: 50%;
+            border-top-color: #e11d48;
+            animation: spin .8s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .loading-overlay {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 40px 20px;
+            color: rgba(255, 255, 255, .5);
+            font-size: 14px;
+        }
+
+        /* Skeleton Loading */
+        .skeleton {
+            background: linear-gradient(90deg, rgba(255, 255, 255, .05) 25%, rgba(255, 255, 255, .1) 50%, rgba(255, 255, 255, .05) 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
+            border-radius: 12px;
+        }
+
+        @keyframes shimmer {
+            0% {
+                background-position: -200% 0;
+            }
+            100% {
+                background-position: 200% 0;
+            }
+        }
+
+        /* Ad Banner 728x90 */
+        .ad-banner-728 {
+            width: 100%;
+            max-width: 728px;
+            height: auto;
+            min-height: 90px;
+            margin: 0 auto;
+            border-radius: 12px;
+            overflow: hidden;
+            background: rgba(255, 255, 255, .03);
+            border: 1px solid rgba(244, 63, 94, .10);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            transition: all .3s ease;
+        }
+
+        .ad-banner-728:hover {
+            border-color: rgba(244, 63, 94, .3);
+            box-shadow: 0 0 30px rgba(225, 29, 72, .05);
+        }
+
+        .ad-banner-728 img {
+            width: 100%;
+            height: auto;
+            max-height: 90px;
+            object-fit: contain;
+            background: rgba(0, 0, 0, .2);
+        }
+
+        .ad-banner-728 .ad-label {
+            position: absolute;
+            top: 4px;
+            right: 8px;
+            font-size: 8px;
+            color: rgba(255, 255, 255, .2);
+            background: rgba(0, 0, 0, .5);
+            padding: 2px 8px;
+            border-radius: 10px;
+            letter-spacing: 0.5px;
+        }
+
+        /* Menu Items */
+        .menu-item {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border: 1px solid rgba(244, 63, 94, .10);
+            background: rgba(255, 255, 255, .035);
+            border-radius: 16px;
+            padding: 13px 14px;
+            text-align: left;
+            font-size: 13px;
+            font-weight: 700;
+            color: rgba(255, 241, 242, .82);
+            transition: .2s;
+            cursor: pointer;
+        }
+
+        .menu-item:hover {
+            background: rgba(225, 29, 72, .10);
+            border-color: rgba(244, 63, 94, .25);
+            transform: translateX(4px);
+        }
+
+        .submenu-item {
+            display: block;
+            padding: 10px 12px;
+            border-radius: 12px;
+            color: rgba(255, 241, 242, .65);
+            font-size: 12px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: .2s;
+        }
+
+        .submenu-item:hover {
+            background: rgba(225, 29, 72, .10);
+            color: white;
+            transform: translateX(4px);
+        }
+
+        .quick-btn {
+            border-radius: 999px;
+            border: 1px solid rgba(244, 63, 94, .20);
+            background: rgba(225, 29, 72, .10);
+            padding: 8px 16px;
+            font-size: 12px;
+            font-weight: 800;
+            color: rgba(255, 241, 242, .90);
+            transition: .2s;
+            cursor: pointer;
+        }
+
+        .quick-btn:hover {
+            background: rgba(225, 29, 72, .20);
+            transform: scale(1.05);
+        }
+
+        .exam-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 7px;
+            border: 1px solid rgba(244, 63, 94, .15);
+            background: rgba(225, 29, 72, .07);
+            border-radius: 15px;
+            padding: 12px;
+            color: rgba(255, 241, 242, .85);
+            font-size: 12px;
+            font-weight: 900;
+            transition: .2s;
+            text-decoration: none;
+        }
+
+        .exam-btn:hover {
+            background: rgba(225, 29, 72, .15);
+            border-color: rgba(244, 63, 94, .35);
+            transform: translateY(-2px);
+        }
+
+        .exam-btn i {
+            color: #f43f5e;
+        }
+
+        .footer-link {
+            border: 1px solid rgba(244, 63, 94, .10);
+            background: rgba(255, 255, 255, .03);
+            padding: 7px 10px;
+            border-radius: 10px;
+            transition: .2s;
+            text-decoration: none;
+            color: rgba(255, 241, 242, .65);
+            font-size: 12px;
+        }
+
+        .footer-link:hover {
+            background: rgba(225, 29, 72, .10);
+            border-color: rgba(244, 63, 94, .25);
+            color: #fff;
+        }
+
+        .admin-input {
+            width: 100%;
+            border-radius: 15px;
+            border: 1px solid rgba(244, 63, 94, .15);
+            background: rgba(0, 0, 0, .25);
+            padding: 12px 14px;
+            font-size: 13px;
+            outline: none;
+            color: #fff;
+            transition: .2s;
+        }
+
+        .admin-input:focus {
+            border-color: rgba(244, 63, 94, .55);
+            box-shadow: 0 0 20px rgba(225, 29, 72, .05);
+        }
+
+        .admin-input:disabled {
+            cursor: not-allowed;
+            opacity: 0.5;
+        }
+
+        .admin-input option {
+            background: #1a0509;
+        }
+
+        .admin-input::placeholder {
+            color: rgba(255, 255, 255, .3);
+        }
+
+        /* Resource Card */
+        .resource-card {
+            background: rgba(255, 255, 255, .04);
+            border: 1px solid rgba(244, 63, 94, .12);
+            border-radius: 20px;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .resource-card:hover {
+            transform: translateY(-8px) scale(1.01);
+            box-shadow: 0 20px 40px rgba(225, 29, 72, .12);
+            border-color: rgba(244, 63, 94, .3);
+        }
+
+        .resource-card .media-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: rgba(0, 0, 0, .6);
+            backdrop-filter: blur(8px);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 10px;
+            font-weight: 700;
+            color: #fff;
+            z-index: 2;
+        }
+
+        /* Favorite Button */
+        .favorite-btn {
+            background: none;
+            border: none;
+            color: rgba(255, 255, 255, .3);
+            font-size: 18px;
+            cursor: pointer;
+            transition: .2s;
+        }
+
+        .favorite-btn:hover {
+            color: #f43f5e;
+            transform: scale(1.1);
+        }
+
+        .favorite-btn.active {
+            color: #f43f5e;
+        }
+
+        .bulk-checkbox {
+            width: 18px;
+            height: 18px;
+            accent-color: #e11d48;
+            cursor: pointer;
+        }
+
+        .reorder-btn {
+            background: rgba(255, 255, 255, .05);
+            border: 1px solid rgba(244, 63, 94, .12);
+            border-radius: 8px;
+            padding: 2px 8px;
+            color: rgba(255, 255, 255, .5);
+            font-size: 11px;
+            cursor: pointer;
+            transition: .2s;
+        }
+
+        .reorder-btn:hover {
+            background: rgba(244, 63, 94, .15);
+            color: #fff;
+        }
+
+        .editing-mode {
+            border-color: #fbbf24 !important;
+            box-shadow: 0 0 30px rgba(251, 191, 36, .15);
+        }
+
+        /* Admin Tabs */
+        .admin-tab {
+            padding: 10px 20px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 13px;
+            cursor: pointer;
+            transition: .2s;
+            border: 1px solid transparent;
+            color: rgba(255, 255, 255, .5);
+            background: transparent;
+        }
+
+        .admin-tab:hover {
+            background: rgba(255, 255, 255, .05);
+            color: #fff;
+        }
+
+        .admin-tab.active {
+            background: rgba(225, 29, 72, .15);
+            border-color: rgba(244, 63, 94, .3);
+            color: #fff;
+        }
+
+        /* Social Share Buttons */
+        .share-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            border-radius: 12px;
+            font-size: 13px;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            transition: all .3s ease;
+            text-decoration: none;
+            color: #fff;
+        }
+
+        .share-btn:hover {
+            transform: translateY(-2px) scale(1.05);
+        }
+
+        .share-btn.facebook {
+            background: #1877f2;
+        }
+        .share-btn.twitter {
+            background: #000;
+        }
+        .share-btn.whatsapp {
+            background: #25d366;
+        }
+        .share-btn.linkedin {
+            background: #0a66c2;
+        }
+        .share-btn.telegram {
+            background: #0088cc;
+        }
+        .share-btn.email {
+            background: #ea4335;
+        }
+        .share-btn.copy {
+            background: rgba(255, 255, 255, .1);
+            border: 1px solid rgba(255, 255, 255, .2);
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, .05);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(225, 29, 72, .3);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(225, 29, 72, .5);
+        }
+
+        /* Progress Bar */
+        #progressBar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 100;
+            height: 3px;
+            background: linear-gradient(90deg, #e11d48, #f43f5e, #fb7185);
+            width: 0%;
+            transition: width .1s ease;
+        }
+
+        /* FAB */
+        .fab {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 50;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .fab-btn {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: 1px solid rgba(244, 63, 94, .2);
+            background: rgba(0, 0, 0, .6);
+            backdrop-filter: blur(12px);
+            color: #fff;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all .3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .fab-btn:hover {
+            transform: scale(1.1);
+            background: rgba(225, 29, 72, .2);
+            border-color: rgba(244, 63, 94, .4);
+        }
+
+        /* Light Theme */
+        html[data-theme="light"] body {
+            background:
+                radial-gradient(circle at 15% 10%, rgba(225, 29, 72, .06), transparent 30%),
+                radial-gradient(circle at 90% 20%, rgba(244, 63, 94, .05), transparent 28%),
+                linear-gradient(180deg, #fff6f7, #ffe8ec);
+            color: #1a0509;
+        }
+
+        html[data-theme="light"] .glass {
+            background: rgba(190, 18, 60, .03);
+            border-color: rgba(190, 18, 60, .14);
+        }
+
+        html[data-theme="light"] header {
+            background: rgba(255, 246, 247, .92) !important;
+            border-color: rgba(190, 18, 60, .12) !important;
+        }
+
+        html[data-theme="light"] #sideMenu {
+            background: #fff6f7 !important;
+            border-color: rgba(190, 18, 60, .14) !important;
+        }
+
+        html[data-theme="light"] .modal-bg {
+            background: rgba(255, 246, 247, .9);
+        }
+
+        html[data-theme="light"] .media-frame {
+            background: #ffffff;
+            border-color: rgba(190, 18, 60, .14);
+        }
+
+        html[data-theme="light"] .text-white,
+        html[data-theme="light"] h1,
+        html[data-theme="light"] h2,
+        html[data-theme="light"] h3 {
+            color: #1a0509 !important;
+        }
+
+        html[data-theme="light"] [class*="text-rose-100/"] {
+            color: rgba(30, 5, 10, .62) !important;
+        }
+
+        html[data-theme="light"] [class*="text-rose-200"] {
+            color: #9f1239 !important;
+        }
+
+        html[data-theme="light"] [class*="bg-white/"] {
+            background-color: rgba(190, 18, 60, .05) !important;
+        }
+
+        html[data-theme="light"] [class*="bg-black/"] {
+            background-color: rgba(190, 18, 60, .04) !important;
+        }
+
+        html[data-theme="light"] .admin-input {
+            background: rgba(255, 255, 255, .8);
+            color: #1a0509;
+            border-color: rgba(190, 18, 60, .18);
+        }
+
+        html[data-theme="light"] .admin-input::placeholder {
+            color: rgba(0, 0, 0, .3);
+        }
+
+        html[data-theme="light"] #toast {
+            background: #fff6f7;
+            color: #1a0509;
+        }
+
+        html[data-theme="light"] #pdfViewerContainer {
+            background: #f0f0f0;
+        }
+
+        html[data-theme="light"] .pdf-controls {
+            background: rgba(0, 0, 0, .08);
+        }
+
+        html[data-theme="light"] .pdf-controls button {
+            color: #1a0509;
+            background: rgba(190, 18, 60, .08);
+            border-color: rgba(190, 18, 60, .15);
+        }
+
+        html[data-theme="light"] .resource-card {
+            background: rgba(255, 255, 255, .6);
+            border-color: rgba(190, 18, 60, .1);
+        }
+
+        html[data-theme="light"] .resource-card:hover {
+            border-color: rgba(190, 18, 60, .25);
+            box-shadow: 0 20px 40px rgba(190, 18, 60, .08);
+        }
+
+        html[data-theme="light"] .ad-banner-728 {
+            background: rgba(255, 255, 255, .3);
+        }
+
+        html[data-theme="light"] .share-btn.copy {
+            background: rgba(0, 0, 0, .05);
+            border: 1px solid rgba(0, 0, 0, .1);
+            color: #1a0509;
+        }
+
+        @media (max-width: 640px) {
+            .media-frame iframe,
+            .media-frame video {
+                height: 260px;
+            }
+            #pdfViewerContainer {
+                height: 260px;
+            }
+            .pdf-controls {
+                gap: 6px;
+                padding: 6px 8px;
+            }
+            .pdf-controls button {
+                padding: 2px 10px;
+                font-size: 11px;
+            }
+            .ad-banner-728 {
+                min-height: 60px;
+            }
+            .ad-banner-728 img {
+                max-height: 60px;
+            }
+            .fab {
+                bottom: 16px;
+                right: 16px;
+            }
+            .fab-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 14px;
+            }
+            .share-btn {
+                padding: 6px 12px;
+                font-size: 11px;
+            }
+        }
+
+        /* RESOURCE LIBRARY IMPROVEMENTS */
+        .resource-card { min-width: 0; }
+        .resource-thumb-placeholder {
+            height: 9rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(225,29,72,.20), rgba(12,2,4,.88));
+            border-bottom: 1px solid rgba(244,63,94,.10);
+            font-size: 2.5rem;
+        }
+        .resource-thumb-wrap { height: 9rem; width: 100%; overflow: hidden; background: rgba(0,0,0,.25); }
+        .resource-thumb-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .35s ease; }
+        .resource-card:hover .resource-thumb-wrap img { transform: scale(1.06); }
+        .load-more-status { text-align:center; font-size:.75rem; color:rgba(255,241,242,.48); margin-bottom:.75rem; }
+        .back-to-top {
+            position: fixed; right: 18px; bottom: 18px; z-index: 60;
+            width: 46px; height: 46px; border-radius: 50%; border: 1px solid rgba(244,63,94,.25);
+            background: rgba(22,5,9,.88); color: #fff1f2; backdrop-filter: blur(12px);
+            box-shadow: 0 10px 30px rgba(225,29,72,.20); display:none; align-items:center; justify-content:center;
+        }
+        .back-to-top.show { display:flex; }
+        @media (max-width: 640px) {
+            .resource-card:hover { transform: translateY(-3px); }
+            .resource-card h3 { font-size: 1.08rem; }
+            .resource-card .p-4 { padding: 1rem; }
+            #resourceGrid { gap: 1rem; }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- Progress Bar -->
+    <div id="progressBar"></div>
+
+    <!-- Sakura -->
+    <div id="sakuraLayer"></div>
+
+    <div class="page">
+
+        <!-- HEADER -->
+        <header class="sticky top-0 z-40 border-b border-rose-500/10 bg-[#0c0204]/90 backdrop-blur-xl">
+            <div class="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-3">
+
+                <button onclick="goHome()" class="text-left hover:opacity-80 transition">
+                    <div class="text-xl font-black text-white">
+                        SL Sakura <span class="text-rose-400">🌸</span>
+                    </div>
+                    <div class="hidden text-[10px] text-rose-100/50 sm:block">
+                        Your Gateway to Japanese Language, Classes & Life in Japan
+                    </div>
+                </button>
+
+                <div class="flex items-center gap-2">
+                    <button onclick="openContact()" class="hidden rounded-xl border border-rose-500/20 bg-rose-500/10 px-3 py-2 text-xs font-bold text-rose-200 sm:block hover:bg-rose-500/20 transition">
+                        <i class="fa-solid fa-headset mr-1"></i> Support
+                    </button>
+
+                    <button onclick="openAdminLogin()" class="hidden rounded-xl border border-rose-500/20 bg-white/5 px-3 py-2 text-xs font-bold text-rose-200 sm:block hover:bg-white/10 transition">
+                        <i class="fa-solid fa-lock mr-1"></i> Admin
+                    </button>
+
+                    <button id="themeToggleBtn" onclick="toggleTheme()" class="flex h-10 w-10 items-center justify-center rounded-xl border border-rose-500/25 bg-rose-500/10 text-rose-100 hover:bg-rose-500/20 transition">
+                        <i id="themeToggleIcon" class="fa-solid fa-sun"></i>
+                    </button>
+
+                    <button id="menuBtn" onclick="openMenu()" class="flex h-10 w-10 items-center justify-center rounded-xl border border-rose-500/25 bg-rose-500/10 text-rose-100 hover:bg-rose-500/20 transition">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- SIDE MENU -->
+        <div id="menuOverlay" onclick="closeMenu()" class="drawer-overlay fixed inset-0 z-50 hidden bg-black/70"></div>
+
+        <aside id="sideMenu" class="drawer drawer-hidden fixed right-0 top-0 z-[60] h-full w-[310px] max-w-[90vw] overflow-y-auto border-l border-rose-500/20 bg-[#120306] p-5 shadow-2xl">
+            <div class="mb-6 flex items-center justify-between">
+                <div>
+                    <div class="text-lg font-black">SL Sakura <span class="text-rose-400">🌸</span></div>
+                    <div class="text-xs text-rose-100/45">Quick Menu</div>
+                </div>
+                <button onclick="closeMenu()" class="h-9 w-9 rounded-xl bg-white/5 text-rose-200 hover:bg-white/10 transition">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <div class="space-y-2">
+                <button onclick="menuSearch()" class="menu-item">🔍 <span>Search Resources</span></button>
+                <button onclick="menuResources()" class="menu-item">📚 <span>Resources</span></button>
+                <button onclick="menuNews()" class="menu-item">📰 <span>Japan Updates</span></button>
+
+                <div class="rounded-2xl border border-rose-500/10 bg-white/[.025] p-2">
+                    <div class="px-3 py-2 text-sm font-black text-rose-200">📝 Exam Websites</div>
+                    <a href="https://www.jlpt.jp/e/" target="_blank" rel="noopener noreferrer" class="submenu-item">JLPT</a>
+                    <a href="https://www.nat-test.com/" target="_blank" rel="noopener noreferrer" class="submenu-item">NAT</a>
+                    <a href="https://jlct.jp/en/" target="_blank" rel="noopener noreferrer" class="submenu-item">JLCT</a>
+                    <a href="https://www.jpf.go.jp/jft-basic/e/" target="_blank" rel="noopener noreferrer" class="submenu-item">JFT-Basic</a>
+                </div>
+
+                <button onclick="openContact(); closeMenu()" class="menu-item">📧 <span>Contact / Email</span></button>
+                <a href="https://wa.me/94789995159" target="_blank" rel="noopener noreferrer" class="menu-item">📱 <span>WhatsApp Support</span></a>
+                <a id="coffeeMenuBtn" href="#" target="_blank" rel="noopener noreferrer" class="menu-item hidden">☕ <span>Buy Me a Coffee</span></a>
+            </div>
+
+            <div class="mt-8 rounded-2xl border border-rose-500/10 bg-rose-500/5 p-4">
+                <div class="text-xs text-rose-300">Support</div>
+                <div class="mt-1 text-sm font-bold">0789995159</div>
+                <div class="mt-1 break-all text-xs text-rose-100/45">dilnathbudmina39@gmail.com</div>
+            </div>
+        </aside>
+
+        <!-- HOME PAGE -->
+        <main id="homePage">
+
+            <!-- HERO -->
+            <section class="mx-auto max-w-7xl px-4 pb-5 pt-8">
+                <div class="glass neon rounded-3xl p-6 text-center sm:p-10 animate-[fadeSlideUp_0.6s_ease]">
+                    <div class="mb-3 text-5xl animate-bounce">🌸</div>
+                    <h1 class="text-3xl font-black sm:text-5xl">Learn Japanese. <span class="text-rose-400">Build Your Future.</span></h1>
+                    <p class="mx-auto mt-4 max-w-2xl text-sm leading-6 text-rose-100/60 sm:text-base">Japanese language resources, JLPT, SSW, classes, exam preparation and useful Japan life information.</p>
+
+                    <div class="mt-5 flex flex-wrap justify-center gap-2">
+                        <button onclick="selectMain('N5')" class="quick-btn">N5</button>
+                        <button onclick="selectMain('N4')" class="quick-btn">N4</button>
+                        <button onclick="selectMain('N3')" class="quick-btn">N3</button>
+                        <button onclick="selectMain('N2')" class="quick-btn">N2</button>
+                        <button onclick="selectMain('N1')" class="quick-btn">N1</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 728×90 AD - TOP -->
+            <section class="mx-auto max-w-7xl px-4 pb-5">
+                <div id="topAd728" class="ad-banner-728">
+                    <div class="text-center text-rose-100/20 text-sm p-4">📢 Advertisement Space</div>
+                </div>
+            </section>
+
+            <!-- SEARCH -->
+            <section id="searchSection" class="mx-auto max-w-7xl px-4 pb-4">
+                <div class="relative">
+                    <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-rose-400"></i>
+                    <input id="resourceSearch" type="search" placeholder="Search resources..." class="w-full rounded-2xl border border-rose-500/20 bg-black/30 py-4 pl-12 pr-4 text-sm text-white outline-none focus:border-rose-500 focus:ring-2 focus:ring-rose-500/10 transition" />
+                </div>
+            </section>
+
+            <!-- EXAMS -->
+            <section class="mx-auto max-w-7xl px-4 pb-5">
+                <div class="glass rounded-3xl p-4">
+                    <div class="mb-3 text-xs font-black uppercase tracking-widest text-rose-400">Official Exam Websites</div>
+                    <div class="grid grid-cols-2 gap-2 sm:grid-cols-4">
+                        <a href="https://www.jlpt.jp/e/" target="_blank" rel="noopener noreferrer" class="exam-btn"><i class="fa-solid fa-language"></i> JLPT</a>
+                        <a href="https://www.nat-test.com/" target="_blank" rel="noopener noreferrer" class="exam-btn"><i class="fa-solid fa-file-pen"></i> NAT</a>
+                        <a href="https://jlct.jp/en/" target="_blank" rel="noopener noreferrer" class="exam-btn"><i class="fa-solid fa-book-open"></i> JLCT</a>
+                        <a href="https://www.jpf.go.jp/jft-basic/e/" target="_blank" rel="noopener noreferrer" class="exam-btn"><i class="fa-solid fa-globe"></i> JFT</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- RESOURCES TABS -->
+            <section id="resourcesSection" class="mx-auto max-w-7xl px-4">
+                <div id="mainTabs" class="flex gap-2 overflow-x-auto pb-3"></div>
+                <div id="subTabs" class="flex flex-wrap gap-2 pb-5"></div>
+            </section>
+
+            <!-- 728×90 AD - MIDDLE -->
+            <section class="mx-auto max-w-7xl px-4 pb-5">
+                <div id="middleAd728" class="ad-banner-728">
+                    <div class="text-center text-rose-100/20 text-sm p-4">📢 Advertisement Space</div>
+                </div>
+            </section>
+
+            <!-- RESOURCES GRID -->
+            <section class="mx-auto max-w-7xl px-4 pb-12">
+                <div class="mb-5 flex items-end justify-between gap-4 flex-wrap">
+                    <div>
+                        <p class="text-xs font-black uppercase tracking-widest text-rose-400">Resource Library</p>
+                        <h2 class="mt-1 text-2xl font-black">Available Resources</h2>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <select id="resourceSort" onchange="changeResourceSort(this.value)" class="rounded-full border border-rose-500/15 bg-white/5 px-3 py-1 text-xs text-rose-200/70 outline-none">
+                            <option value="newest">Newest</option>
+                            <option value="popular">Most viewed</option>
+                            <option value="title">A–Z</option>
+                        </select>
+                        <div id="resourceCount" class="rounded-full border border-rose-500/15 bg-white/5 px-3 py-1 text-xs text-rose-200/60">0 resources</div>
+                    </div>
+                </div>
+
+                <div id="resourceLoading" class="loading-overlay hidden">
+                    <div class="spinner"></div>
+                    <span>Loading resources...</span>
+                </div>
+
+                <div id="resourceGrid" class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3"></div>
+
+                <div id="loadMoreWrap" class="mt-6 hidden flex-col items-center justify-center">
+                    <div id="loadMoreStatus" class="load-more-status"></div>
+                    <button id="loadMoreBtn" onclick="loadMoreResources()" class="rose-btn rounded-2xl px-8 py-3 text-sm font-black text-white">
+                        <i class="fa-solid fa-rotate mr-2"></i> Load More Resources
+                    </button>
+                </div>
+            </section>
+
+            <!-- BUY ME A COFFEE -->
+            <section id="coffeeSection" class="mx-auto hidden max-w-7xl px-4 pb-12">
+                <div class="glass neon rounded-3xl p-6 text-center">
+                    <div class="text-4xl">☕</div>
+                    <h2 class="mt-3 text-xl font-black">Support SL Sakura</h2>
+                    <p class="mx-auto mt-2 max-w-xl text-sm text-rose-100/50">If SL Sakura helps you with your Japanese learning journey, you can support the project.</p>
+                    <a id="coffeeHomeBtn" href="#" target="_blank" rel="noopener noreferrer" class="rose-btn mt-5 inline-flex items-center rounded-2xl px-6 py-3 font-black text-white">☕ Buy Me a Coffee</a>
+                </div>
+            </section>
+
+            <!-- JAPAN UPDATES -->
+            <section id="newsSection" class="mx-auto max-w-7xl scroll-mt-24 px-4 pb-12">
+                <div class="glass neon rounded-3xl p-5">
+                    <div class="flex items-center justify-between gap-4">
+                        <div>
+                            <p class="text-xs font-black uppercase tracking-widest text-rose-400">Japan Updates</p>
+                            <h2 class="mt-1 text-2xl font-black">Visa & Japan News 🇯🇵</h2>
+                            <p class="mt-2 text-sm text-rose-100/55">Useful updates about visas, studies, work and life in Japan.</p>
+                        </div>
+                        <div class="text-3xl">📰</div>
+                    </div>
+
+                    <div id="newsLoading" class="loading-overlay hidden">
+                        <div class="spinner"></div>
+                        <span>Loading updates...</span>
+                    </div>
+
+                    <div id="newsGrid" class="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3"></div>
+                </div>
+            </section>
+
+            <!-- FOOTER -->
+            <footer class="border-t border-rose-500/10 bg-black/20">
+                <div class="mx-auto max-w-7xl px-4 py-8">
+                    <div class="grid gap-6 sm:grid-cols-4">
+                        <div>
+                            <div class="text-xl font-black">SL Sakura 🌸</div>
+                            <p class="mt-2 text-sm text-rose-100/45">Your Gateway to Japanese Language, Classes & Life in Japan.</p>
+                            <div class="mt-3 flex gap-2">
+                                <a href="#" onclick="shareOnFacebook()" class="text-rose-100/45 hover:text-[#1877f2] transition text-xl"><i class="fa-brands fa-facebook"></i></a>
+                                <a href="#" onclick="shareOnTwitter()" class="text-rose-100/45 hover:text-[#000] transition text-xl"><i class="fa-brands fa-twitter"></i></a>
+                                <a href="#" onclick="shareOnWhatsApp()" class="text-rose-100/45 hover:text-[#25d366] transition text-xl"><i class="fa-brands fa-whatsapp"></i></a>
+                                <a href="#" onclick="shareOnLinkedIn()" class="text-rose-100/45 hover:text-[#0a66c2] transition text-xl"><i class="fa-brands fa-linkedin"></i></a>
+                                <a href="#" onclick="shareOnTelegram()" class="text-rose-100/45 hover:text-[#0088cc] transition text-xl"><i class="fa-brands fa-telegram"></i></a>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="font-bold text-rose-200">Contact</div>
+                            <a href="https://wa.me/94789995159" target="_blank" rel="noopener noreferrer" class="mt-2 block text-sm text-rose-100/55 hover:text-rose-300 transition">📱 0789995159</a>
+                            <a href="mailto:dilnathbudmina39@gmail.com" class="mt-1 block break-all text-sm text-rose-100/55 hover:text-rose-300 transition">📧 dilnathbudmina39@gmail.com</a>
+                        </div>
+                        <div>
+                            <div class="font-bold text-rose-200">Exams</div>
+                            <div class="mt-2 flex flex-wrap gap-2 text-xs">
+                                <a href="https://www.jlpt.jp/e/" target="_blank" rel="noopener noreferrer" class="footer-link">JLPT</a>
+                                <a href="https://www.nat-test.com/" target="_blank" rel="noopener noreferrer" class="footer-link">NAT</a>
+                                <a href="https://jlct.jp/en/" target="_blank" rel="noopener noreferrer" class="footer-link">JLCT</a>
+                                <a href="https://www.jpf.go.jp/jft-basic/e/" target="_blank" rel="noopener noreferrer" class="footer-link">JFT</a>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="font-bold text-rose-200">Quick Links</div>
+                            <a href="#" onclick="menuSearch(); return false;" class="mt-2 block text-sm text-rose-100/55 hover:text-rose-300 transition">🔍 Search</a>
+                            <a href="#" onclick="menuResources(); return false;" class="mt-1 block text-sm text-rose-100/55 hover:text-rose-300 transition">📚 Resources</a>
+                            <a href="#" onclick="menuNews(); return false;" class="mt-1 block text-sm text-rose-100/55 hover:text-rose-300 transition">📰 News</a>
+                        </div>
+                    </div>
+                    <div class="mt-8 border-t border-rose-500/10 pt-5 text-center text-xs text-rose-100/30">© 2026 SL Sakura 🌸 | Made with ❤️</div>
+                </div>
+            </footer>
+
+        </main>
+
+        <!-- RESOURCE VIEWER -->
+        <section id="viewerPage" class="hidden min-h-screen">
+            <div class="mx-auto max-w-5xl px-4 py-6">
+                <div class="flex items-center gap-2 mb-5 flex-wrap">
+                    <button onclick="goHome()" class="rounded-xl border border-rose-500/20 bg-white/5 px-4 py-2 text-sm font-bold text-rose-200 hover:bg-white/10 transition">
+                        <i class="fa-solid fa-arrow-left mr-2"></i> Back
+                    </button>
+
+                    <!-- Social Share Buttons -->
+                    <button onclick="shareOnFacebook()" class="share-btn facebook"><i class="fa-brands fa-facebook"></i></button>
+                    <button onclick="shareOnTwitter()" class="share-btn twitter"><i class="fa-brands fa-twitter"></i></button>
+                    <button onclick="shareOnWhatsApp()" class="share-btn whatsapp"><i class="fa-brands fa-whatsapp"></i></button>
+                    <button onclick="shareOnLinkedIn()" class="share-btn linkedin"><i class="fa-brands fa-linkedin"></i></button>
+                    <button onclick="shareOnTelegram()" class="share-btn telegram"><i class="fa-brands fa-telegram"></i></button>
+                    <button onclick="shareViaEmail()" class="share-btn email"><i class="fa-solid fa-envelope"></i></button>
+                    <button onclick="copyCurrentLink()" class="share-btn copy"><i class="fa-solid fa-copy"></i> Copy</button>
+                </div>
+
+                <div class="glass neon rounded-3xl p-5">
+                    <div class="mb-5">
+                        <p id="viewerCategory" class="text-xs font-black uppercase tracking-widest text-rose-400"></p>
+                        <h1 id="viewerTitle" class="mt-2 text-2xl font-black"></h1>
+                        <p id="viewerLecturer" class="mt-2 text-sm text-rose-100/55"></p>
+                        <p id="viewerViews" class="mt-1 text-xs text-rose-100/40"><i class="fa-regular fa-eye mr-1"></i> <span id="viewCountDisplay">0</span> views</p>
+                        <a id="viewerContactBtn" href="#" target="_blank" rel="noopener noreferrer" class="mt-3 hidden w-fit rounded-xl bg-green-500/10 px-4 py-2 text-xs font-bold text-green-300"></a>
+                    </div>
+
+                    <div id="viewerMedia" class="media-frame flex items-center justify-center">
+                        <div class="loading-overlay"><div class="spinner"></div><span>Loading preview...</span></div>
+                    </div>
+
+                    <div id="pdfControls" class="hidden pdf-controls">
+                        <button onclick="pdfPrevPage()"><i class="fa-solid fa-chevron-left"></i> Prev</button>
+                        <span id="pdfPageInfo">1 / 1</span>
+                        <button onclick="pdfNextPage()">Next <i class="fa-solid fa-chevron-right"></i></button>
+                        <button onclick="pdfZoomIn()"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
+                        <button onclick="pdfZoomOut()"><i class="fa-solid fa-magnifying-glass-minus"></i></button>
+                        <span id="pdfZoomLevel">100%</span>
+                    </div>
+
+                    <div class="mt-5">
+                        <div id="viewerAdContainer"></div>
+                    </div>
+
+                    <div id="countdownBox" class="mt-5 rounded-2xl border border-rose-500/15 bg-rose-500/5 p-5 text-center">
+                        <div class="text-xs uppercase tracking-widest text-rose-300/60">Download will be available in</div>
+                        <div id="countdown" class="mt-1 text-4xl font-black text-rose-400">8</div>
+                        <div id="downloadReadyMessage" class="mt-3 hidden text-sm font-bold text-green-300">✓ Download is ready</div>
+                        <a id="viewerDownloadButton" href="#" target="_blank" rel="noopener noreferrer" class="rose-btn mt-4 hidden inline-flex items-center justify-center rounded-2xl px-6 py-3 font-black text-white" onclick="trackDownload()">
+                            <i class="fa-solid fa-download mr-2"></i> Download File Now
+                        </a>
+                    </div>
+
+                    <div id="youtubeOnlyMessage" class="mt-5 hidden rounded-2xl border border-red-500/15 bg-red-500/5 p-4 text-center text-sm text-red-200/70">
+                        ▶️ This is a YouTube resource. Online viewing is available, but downloading is not provided.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT MODAL -->
+        <div id="contactModal" class="modal-bg fixed inset-0 z-[100] hidden items-center justify-center p-4">
+            <div class="glass w-full max-w-md rounded-3xl p-6 animate-[fadeSlideUp_0.3s_ease]">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <div class="text-xl font-black">Contact & Support</div>
+                        <div class="text-xs text-rose-100/45">SL Sakura 🌸</div>
+                    </div>
+                    <button onclick="closeContact()" class="h-9 w-9 rounded-xl bg-white/5 hover:bg-white/10 transition"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+                <div class="mt-5 space-y-3">
+                    <a href="https://wa.me/94789995159" target="_blank" rel="noopener noreferrer" class="block rounded-2xl border border-green-500/15 bg-green-500/5 p-4 hover:bg-green-500/10 transition">
+                        <div class="font-bold text-green-300"><i class="fa-brands fa-whatsapp mr-2"></i> WhatsApp Support</div>
+                        <div class="mt-1 text-xs text-green-100/50">0789995159</div>
+                    </a>
+                    <a href="tel:+94789995159" class="block rounded-2xl border border-rose-500/15 bg-white/5 p-4 hover:bg-white/10 transition">
+                        <div class="font-bold"><i class="fa-solid fa-phone mr-2 text-rose-400"></i> Direct Call</div>
+                        <div class="mt-1 text-xs text-rose-100/45">0789995159</div>
+                    </a>
+                    <a href="mailto:dilnathbudmina39@gmail.com" class="block rounded-2xl border border-purple-500/15 bg-purple-500/5 p-4 hover:bg-purple-500/10 transition">
+                        <div class="font-bold text-purple-300"><i class="fa-solid fa-envelope mr-2"></i> Email Support</div>
+                        <div class="mt-1 break-all text-xs text-purple-100/50">dilnathbudmina39@gmail.com</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- ADMIN LOGIN -->
+        <div id="adminLoginModal" class="modal-bg fixed inset-0 z-[100] hidden items-center justify-center p-4">
+            <div class="glass w-full max-w-sm rounded-3xl p-6 animate-[fadeSlideUp_0.3s_ease]">
+                <div class="flex items-center justify-between">
+                    <h2 class="text-xl font-black">Admin Login</h2>
+                    <button onclick="closeAdminLogin()" class="h-9 w-9 rounded-xl bg-white/5 hover:bg-white/10 transition"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+                <input id="adminEmail" type="email" placeholder="Admin email" class="mt-5 w-full rounded-2xl border border-rose-500/15 bg-black/30 px-4 py-3 text-sm outline-none focus:border-rose-500 transition" />
+                <input id="adminPassword" type="password" placeholder="Admin password" class="mt-3 w-full rounded-2xl border border-rose-500/15 bg-black/30 px-4 py-3 text-sm outline-none focus:border-rose-500 transition" />
+                <button onclick="loginAdmin()" class="rose-btn mt-3 w-full rounded-2xl px-5 py-3 font-black">Login</button>
+            </div>
+        </div>
+
+        <!-- ADMIN PANEL -->
+        <div id="adminPanel" class="modal-bg fixed inset-0 z-[110] hidden overflow-y-auto p-4">
+            <div class="mx-auto my-5 max-w-6xl">
+                <div class="glass rounded-3xl p-5 animate-[fadeSlideUp_0.3s_ease]">
+
+                    <div class="flex items-center justify-between gap-3 flex-wrap">
+                        <div>
+                            <div class="text-xl font-black">Admin Dashboard</div>
+                            <div class="text-xs text-rose-100/45">Manage Resources • News • Ads • Settings</div>
+                        </div>
+                        <div class="flex gap-2">
+                            <button onclick="exportData()" class="rounded-xl border border-green-500/20 bg-green-500/10 px-3 py-2 text-xs font-bold text-green-300 hover:bg-green-500/20 transition">
+                                <i class="fa-solid fa-download mr-1"></i> Backup
+                            </button>
+                            <button onclick="document.getElementById('importFile').click()" class="rounded-xl border border-yellow-500/20 bg-yellow-500/10 px-3 py-2 text-xs font-bold text-yellow-300 hover:bg-yellow-500/20 transition">
+                                <i class="fa-solid fa-upload mr-1"></i> Restore
+                            </button>
+                            <input type="file" id="importFile" accept=".json" class="hidden" onchange="importData(event)" />
+                            <button onclick="closeAdminPanel()" class="h-10 w-10 rounded-xl bg-white/5 hover:bg-white/10 transition"><i class="fa-solid fa-xmark"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- Admin Tabs -->
+                    <div class="mt-4 flex gap-2 overflow-x-auto border-b border-rose-500/10 pb-2">
+                        <button class="admin-tab active" data-tab="resources" onclick="switchAdminTab('resources')">
+                            <i class="fa-solid fa-book mr-2"></i> Resources
+                        </button>
+                        <button class="admin-tab" data-tab="news" onclick="switchAdminTab('news')">
+                            <i class="fa-solid fa-newspaper mr-2"></i> News
+                        </button>
+                        <button class="admin-tab" data-tab="ads" onclick="switchAdminTab('ads')">
+                            <i class="fa-solid fa-bullhorn mr-2"></i> Ads
+                        </button>
+                        <button class="admin-tab" data-tab="settings" onclick="switchAdminTab('settings')">
+                            <i class="fa-solid fa-gear mr-2"></i> Settings
+                        </button>
+                        <button class="admin-tab" data-tab="analytics" onclick="switchAdminTab('analytics')">
+                            <i class="fa-solid fa-chart-bar mr-2"></i> Analytics
+                        </button>
+                    </div>
+
+                    <!-- TAB: Resources -->
+                    <div id="tab-resources" class="admin-tab-content mt-4">
+                        <div class="rounded-3xl border border-rose-500/10 bg-black/20 p-5">
+                            <div class="mb-4 flex items-center justify-between flex-wrap gap-2">
+                                <div class="text-lg font-black">📚 Manage Resources</div>
+                                <button onclick="toggleResourceForm()" class="rose-btn rounded-2xl px-4 py-2 text-sm font-black">
+                                    <i class="fa-solid fa-plus mr-2"></i> Add New
+                                </button>
+                            </div>
+
+                            <!-- Resource Form -->
+                            <div id="resourceFormContainer" class="hidden rounded-3xl border border-rose-500/10 bg-black/20 p-5 mb-4">
+                                <div class="mb-4 flex items-center justify-between">
+                                    <div class="text-lg font-black">Add / Edit Resource</div>
+                                    <button id="cancelEditBtn" onclick="cancelEditResource()" class="hidden rounded-xl border border-rose-500/15 bg-white/5 px-3 py-1 text-xs text-rose-200 hover:bg-white/10 transition">Cancel Edit</button>
+                                </div>
+                                <div class="grid gap-3 md:grid-cols-2">
+                                    <input id="resourceTitle" placeholder="Resource title" class="admin-input" />
+                                    <select id="resourceMainCategory" class="admin-input">
+                                        <option value="N5">N5</option>
+                                        <option value="N4">N4</option>
+                                        <option value="N3">N3</option>
+                                        <option value="N2">N2</option>
+                                        <option value="N1">N1</option>
+                                        <option value="SSW">SSW</option>
+                                        <option value="CLASSES">CLASSES</option>
+                                        <option value="SURVIVAL GUIDE">SURVIVAL GUIDE</option>
+                                    </select>
+                                    <select id="resourceSubCategory" class="admin-input"></select>
+                                    <input id="resourceLecturer" placeholder="Lecturer name" class="admin-input" />
+                                    <input id="resourceLecturerContact" value="0789995159" placeholder="Lecturer WhatsApp" class="admin-input" />
+                                    <select id="resourceMediaType" class="admin-input">
+                                        <option value="pdf">PDF</option>
+                                        <option value="audio">Audio</option>
+                                        <option value="video">Video</option>
+                                        <option value="youtube">YouTube</option>
+                                    </select>
+                                    <input id="resourcePreviewUrl" placeholder="Preview URL (YouTube or Google Drive)" class="admin-input md:col-span-2" />
+                                    <input id="resourceThumbnail" placeholder="Thumbnail URL (optional)" class="admin-input md:col-span-2" />
+                                    <textarea id="resourceDescription" rows="2" placeholder="Short description (optional)" class="admin-input md:col-span-2"></textarea>
+                                    <input id="resourceDownloadUrl" placeholder="Download URL (optional)" class="admin-input md:col-span-2" />
+                                </div>
+                                <p class="mt-3 text-[11px] text-rose-100/35">For YouTube: paste YouTube URL. For Google Drive: paste share link.</p>
+                                <button id="addResourceBtn" onclick="addResource()" class="rose-btn mt-4 rounded-2xl px-5 py-3 font-black"><i class="fa-solid fa-plus mr-2"></i> Add Resource</button>
+                                <button id="updateResourceBtn" onclick="updateResource()" class="hidden rose-btn mt-4 rounded-2xl px-5 py-3 font-black" style="background:linear-gradient(135deg,#f59e0b,#d97706);"><i class="fa-solid fa-pen mr-2"></i> Update Resource</button>
+                            </div>
+
+                            <!-- Resource List -->
+                            <div class="mt-4">
+                                <div class="flex gap-2 mb-3 flex-wrap">
+                                    <input id="adminSearch" placeholder="Search resources..." class="admin-input flex-1 min-w-[150px]" oninput="filterAdminResources()" />
+                                    <select id="adminCategoryFilter" class="admin-input w-auto" onchange="filterAdminResources()">
+                                        <option value="all">All Categories</option>
+                                        <option value="N5">N5</option>
+                                        <option value="N4">N4</option>
+                                        <option value="N3">N3</option>
+                                        <option value="N2">N2</option>
+                                        <option value="N1">N1</option>
+                                        <option value="SSW">SSW</option>
+                                        <option value="CLASSES">CLASSES</option>
+                                        <option value="SURVIVAL GUIDE">SURVIVAL GUIDE</option>
+                                    </select>
+                                    <button onclick="selectAllResources()" class="rounded-xl border border-rose-500/15 bg-white/5 px-3 py-2 text-xs text-rose-200 hover:bg-white/10 transition">Select All</button>
+                                    <button onclick="clearBulkSelection()" class="rounded-xl border border-rose-500/15 bg-white/5 px-3 py-2 text-xs text-rose-200 hover:bg-white/10 transition">Clear</button>
+                                    <button onclick="bulkDelete()" class="rounded-xl bg-red-500/10 px-3 py-2 text-xs font-bold text-red-300 hover:bg-red-500/20 transition">Delete Selected</button>
+                                </div>
+                                <div id="adminResourcesList" class="space-y-2 max-h-96 overflow-y-auto"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- TAB: News -->
+                    <div id="tab-news" class="admin-tab-content mt-4 hidden">
+                        <div class="rounded-3xl border border-rose-500/10 bg-black/20 p-5">
+                            <div class="mb-4 text-lg font-black">📰 Manage News</div>
+                            <div class="grid gap-3">
+                                <input id="newsTitle" placeholder="News title" class="admin-input" />
+                                <select id="newsCategory" class="admin-input">
+                                    <option value="VISA">VISA</option>
+                                    <option value="JAPAN LIFE">JAPAN LIFE</option>
+                                    <option value="WORK">WORK</option>
+                                    <option value="STUDY">STUDY</option>
+                                    <option value="EXAMS">EXAMS</option>
+                                </select>
+                                <textarea id="newsDescription" rows="4" placeholder="Description" class="admin-input"></textarea>
+                                <input id="newsLink" placeholder="Article link (optional)" class="admin-input" />
+                            </div>
+                            <button onclick="addNews()" class="mt-4 rounded-2xl border border-rose-500/20 bg-rose-500/10 px-5 py-3 font-black text-rose-200 hover:bg-rose-500/20 transition"><i class="fa-solid fa-newspaper mr-2"></i> Publish Update</button>
+                            <div class="mt-4">
+                                <div id="adminNewsList" class="space-y-2 max-h-96 overflow-y-auto"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- TAB: Ads -->
+                    <div id="tab-ads" class="admin-tab-content mt-4 hidden">
+                        <div class="rounded-3xl border border-rose-500/10 bg-black/20 p-5">
+                            <div class="mb-4 text-lg font-black">📢 Manage Advertisements (728×90)</div>
+                            <div class="grid gap-3">
+                                <input id="adTitle" placeholder="Ad title" class="admin-input" />
+                                <input id="adImageUrl" placeholder="Banner image URL (728×90 recommended)" class="admin-input" />
+                                <input id="adLink" placeholder="Ad website link" class="admin-input" />
+                                <select id="adPlacement" class="admin-input">
+                                    <option value="TOP">Top</option>
+                                    <option value="MIDDLE">Middle</option>
+                                    <option value="VIEWER">Resource Viewer</option>
+                                </select>
+                            </div>
+                            <button onclick="addAdvertisement()" class="mt-4 rounded-2xl border border-yellow-500/20 bg-yellow-500/10 px-5 py-3 font-black text-yellow-300 hover:bg-yellow-500/20 transition"><i class="fa-solid fa-bullhorn mr-2"></i> Publish Ad</button>
+                            <div class="mt-4">
+                                <div id="adminAdsList" class="space-y-2 max-h-96 overflow-y-auto"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- TAB: Settings -->
+                    <div id="tab-settings" class="admin-tab-content mt-4 hidden">
+                        <div class="rounded-3xl border border-rose-500/10 bg-black/20 p-5">
+                            <div class="mb-2 text-lg font-black">⚙️ Settings</div>
+                            <p class="mb-4 text-xs text-rose-100/45">Add your Buy Me a Coffee link.</p>
+                            <input id="coffeeUrl" placeholder="https://www.buymeacoffee.com/yourname" class="admin-input" />
+                            <div class="mt-3 flex flex-wrap gap-2">
+                                <button onclick="saveCoffeeUrl()" class="rose-btn rounded-2xl px-5 py-3 text-sm font-black"><i class="fa-solid fa-floppy-disk mr-2"></i> Save</button>
+                                <button onclick="removeCoffeeUrl()" class="rounded-2xl border border-red-500/15 bg-red-500/5 px-5 py-3 text-sm font-bold text-red-300 hover:bg-red-500/10 transition">Remove</button>
+                                <button onclick="refreshAllData()" class="rounded-2xl border border-blue-500/20 bg-blue-500/10 px-5 py-3 text-sm font-black text-blue-300 hover:bg-blue-500/20 transition">
+                                    <i class="fa-solid fa-rotate mr-2"></i> Refresh All
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- TAB: Analytics -->
+                    <div id="tab-analytics" class="admin-tab-content mt-4 hidden">
+                        <div class="rounded-3xl border border-rose-500/10 bg-black/20 p-5">
+                            <div class="mb-4 text-lg font-black">📊 Analytics</div>
+                            <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                                <div class="glass rounded-2xl p-4 text-center">
+                                    <div class="text-2xl font-black text-rose-400" id="totalResources">0</div>
+                                    <div class="text-xs text-rose-100/45">Total Resources</div>
+                                </div>
+                                <div class="glass rounded-2xl p-4 text-center">
+                                    <div class="text-2xl font-black text-rose-400" id="totalViews">0</div>
+                                    <div class="text-xs text-rose-100/45">Total Views</div>
+                                </div>
+                                <div class="glass rounded-2xl p-4 text-center">
+                                    <div class="text-2xl font-black text-rose-400" id="totalDownloads">0</div>
+                                    <div class="text-xs text-rose-100/45">Total Downloads</div>
+                                </div>
+                                <div class="glass rounded-2xl p-4 text-center">
+                                    <div class="text-2xl font-black text-rose-400" id="totalCategories">0</div>
+                                    <div class="text-xs text-rose-100/45">Categories</div>
+                                </div>
+                            </div>
+                            <div class="mt-4">
+                                <h4 class="font-bold mb-2">🏆 Top Resources</h4>
+                                <div id="topResourcesList" class="space-y-1"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button onclick="logoutAdmin()" class="mt-6 w-full rounded-2xl border border-red-500/15 bg-red-500/5 px-5 py-3 text-sm font-bold text-red-300 hover:bg-red-500/10 transition">Logout Admin</button>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- TOAST -->
+        <div id="toast" class="fixed bottom-5 left-1/2 z-[200] hidden -translate-x-1/2 rounded-2xl border border-rose-500/20 bg-[#160509] px-5 py-3 text-sm font-bold shadow-2xl"></div>
+
+        <!-- FLOATING ACTION BUTTONS -->
+        <div class="fab">
+            <button onclick="scrollToTop()" class="fab-btn hover:bg-rose-500/20" title="Scroll to top">
+                <i class="fa-solid fa-arrow-up"></i>
+            </button>
+            <button onclick="openSearch()" class="fab-btn hover:bg-rose-500/20" title="Search">
+                <i class="fa-solid fa-search"></i>
+            </button>
+            <button onclick="openContact()" class="fab-btn hover:bg-rose-500/20" title="Contact">
+                <i class="fa-solid fa-headset"></i>
+            </button>
+        </div>
+
+    </div>
+
+    <!-- FIREBASE -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js">
+    </script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js">
+    </script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js">
+    </script>
+
+    <script>
+        // ============================================================
+        // FIREBASE CONFIG
+        // ============================================================
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyDG4imqIshK4-vhzGZt7eek1oAgjdJF550",
+            authDomain: "sl-sakura.firebaseapp.com",
+            projectId: "sl-sakura",
+            storageBucket: "sl-sakura.firebasestorage.app",
+            messagingSenderId: "163142157440",
+            appId: "1:163142157440:web:b81c4dc806a77336a49265",
+            measurementId: "G-GRTPY0T1KH",
+            databaseURL: "https://sl-sakura-default-rtdb.asia-southeast1.firebasedatabase.app"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.database();
+        const auth = firebase.auth();
+
+        // ============================================================
+        // STATE
+        // ============================================================
+
+        const state = {
+            resources: [],
+            news: [],
+            advertisements: [],
+            selectedMain: "ALL",
+            selectedSub: "All",
+            searchQuery: "",
+            selectedResource: null,
+            countdownTimer: null,
+            adminLoggedIn: false,
+            coffeeUrl: "",
+            visibleCount: 9,
+            resourceSort: 'newest',
+            pdfDoc: null,
+            pdfPageNum: 1,
+            pdfScale: 1.0,
+            pdfTotalPages: 0,
+            pdfRendering: false,
+            currentResourceId: null,
+            selectedResources: new Set(),
+            editingResourceId: null,
+            adminTab: 'resources',
+            viewTracked: new Set(),
+            shareUrl: '',
+            shareTitle: '',
+        };
+
+        // ============================================================
+        // HELPERS
+        // ============================================================
+
+        const $ = id => document.getElementById(id);
+
+        function escapeHtml(v) {
+            if (!v) return '';
+            return String(v).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
+                .replace(/'/g, '&#039;');
+        }
+
+        function safeUrl(url) {
+            if (!url) return '#';
+            try {
+                const u = new URL(url);
+                if (u.protocol === 'https:' || u.protocol === 'http:') return u.href;
+                return '#';
+            } catch { return '#'; }
+        }
+
+        function showToast(msg, err = false) {
+            const t = $('toast');
+            t.textContent = msg;
+            t.style.borderColor = err ? 'rgba(239,68,68,.4)' : 'rgba(244,63,94,.20)';
+            t.style.background = err ? 'rgba(30,5,10,.95)' : '#160509';
+            t.classList.remove('hidden');
+            clearTimeout(window.toastTimer);
+            window.toastTimer = setTimeout(() => t.classList.add('hidden'), 3000);
+        }
+
+        function showLoading(id) { const e = $(id); if (e) e.classList.remove('hidden'); }
+
+        function hideLoading(id) { const e = $(id); if (e) e.classList.add('hidden'); }
+
+        function isGoogleDriveUrl(url) { return url && url.includes('drive.google.com'); }
+
+        function getGoogleDriveFileId(url) {
+            if (!url) return null;
+            const patterns = [
+                /drive\.google\.com\/file\/d\/([^\/]+)/,
+                /drive\.google\.com\/open\?id=([^&]+)/,
+                /drive\.google\.com\/uc\?export=view&id=([^&]+)/,
+                /drive\.google\.com\/uc\?export=download&id=([^&]+)/,
+                /\/d\/([^\/]+)\//,
+                /id=([^&]+)/
+            ];
+            for (const p of patterns) { const m = url.match(p); if (m) return m[1]; }
+            return null;
+        }
+
+        function getGoogleDriveDirectUrl(url) {
+            const id = getGoogleDriveFileId(url);
+            return id ? `https://drive.google.com/uc?export=download&id=${id}` : url;
+        }
+
+        function isYouTubeUrl(url) { return url && (url.includes('youtube.com') || url.includes('youtu.be')); }
+
+        function getYouTubeId(url) {
+            if (!url) return null;
+            try {
+                const p = new URL(url);
+                const h = p.hostname.replace('www.', '').toLowerCase();
+                if (h === 'youtube.com' || h === 'm.youtube.com') {
+                    const v = p.searchParams.get('v');
+                    if (v) return v;
+                    if (p.pathname.startsWith('/embed/') || p.pathname.startsWith('/shorts/')) {
+                        return p.pathname.split('/')[2]?.split('?')[0] || null;
+                    }
+                }
+                if (h === 'youtu.be') return p.pathname.substring(1).split('/')[0] || null;
+            } catch { return null; }
+            return null;
+        }
+
+        function getCurrentShareUrl() {
+            const id = state.currentResourceId;
+            if (id) {
+                return window.location.origin + window.location.pathname + '?resource=' + id;
+            }
+            return window.location.href;
+        }
+
+        function getCurrentShareTitle() {
+            const r = state.selectedResource;
+            if (r) return 'SL Sakura - ' + r.title;
+            return 'SL Sakura 🌸 - Japanese Language Resources';
+        }
+
+        // ============================================================
+        // SOCIAL MEDIA SHARE
+        // ============================================================
+
+        function openShareWindow(url) {
+            window.open(url, '_blank', 'width=600,height=400,scrollbars=yes');
+        }
+
+        function shareOnFacebook() {
+            const url = getCurrentShareUrl();
+            openShareWindow('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(url));
+        }
+
+        function shareOnTwitter() {
+            const url = getCurrentShareUrl();
+            const text = getCurrentShareTitle();
+            openShareWindow('https://twitter.com/intent/tweet?text=' + encodeURIComponent(text) + '&url=' + encodeURIComponent(
+                url));
+        }
+
+        function shareOnWhatsApp() {
+            const url = getCurrentShareUrl();
+            const text = getCurrentShareTitle() + '\n' + url;
+            openShareWindow('https://wa.me/?text=' + encodeURIComponent(text));
+        }
+
+        function shareOnLinkedIn() {
+            const url = getCurrentShareUrl();
+            openShareWindow('https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(url));
+        }
+
+        function shareOnTelegram() {
+            const url = getCurrentShareUrl();
+            const text = getCurrentShareTitle() + '\n' + url;
+            openShareWindow('https://t.me/share/url?url=' + encodeURIComponent(url) + '&text=' + encodeURIComponent(text));
+        }
+
+        function shareViaEmail() {
+            const url = getCurrentShareUrl();
+            const subject = getCurrentShareTitle();
+            openShareWindow('mailto:?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(
+                'Check this out: ' + url));
+        }
+
+        function copyCurrentLink() {
+            const url = getCurrentShareUrl();
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(url).then(() => {
+                    showToast('✅ Link copied to clipboard!');
+                }).catch(() => {
+                    fallbackCopy(url);
+                });
+            } else {
+                fallbackCopy(url);
+            }
+        }
+
+        function fallbackCopy(text) {
+            const input = document.createElement('input');
+            input.value = text;
+            document.body.appendChild(input);
+            input.select();
+            document.execCommand('copy');
+            document.body.removeChild(input);
+            showToast('✅ Link copied to clipboard!');
+        }
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function openSearch() {
+            $('searchSection').scrollIntoView({ behavior: 'smooth', block: 'center' });
+            setTimeout(() => $('resourceSearch').focus(), 500);
+        }
+
+        // ============================================================
+        // THEME
+        // ============================================================
+
+        function applyTheme(t) {
+            if (t === 'light') {
+                document.documentElement.setAttribute('data-theme', 'light');
+                $('themeToggleIcon').className = 'fa-solid fa-moon';
+            } else {
+                document.documentElement.removeAttribute('data-theme');
+                $('themeToggleIcon').className = 'fa-solid fa-sun';
+            }
+        }
+
+        function toggleTheme() {
+            const cur = document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+            const next = cur === 'light' ? 'dark' : 'light';
+            applyTheme(next);
+            try { localStorage.setItem('slSakuraTheme', next); } catch {}
+        }
+
+        function initTheme() {
+            try { applyTheme(localStorage.getItem('slSakuraTheme') || 'dark'); } catch { applyTheme('dark'); }
+        }
+
+        // ============================================================
+        // SAKURA
+        // ============================================================
+
+        function createSakura() {
+            const layer = $('sakuraLayer');
+            for (let i = 0; i < 30; i++) {
+                const p = document.createElement('div');
+                p.className = 'sakura';
+                p.textContent = '🌸';
+                p.style.left = Math.random() * 100 + '%';
+                p.style.fontSize = (8 + Math.random() * 16) + 'px';
+                p.style.animationDuration = (7 + Math.random() * 12) + 's';
+                p.style.animationDelay = Math.random() * 10 + 's';
+                p.style.opacity = 0.4 + Math.random() * 0.4;
+                layer.appendChild(p);
+            }
+        }
+
+        // ============================================================
+        // MENU
+        // ============================================================
+
+        function openMenu() { $('sideMenu').classList.remove('drawer-hidden');
+            $('menuOverlay').classList.remove('hidden'); }
+
+        function closeMenu() { $('sideMenu').classList.add('drawer-hidden');
+            $('menuOverlay').classList.add('hidden'); }
+
+        function menuSearch() { closeMenu();
+            openSearch(); }
+
+        function menuResources() { closeMenu();
+            $('resourcesSection').scrollIntoView({ behavior: 'smooth' }); }
+
+        function menuNews() { closeMenu();
+            $('newsSection').scrollIntoView({ behavior: 'smooth' }); }
+
+        // ============================================================
+        // CONTACT
+        // ============================================================
+
+        function openContact() { $('contactModal').classList.remove('hidden');
+            $('contactModal').classList.add('flex'); }
+
+        function closeContact() { $('contactModal').classList.add('hidden');
+            $('contactModal').classList.remove('flex'); }
+
+        // ============================================================
+        // ADMIN
+        // ============================================================
+
+        function openAdminLogin() { $('adminLoginModal').classList.remove('hidden');
+            $('adminLoginModal').classList.add('flex');
+            $('adminPassword').focus(); }
+
+        function closeAdminLogin() { $('adminLoginModal').classList.add('hidden');
+            $('adminLoginModal').classList.remove('flex'); }
+
+        function loginAdmin() {
+            const e = $('adminEmail').value.trim(),
+                p = $('adminPassword').value;
+            if (!e || !p) { showToast('Enter email and password', true); return; }
+            auth.signInWithEmailAndPassword(e, p).then(() => {
+                closeAdminLogin();
+                $('adminPanel').classList.remove('hidden');
+                $('adminEmail').value = '';
+                $('adminPassword').value = '';
+                $('coffeeUrl').value = state.coffeeUrl || '';
+                renderAdminLists();
+                updateAnalytics();
+                showToast('✅ Admin login successful');
+            }).catch(() => showToast('❌ Wrong email or password', true));
+        }
+
+        function closeAdminPanel() { $('adminPanel').classList.add('hidden'); }
+
+        function logoutAdmin() { auth.signOut().then(() => { closeAdminPanel();
+                showToast('Logged out'); }); }
+
+        auth.onAuthStateChanged(user => {
+            state.adminLoggedIn = !!user;
+            if (!user) $('adminPanel').classList.add('hidden');
+        });
+
+        function switchAdminTab(tab) {
+            state.adminTab = tab;
+            document.querySelectorAll('.admin-tab').forEach(el => {
+                el.classList.toggle('active', el.dataset.tab === tab);
+            });
+            document.querySelectorAll('.admin-tab-content').forEach(el => {
+                el.classList.toggle('hidden', el.id !== 'tab-' + tab);
+            });
+            if (tab === 'analytics') updateAnalytics();
+            if (tab === 'resources' || tab === 'news' || tab === 'ads') renderAdminLists();
+        }
+
+        function toggleResourceForm() {
+            const f = $('resourceFormContainer');
+            f.classList.toggle('hidden');
+            if (!f.classList.contains('hidden')) {
+                f.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }
+
+        // ============================================================
+        // CATEGORY DATA
+        // ============================================================
+
+        const categorySubs = {
+            N5: ['All', 'Grammar', 'Kanji', 'Vocabulary', 'Choukai', 'Past Papers'],
+            N4: ['All', 'Grammar', 'Kanji', 'Vocabulary', 'Choukai', 'Past Papers'],
+            N3: ['All', 'Grammar', 'Kanji', 'Vocabulary', 'Choukai', 'Past Papers'],
+            N2: ['All', 'Grammar', 'Kanji', 'Vocabulary', 'Choukai', 'Past Papers'],
+            N1: ['All', 'Grammar', 'Kanji', 'Vocabulary', 'Choukai', 'Past Papers'],
+            SSW: ['All', 'Food Service', 'Nursing Care', 'Agriculture', 'Hospitality/Hotel'],
+            CLASSES: ['All', 'Lecturer Wise Filter', 'Grammar Tutorials', 'Live Class Recordings', 'Exam Preparation'],
+            'SURVIVAL GUIDE': ['All', 'Visa & CoE', 'Part-Time Jobs (Arubaito)', 'Bank & SIM Cards', 'Garbage & Rules']
+        };
+
+        const mainCategories = ['ALL', 'N5', 'N4', 'N3', 'N2', 'N1', 'SSW', 'CLASSES', 'SURVIVAL GUIDE'];
+
+        // ============================================================
+        // MAIN TABS
+        // ============================================================
+
+        function renderMainTabs() {
+            $('mainTabs').innerHTML = mainCategories.map(c => {
+                const a = state.selectedMain === c ? 'tab-active' : '';
+                const cnt = c === 'ALL' ? state.resources.length : state.resources.filter(r => r.mainCategory === c)
+                    .length;
+                return `<button onclick="selectMain('${c}')" class="shrink-0 rounded-xl border border-rose-500/15 bg-white/5 px-4 py-2 text-xs font-black text-rose-100/70 ${a}">${c} <span class="text-rose-100/40">(${cnt})</span></button>`;
+            }).join('');
+        }
+
+        function selectMain(c) {
+            state.selectedMain = c;
+            state.selectedSub = 'All';
+            state.visibleCount = 9;
+            renderMainTabs();
+            renderSubTabs();
+            renderResources();
+        }
+
+        function renderSubTabs() {
+            if (state.selectedMain === 'ALL') { $('subTabs').innerHTML = ''; return; }
+            const subs = categorySubs[state.selectedMain] || ['All'];
+            $('subTabs').innerHTML = subs.map(s => {
+                const a = state.selectedSub === s ? 'tab-active' : '';
+                const cnt = s === 'All' ? state.resources.filter(r => r.mainCategory === state.selectedMain).length :
+                    state.resources.filter(r => r.mainCategory === state.selectedMain && r.subCategory === s).length;
+                return `<button onclick="selectSub('${escapeHtml(s)}')" class="rounded-full border border-rose-500/10 bg-white/5 px-3 py-2 text-[11px] font-bold text-rose-100/60 ${a}">${escapeHtml(s)} <span class="text-rose-100/40">(${cnt})</span></button>`;
+            }).join('');
+        }
+
+        function selectSub(s) {
+            state.selectedSub = s;
+            state.visibleCount = 9;
+            renderSubTabs();
+            renderResources();
+        }
+
+        // ============================================================
+        // RESOURCES
+        // ============================================================
+
+        function getFilteredResources() {
+            const q = state.searchQuery.trim().toLowerCase();
+            const filtered = state.resources.filter(r => {
+                const m = state.selectedMain === 'ALL' || r.mainCategory === state.selectedMain;
+                const sub = state.selectedSub === 'All' || r.subCategory === state.selectedSub;
+                const txt = [r.title, r.lecturer, r.mainCategory, r.subCategory, r.description].filter(Boolean).join(' ').toLowerCase();
+                const search = !q || txt.includes(q);
+                return m && sub && search;
+            });
+
+            return filtered.sort((a, b) => {
+                if (state.resourceSort === 'popular') return (b.viewCount || 0) - (a.viewCount || 0);
+                if (state.resourceSort === 'title') return String(a.title || '').localeCompare(String(b.title || ''));
+                return (b.createdAt || b.updatedAt || 0) - (a.createdAt || a.updatedAt || 0);
+            });
+        }
+
+        function changeResourceSort(value) {
+            state.resourceSort = value || 'newest';
+            state.visibleCount = 9;
+            renderResources();
+        }
+
+        function renderResources() {
+            const full = getFilteredResources();
+            const list = full.slice(0, state.visibleCount);
+            $('resourceCount').textContent = `${full.length} resource${full.length === 1 ? '' : 's'}`;
+
+            if (!full.length) {
+                $('resourceGrid').innerHTML =
+                    `<div class="glass col-span-full rounded-3xl p-8 text-center"><div class="text-4xl">📚</div><div class="mt-3 font-black">No resources available yet</div><div class="mt-1 text-sm text-rose-100/45">Try another category or search term.</div></div>`;
+                $('loadMoreWrap').classList.add('hidden');
+                $('loadMoreWrap').classList.remove('flex');
+                renderAds();
+                return;
+            }
+
+            $('resourceGrid').innerHTML = list.map(r => {
+                const isClass = r.mainCategory === 'CLASSES';
+                const thumb = r.thumbnailUrl ? safeUrl(r.thumbnailUrl) : '';
+                const hasThumb = thumb && thumb !== '#';
+                const isSelected = state.selectedResources.has(r.id);
+                const icon = r.mediaType === 'pdf' ? '📄' : r.mediaType === 'audio' ? '🎵' : r.mediaType === 'video' ? '🎥' : r.mediaType === 'youtube' ? '▶️' : '📚';
+                const adminBulk = state.adminLoggedIn ? `<div class="absolute top-3 left-3 z-10 flex gap-1"><input type="checkbox" aria-label="Select ${escapeHtml(r.title || 'resource')}" class="bulk-checkbox" ${isSelected ? 'checked' : ''} onchange="toggleBulk('${r.id}')" /></div>` : '';
+                const thumbHtml = hasThumb
+                    ? `<div class="resource-thumb-wrap"><img src="${thumb}" alt="${escapeHtml(r.title || 'Resource thumbnail')}" loading="lazy" onerror="this.parentElement.outerHTML='<div class=\'resource-thumb-placeholder\'>${icon}</div>'"></div>`
+                    : `<div class="resource-thumb-placeholder">${icon}</div>`;
+
+                return `<article class="resource-card">
+                        ${adminBulk}
+                        ${thumbHtml}
+                        <div class="p-4">
+                            <h3 class="font-black leading-6 break-words">${escapeHtml(r.title || 'Untitled')}</h3>
+                            <div class="mt-1 text-xs text-rose-100/45">${escapeHtml(r.subCategory || 'All')}</div>
+                            ${r.description ? `<p class="mt-2 line-clamp-2 text-xs leading-5 text-rose-100/55">${escapeHtml(r.description)}</p>` : ''}
+                            ${r.lecturer ? `<div class="mt-2 text-sm font-bold text-rose-100/75">👨‍🏫 ${escapeHtml(r.lecturer)}</div>` : ''}
+                            <div class="mt-2 flex items-center justify-between gap-3 text-xs text-rose-100/40"><span><i class="fa-regular fa-eye mr-1"></i>${r.viewCount || 0} views</span><span>${icon}</span></div>
+                            ${isClass ? `<a href="https://wa.me/${r.lecturerContact || '94789995159'}" target="_blank" rel="noopener noreferrer" class="mt-3 inline-flex items-center rounded-xl bg-green-500/10 px-3 py-1.5 text-[11px] font-bold text-green-300 hover:bg-green-500/20 transition"><i class="fa-brands fa-whatsapp mr-1"></i>${escapeHtml(r.lecturerContact || '0789995159')}</a>` : ''}
+                            <button onclick="openResource('${r.id}')" class="rose-btn mt-3 w-full rounded-2xl px-4 py-2.5 text-sm font-black text-white"><i class="fa-solid fa-eye mr-2"></i> View Resource</button>
+                        </div>
+                    </article>`;
+            }).join('');
+
+            const shown = Math.min(state.visibleCount, full.length);
+            const remaining = Math.max(full.length - shown, 0);
+            $('loadMoreStatus').textContent = remaining ? `Showing ${shown} of ${full.length} resources • ${remaining} remaining` : `Showing all ${full.length} resources`;
+
+            if (remaining > 0) {
+                $('loadMoreWrap').classList.remove('hidden');
+                $('loadMoreWrap').classList.add('flex');
+                $('loadMoreBtn').innerHTML = `<i class="fa-solid fa-plus mr-2"></i> Load ${Math.min(9, remaining)} More`;
+            } else {
+                $('loadMoreWrap').classList.add('hidden');
+                $('loadMoreWrap').classList.remove('flex');
+            }
+            renderAds();
+        }
+
+        function loadMoreResources() {
+            state.visibleCount += 9;
+            renderResources();
+        }
+
+        // ============================================================
+        // BULK SELECTION
+        // ============================================================
+
+        function toggleBulk(id) {
+            if (state.selectedResources.has(id)) state.selectedResources.delete(id);
+            else state.selectedResources.add(id);
+            renderResources();
+        }
+
+        function selectAllResources() {
+            const filtered = getFilteredResources();
+            filtered.forEach(r => state.selectedResources.add(r.id));
+            renderResources();
+        }
+
+        function clearBulkSelection() {
+            state.selectedResources.clear();
+            renderResources();
+        }
+
+        function bulkDelete() {
+            if (!state.adminLoggedIn) { showToast('Admin login required', true); return; }
+            if (!state.selectedResources.size) { showToast('No resources selected', true); return; }
+            if (!confirm(`Delete ${state.selectedResources.size} resources?`)) return;
+            const promises = [];
+            state.selectedResources.forEach(id => promises.push(db.ref('resources/' + id).remove()));
+            Promise.all(promises).then(() => {
+                showToast(`${state.selectedResources.size} resources deleted`);
+                state.selectedResources.clear();
+                renderResources();
+                renderAdminLists();
+            }).catch(() => showToast('Error deleting', true));
+        }
+
+        // ============================================================
+        // OPEN RESOURCE
+        // ============================================================
+
+        function openResource(id) {
+            const r = state.resources.find(item => item.id === id);
+            if (!r) { showToast('Resource not found', true); return; }
+            state.selectedResource = r;
+            state.currentResourceId = id;
+            trackView(id);
+            $('homePage').classList.add('hidden');
+            $('viewerPage').classList.remove('hidden');
+            $('viewerTitle').textContent = r.title || 'Resource';
+            $('viewerCategory').textContent = `${r.mainCategory || ''} • ${r.subCategory || ''}`;
+            $('viewerLecturer').textContent = r.lecturer ? `Lecturer: ${r.lecturer}` : '';
+            $('viewCountDisplay').textContent = r.viewCount || 0;
+
+            const cb = $('viewerContactBtn');
+            if (r.mainCategory === 'CLASSES') {
+                const num = r.lecturerContact || '0789995159';
+                cb.href = `https://wa.me/${num.replace(/^0/, '94')}`;
+                cb.innerHTML = `<i class="fa-brands fa-whatsapp mr-1"></i> ${escapeHtml(num)}`;
+                cb.classList.remove('hidden');
+            } else cb.classList.add('hidden');
+
+            renderMedia(r);
+            renderAds();
+            startCountdown();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            // Update share URL
+            state.shareUrl = getCurrentShareUrl();
+            state.shareTitle = getCurrentShareTitle();
+        }
+
+        function goHome() {
+            clearInterval(state.countdownTimer);
+            state.selectedResource = null;
+            state.currentResourceId = null;
+            $('viewerPage').classList.add('hidden');
+            $('homePage').classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            // Clear resource from URL
+            if (window.location.search.includes('resource=')) {
+                const url = new URL(window.location);
+                url.searchParams.delete('resource');
+                history.replaceState(null, '', url);
+            }
+        }
+
+        function trackView(id) {
+            if (state.viewTracked.has(id)) return;
+            state.viewTracked.add(id);
+            db.ref('resources/' + id).transaction(cur => {
+                if (!cur) return { viewCount: 1 };
+                cur.viewCount = (cur.viewCount || 0) + 1;
+                return cur;
+            });
+        }
+
+        function trackDownload() {
+            const r = state.selectedResource;
+            if (!r) return;
+            db.ref('resources/' + r.id).transaction(cur => {
+                if (!cur) return { downloadCount: 1 };
+                cur.downloadCount = (cur.downloadCount || 0) + 1;
+                return cur;
+            });
+        }
+
+        // ============================================================
+        // MEDIA VIEWER
+        // ============================================================
+
+        function renderMedia(r) {
+            const box = $('viewerMedia');
+            let url = r.previewUrl || '';
+            const pc = $('pdfControls');
+            pc.classList.add('hidden');
+            state.pdfDoc = null;
+            state.pdfPageNum = 1;
+            state.pdfTotalPages = 0;
+            state.pdfScale = 1.0;
+            state.pdfRendering = false;
+            $('viewerDownloadButton').classList.add('hidden');
+            $('youtubeOnlyMessage').classList.add('hidden');
+            $('downloadReadyMessage').classList.add('hidden');
+
+            if (!url) {
+                box.innerHTML =
+                    `<div class="p-8 text-center"><div class="text-4xl">📚</div><div class="mt-3 font-bold">No preview URL</div></div>`;
+                return;
+            }
+
+            const isDrive = isGoogleDriveUrl(url);
+
+            if (r.mediaType === 'youtube' || isYouTubeUrl(url)) {
+                const vid = getYouTubeId(url);
+                if (!vid) {
+                    box.innerHTML =
+                        `<div class="p-8 text-center"><div class="text-4xl">▶️</div><div class="mt-3 font-bold text-red-300">Invalid YouTube URL</div></div>`;
+                    return;
+                }
+                box.innerHTML =
+                    `<iframe src="https://www.youtube.com/embed/${vid}" allowfullscreen style="width:100%;height:100%;border:0;"></iframe>`;
+                $('youtubeOnlyMessage').classList.remove('hidden');
+                $('countdownBox').classList.add('hidden');
+                return;
+            }
+
+            if (r.mediaType === 'pdf' || isDrive || url.includes('.pdf')) {
+                const fid = getGoogleDriveFileId(url);
+                if (fid) {
+                    const embed = `https://drive.google.com/file/d/${fid}/preview`;
+                    const direct = `https://drive.google.com/uc?export=download&id=${fid}`;
+                    r.downloadUrl = direct;
+                    box.innerHTML =
+                        `<div style="width:100%;height:380px;background:#f5f5f5;border-radius:12px;overflow:hidden;"><iframe src="${embed}" style="width:100%;height:100%;border:0;" allowfullscreen></iframe></div>
+                                <div class="text-center text-xs text-rose-100/40 mt-2"><a href="${direct}" target="_blank" class="text-rose-400 underline hover:text-rose-300 transition">Open directly</a></div>`;
+                    $('countdownBox').classList.remove('hidden');
+                    startCountdown();
+                    return;
+                }
+                box.innerHTML =
+                    `<div class="p-8 text-center text-red-300"><div class="text-4xl mb-2">⚠️</div><div>Invalid Google Drive URL</div></div>`;
+                return;
+            }
+
+            if (r.mediaType === 'audio') {
+                box.innerHTML =
+                    `<div class="flex min-h-[320px] flex-col items-center justify-center gap-6 p-6"><div class="text-6xl">🎵</div><audio controls src="${safeUrl(url)}" style="width:90%;max-width:500px;"></audio></div>`;
+                return;
+            }
+
+            if (r.mediaType === 'video') {
+                box.innerHTML =
+                    `<video controls playsinline src="${safeUrl(url)}" style="width:100%;height:100%;object-fit:contain;"></video>`;
+                return;
+            }
+
+            box.innerHTML =
+                `<div class="p-8 text-center"><div class="text-4xl">📄</div><div class="mt-3">Unsupported type: ${r.mediaType}</div></div>`;
+        }
+
+        // ============================================================
+        // COUNTDOWN
+        // ============================================================
+
+        function startCountdown() {
+            clearInterval(state.countdownTimer);
+            const r = state.selectedResource;
+            if (!r) return;
+            if (r.mediaType === 'youtube' || isYouTubeUrl(r.previewUrl)) {
+                $('countdownBox').classList.add('hidden');
+                return;
+            }
+            $('countdownBox').classList.remove('hidden');
+            $('viewerDownloadButton').classList.add('hidden');
+            $('downloadReadyMessage').classList.add('hidden');
+            let sec = 8;
+            $('countdown').textContent = sec;
+            state.countdownTimer = setInterval(() => {
+                sec--;
+                if (sec > 0) $('countdown').textContent = sec;
+                if (sec <= 0) {
+                    clearInterval(state.countdownTimer);
+                    $('countdown').textContent = '✓';
+                    $('downloadReadyMessage').classList.remove('hidden');
+                    let dl = r.downloadUrl || r.previewUrl;
+                    if (dl && isGoogleDriveUrl(dl)) dl = getGoogleDriveDirectUrl(dl);
+                    if (dl && dl !== '#') {
+                        const btn = $('viewerDownloadButton');
+                        btn.href = safeUrl(dl);
+                        btn.classList.remove('hidden');
+                        btn.onclick = function() { trackDownload(); };
+                    } else {
+                        $('downloadReadyMessage').textContent = 'No download available.';
+                        $('downloadReadyMessage').className = 'mt-3 text-sm font-bold text-yellow-300';
+                    }
+                }
+            }, 1000);
+        }
+
+        // ============================================================
+        // ADS (728×90)
+        // ============================================================
+
+        function renderAds() {
+            const placements = ['TOP', 'MIDDLE', 'VIEWER'];
+            const containers = ['topAd728', 'middleAd728', 'viewerAdContainer'];
+            const defaults = ['📢 Top Advertisement', '📢 Middle Advertisement', '📢 Viewer Advertisement'];
+
+            placements.forEach((p, i) => {
+                const ads = state.advertisements.filter(a => a.active !== false && a.placement === p);
+                const el = $(containers[i]);
+                if (!el) return;
+                if (!ads.length) {
+                    el.innerHTML =
+                        `<div class="text-center text-rose-100/20 text-sm p-4">${defaults[i]}</div>`;
+                    return;
+                }
+                const ad = ads[0];
+                const img = safeUrl(ad.imageUrl);
+                el.innerHTML =
+                    `<a href="${safeUrl(ad.link)}" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;justify-content:center;width:100%;min-height:90px;background:rgba(255,255,255,.03);border-radius:12px;overflow:hidden;transition:all .3s ease;" class="hover:bg-white/5">
+                            <img src="${img}" alt="${escapeHtml(ad.title)}" style="width:100%;height:auto;max-height:90px;object-fit:contain;" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\\'text-center text-rose-100/20 text-sm p-4\\'>📢 ${escapeHtml(ad.title)}</div>'">
+                            <span class="ad-label">Ad</span>
+                        </a>`;
+            });
+        }
+
+        // ============================================================
+        // NEWS
+        // ============================================================
+
+        function renderNews() {
+            const list = [...state.news].sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0)).slice(0, 6);
+            if (!list.length) {
+                $('newsGrid').innerHTML =
+                    `<div class="col-span-full rounded-2xl border border-rose-500/10 bg-black/10 p-5 text-center text-sm text-rose-100/40">Japan updates will appear here.</div>`;
+                return;
+            }
+            $('newsGrid').innerHTML = list.map(n => {
+                const hasLink = n.link && safeUrl(n.link) !== '#';
+                return `<div class="rounded-2xl border border-rose-500/10 bg-black/20 p-4 hover:bg-white/5 transition">
+                            <span class="rounded-full bg-rose-500/10 px-3 py-1 text-[10px] font-black text-rose-300">${escapeHtml(n.category || 'UPDATE')}</span>
+                            <h3 class="mt-3 font-black">${escapeHtml(n.title)}</h3>
+                            <p class="mt-2 line-clamp-2 text-sm leading-6 text-rose-100/50">${escapeHtml(n.description)}</p>
+                            ${hasLink ? `<a href="${safeUrl(n.link)}" target="_blank" class="mt-3 inline-flex rounded-xl bg-rose-500/10 px-4 py-2 text-xs font-bold text-rose-300 hover:bg-rose-500/20 transition">Read More →</a>` : ''}
+                        </div>`;
+            }).join('');
+        }
+
+        // ============================================================
+        // ADMIN LISTS
+        // ============================================================
+
+        function renderAdminLists() {
+            if (!state.adminLoggedIn) return;
+            const search = ($('adminSearch')?.value || '').toLowerCase();
+            const cat = $('adminCategoryFilter')?.value || 'all';
+
+            let resources = state.resources;
+            if (search) resources = resources.filter(r => (r.title || '').toLowerCase().includes(search));
+            if (cat !== 'all') resources = resources.filter(r => r.mainCategory === cat);
+
+            $('adminResourcesList').innerHTML = resources.length ? resources.map(r => `
+                        <div class="rounded-2xl border border-rose-500/10 bg-white/5 p-3 hover:bg-white/10 transition">
+                            <div class="flex items-start justify-between gap-2">
+                                <div class="flex-1 min-w-0">
+                                    <div class="text-sm font-bold truncate">${escapeHtml(r.title)}</div>
+                                    <div class="mt-1 text-[10px] text-rose-100/40">${escapeHtml(r.mainCategory)} • ${escapeHtml(r.mediaType)} <span class="text-rose-100/30">(${r.viewCount || 0} views)</span></div>
+                                </div>
+                                <div class="flex gap-1 flex-shrink-0">
+                                    <button onclick="editResource('${r.id}')" class="rounded-lg bg-yellow-500/10 px-2 py-1 text-[10px] font-bold text-yellow-300 hover:bg-yellow-500/20 transition"><i class="fa-solid fa-pen"></i></button>
+                                    <button onclick="deleteResource('${r.id}')" class="rounded-lg bg-red-500/10 px-2 py-1 text-[10px] font-bold text-red-300 hover:bg-red-500/20 transition"><i class="fa-solid fa-trash"></i></button>
+                                </div>
+                            </div>
+                            <div class="mt-2 flex gap-1">
+                                <button onclick="moveResource('${r.id}', -1)" class="reorder-btn"><i class="fa-solid fa-chevron-up"></i></button>
+                                <button onclick="moveResource('${r.id}', 1)" class="reorder-btn"><i class="fa-solid fa-chevron-down"></i></button>
+                            </div>
+                        </div>
+                    `).join('') : `<div class="text-xs text-rose-100/40">No resources found</div>`;
+
+            $('adminNewsList').innerHTML = state.news.length ? state.news.map(n => `
+                        <div class="rounded-2xl border border-rose-500/10 bg-white/5 p-3 hover:bg-white/10 transition">
+                            <div class="flex items-start justify-between gap-2">
+                                <div class="flex-1 min-w-0">
+                                    <div class="text-sm font-bold truncate">${escapeHtml(n.title)}</div>
+                                    <div class="mt-1 text-[10px] text-rose-100/40">${escapeHtml(n.category || 'UPDATE')}</div>
+                                </div>
+                                <button onclick="deleteNews('${n.id}')" class="rounded-lg bg-red-500/10 px-2 py-1 text-[10px] font-bold text-red-300 hover:bg-red-500/20 transition"><i class="fa-solid fa-trash"></i></button>
+                            </div>
+                            <div class="mt-2 flex gap-1">
+                                <button onclick="moveNews('${n.id}', -1)" class="reorder-btn"><i class="fa-solid fa-chevron-up"></i></button>
+                                <button onclick="moveNews('${n.id}', 1)" class="reorder-btn"><i class="fa-solid fa-chevron-down"></i></button>
+                            </div>
+                        </div>
+                    `).join('') : `<div class="text-xs text-rose-100/40">No news</div>`;
+
+            $('adminAdsList').innerHTML = state.advertisements.length ? state.advertisements.map(a => `
+                        <div class="rounded-2xl border border-rose-500/10 bg-white/5 p-3 hover:bg-white/10 transition">
+                            <div class="flex items-start justify-between gap-2">
+                                <div class="flex-1 min-w-0">
+                                    <div class="text-sm font-bold truncate">${escapeHtml(a.title)}</div>
+                                    <div class="mt-1 text-[10px] text-rose-100/40">${escapeHtml(a.placement)}</div>
+                                </div>
+                                <button onclick="deleteAdvertisement('${a.id}')" class="rounded-lg bg-red-500/10 px-2 py-1 text-[10px] font-bold text-red-300 hover:bg-red-500/20 transition"><i class="fa-solid fa-trash"></i></button>
+                            </div>
+                            <div class="mt-2 flex gap-1">
+                                <button onclick="moveAd('${a.id}', -1)" class="reorder-btn"><i class="fa-solid fa-chevron-up"></i></button>
+                                <button onclick="moveAd('${a.id}', 1)" class="reorder-btn"><i class="fa-solid fa-chevron-down"></i></button>
+                            </div>
+                        </div>
+                    `).join('') : `<div class="text-xs text-rose-100/40">No advertisements</div>`;
+        }
+
+        function filterAdminResources() { renderAdminLists(); }
+
+        // ============================================================
+        // REORDER
+        // ============================================================
+
+        function moveResource(id, dir) {
+            if (!state.adminLoggedIn) return;
+            const idx = state.resources.findIndex(r => r.id === id);
+            if (idx === -1) return;
+            const nidx = idx + dir;
+            if (nidx < 0 || nidx >= state.resources.length) return;
+            const item = state.resources.splice(idx, 1)[0];
+            state.resources.splice(nidx, 0, item);
+            const updates = {};
+            state.resources.forEach((r, i) => updates[r.id + '/order'] = i);
+            db.ref('resources').update(updates).then(() => { renderAdminLists();
+                renderResources(); });
+        }
+
+        function moveNews(id, dir) {
+            if (!state.adminLoggedIn) return;
+            const idx = state.news.findIndex(n => n.id === id);
+            if (idx === -1) return;
+            const nidx = idx + dir;
+            if (nidx < 0 || nidx >= state.news.length) return;
+            const item = state.news.splice(idx, 1)[0];
+            state.news.splice(nidx, 0, item);
+            const updates = {};
+            state.news.forEach((n, i) => updates[n.id + '/order'] = i);
+            db.ref('news').update(updates).then(() => { renderAdminLists();
+                renderNews(); });
+        }
+
+        function moveAd(id, dir) {
+            if (!state.adminLoggedIn) return;
+            const idx = state.advertisements.findIndex(a => a.id === id);
+            if (idx === -1) return;
+            const nidx = idx + dir;
+            if (nidx < 0 || nidx >= state.advertisements.length) return;
+            const item = state.advertisements.splice(idx, 1)[0];
+            state.advertisements.splice(nidx, 0, item);
+            const updates = {};
+            state.advertisements.forEach((a, i) => updates[a.id + '/order'] = i);
+            db.ref('advertisements').update(updates).then(() => { renderAdminLists();
+                renderAds(); });
+        }
+
+        // ============================================================
+        // CRUD - RESOURCES
+        // ============================================================
+
+        function addResource() {
+            if (!state.adminLoggedIn) { showToast('Admin login required', true); return; }
+            const data = getResourceFormData();
+            if (!data) return;
+            db.ref('resources').push(data).then(() => {
+                showToast('✅ Resource added');
+                clearResourceForm();
+                loadAllData();
+                toggleResourceForm();
+            }).catch(() => showToast('❌ Error adding resource', true));
+        }
+
+        function editResource(id) {
+            if (!state.adminLoggedIn) { showToast('Admin login required', true); return; }
+            const r = state.resources.find(x => x.id === id);
+            if (!r) { showToast('Resource not found', true); return; }
+            state.editingResourceId = id;
+            $('resourceTitle').value = r.title || '';
+            $('resourceMainCategory').value = r.mainCategory || 'N5';
+            updateAdminSubcats();
+            $('resourceSubCategory').value = r.subCategory || 'All';
+            $('resourceLecturer').value = r.lecturer || '';
+            $('resourceLecturerContact').value = r.lecturerContact || '0789995159';
+            $('resourceMediaType').value = r.mediaType || 'pdf';
+            $('resourcePreviewUrl').value = r.previewUrl || '';
+            $('resourceThumbnail').value = r.thumbnailUrl || '';
+            $('resourceDescription').value = r.description || '';
+            $('resourceDownloadUrl').value = r.downloadUrl || '';
+            updateDownloadField();
+            $('addResourceBtn').classList.add('hidden');
+            $('updateResourceBtn').classList.remove('hidden');
+            $('cancelEditBtn').classList.remove('hidden');
+            $('resourceFormContainer').classList.remove('hidden');
+            $('resourceFormContainer').classList.add('editing-mode');
+            $('resourceFormContainer').scrollIntoView({ behavior: 'smooth' });
+            showToast('✏️ Editing: ' + r.title);
+        }
+
+        function updateResource() {
+            if (!state.adminLoggedIn || !state.editingResourceId) { showToast('No resource being edited', true); return; }
+            const data = getResourceFormData();
+            if (!data) return;
+            db.ref('resources/' + state.editingResourceId).update(data).then(() => {
+                showToast('✅ Resource updated');
+                cancelEditResource();
+                loadAllData();
+            }).catch(() => showToast('❌ Error updating resource', true));
+        }
+
+        function cancelEditResource() {
+            state.editingResourceId = null;
+            clearResourceForm();
+            $('addResourceBtn').classList.remove('hidden');
+            $('updateResourceBtn').classList.add('hidden');
+            $('cancelEditBtn').classList.add('hidden');
+            $('resourceFormContainer').classList.remove('editing-mode');
+        }
+
+        function getResourceFormData() {
+            const title = $('resourceTitle').value.trim();
+            const preview = $('resourcePreviewUrl').value.trim();
+            if (!title || !preview) { showToast('Title and Preview URL required', true); return null; }
+            return {
+                title,
+                mainCategory: $('resourceMainCategory').value,
+                subCategory: $('resourceSubCategory').value,
+                lecturer: $('resourceLecturer').value.trim(),
+                lecturerContact: $('resourceLecturerContact').value.trim() || '0789995159',
+                mediaType: $('resourceMediaType').value,
+                previewUrl: preview,
+                thumbnailUrl: $('resourceThumbnail').value.trim(),
+                description: $('resourceDescription').value.trim(),
+                downloadUrl: $('resourceDownloadUrl').value.trim(),
+                updatedAt: Date.now()
+            };
+        }
+
+        function clearResourceForm() {
+            ['resourceTitle', 'resourceLecturer', 'resourceLecturerContact', 'resourcePreviewUrl', 'resourceThumbnail',
+                'resourceDescription', 'resourceDownloadUrl'
+            ].forEach(id => $(id).value = '');
+            $('resourceMainCategory').value = 'N5';
+            updateAdminSubcats();
+            $('resourceSubCategory').value = 'All';
+            $('resourceMediaType').value = 'pdf';
+            updateDownloadField();
+        }
+
+        function deleteResource(id) {
+            if (!state.adminLoggedIn || !confirm('Delete this resource?')) return;
+            db.ref('resources/' + id).remove().then(() => { showToast('🗑️ Deleted');
+                loadAllData(); });
+        }
+
+        // ============================================================
+        // CRUD - NEWS
+        // ============================================================
+
+        function addNews() {
+            if (!state.adminLoggedIn) { showToast('Admin login required', true); return; }
+            const title = $('newsTitle').value.trim(),
+                desc = $('newsDescription').value.trim();
+            if (!title || !desc) { showToast('Title and description required', true); return; }
+            db.ref('news').push({
+                title,
+                category: $('newsCategory').value,
+                description: desc,
+                link: $('newsLink').value.trim(),
+                createdAt: Date.now()
+            }).then(() => {
+                showToast('✅ News published');
+                $('newsTitle').value = '';
+                $('newsDescription').value = '';
+                $('newsLink').value = '';
+                loadAllData();
+            }).catch(() => showToast('❌ Error publishing', true));
+        }
+
+        function deleteNews(id) {
+            if (!state.adminLoggedIn || !confirm('Delete this news?')) return;
+            db.ref('news/' + id).remove().then(() => { showToast('🗑️ Deleted');
+                loadAllData(); });
+        }
+
+        // ============================================================
+        // CRUD - ADS
+        // ============================================================
+
+        function addAdvertisement() {
+            if (!state.adminLoggedIn) { showToast('Admin login required', true); return; }
+            const title = $('adTitle').value.trim(),
+                img = $('adImageUrl').value.trim(),
+                link = $('adLink').value.trim();
+            if (!title || !img || !link) { showToast('All fields required', true); return; }
+            db.ref('advertisements').push({
+                title,
+                imageUrl: img,
+                link,
+                placement: $('adPlacement').value,
+                active: true,
+                createdAt: Date.now()
+            }).then(() => {
+                showToast('✅ Ad published');
+                $('adTitle').value = '';
+                $('adImageUrl').value = '';
+                $('adLink').value = '';
+                loadAllData();
+            }).catch(() => showToast('❌ Error publishing ad', true));
+        }
+
+        function deleteAdvertisement(id) {
+            if (!state.adminLoggedIn || !confirm('Delete this ad?')) return;
+            db.ref('advertisements/' + id).remove().then(() => { showToast('🗑️ Deleted');
+                loadAllData(); });
+        }
+
+        // ============================================================
+        // COFFEE URL
+        // ============================================================
+
+        function updateCoffeeUI() {
+            const u = safeUrl(state.coffeeUrl);
+            if (!state.coffeeUrl || u === '#') {
+                $('coffeeSection').classList.add('hidden');
+                $('coffeeMenuBtn').classList.add('hidden');
+                return;
+            }
+            $('coffeeHomeBtn').href = u;
+            $('coffeeMenuBtn').href = u;
+            $('coffeeSection').classList.remove('hidden');
+            $('coffeeMenuBtn').classList.remove('hidden');
+        }
+
+        function saveCoffeeUrl() {
+            if (!state.adminLoggedIn) { showToast('Admin login required', true); return; }
+            const u = $('coffeeUrl').value.trim();
+            if (!u) { showToast('Enter URL', true); return; }
+            const s = safeUrl(u);
+            if (s === '#') { showToast('Invalid URL', true); return; }
+            db.ref('settings/buyMeACoffeeUrl').set(s).then(() => { showToast('✅ Coffee link saved');
+                loadAllData(); });
+        }
+
+        function removeCoffeeUrl() {
+            if (!state.adminLoggedIn || !confirm('Remove coffee link?')) return;
+            db.ref('settings/buyMeACoffeeUrl').remove().then(() => { $('coffeeUrl').value = '';
+                showToast('Removed');
+                loadAllData(); });
+        }
+
+        // ============================================================
+        // ANALYTICS
+        // ============================================================
+
+        function updateAnalytics() {
+            const total = state.resources.length;
+            const views = state.resources.reduce((s, r) => s + (r.viewCount || 0), 0);
+            const downloads = state.resources.reduce((s, r) => s + (r.downloadCount || 0), 0);
+            const cats = new Set(state.resources.map(r => r.mainCategory));
+            $('totalResources').textContent = total;
+            $('totalViews').textContent = views;
+            $('totalDownloads').textContent = downloads;
+            $('totalCategories').textContent = cats.size;
+
+            const top = [...state.resources].sort((a, b) => (b.viewCount || 0) - (a.viewCount || 0)).slice(0, 5);
+            $('topResourcesList').innerHTML = top.length ? top.map((r, i) =>
+                    `<div class="flex items-center justify-between text-sm border-b border-rose-500/5 py-1">
+                                <span>${i+1}. ${escapeHtml(r.title)}</span>
+                                <span class="text-rose-400">${r.viewCount || 0} views</span>
+                            </div>`
+                ).join('') : `<div class="text-rose-100/40 text-sm">No data yet</div>`;
+        }
+
+        // ============================================================
+        // BACKUP / RESTORE
+        // ============================================================
+
+        function exportData() {
+            if (!state.adminLoggedIn) { showToast('Admin login required', true); return; }
+            const data = {
+                resources: state.resources,
+                news: state.news,
+                advertisements: state.advertisements,
+                exportedAt: new Date().toISOString()
+            };
+            const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `slsakura-backup-${Date.now()}.json`;
+            a.click();
+            URL.revokeObjectURL(url);
+            showToast('✅ Data exported!');
+        }
+
+        function importData(event) {
+            if (!state.adminLoggedIn) { showToast('Admin login required', true); return; }
+            const file = event.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    const data = JSON.parse(e.target.result);
+                    if (!data.resources || !data.news || !data.advertisements) {
+                        showToast('Invalid backup file', true);
+                        return;
+                    }
+                    if (!confirm(
+                            `Import ${data.resources.length} resources, ${data.news.length} news, ${data.advertisements.length} ads?`
+                            )) return;
+                    const promises = [];
+                    data.resources.forEach(r => { const { id, ...rest } = r;
+                        promises.push(db.ref('resources/' + id).set(rest)); });
+                    data.news.forEach(n => { const { id, ...rest } = n;
+                        promises.push(db.ref('news/' + id).set(rest)); });
+                    data.advertisements.forEach(a => { const { id, ...rest } = a;
+                        promises.push(db.ref('advertisements/' + id).set(rest)); });
+                    Promise.all(promises).then(() => { showToast('✅ Data imported!');
+                        loadAllData(); }).catch(() => showToast('Error importing', true));
+                } catch { showToast('Invalid JSON', true); }
+            };
+            reader.readAsText(file);
+            event.target.value = '';
+        }
+
+        // ============================================================
+        // ADMIN SUBCATEGORIES
+        // ============================================================
+
+        function updateAdminSubcats() {
+            const main = $('resourceMainCategory').value;
+            const list = categorySubs[main] || ['All'];
+            $('resourceSubCategory').innerHTML = list.map(s =>
+                `<option value="${escapeHtml(s)}">${escapeHtml(s)}</option>`
+            ).join('');
+        }
+
+        function updateDownloadField() {
+            const type = $('resourceMediaType').value;
+            const inp = $('resourceDownloadUrl');
+            if (type === 'youtube') {
+                inp.value = '';
+                inp.placeholder = 'Not required for YouTube';
+                inp.disabled = true;
+                inp.classList.add('opacity-40');
+            } else {
+                inp.placeholder = 'Download URL (optional)';
+                inp.disabled = false;
+                inp.classList.remove('opacity-40');
+            }
+        }
+
+        // ============================================================
+        // LOAD DATA
+        // ============================================================
+
+        function loadAllData() {
+            showLoading('resourceLoading');
+            showLoading('newsLoading');
+
+            db.ref('resources').once('value').then(s => {
+                hideLoading('resourceLoading');
+                const data = s.val() || {};
+                state.resources = Object.entries(data).map(([id, v]) => ({ id, ...v }));
+                renderMainTabs();
+                renderSubTabs();
+                renderResources();
+                renderAdminLists();
+                updateAnalytics();
+                showToast('✅ Resources loaded');
+            }).catch(() => {
+                hideLoading('resourceLoading');
+                showToast('Failed to load resources', true);
+            });
+
+            db.ref('news').once('value').then(s => {
+                hideLoading('newsLoading');
+                state.news = Object.entries(s.val() || {}).map(([id, v]) => ({ id, ...v }));
+                renderNews();
+                renderAdminLists();
+            }).catch(() => { hideLoading('newsLoading'); });
+
+            db.ref('advertisements').once('value').then(s => {
+                state.advertisements = Object.entries(s.val() || {}).map(([id, v]) => ({ id, ...v }));
+                renderAds();
+                renderAdminLists();
+            }).catch(() => {});
+
+            db.ref('settings/buyMeACoffeeUrl').once('value').then(s => {
+                state.coffeeUrl = s.val() || '';
+                updateCoffeeUI();
+                if (state.adminLoggedIn) $('coffeeUrl').value = state.coffeeUrl;
+            }).catch(() => {});
+        }
+
+        function refreshAllData() {
+            if (!state.adminLoggedIn) { showToast('Admin login required', true); return; }
+            showToast('🔄 Refreshing...');
+            loadAllData();
+        }
+
+        // ============================================================
+        // SEARCH INPUT
+        // ============================================================
+
+        let resourceSearchTimer;
+        $('resourceSearch').addEventListener('input', function() {
+            clearTimeout(resourceSearchTimer);
+            const value = this.value;
+            resourceSearchTimer = setTimeout(() => {
+                state.searchQuery = value;
+                state.visibleCount = 9;
+                renderResources();
+            }, 180);
+        });
+
+        $('resourceMainCategory').addEventListener('change', updateAdminSubcats);
+        $('resourceMediaType').addEventListener('change', updateDownloadField);
+
+        $('adminPassword').addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') loginAdmin();
+        });
+
+        // ============================================================
+        // PROGRESS BAR
+        // ============================================================
+
+        window.addEventListener('scroll', function() {
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+            document.getElementById('progressBar').style.width = progress + '%';
+        });
+
+        const backToTopBtn = $('backToTop');
+        window.addEventListener('scroll', function() {
+            if (backToTopBtn) backToTopBtn.classList.toggle('show', window.scrollY > 500);
+        }, { passive: true });
+
+        // ============================================================
+        // URL PARAMETER HANDLING (for sharing)
+        // ============================================================
+
+        function handleUrlParams() {
+            const params = new URLSearchParams(window.location.search);
+            const resourceId = params.get('resource');
+            if (resourceId) {
+                const r = state.resources.find(item => item.id === resourceId);
+                if (r) {
+                    setTimeout(() => openResource(resourceId), 500);
+                }
+            }
+        }
+
+        // ============================================================
+        // START
+        // ============================================================
+
+        initTheme();
+        createSakura();
+        loadAllData();
+
+        // Handle URL params after data loads
+        setTimeout(handleUrlParams, 1000);
+
+        console.log('🌸 SL Sakura - World-Class Website Loaded!');
+        console.log('✅ Features: Social Share, Analytics, Admin Panel, 728x90 Ads, Google Drive, YouTube, Backup, Bulk Actions, and more!');
+        console.log('📱 Share this website with your friends!');
+    </script>
+
+    <button id="backToTop" class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+</body>
+</html>
