@@ -1,0 +1,1643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SL Sakura 🌸 - Japanese Language Resources</title>
+
+    <!-- SEO -->
+    <meta name="description" content="SL Sakura - Your Gateway to Japanese Language, Classes, Exams and Life in Japan" />
+    <meta name="keywords" content="Japanese, JLPT, NAT, JFT, SSW, Japanese language, Sri Lanka, Japan" />
+    <meta name="author" content="SL Sakura" />
+    <link rel="canonical" href="https://slsakura.vercel.app" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="SL Sakura 🌸 - Japanese Language Resources" />
+    <meta property="og:description" content="Your Gateway to Japanese Language, Classes & Life in Japan" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://slsakura.vercel.app" />
+    <meta property="og:image" content="https://slsakura.vercel.app/og-image.jpg" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="SL Sakura 🌸 - Japanese Language Resources" />
+    <meta name="twitter:description" content="Your Gateway to Japanese Language, Classes & Life in Japan" />
+
+    <!-- PWA -->
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#e11d48" />
+    <link rel="apple-touch-icon" href="icon-192.png" />
+
+    <!-- Preconnect -->
+    <link rel="preconnect" href="https://sl-sakura-default-rtdb.asia-southeast1.firebasedatabase.app" />
+    <link rel="preconnect" href="https://www.googleapis.com" />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.2/css/all.min.css" />
+
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+
+    <div id="progressBar"></div>
+    <div id="sakuraLayer"></div>
+
+    <!-- ONBOARDING -->
+    <div id="onboardingOverlay" class="onboarding-step">
+        <div class="onboarding-card">
+            <div class="text-5xl mb-4">🌸</div>
+            <h2 class="text-2xl font-black mb-2 text-white">Welcome to SL Sakura!</h2>
+            <p class="text-gray-300 text-sm mb-4">Your gateway to learning Japanese language, JLPT resources, and life in Japan.</p>
+            <div class="flex flex-wrap gap-2 justify-center text-sm">
+                <span class="bg-rose-500/10 px-3 py-1 rounded-full text-white">📚 Resources</span>
+                <span class="bg-rose-500/10 px-3 py-1 rounded-full text-white">🧠 Quiz</span>
+                <span class="bg-rose-500/10 px-3 py-1 rounded-full text-white">🃏 Flashcards</span>
+                <span class="bg-rose-500/10 px-3 py-1 rounded-full text-white">🤖 AI Chatbot</span>
+            </div>
+            <button onclick="closeOnboarding()" class="rose-btn mt-4 w-full">
+                <i class="fa-solid fa-rocket mr-2"></i> Get Started
+            </button>
+        </div>
+    </div>
+
+    <div class="page">
+
+        <!-- ============================================================
+        HEADER
+        ============================================================ -->
+        <header class="sticky top-0 z-40 border-b border-rose-500/10 bg-[#0c0204]/90 backdrop-blur-xl">
+            <div class="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-3">
+
+                <button onclick="goHome()" class="text-left hover:opacity-80 transition">
+                    <div class="text-xl font-black text-white">
+                        SL Sakura <span class="text-rose-400">🌸</span>
+                    </div>
+                    <div class="hidden text-[10px] text-gray-400 sm:block">
+                        Your Gateway to Japanese Language, Classes & Life in Japan
+                    </div>
+                </button>
+
+                <div class="flex items-center gap-2">
+                    <select id="langSelector" onchange="changeLanguage(this.value)" class="rounded-xl border border-rose-500/20 bg-rose-500/10 px-2 py-2 text-xs font-bold text-rose-200 outline-none">
+                        <option value="en">🇬🇧 EN</option>
+                        <option value="si">🇱🇰 SI</option>
+                        <option value="ja">🇯🇵 JA</option>
+                    </select>
+
+                    <div id="streakDisplay" class="hidden items-center gap-1 bg-rose-500/10 px-3 py-2 rounded-xl border border-rose-500/20">
+                        <span class="text-rose-400 text-lg">🔥</span>
+                        <span id="streakCount" class="text-xs font-bold text-rose-200">0</span>
+                    </div>
+
+                    <button onclick="toggleUserMenu()" class="flex h-10 w-10 items-center justify-center rounded-xl border border-rose-500/25 bg-rose-500/10 text-rose-100 hover:bg-rose-500/20 transition">
+                        <i id="userIcon" class="fa-solid fa-user"></i>
+                    </button>
+
+                    <button onclick="toggleChatbot()" class="flex h-10 w-10 items-center justify-center rounded-xl border border-rose-500/25 bg-rose-500/10 text-rose-100 hover:bg-rose-500/20 transition">
+                        <i class="fa-solid fa-robot"></i>
+                    </button>
+
+                    <button onclick="openContact()" class="hidden rounded-xl border border-rose-500/20 bg-rose-500/10 px-3 py-2 text-xs font-bold text-rose-200 sm:block hover:bg-rose-500/20 transition">
+                        <i class="fa-solid fa-headset mr-1"></i> <span data-lang="support">Support</span>
+                    </button>
+
+                    <button onclick="openAdminLogin()" class="hidden rounded-xl border border-rose-500/20 bg-white/5 px-3 py-2 text-xs font-bold text-rose-200 sm:block hover:bg-white/10 transition">
+                        <i class="fa-solid fa-lock mr-1"></i> <span data-lang="admin">Admin</span>
+                    </button>
+
+                    <button id="themeToggleBtn" onclick="toggleTheme()" class="flex h-10 w-10 items-center justify-center rounded-xl border border-rose-500/25 bg-rose-500/10 text-rose-100 hover:bg-rose-500/20 transition">
+                        <i id="themeToggleIcon" class="fa-solid fa-sun"></i>
+                    </button>
+
+                    <button id="menuBtn" onclick="openMenu()" class="flex h-10 w-10 items-center justify-center rounded-xl border border-rose-500/25 bg-rose-500/10 text-rose-100 hover:bg-rose-500/20 transition">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- ============================================================
+        USER MENU
+        ============================================================ -->
+        <div id="userMenu" class="hidden fixed right-4 top-16 z-50 glass rounded-2xl p-4 min-w-[200px] shadow-2xl">
+            <div id="userInfo" class="text-sm">
+                <div class="font-bold text-white" data-lang="guest">Guest</div>
+                <div class="text-xs text-gray-400" data-lang="notLoggedIn">Not logged in</div>
+            </div>
+            <hr class="my-2 border-rose-500/10" />
+            <button onclick="openLoginModal()" id="loginBtn" class="w-full rounded-xl bg-rose-500/10 px-3 py-2 text-sm font-bold text-rose-200 hover:bg-rose-500/20 transition">
+                <i class="fa-solid fa-sign-in-alt mr-2"></i> <span data-lang="login">Login</span>
+            </button>
+            <button onclick="logoutUser()" id="logoutBtn" class="hidden w-full rounded-xl bg-red-500/10 px-3 py-2 text-sm font-bold text-red-300 hover:bg-red-500/20 transition">
+                <i class="fa-solid fa-sign-out-alt mr-2"></i> <span data-lang="logout">Logout</span>
+            </button>
+            <button onclick="openFavorites()" id="favoritesBtn" class="w-full mt-1 rounded-xl bg-rose-500/10 px-3 py-2 text-sm font-bold text-rose-200 hover:bg-rose-500/20 transition">
+                <i class="fa-solid fa-heart mr-2"></i> <span data-lang="favorites">Favorites</span>
+            </button>
+            <button onclick="openStudyProgress()" id="progressBtn" class="w-full mt-1 rounded-xl bg-rose-500/10 px-3 py-2 text-sm font-bold text-rose-200 hover:bg-rose-500/20 transition">
+                <i class="fa-solid fa-chart-line mr-2"></i> <span data-lang="progress">Progress</span>
+            </button>
+            <button onclick="openFlashcards()" class="w-full mt-1 rounded-xl bg-rose-500/10 px-3 py-2 text-sm font-bold text-rose-200 hover:bg-rose-500/20 transition">
+                <i class="fa-solid fa-cards mr-2"></i> <span data-lang="flashcards">Flashcards</span>
+            </button>
+            <button onclick="openLeaderboard()" class="w-full mt-1 rounded-xl bg-rose-500/10 px-3 py-2 text-sm font-bold text-rose-200 hover:bg-rose-500/20 transition">
+                <i class="fa-solid fa-trophy mr-2"></i> <span data-lang="leaderboard">Leaderboard</span>
+            </button>
+            <button onclick="openBadges()" class="w-full mt-1 rounded-xl bg-rose-500/10 px-3 py-2 text-sm font-bold text-rose-200 hover:bg-rose-500/20 transition">
+                <i class="fa-solid fa-medal mr-2"></i> <span data-lang="badges">Badges</span>
+            </button>
+            <button onclick="openForum()" class="w-full mt-1 rounded-xl bg-rose-500/10 px-3 py-2 text-sm font-bold text-rose-200 hover:bg-rose-500/20 transition">
+                <i class="fa-solid fa-comments mr-2"></i> <span data-lang="forum">Forum</span>
+            </button>
+            <button onclick="openBlog()" class="w-full mt-1 rounded-xl bg-rose-500/10 px-3 py-2 text-sm font-bold text-rose-200 hover:bg-rose-500/20 transition">
+                <i class="fa-solid fa-blog mr-2"></i> <span data-lang="blog">Blog</span>
+            </button>
+            <button onclick="openSpacedRepetition()" class="w-full mt-1 rounded-xl bg-rose-500/10 px-3 py-2 text-sm font-bold text-rose-200 hover:bg-rose-500/20 transition">
+                <i class="fa-solid fa-rotate mr-2"></i> <span data-lang="spacedrepetition">Review</span>
+            </button>
+        </div>
+
+        <!-- ============================================================
+        SIDE MENU
+        ============================================================ -->
+        <div id="menuOverlay" onclick="closeMenu()" class="drawer-overlay fixed inset-0 z-50 hidden bg-black/70"></div>
+
+        <aside id="sideMenu" class="drawer drawer-hidden fixed right-0 top-0 z-[60] h-full w-[310px] max-w-[90vw] overflow-y-auto border-l border-rose-500/20 bg-[#120306] p-5 shadow-2xl">
+            <div class="mb-6 flex items-center justify-between">
+                <div>
+                    <div class="text-lg font-black text-white">SL Sakura <span class="text-rose-400">🌸</span></div>
+                    <div class="text-xs text-gray-400">Quick Menu</div>
+                </div>
+                <button onclick="closeMenu()" class="h-9 w-9 rounded-xl bg-white/5 text-rose-200 hover:bg-white/10 transition">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <div class="space-y-2">
+                <button onclick="menuSearch()" class="menu-item">🔍 <span data-lang="search">Search Resources</span></button>
+                <button onclick="menuResources()" class="menu-item">📚 <span data-lang="resources">Resources</span></button>
+                <button onclick="menuNews()" class="menu-item">📰 <span data-lang="news">Japan Updates</span></button>
+                <button onclick="openForum()" class="menu-item">💬 <span data-lang="forum">Forum</span></button>
+                <button onclick="openBlog()" class="menu-item">📝 <span data-lang="blog">Blog</span></button>
+                <button onclick="openSpacedRepetition()" class="menu-item">🔄 <span data-lang="spacedrepetition">Review</span></button>
+
+                <div class="rounded-2xl border border-rose-500/10 bg-white/[.025] p-2">
+                    <div class="px-3 py-2 text-sm font-black text-rose-200">📖 Learning Tools</div>
+                    <button onclick="openGrammarGuide()" class="submenu-item">📝 Grammar Guide</button>
+                    <button onclick="openKanjiDictionary()" class="submenu-item">🈴 Kanji Dictionary</button>
+                    <button onclick="openListeningPractice()" class="submenu-item">🎧 Listening Practice</button>
+                    <button onclick="openReadingPractice()" class="submenu-item">📖 Reading Practice</button>
+                    <button onclick="openLessonPlans()" class="submenu-item">📋 Lesson Plans</button>
+                </div>
+
+                <div class="rounded-2xl border border-rose-500/10 bg-white/[.025] p-2">
+                    <div class="px-3 py-2 text-sm font-black text-rose-200">📝 Exam Websites</div>
+                    <a href="https://www.jlpt.jp/e/" target="_blank" rel="noopener noreferrer" class="submenu-item">JLPT</a>
+                    <a href="https://www.nat-test.com/" target="_blank" rel="noopener noreferrer" class="submenu-item">NAT</a>
+                    <a href="https://jlct.jp/en/" target="_blank" rel="noopener noreferrer" class="submenu-item">JLCT</a>
+                    <a href="https://www.jpf.go.jp/jft-basic/e/" target="_blank" rel="noopener noreferrer" class="submenu-item">JFT-Basic</a>
+                </div>
+
+                <button onclick="openContact(); closeMenu()" class="menu-item">📧 <span data-lang="contact">Contact / Email</span></button>
+                <a href="https://wa.me/94789995159" target="_blank" rel="noopener noreferrer" class="menu-item">📱 <span data-lang="whatsapp">WhatsApp Support</span></a>
+                <a id="coffeeMenuBtn" href="#" target="_blank" rel="noopener noreferrer" class="menu-item hidden">☕ <span data-lang="coffee">Buy Me a Coffee</span></a>
+                <button onclick="openQuiz()" class="menu-item">🧠 <span data-lang="quiz">Quiz</span></button>
+                <button onclick="openFlashcards()" class="menu-item">🃏 <span data-lang="flashcards">Flashcards</span></button>
+                <button onclick="openMockTest('N5')" class="menu-item">📝 <span data-lang="mocktest">JLPT Mock Test</span></button>
+                <button onclick="openVocabulary('N5')" class="menu-item">📚 <span data-lang="vocabulary">Vocabulary</span></button>
+                <button onclick="openLeaderboard()" class="menu-item">🏆 <span data-lang="leaderboard">Leaderboard</span></button>
+                <button onclick="openBadges()" class="menu-item">🎖️ <span data-lang="badges">Badges</span></button>
+                <button onclick="toggleChatbot()" class="menu-item">🤖 <span data-lang="chatbot">AI Chatbot</span></button>
+            </div>
+
+            <div class="mt-8 rounded-2xl border border-rose-500/10 bg-rose-500/5 p-4">
+                <div class="text-xs text-rose-300">Support</div>
+                <div class="mt-1 text-sm font-bold text-white">0789995159</div>
+                <div class="mt-1 break-all text-xs text-rose-100/45">dilnathbudmina39@gmail.com</div>
+            </div>
+        </aside>
+
+        <!-- ============================================================
+        HOME PAGE
+        ============================================================ -->
+        <main id="homePage">
+
+            <!-- ============================================================
+            HERO SECTION - COMPLETE FIXED
+            ============================================================ -->
+            <section class="mx-auto max-w-7xl px-4 pb-5 pt-8">
+                <div class="glass neon rounded-3xl p-6 text-center sm:p-10">
+
+                    <!-- Sakura Icon -->
+                    <div class="mb-3 text-5xl animate-bounce">🌸</div>
+
+                    <!-- Title -->
+                    <h1 id="heroTitle" class="text-3xl font-black sm:text-5xl text-white">
+                        Learn Japanese. <span class="text-rose-400">Build Your Future.</span>
+                    </h1>
+
+                    <!-- Description -->
+                    <p id="heroDesc" class="mx-auto mt-4 max-w-2xl text-sm leading-6 text-gray-300 sm:text-base">
+                        Japanese language resources, JLPT, SSW, classes, exam preparation and useful Japan life information.
+                    </p>
+
+                    <!-- ============================================================
+                    FEATURES GRID - හැමදේම පෙන්වයි (Clickable)
+                    ============================================================ -->
+                    <div class="mt-6 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+                        <div class="glass rounded-2xl p-3 text-center hover:bg-rose-500/10 transition border border-rose-500/15 hover:border-rose-500/30 cursor-pointer" onclick="menuResources()">
+                            <div class="text-3xl">📚</div>
+                            <div class="text-sm font-bold mt-1 text-white">Resources</div>
+                            <div class="text-[11px] text-gray-400">JLPT N5-N1</div>
+                        </div>
+                        <div class="glass rounded-2xl p-3 text-center hover:bg-rose-500/10 transition border border-rose-500/15 hover:border-rose-500/30 cursor-pointer" onclick="openQuiz()">
+                            <div class="text-3xl">🧠</div>
+                            <div class="text-sm font-bold mt-1 text-white">Quiz</div>
+                            <div class="text-[11px] text-gray-400">Test your knowledge</div>
+                        </div>
+                        <div class="glass rounded-2xl p-3 text-center hover:bg-rose-500/10 transition border border-rose-500/15 hover:border-rose-500/30 cursor-pointer" onclick="openFlashcards()">
+                            <div class="text-3xl">🃏</div>
+                            <div class="text-sm font-bold mt-1 text-white">Flashcards</div>
+                            <div class="text-[11px] text-gray-400">Study anywhere</div>
+                        </div>
+                        <div class="glass rounded-2xl p-3 text-center hover:bg-rose-500/10 transition border border-rose-500/15 hover:border-rose-500/30 cursor-pointer" onclick="openMockTest('N5')">
+                            <div class="text-3xl">📝</div>
+                            <div class="text-sm font-bold mt-1 text-white">Mock Tests</div>
+                            <div class="text-[11px] text-gray-400">JLPT practice</div>
+                        </div>
+                        <div class="glass rounded-2xl p-3 text-center hover:bg-rose-500/10 transition border border-rose-500/15 hover:border-rose-500/30 cursor-pointer" onclick="openVocabulary('N5')">
+                            <div class="text-3xl">📚</div>
+                            <div class="text-sm font-bold mt-1 text-white">Vocabulary</div>
+                            <div class="text-[11px] text-gray-400">Build your words</div>
+                        </div>
+                        <div class="glass rounded-2xl p-3 text-center hover:bg-rose-500/10 transition border border-rose-500/15 hover:border-rose-500/30 cursor-pointer" onclick="openLeaderboard()">
+                            <div class="text-3xl">🏆</div>
+                            <div class="text-sm font-bold mt-1 text-white">Leaderboard</div>
+                            <div class="text-[11px] text-gray-400">Compete & learn</div>
+                        </div>
+                        <div class="glass rounded-2xl p-3 text-center hover:bg-rose-500/10 transition border border-rose-500/15 hover:border-rose-500/30 cursor-pointer" onclick="toggleChatbot()">
+                            <div class="text-3xl">🤖</div>
+                            <div class="text-sm font-bold mt-1 text-white">AI Chatbot</div>
+                            <div class="text-[11px] text-gray-400">Ask anything</div>
+                        </div>
+                        <div class="glass rounded-2xl p-3 text-center hover:bg-rose-500/10 transition border border-rose-500/15 hover:border-rose-500/30">
+                            <div class="text-3xl">🔥</div>
+                            <div class="text-sm font-bold mt-1 text-white">Daily Streak</div>
+                            <div class="text-[11px] text-gray-400">Stay consistent</div>
+                        </div>
+                        <div class="glass rounded-2xl p-3 text-center hover:bg-rose-500/10 transition border border-rose-500/15 hover:border-rose-500/30 cursor-pointer" onclick="openGrammarGuide()">
+                            <div class="text-3xl">📝</div>
+                            <div class="text-sm font-bold mt-1 text-white">Grammar</div>
+                            <div class="text-[11px] text-gray-400">JLPT grammar</div>
+                        </div>
+                        <div class="glass rounded-2xl p-3 text-center hover:bg-rose-500/10 transition border border-rose-500/15 hover:border-rose-500/30 cursor-pointer" onclick="openKanjiDictionary()">
+                            <div class="text-3xl">🈴</div>
+                            <div class="text-sm font-bold mt-1 text-white">Kanji</div>
+                            <div class="text-[11px] text-gray-400">Kanji dictionary</div>
+                        </div>
+                        <div class="glass rounded-2xl p-3 text-center hover:bg-rose-500/10 transition border border-rose-500/15 hover:border-rose-500/30 cursor-pointer" onclick="openListeningPractice()">
+                            <div class="text-3xl">🎧</div>
+                            <div class="text-sm font-bold mt-1 text-white">Listening</div>
+                            <div class="text-[11px] text-gray-400">Practice listening</div>
+                        </div>
+                        <div class="glass rounded-2xl p-3 text-center hover:bg-rose-500/10 transition border border-rose-500/15 hover:border-rose-500/30 cursor-pointer" onclick="openReadingPractice()">
+                            <div class="text-3xl">📖</div>
+                            <div class="text-sm font-bold mt-1 text-white">Reading</div>
+                            <div class="text-[11px] text-gray-400">Reading practice</div>
+                        </div>
+                    </div>
+
+                    <!-- ============================================================
+                    LOGIN FEATURES - (Guest users ලාට පෙන්වයි)
+                    ============================================================ -->
+                    <div id="loginFeatures" class="mt-6 glass rounded-2xl p-4 border border-rose-500/15">
+                        <div class="flex items-center justify-between flex-wrap gap-2">
+                            <div class="flex items-center gap-2">
+                                <span class="text-2xl">🔐</span>
+                                <div class="text-left">
+                                    <div class="text-sm font-bold text-white">Login to Unlock More Features!</div>
+                                    <div class="text-xs text-gray-400">Get personalized learning experience</div>
+                                </div>
+                            </div>
+                            <button onclick="openLoginModal()" class="rose-btn rounded-xl px-4 py-2 text-sm font-black">
+                                <i class="fa-solid fa-sign-in-alt mr-2"></i> Login / Sign Up
+                            </button>
+                        </div>
+
+                        <!-- Member Features Preview - Unlock after login -->
+                        <div class="mt-4">
+                            <div class="text-[11px] font-black uppercase tracking-wider text-rose-300 mb-2">
+                                🎯 Member Features
+                            </div>
+                            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2">
+                                <button onclick="openLoginModal()" class="glass rounded-xl p-3 text-center border border-rose-500/10 hover:bg-rose-500/5 transition cursor-pointer"><div class="text-2xl">❤️</div><div class="text-[10px] font-bold text-white mt-1">Favorites</div><div class="text-[8px] text-gray-400 mt-1">Save resources</div></button>
+                                <button onclick="openLoginModal()" class="glass rounded-xl p-3 text-center border border-rose-500/10 hover:bg-rose-500/5 transition cursor-pointer"><div class="text-2xl">📊</div><div class="text-[10px] font-bold text-white mt-1">Progress</div><div class="text-[8px] text-gray-400 mt-1">Track learning</div></button>
+                                <button onclick="openLoginModal()" class="glass rounded-xl p-3 text-center border border-rose-500/10 hover:bg-rose-500/5 transition cursor-pointer"><div class="text-2xl">🔥</div><div class="text-[10px] font-bold text-white mt-1">Streak</div><div class="text-[8px] text-gray-400 mt-1">Daily streak</div></button>
+                                <button onclick="openLoginModal()" class="glass rounded-xl p-3 text-center border border-rose-500/10 hover:bg-rose-500/5 transition cursor-pointer"><div class="text-2xl">🏆</div><div class="text-[10px] font-bold text-white mt-1">Leaderboard</div><div class="text-[8px] text-gray-400 mt-1">Compete & learn</div></button>
+                                <button onclick="openLoginModal()" class="glass rounded-xl p-3 text-center border border-rose-500/10 hover:bg-rose-500/5 transition cursor-pointer"><div class="text-2xl">🎖️</div><div class="text-[10px] font-bold text-white mt-1">Badges</div><div class="text-[8px] text-gray-400 mt-1">Achievements</div></button>
+                                <button onclick="openLoginModal()" class="glass rounded-xl p-3 text-center border border-rose-500/10 hover:bg-rose-500/5 transition cursor-pointer"><div class="text-2xl">⭐</div><div class="text-[10px] font-bold text-white mt-1">Ratings</div><div class="text-[8px] text-gray-400 mt-1">Rate resources</div></button>
+                                <button onclick="openLoginModal()" class="glass rounded-xl p-3 text-center border border-rose-500/10 hover:bg-rose-500/5 transition cursor-pointer"><div class="text-2xl">💬</div><div class="text-[10px] font-bold text-white mt-1">Comments</div><div class="text-[8px] text-gray-400 mt-1">Discuss & learn</div></button>
+                                <button onclick="openLoginModal()" class="glass rounded-xl p-3 text-center border border-rose-500/10 hover:bg-rose-500/5 transition cursor-pointer"><div class="text-2xl">📧</div><div class="text-[10px] font-bold text-white mt-1">Daily Email</div><div class="text-[8px] text-gray-400 mt-1">Learn daily</div></button>
+                                <button onclick="openLoginModal()" class="glass rounded-xl p-3 text-center border border-rose-500/10 hover:bg-rose-500/5 transition cursor-pointer"><div class="text-2xl">🎯</div><div class="text-[10px] font-bold text-white mt-1">Personalized Learning Path</div><div class="text-[8px] text-gray-400 mt-1">Beginner → N1</div></button>
+                                <button onclick="openLoginModal()" class="glass rounded-xl p-3 text-center border border-rose-500/10 hover:bg-rose-500/5 transition cursor-pointer"><div class="text-2xl">📚</div><div class="text-[10px] font-bold text-white mt-1">Resource Collections</div><div class="text-[8px] text-gray-400 mt-1">Favorites & saved items</div></button>
+                                <button onclick="openLoginModal()" class="glass rounded-xl p-3 text-center border border-rose-500/10 hover:bg-rose-500/5 transition cursor-pointer"><div class="text-2xl">🧠</div><div class="text-[10px] font-bold text-white mt-1">Daily Japanese Challenge</div><div class="text-[8px] text-gray-400 mt-1">Kanji, vocab & grammar</div></button>
+                                <button onclick="openLoginModal()" class="glass rounded-xl p-3 text-center border border-rose-500/10 hover:bg-rose-500/5 transition cursor-pointer"><div class="text-2xl">🔍</div><div class="text-[10px] font-bold text-white mt-1">Advanced Resource Filters</div><div class="text-[8px] text-gray-400 mt-1">Find resources faster</div></button>
+                                <button onclick="openLoginModal()" class="glass rounded-xl p-3 text-center border border-rose-500/10 hover:bg-rose-500/5 transition cursor-pointer"><div class="text-2xl">🤖</div><div class="text-[10px] font-bold text-white mt-1">Japanese Study Assistant</div><div class="text-[8px] text-gray-400 mt-1">Grammar & kanji help</div></button>
+                                <button onclick="openLoginModal()" class="glass rounded-xl p-3 text-center border border-rose-500/10 hover:bg-rose-500/5 transition cursor-pointer"><div class="text-2xl">📅</div><div class="text-[10px] font-bold text-white mt-1">Study Planner</div><div class="text-[8px] text-gray-400 mt-1">Goals & reminders</div></button>
+                                <button onclick="openLoginModal()" class="glass rounded-xl p-3 text-center border border-rose-500/10 hover:bg-rose-500/5 transition cursor-pointer"><div class="text-2xl">📥</div><div class="text-[10px] font-bold text-white mt-1">Download Center</div><div class="text-[8px] text-gray-400 mt-1">Your saved downloads</div></button>
+                            </div>
+                            <div class="mt-3 text-center text-[9px] text-gray-500">🔒 Login to unlock all member features</div>
+                        </div>
+                    </div>
+
+                    <!-- ============================================================
+                    USER DASHBOARD - (Logged-in users ලාට පෙන්වයි)
+                    ============================================================ -->
+                    <div id="userDashboard" class="mt-6 hidden glass rounded-2xl p-4 border border-rose-500/15">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="text-3xl">👤</div>
+                            <div class="text-left">
+                                <div class="text-sm font-bold text-white" id="userDisplayName">User</div>
+                                <div class="text-xs text-gray-400" id="userEmail">user@email.com</div>
+                            </div>
+                            <button onclick="logoutUser()" class="ml-auto text-xs bg-red-500/10 px-3 py-1 rounded-full text-red-300 hover:bg-red-500/20 transition">
+                                <i class="fa-solid fa-sign-out-alt mr-1"></i> Logout
+                            </button>
+                        </div>
+
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                            <div class="glass rounded-xl p-2 text-center border border-rose-500/10">
+                                <div class="text-xl font-black text-rose-400" id="userStreak">0</div>
+                                <div class="text-[9px] text-gray-400">🔥 Streak</div>
+                            </div>
+                            <div class="glass rounded-xl p-2 text-center border border-rose-500/10">
+                                <div class="text-xl font-black text-rose-400" id="userFavorites">0</div>
+                                <div class="text-[9px] text-gray-400">❤️ Favorites</div>
+                            </div>
+                            <div class="glass rounded-xl p-2 text-center border border-rose-500/10">
+                                <div class="text-xl font-black text-rose-400" id="userViewed">0</div>
+                                <div class="text-[9px] text-gray-400">📚 Viewed</div>
+                            </div>
+                            <div class="glass rounded-xl p-2 text-center border border-rose-500/10">
+                                <div class="text-xl font-black text-rose-400" id="userBadges">0</div>
+                                <div class="text-[9px] text-gray-400">🎖️ Badges</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Level Buttons -->
+                    <div class="mt-5 flex flex-wrap justify-center gap-2">
+                        <button onclick="selectMain('N5')" class="quick-btn">N5</button>
+                        <button onclick="selectMain('N4')" class="quick-btn">N4</button>
+                        <button onclick="selectMain('N3')" class="quick-btn">N3</button>
+                        <button onclick="selectMain('N2')" class="quick-btn">N2</button>
+                        <button onclick="selectMain('N1')" class="quick-btn">N1</button>
+                    </div>
+
+                    <!-- Quick Action Buttons -->
+                    <div class="mt-6 flex flex-wrap justify-center gap-2">
+                        <button onclick="openGrammarGuide()" class="action-btn">📝 Grammar</button>
+                        <button onclick="openKanjiDictionary()" class="action-btn">🈴 Kanji</button>
+                        <button onclick="openMockTest('N5')" class="action-btn">📝 Mock Test</button>
+                        <button onclick="openVocabulary('N5')" class="action-btn">📚 Vocabulary</button>
+                        <button onclick="openLeaderboard()" class="action-btn">🏆 Leaderboard</button>
+                        <button onclick="toggleChatbot()" class="action-btn">🤖 AI Chatbot</button>
+                        <button onclick="openForum()" class="action-btn">💬 Forum</button>
+                        <button onclick="openBlog()" class="action-btn">📝 Blog</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 728×90 AD -->
+            <section class="mx-auto max-w-7xl px-4 pb-5">
+                <div id="topAd728" class="ad-banner-728">
+                    <div class="text-center text-rose-100/20 text-sm p-4">📢 Advertisement Space</div>
+                </div>
+            </section>
+
+            <!-- SEARCH -->
+            <section id="searchSection" class="mx-auto max-w-7xl px-4 pb-4">
+                <div class="relative">
+                    <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-rose-400"></i>
+                    <input id="resourceSearch" type="search" placeholder="Search resources..." class="w-full rounded-2xl border border-rose-500/20 bg-black/30 py-4 pl-12 pr-4 text-sm text-white outline-none focus:border-rose-500 focus:ring-2 focus:ring-rose-500/10 transition" />
+                </div>
+            </section>
+
+            <!-- EXAMS -->
+            <section class="mx-auto max-w-7xl px-4 pb-5">
+                <div class="glass rounded-3xl p-4">
+                    <div class="mb-3 text-xs font-black uppercase tracking-widest text-rose-400">Official Exam Websites</div>
+                    <div class="grid grid-cols-2 gap-2 sm:grid-cols-4">
+                        <a href="https://www.jlpt.jp/e/" target="_blank" rel="noopener noreferrer" class="exam-btn"><i class="fa-solid fa-language"></i> JLPT</a>
+                        <a href="https://www.nat-test.com/" target="_blank" rel="noopener noreferrer" class="exam-btn"><i class="fa-solid fa-file-pen"></i> NAT</a>
+                        <a href="https://jlct.jp/en/" target="_blank" rel="noopener noreferrer" class="exam-btn"><i class="fa-solid fa-book-open"></i> JLCT</a>
+                        <a href="https://www.jpf.go.jp/jft-basic/e/" target="_blank" rel="noopener noreferrer" class="exam-btn"><i class="fa-solid fa-globe"></i> JFT</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- RESOURCES TABS -->
+            <section id="resourcesSection" class="mx-auto max-w-7xl px-4">
+                <div id="mainTabs" class="flex gap-2 overflow-x-auto pb-3"></div>
+                <div id="subTabs" class="flex flex-wrap gap-2 pb-5"></div>
+            </section>
+
+            <!-- 728×90 AD -->
+            <section class="mx-auto max-w-7xl px-4 pb-5">
+                <div id="middleAd728" class="ad-banner-728">
+                    <div class="text-center text-rose-100/20 text-sm p-4">📢 Advertisement Space</div>
+                </div>
+            </section>
+
+            <!-- RESOURCES GRID -->
+            <section class="mx-auto max-w-7xl px-4 pb-12">
+                <div class="mb-5 flex items-end justify-between gap-4 flex-wrap">
+                    <div>
+                        <p class="text-xs font-black uppercase tracking-widest text-rose-400">Resource Library</p>
+                        <h2 class="mt-1 text-2xl font-black text-white">Available Resources</h2>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <select id="resourceSort" onchange="changeResourceSort(this.value)" class="rounded-full border border-rose-500/15 bg-white/5 px-3 py-1 text-xs text-rose-200/70 outline-none">
+                            <option value="newest">Newest</option>
+                            <option value="popular">Most viewed</option>
+                            <option value="title">A–Z</option>
+                        </select>
+                        <div id="resourceCount" class="rounded-full border border-rose-500/15 bg-white/5 px-3 py-1 text-xs text-rose-200/60">
+                            <i class="fa-solid fa-book mr-1"></i> <span id="resourceCountText">0</span> resources
+                        </div>
+                    </div>
+                </div>
+
+                <div id="resourceLoading" class="loading-overlay hidden">
+                    <div class="spinner"></div>
+                    <span>Loading resources...</span>
+                </div>
+
+                <div id="resourceGrid" class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3"></div>
+
+                <div id="loadMoreWrap" class="mt-6 hidden flex-col items-center justify-center">
+                    <div id="loadMoreStatus" class="load-more-status"></div>
+                    <button id="loadMoreBtn" onclick="loadMoreResources()" class="rose-btn rounded-2xl px-8 py-3 text-sm font-black text-white">
+                        <i class="fa-solid fa-plus mr-2"></i> Load More Resources
+                    </button>
+                </div>
+            </section>
+
+            <!-- ============================================================
+            ADDITIONAL SECTIONS (Grammar, Kanji, etc.)
+            ============================================================ -->
+            <!-- GRAMMAR GUIDE SECTION -->
+            <section id="grammarSection" class="mx-auto max-w-7xl px-4 pb-12 hidden">
+                <div class="glass neon rounded-3xl p-5">
+                    <div class="flex items-center justify-between gap-4 mb-4">
+                        <div>
+                            <p class="text-xs font-black uppercase tracking-widest text-rose-400">Learning</p>
+                            <h2 class="mt-1 text-2xl font-black text-white">📝 Grammar Guide</h2>
+                            <p class="mt-1 text-sm text-gray-400">Complete JLPT grammar reference</p>
+                        </div>
+                        <button onclick="closeGrammarGuide()" class="text-rose-100/40 hover:text-rose-300 transition">
+                            <i class="fa-solid fa-times text-xl"></i>
+                        </button>
+                    </div>
+                    <div id="grammarGrid" class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3"></div>
+                </div>
+            </section>
+
+            <!-- KANJI DICTIONARY SECTION -->
+            <section id="kanjiSection" class="mx-auto max-w-7xl px-4 pb-12 hidden">
+                <div class="glass neon rounded-3xl p-5">
+                    <div class="flex items-center justify-between gap-4 mb-4">
+                        <div>
+                            <p class="text-xs font-black uppercase tracking-widest text-rose-400">Learning</p>
+                            <h2 class="mt-1 text-2xl font-black text-white">🈴 Kanji Dictionary</h2>
+                            <p class="mt-1 text-sm text-gray-400">Search kanji by radical, reading, or meaning</p>
+                        </div>
+                        <button onclick="closeKanjiDictionary()" class="text-rose-100/40 hover:text-rose-300 transition">
+                            <i class="fa-solid fa-times text-xl"></i>
+                        </button>
+                    </div>
+                    <div class="relative mb-4">
+                        <i class="fa-solid fa-search absolute left-4 top-1/2 -translate-y-1/2 text-rose-400"></i>
+                        <input id="kanjiSearch" type="text" placeholder="Search kanji..." class="w-full rounded-2xl border border-rose-500/20 bg-black/30 py-4 pl-12 pr-4 text-sm text-white outline-none focus:border-rose-500 focus:ring-2 focus:ring-rose-500/10 transition" oninput="filterKanji()" />
+                    </div>
+                    <div id="kanjiGrid" class="grid gap-4 sm:grid-cols-3 lg:grid-cols-4"></div>
+                </div>
+            </section>
+
+            <!-- LISTENING PRACTICE SECTION -->
+            <section id="listeningSection" class="mx-auto max-w-7xl px-4 pb-12 hidden">
+                <div class="glass neon rounded-3xl p-5">
+                    <div class="flex items-center justify-between gap-4 mb-4">
+                        <div>
+                            <p class="text-xs font-black uppercase tracking-widest text-rose-400">Practice</p>
+                            <h2 class="mt-1 text-2xl font-black text-white">🎧 Listening Practice</h2>
+                            <p class="mt-1 text-sm text-gray-400">Improve your listening skills</p>
+                        </div>
+                        <button onclick="closeListeningPractice()" class="text-rose-100/40 hover:text-rose-300 transition">
+                            <i class="fa-solid fa-times text-xl"></i>
+                        </button>
+                    </div>
+                    <div id="listeningGrid" class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3"></div>
+                </div>
+            </section>
+
+            <!-- READING PRACTICE SECTION -->
+            <section id="readingSection" class="mx-auto max-w-7xl px-4 pb-12 hidden">
+                <div class="glass neon rounded-3xl p-5">
+                    <div class="flex items-center justify-between gap-4 mb-4">
+                        <div>
+                            <p class="text-xs font-black uppercase tracking-widest text-rose-400">Practice</p>
+                            <h2 class="mt-1 text-2xl font-black text-white">📖 Reading Practice</h2>
+                            <p class="mt-1 text-sm text-gray-400">Graded reading materials</p>
+                        </div>
+                        <button onclick="closeReadingPractice()" class="text-rose-100/40 hover:text-rose-300 transition">
+                            <i class="fa-solid fa-times text-xl"></i>
+                        </button>
+                    </div>
+                    <div id="readingGrid" class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3"></div>
+                </div>
+            </section>
+
+            <!-- LESSON PLANS SECTION -->
+            <section id="lessonPlansSection" class="mx-auto max-w-7xl px-4 pb-12 hidden">
+                <div class="glass neon rounded-3xl p-5">
+                    <div class="flex items-center justify-between gap-4 mb-4">
+                        <div>
+                            <p class="text-xs font-black uppercase tracking-widest text-rose-400">Learning</p>
+                            <h2 class="mt-1 text-2xl font-black text-white">📋 Lesson Plans</h2>
+                            <p class="mt-1 text-sm text-gray-400">Structured learning paths</p>
+                        </div>
+                        <button onclick="closeLessonPlans()" class="text-rose-100/40 hover:text-rose-300 transition">
+                            <i class="fa-solid fa-times text-xl"></i>
+                        </button>
+                    </div>
+                    <div id="lessonPlansGrid" class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3"></div>
+                </div>
+            </section>
+
+            <!-- BADGES SECTION -->
+            <section id="badgesSection" class="mx-auto max-w-7xl px-4 pb-12 hidden">
+                <div class="glass neon rounded-3xl p-5">
+                    <div class="flex items-center justify-between gap-4 mb-4">
+                        <div>
+                            <p class="text-xs font-black uppercase tracking-widest text-rose-400">Achievements</p>
+                            <h2 class="mt-1 text-2xl font-black text-white">🎖️ Your Badges</h2>
+                            <p class="mt-1 text-sm text-gray-400">Collect badges by completing milestones</p>
+                        </div>
+                        <button onclick="closeBadges()" class="text-rose-100/40 hover:text-rose-300 transition">
+                            <i class="fa-solid fa-times text-xl"></i>
+                        </button>
+                    </div>
+                    <div id="badgesGrid" class="flex flex-wrap gap-3"></div>
+                </div>
+            </section>
+
+            <!-- FORUM SECTION -->
+            <section id="forumSection" class="mx-auto max-w-7xl px-4 pb-12 hidden">
+                <div class="glass neon rounded-3xl p-5">
+                    <div class="flex items-center justify-between gap-4 mb-4">
+                        <div>
+                            <p class="text-xs font-black uppercase tracking-widest text-rose-400">Community</p>
+                            <h2 class="mt-1 text-2xl font-black text-white">💬 Discussion Forum</h2>
+                            <p class="mt-1 text-sm text-gray-400">Connect with other Japanese learners</p>
+                        </div>
+                        <button onclick="closeForum()" class="text-rose-100/40 hover:text-rose-300 transition">
+                            <i class="fa-solid fa-times text-xl"></i>
+                        </button>
+                    </div>
+                    <div class="mb-4 flex gap-2">
+                        <input id="forumPostInput" placeholder="Start a discussion..." class="flex-1 rounded-2xl border border-rose-500/15 bg-black/30 px-4 py-3 text-sm text-white outline-none focus:border-rose-500 transition" />
+                        <button onclick="addForumPost()" class="rose-btn rounded-2xl px-4 py-3 text-sm font-black">Post</button>
+                    </div>
+                    <div id="forumPosts" class="space-y-3 max-h-96 overflow-y-auto"></div>
+                </div>
+            </section>
+
+            <!-- BLOG SECTION -->
+            <section id="blogSection" class="mx-auto max-w-7xl px-4 pb-12 hidden">
+                <div class="glass neon rounded-3xl p-5">
+                    <div class="flex items-center justify-between gap-4 mb-4">
+                        <div>
+                            <p class="text-xs font-black uppercase tracking-widest text-rose-400">Content</p>
+                            <h2 class="mt-1 text-2xl font-black text-white">📝 Blog</h2>
+                            <p class="mt-1 text-sm text-gray-400">Articles about Japanese learning</p>
+                        </div>
+                        <button onclick="closeBlog()" class="text-rose-100/40 hover:text-rose-300 transition">
+                            <i class="fa-solid fa-times text-xl"></i>
+                        </button>
+                    </div>
+                    <div id="blogGrid" class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3"></div>
+                </div>
+            </section>
+
+            <!-- SPACED REPETITION SECTION -->
+            <section id="spacedRepetitionSection" class="mx-auto max-w-7xl px-4 pb-12 hidden">
+                <div class="glass neon rounded-3xl p-5">
+                    <div class="flex items-center justify-between gap-4 mb-4">
+                        <div>
+                            <p class="text-xs font-black uppercase tracking-widest text-rose-400">Review</p>
+                            <h2 class="mt-1 text-2xl font-black text-white">🔄 Spaced Repetition Review</h2>
+                            <p class="mt-1 text-sm text-gray-400">Smart vocabulary review system</p>
+                        </div>
+                        <button onclick="closeSpacedRepetition()" class="text-rose-100/40 hover:text-rose-300 transition">
+                            <i class="fa-solid fa-times text-xl"></i>
+                        </button>
+                    </div>
+                    <div id="reviewContainer" class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3"></div>
+                </div>
+            </section>
+
+            <!-- BUY ME A COFFEE -->
+            <section id="coffeeSection" class="mx-auto hidden max-w-7xl px-4 pb-12">
+                <div class="glass neon rounded-3xl p-6 text-center">
+                    <div class="text-4xl">☕</div>
+                    <h2 class="mt-3 text-xl font-black text-white">Support SL Sakura</h2>
+                    <p class="mx-auto mt-2 max-w-xl text-sm text-gray-400">If SL Sakura helps you with your Japanese learning journey, you can support the project.</p>
+                    <a id="coffeeHomeBtn" href="#" target="_blank" rel="noopener noreferrer" class="rose-btn mt-5 inline-flex items-center rounded-2xl px-6 py-3 font-black text-white">☕ Buy Me a Coffee</a>
+                </div>
+            </section>
+
+            <!-- JAPAN UPDATES -->
+            <section id="newsSection" class="mx-auto max-w-7xl scroll-mt-24 px-4 pb-12">
+                <div class="glass neon rounded-3xl p-5">
+                    <div class="flex items-center justify-between gap-4">
+                        <div>
+                            <p class="text-xs font-black uppercase tracking-widest text-rose-400">Japan Updates</p>
+                            <h2 class="mt-1 text-2xl font-black text-white">Visa & Japan News 🇯🇵</h2>
+                            <p class="mt-2 text-sm text-gray-400">Useful updates about visas, studies, work and life in Japan.</p>
+                        </div>
+                        <div class="text-3xl">📰</div>
+                    </div>
+
+                    <div id="newsLoading" class="loading-overlay hidden">
+                        <div class="spinner"></div>
+                        <span>Loading updates...</span>
+                    </div>
+
+                    <div id="newsGrid" class="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3"></div>
+                </div>
+            </section>
+
+            <!-- FOOTER -->
+            <footer class="border-t border-rose-500/10 bg-black/20">
+                <div class="mx-auto max-w-7xl px-4 py-8">
+                    <div class="grid gap-6 sm:grid-cols-4">
+                        <div>
+                            <div class="text-xl font-black text-white">SL Sakura 🌸</div>
+                            <p class="mt-2 text-sm text-gray-400">Your Gateway to Japanese Language, Classes & Life in Japan.</p>
+                            <div class="mt-3 flex gap-2">
+                                <a href="#" onclick="shareOnFacebook()" class="text-rose-100/45 hover:text-[#1877f2] transition text-xl"><i class="fa-brands fa-facebook"></i></a>
+                                <a href="#" onclick="shareOnTwitter()" class="text-rose-100/45 hover:text-[#000] transition text-xl"><i class="fa-brands fa-twitter"></i></a>
+                                <a href="#" onclick="shareOnWhatsApp()" class="text-rose-100/45 hover:text-[#25d366] transition text-xl"><i class="fa-brands fa-whatsapp"></i></a>
+                                <a href="#" onclick="shareOnLinkedIn()" class="text-rose-100/45 hover:text-[#0a66c2] transition text-xl"><i class="fa-brands fa-linkedin"></i></a>
+                                <a href="#" onclick="shareOnTelegram()" class="text-rose-100/45 hover:text-[#0088cc] transition text-xl"><i class="fa-brands fa-telegram"></i></a>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="font-bold text-rose-200">Contact</div>
+                            <a href="https://wa.me/94789995159" target="_blank" rel="noopener noreferrer" class="mt-2 block text-sm text-gray-400 hover:text-rose-300 transition">📱 0789995159</a>
+                            <a href="mailto:dilnathbudmina39@gmail.com" class="mt-1 block break-all text-sm text-gray-400 hover:text-rose-300 transition">📧 dilnathbudmina39@gmail.com</a>
+                        </div>
+                        <div>
+                            <div class="font-bold text-rose-200">Exams</div>
+                            <div class="mt-2 flex flex-wrap gap-2 text-xs">
+                                <a href="https://www.jlpt.jp/e/" target="_blank" rel="noopener noreferrer" class="footer-link">JLPT</a>
+                                <a href="https://www.nat-test.com/" target="_blank" rel="noopener noreferrer" class="footer-link">NAT</a>
+                                <a href="https://jlct.jp/en/" target="_blank" rel="noopener noreferrer" class="footer-link">JLCT</a>
+                                <a href="https://www.jpf.go.jp/jft-basic/e/" target="_blank" rel="noopener noreferrer" class="footer-link">JFT</a>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="font-bold text-rose-200">Quick Links</div>
+                            <a href="#" onclick="menuSearch(); return false;" class="mt-2 block text-sm text-gray-400 hover:text-rose-300 transition">🔍 Search</a>
+                            <a href="#" onclick="menuResources(); return false;" class="mt-1 block text-sm text-gray-400 hover:text-rose-300 transition">📚 Resources</a>
+                            <a href="#" onclick="menuNews(); return false;" class="mt-1 block text-sm text-gray-400 hover:text-rose-300 transition">📰 News</a>
+                            <a href="#" onclick="openForum(); return false;" class="mt-1 block text-sm text-gray-400 hover:text-rose-300 transition">💬 Forum</a>
+                            <a href="#" onclick="openBlog(); return false;" class="mt-1 block text-sm text-gray-400 hover:text-rose-300 transition">📝 Blog</a>
+                            <a href="#" onclick="openSpacedRepetition(); return false;" class="mt-1 block text-sm text-gray-400 hover:text-rose-300 transition">🔄 Review</a>
+                            <a href="#" onclick="openGrammarGuide(); return false;" class="mt-1 block text-sm text-gray-400 hover:text-rose-300 transition">📝 Grammar</a>
+                            <a href="#" onclick="openKanjiDictionary(); return false;" class="mt-1 block text-sm text-gray-400 hover:text-rose-300 transition">🈴 Kanji</a>
+                            <a href="#" onclick="openQuiz(); return false;" class="mt-1 block text-sm text-gray-400 hover:text-rose-300 transition">🧠 Quiz</a>
+                            <a href="#" onclick="openFlashcards(); return false;" class="mt-1 block text-sm text-gray-400 hover:text-rose-300 transition">🃏 Flashcards</a>
+                            <a href="#" onclick="openMockTest('N5'); return false;" class="mt-1 block text-sm text-gray-400 hover:text-rose-300 transition">📝 Mock Test</a>
+                            <a href="#" onclick="openVocabulary('N5'); return false;" class="mt-1 block text-sm text-gray-400 hover:text-rose-300 transition">📚 Vocabulary</a>
+                            <a href="#" onclick="openLeaderboard(); return false;" class="mt-1 block text-sm text-gray-400 hover:text-rose-300 transition">🏆 Leaderboard</a>
+                            <a href="#" onclick="openBadges(); return false;" class="mt-1 block text-sm text-gray-400 hover:text-rose-300 transition">🎖️ Badges</a>
+                            <a href="#" onclick="toggleChatbot(); return false;" class="mt-1 block text-sm text-gray-400 hover:text-rose-300 transition">🤖 AI Chatbot</a>
+                        </div>
+                    </div>
+                    <div class="mt-8 border-t border-rose-500/10 pt-5 text-center text-xs text-rose-100/30">© 2026 SL Sakura 🌸 | Made with ❤️</div>
+                </div>
+            </footer>
+
+        </main>
+
+        <!-- RESOURCE VIEWER -->
+        <section id="viewerPage" class="hidden min-h-screen">
+            <div class="mx-auto max-w-5xl px-4 py-6">
+                <div class="flex items-center gap-2 mb-5 flex-wrap">
+                    <button onclick="goHome()" class="rounded-xl border border-rose-500/20 bg-white/5 px-4 py-2 text-sm font-bold text-rose-200 hover:bg-white/10 transition">
+                        <i class="fa-solid fa-arrow-left mr-2"></i> Back
+                    </button>
+                    <button onclick="shareOnFacebook()" class="share-btn facebook"><i class="fa-brands fa-facebook"></i></button>
+                    <button onclick="shareOnTwitter()" class="share-btn twitter"><i class="fa-brands fa-twitter"></i></button>
+                    <button onclick="shareOnWhatsApp()" class="share-btn whatsapp"><i class="fa-brands fa-whatsapp"></i></button>
+                    <button onclick="shareOnLinkedIn()" class="share-btn linkedin"><i class="fa-brands fa-linkedin"></i></button>
+                    <button onclick="shareOnTelegram()" class="share-btn telegram"><i class="fa-brands fa-telegram"></i></button>
+                    <button onclick="shareViaEmail()" class="share-btn email"><i class="fa-solid fa-envelope"></i></button>
+                    <button onclick="copyCurrentLink()" class="share-btn copy"><i class="fa-solid fa-copy"></i> Copy</button>
+                </div>
+
+                <div class="glass neon rounded-3xl p-5">
+                    <div class="mb-5">
+                        <p id="viewerCategory" class="text-xs font-black uppercase tracking-widest text-rose-400"></p>
+                        <h1 id="viewerTitle" class="mt-2 text-2xl font-black text-white"></h1>
+                        <p id="viewerLecturer" class="mt-2 text-sm text-gray-400"></p>
+                        <p id="viewerViews" class="mt-1 text-xs text-rose-100/40"><i class="fa-regular fa-eye mr-1"></i> <span id="viewCountDisplay">0</span> views</p>
+                        <a id="viewerContactBtn" href="#" target="_blank" rel="noopener noreferrer" class="mt-3 hidden w-fit rounded-xl bg-green-500/10 px-4 py-2 text-xs font-bold text-green-300"></a>
+                    </div>
+
+                    <div id="viewerMedia" class="media-frame flex items-center justify-center">
+                        <div class="loading-overlay"><div class="spinner"></div><span>Loading preview...</span></div>
+                    </div>
+
+                    <div id="pdfControls" class="hidden pdf-controls">
+                        <button onclick="pdfPrevPage()"><i class="fa-solid fa-chevron-left"></i> Prev</button>
+                        <span id="pdfPageInfo">1 / 1</span>
+                        <button onclick="pdfNextPage()">Next <i class="fa-solid fa-chevron-right"></i></button>
+                        <button onclick="pdfZoomIn()"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
+                        <button onclick="pdfZoomOut()"><i class="fa-solid fa-magnifying-glass-minus"></i></button>
+                        <span id="pdfZoomLevel">100%</span>
+                    </div>
+
+                    <div class="mt-5">
+                        <div id="viewerAdContainer"></div>
+                    </div>
+
+                    <div id="countdownBox" class="mt-5 rounded-2xl border border-rose-500/15 bg-rose-500/5 p-5 text-center">
+                        <div class="text-xs uppercase tracking-widest text-rose-300/60">Download will be available in</div>
+                        <div id="countdown" class="mt-1 text-4xl font-black text-rose-400">8</div>
+                        <div id="downloadReadyMessage" class="mt-3 hidden text-sm font-bold text-green-300">✓ Download is ready</div>
+                        <a id="viewerDownloadButton" href="#" target="_blank" rel="noopener noreferrer" class="rose-btn mt-4 hidden inline-flex items-center justify-center rounded-2xl px-6 py-3 font-black text-white" onclick="trackDownload()">
+                            <i class="fa-solid fa-download mr-2"></i> Download File Now
+                        </a>
+                    </div>
+
+                    <div id="youtubeOnlyMessage" class="mt-5 hidden rounded-2xl border border-red-500/15 bg-red-500/5 p-4 text-center text-sm text-red-200/70">
+                        ▶️ This is a YouTube resource. Online viewing is available, but downloading is not provided.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- LOGIN MODAL -->
+        <div id="loginModal" class="modal-bg fixed inset-0 z-[100] hidden items-center justify-center p-4">
+            <div class="glass w-full max-w-sm rounded-3xl p-6">
+                <div class="flex items-center justify-between">
+                    <h2 class="text-xl font-black text-white"><span data-lang="login">Login</span> / <span data-lang="signup">Sign Up</span></h2>
+                    <button onclick="closeLoginModal()" class="h-9 w-9 rounded-xl bg-white/5 hover:bg-white/10 transition"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+                <input id="loginEmail" type="email" placeholder="Email" class="mt-5 w-full rounded-2xl border border-rose-500/15 bg-black/30 px-4 py-3 text-sm text-white outline-none focus:border-rose-500 transition" />
+                <input id="loginPassword" type="password" placeholder="Password" class="mt-3 w-full rounded-2xl border border-rose-500/15 bg-black/30 px-4 py-3 text-sm text-white outline-none focus:border-rose-500 transition" />
+                <button onclick="loginUser()" class="rose-btn mt-3 w-full rounded-2xl px-5 py-3 font-black"><span data-lang="login">Login</span></button>
+                <button onclick="signupUser()" class="mt-2 w-full rounded-2xl border border-rose-500/15 bg-white/5 px-5 py-3 text-sm font-bold text-rose-200 hover:bg-white/10 transition"><span data-lang="signup">Sign Up</span></button>
+                <button onclick="googleLogin()" class="mt-2 w-full rounded-2xl border border-rose-500/15 bg-white/5 px-5 py-3 text-sm font-bold text-rose-200 hover:bg-white/10 transition">
+                    <i class="fa-brands fa-google mr-2"></i> <span data-lang="googleSignin">Sign in with Google</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- CONTACT MODAL -->
+        <div id="contactModal" class="modal-bg fixed inset-0 z-[100] hidden items-center justify-center p-4">
+            <div class="glass w-full max-w-md rounded-3xl p-6">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <div class="text-xl font-black text-white">Contact & Support</div>
+                        <div class="text-xs text-gray-400">SL Sakura 🌸</div>
+                    </div>
+                    <button onclick="closeContact()" class="h-9 w-9 rounded-xl bg-white/5 hover:bg-white/10 transition"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+                <div class="mt-5 space-y-3">
+                    <a href="https://wa.me/94789995159" target="_blank" rel="noopener noreferrer" class="block rounded-2xl border border-green-500/15 bg-green-500/5 p-4 hover:bg-green-500/10 transition">
+                        <div class="font-bold text-green-300"><i class="fa-brands fa-whatsapp mr-2"></i> WhatsApp Support</div>
+                        <div class="mt-1 text-xs text-green-100/50">0789995159</div>
+                    </a>
+                    <a href="tel:+94789995159" class="block rounded-2xl border border-rose-500/15 bg-white/5 p-4 hover:bg-white/10 transition">
+                        <div class="font-bold text-white"><i class="fa-solid fa-phone mr-2 text-rose-400"></i> Direct Call</div>
+                        <div class="mt-1 text-xs text-gray-400">0789995159</div>
+                    </a>
+                    <a href="mailto:dilnathbudmina39@gmail.com" class="block rounded-2xl border border-purple-500/15 bg-purple-500/5 p-4 hover:bg-purple-500/10 transition">
+                        <div class="font-bold text-purple-300"><i class="fa-solid fa-envelope mr-2"></i> Email Support</div>
+                        <div class="mt-1 break-all text-xs text-purple-100/50">dilnathbudmina39@gmail.com</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- QUIZ MODAL -->
+        <div id="quizModal" class="modal-bg fixed inset-0 z-[100] hidden items-center justify-center p-4">
+            <div class="glass w-full max-w-2xl rounded-3xl p-6 max-h-[90vh] overflow-y-auto">
+                <div class="flex items-center justify-between mb-4">
+                    <h2 class="text-xl font-black text-white"><i class="fa-solid fa-brain mr-2 text-rose-400"></i> <span data-lang="quiz">Quiz</span></h2>
+                    <button onclick="closeQuiz()" class="h-9 w-9 rounded-xl bg-white/5 hover:bg-white/10 transition"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+                <div id="quizContainer"></div>
+            </div>
+        </div>
+
+        <!-- FLASHCARDS MODAL -->
+        <div id="flashcardModal" class="modal-bg fixed inset-0 z-[100] hidden items-center justify-center p-4">
+            <div class="glass w-full max-w-2xl rounded-3xl p-6 max-h-[90vh] overflow-y-auto">
+                <div class="flex items-center justify-between mb-4">
+                    <h2 class="text-xl font-black text-white"><i class="fa-solid fa-cards mr-2 text-rose-400"></i> <span data-lang="flashcards">Flashcards</span></h2>
+                    <button onclick="closeFlashcards()" class="h-9 w-9 rounded-xl bg-white/5 hover:bg-white/10 transition"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+                <div id="flashcardContainer"></div>
+            </div>
+        </div>
+
+        <!-- JLPT MOCK TEST MODAL -->
+        <div id="mockTestModal" class="modal-bg fixed inset-0 z-[100] hidden items-center justify-center p-4">
+            <div class="glass w-full max-w-2xl rounded-3xl p-6 max-h-[90vh] overflow-y-auto">
+                <div class="flex items-center justify-between mb-4">
+                    <h2 class="text-xl font-black text-white"><i class="fa-solid fa-file-pen mr-2 text-rose-400"></i> <span data-lang="mocktest">JLPT Mock Test</span></h2>
+                    <button onclick="closeMockTest()" class="h-9 w-9 rounded-xl bg-white/5 hover:bg-white/10 transition"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+                <div class="flex gap-2 mb-4 flex-wrap">
+                    <button onclick="openMockTest('N5')" class="rounded-xl border border-rose-500/15 bg-white/5 px-3 py-1.5 text-xs font-bold text-rose-200 hover:bg-white/10 transition">N5</button>
+                    <button onclick="openMockTest('N4')" class="rounded-xl border border-rose-500/15 bg-white/5 px-3 py-1.5 text-xs font-bold text-rose-200 hover:bg-white/10 transition">N4</button>
+                </div>
+                <div id="mockTestContainer"></div>
+            </div>
+        </div>
+
+        <!-- VOCABULARY MODAL -->
+        <div id="vocabularyModal" class="modal-bg fixed inset-0 z-[100] hidden items-center justify-center p-4">
+            <div class="glass w-full max-w-2xl rounded-3xl p-6 max-h-[90vh] overflow-y-auto">
+                <div class="flex items-center justify-between mb-4">
+                    <h2 class="text-xl font-black text-white"><i class="fa-solid fa-book-open mr-2 text-rose-400"></i> <span data-lang="vocabulary">Vocabulary Builder</span></h2>
+                    <button onclick="closeVocabulary()" class="h-9 w-9 rounded-xl bg-white/5 hover:bg-white/10 transition"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+                <div class="flex gap-2 mb-4 flex-wrap">
+                    <button onclick="openVocabulary('N5')" class="rounded-xl border border-rose-500/15 bg-white/5 px-3 py-1.5 text-xs font-bold text-rose-200 hover:bg-white/10 transition">N5</button>
+                    <button onclick="openVocabulary('N4')" class="rounded-xl border border-rose-500/15 bg-white/5 px-3 py-1.5 text-xs font-bold text-rose-200 hover:bg-white/10 transition">N4</button>
+                </div>
+                <div id="vocabularyContainer"></div>
+            </div>
+        </div>
+
+        <!-- LEADERBOARD MODAL -->
+        <div id="leaderboardModal" class="modal-bg fixed inset-0 z-[100] hidden items-center justify-center p-4">
+            <div class="glass w-full max-w-2xl rounded-3xl p-6 max-h-[90vh] overflow-y-auto">
+                <div class="flex items-center justify-between mb-4">
+                    <h2 class="text-xl font-black text-white"><i class="fa-solid fa-trophy mr-2 text-rose-400"></i> <span data-lang="leaderboard">Leaderboard</span></h2>
+                    <button onclick="closeLeaderboard()" class="h-9 w-9 rounded-xl bg-white/5 hover:bg-white/10 transition"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+                <div id="leaderboardContainer"></div>
+            </div>
+        </div>
+
+        <!-- CHATBOT MODAL -->
+        <div id="chatbotModal" class="modal-bg fixed inset-0 z-[100] hidden items-center justify-center p-4">
+            <div class="glass w-full max-w-md rounded-3xl p-6 max-h-[90vh]">
+                <div class="flex items-center justify-between mb-4">
+                    <h2 class="text-xl font-black text-white"><i class="fa-solid fa-robot mr-2 text-rose-400"></i> <span data-lang="chatbot">AI Chatbot</span></h2>
+                    <button onclick="toggleChatbot()" class="h-9 w-9 rounded-xl bg-white/5 hover:bg-white/10 transition"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+                <div id="chatbotMessages" class="chatbot-messages glass rounded-2xl p-3 mb-3">
+                    <div class="flex justify-start mb-3">
+                        <div class="glass px-4 py-3 rounded-2xl rounded-tl-none max-w-[80%] border border-rose-500/10">
+                            <span class="text-rose-400 text-xs font-bold">🌸 Sakura AI</span><br>
+                            <span class="text-white">Hello! I'm your Japanese learning assistant. Ask me anything about JLPT, vocabulary, grammar, or Japanese culture! 🇯🇵</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex gap-2">
+                    <input id="chatbotInput" type="text" placeholder="Type your question..." class="flex-1 rounded-2xl border border-rose-500/15 bg-black/30 px-4 py-3 text-sm text-white outline-none focus:border-rose-500 transition" onkeydown="if(event.key==='Enter') sendChatbotMessage()" />
+                    <button onclick="sendChatbotMessage()" class="rose-btn rounded-2xl px-4 py-3 text-sm font-black">Send</button>
+                </div>
+                <div class="mt-2 flex gap-1 flex-wrap">
+                    <button onclick="document.getElementById('chatbotInput').value='JLPT'; sendChatbotMessage()" class="text-xs bg-rose-500/10 px-2 py-1 rounded-full text-rose-300">JLPT</button>
+                    <button onclick="document.getElementById('chatbotInput').value='study tips'; sendChatbotMessage()" class="text-xs bg-rose-500/10 px-2 py-1 rounded-full text-rose-300">Study Tips</button>
+                    <button onclick="document.getElementById('chatbotInput').value='kanji'; sendChatbotMessage()" class="text-xs bg-rose-500/10 px-2 py-1 rounded-full text-rose-300">Kanji</button>
+                    <button onclick="document.getElementById('chatbotInput').value='grammar'; sendChatbotMessage()" class="text-xs bg-rose-500/10 px-2 py-1 rounded-full text-rose-300">Grammar</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- STUDY PROGRESS MODAL -->
+        <div id="progressModal" class="modal-bg fixed inset-0 z-[100] hidden items-center justify-center p-4">
+            <div class="glass w-full max-w-2xl rounded-3xl p-6 max-h-[90vh] overflow-y-auto">
+                <div class="flex items-center justify-between mb-4">
+                    <h2 class="text-xl font-black text-white"><i class="fa-solid fa-chart-line mr-2 text-rose-400"></i> <span data-lang="progress">Study Progress</span></h2>
+                    <button onclick="closeProgress()" class="h-9 w-9 rounded-xl bg-white/5 hover:bg-white/10 transition"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+                <div id="progressContainer"></div>
+            </div>
+        </div>
+
+        <!-- ADMIN LOGIN -->
+        <div id="adminLoginModal" class="modal-bg fixed inset-0 z-[100] hidden items-center justify-center p-4">
+            <div class="glass w-full max-w-sm rounded-3xl p-6">
+                <div class="flex items-center justify-between">
+                    <h2 class="text-xl font-black text-white">Admin Login</h2>
+                    <button onclick="closeAdminLogin()" class="h-9 w-9 rounded-xl bg-white/5 hover:bg-white/10 transition"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+                <input id="adminEmail" type="email" placeholder="Admin email" class="mt-5 w-full rounded-2xl border border-rose-500/15 bg-black/30 px-4 py-3 text-sm text-white outline-none focus:border-rose-500 transition" />
+                <input id="adminPassword" type="password" placeholder="Admin password" class="mt-3 w-full rounded-2xl border border-rose-500/15 bg-black/30 px-4 py-3 text-sm text-white outline-none focus:border-rose-500 transition" />
+                <button onclick="loginAdmin()" class="rose-btn mt-3 w-full rounded-2xl px-5 py-3 font-black">Login</button>
+            </div>
+        </div>
+
+        <!-- ADMIN PANEL -->
+        <div id="adminPanel" class="modal-bg fixed inset-0 z-[110] hidden overflow-y-auto p-4">
+            <div class="mx-auto my-5 max-w-6xl">
+                <div class="glass rounded-3xl p-5">
+
+                    <div class="flex items-center justify-between gap-3 flex-wrap">
+                        <div>
+                            <div class="text-xl font-black text-white">Admin Dashboard</div>
+                            <div class="text-xs text-gray-400">Manage Everything</div>
+                        </div>
+                        <div class="flex gap-2">
+                            <button onclick="exportData()" class="rounded-xl border border-green-500/20 bg-green-500/10 px-3 py-2 text-xs font-bold text-green-300 hover:bg-green-500/20 transition">
+                                <i class="fa-solid fa-download mr-1"></i> Backup
+                            </button>
+                            <button onclick="document.getElementById('importFile').click()" class="rounded-xl border border-yellow-500/20 bg-yellow-500/10 px-3 py-2 text-xs font-bold text-yellow-300 hover:bg-yellow-500/20 transition">
+                                <i class="fa-solid fa-upload mr-1"></i> Restore
+                            </button>
+                            <input type="file" id="importFile" accept=".json" class="hidden" onchange="importData(event)" />
+                            <label for="csvImport" class="rounded-xl border border-blue-500/20 bg-blue-500/10 px-3 py-2 text-xs font-bold text-blue-300 hover:bg-blue-500/20 transition cursor-pointer">
+                                <i class="fa-solid fa-file-csv mr-1"></i> CSV Import
+                            </label>
+                            <input type="file" id="csvImport" accept=".csv" class="hidden" onchange="importCSV(event)" />
+                            <button onclick="closeAdminPanel()" class="h-10 w-10 rounded-xl bg-white/5 hover:bg-white/10 transition"><i class="fa-solid fa-xmark"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- Admin Tabs -->
+                    <div class="mt-4 flex gap-2 overflow-x-auto border-b border-rose-500/10 pb-2">
+                        <button class="admin-tab active" data-tab="resources" onclick="switchAdminTab('resources')">
+                            <i class="fa-solid fa-book mr-2"></i> Resources
+                        </button>
+                        <button class="admin-tab" data-tab="news" onclick="switchAdminTab('news')">
+                            <i class="fa-solid fa-newspaper mr-2"></i> News
+                        </button>
+                        <button class="admin-tab" data-tab="ads" onclick="switchAdminTab('ads')">
+                            <i class="fa-solid fa-bullhorn mr-2"></i> Ads
+                        </button>
+                        <button class="admin-tab" data-tab="quiz" onclick="switchAdminTab('quiz')">
+                            <i class="fa-solid fa-brain mr-2"></i> Quiz
+                        </button>
+                        <button class="admin-tab" data-tab="flashcards" onclick="switchAdminTab('flashcards')">
+                            <i class="fa-solid fa-cards mr-2"></i> Flashcards
+                        </button>
+                        <button class="admin-tab" data-tab="mocktests" onclick="switchAdminTab('mocktests')">
+                            <i class="fa-solid fa-file-pen mr-2"></i> Mock Tests
+                        </button>
+                        <button class="admin-tab" data-tab="vocabulary" onclick="switchAdminTab('vocabulary')">
+                            <i class="fa-solid fa-book-open mr-2"></i> Vocabulary
+                        </button>
+                        <button class="admin-tab" data-tab="grammar" onclick="switchAdminTab('grammar')">
+                            <i class="fa-solid fa-book mr-2"></i> Grammar
+                        </button>
+                        <button class="admin-tab" data-tab="kanji" onclick="switchAdminTab('kanji')">
+                            <i class="fa-solid fa-pen mr-2"></i> Kanji
+                        </button>
+                        <button class="admin-tab" data-tab="listening" onclick="switchAdminTab('listening')">
+                            <i class="fa-solid fa-headphones mr-2"></i> Listening
+                        </button>
+                        <button class="admin-tab" data-tab="reading" onclick="switchAdminTab('reading')">
+                            <i class="fa-solid fa-book-open mr-2"></i> Reading
+                        </button>
+                        <button class="admin-tab" data-tab="lessonplans" onclick="switchAdminTab('lessonplans')">
+                            <i class="fa-solid fa-list-check mr-2"></i> Lesson Plans
+                        </button>
+                        <button class="admin-tab" data-tab="badges" onclick="switchAdminTab('badges')">
+                            <i class="fa-solid fa-medal mr-2"></i> Badges
+                        </button>
+                        <button class="admin-tab" data-tab="forum" onclick="switchAdminTab('forum')">
+                            <i class="fa-solid fa-comments mr-2"></i> Forum
+                        </button>
+                        <button class="admin-tab" data-tab="blog" onclick="switchAdminTab('blog')">
+                            <i class="fa-solid fa-blog mr-2"></i> Blog
+                        </button>
+                        <button class="admin-tab" data-tab="spacedrepetition" onclick="switchAdminTab('spacedrepetition')">
+                            <i class="fa-solid fa-rotate mr-2"></i> Spaced Repetition
+                        </button>
+                        <button class="admin-tab" data-tab="users" onclick="switchAdminTab('users')">
+                            <i class="fa-solid fa-users mr-2"></i> Users
+                        </button>
+                        <button class="admin-tab" data-tab="settings" onclick="switchAdminTab('settings')">
+                            <i class="fa-solid fa-gear mr-2"></i> Settings
+                        </button>
+                        <button class="admin-tab" data-tab="analytics" onclick="switchAdminTab('analytics')">
+                            <i class="fa-solid fa-chart-bar mr-2"></i> Analytics
+                        </button>
+                    </div>
+
+                    <!-- TAB: Resources -->
+                    <div id="tab-resources" class="admin-tab-content mt-4">
+                        <div class="rounded-3xl border border-rose-500/10 bg-black/20 p-5">
+                            <div class="mb-4 flex items-center justify-between flex-wrap gap-2">
+                                <div class="text-lg font-black text-white">📚 Manage Resources</div>
+                                <button onclick="toggleResourceForm()" class="rose-btn rounded-2xl px-4 py-2 text-sm font-black">
+                                    <i class="fa-solid fa-plus mr-2"></i> Add New
+                                </button>
+                            </div>
+                            <div id="resourceFormContainer" class="hidden rounded-3xl border border-rose-500/10 bg-black/20 p-5 mb-4">
+                                <div class="mb-4 flex items-center justify-between">
+                                    <div class="text-lg font-black text-white">Add / Edit Resource</div>
+                                    <button id="cancelEditBtn" onclick="cancelEditResource()" class="hidden rounded-xl border border-rose-500/15 bg-white/5 px-3 py-1 text-xs text-rose-200 hover:bg-white/10 transition">Cancel Edit</button>
+                                </div>
+                                <div class="grid gap-3 md:grid-cols-2">
+                                    <input id="resourceTitle" placeholder="Resource title" class="admin-input" />
+                                    <select id="resourceMainCategory" class="admin-input">
+                                        <option value="N5">N5</option>
+                                        <option value="N4">N4</option>
+                                        <option value="N3">N3</option>
+                                        <option value="N2">N2</option>
+                                        <option value="N1">N1</option>
+                                        <option value="SSW">SSW</option>
+                                        <option value="CLASSES">CLASSES</option>
+                                        <option value="SURVIVAL GUIDE">SURVIVAL GUIDE</option>
+                                    </select>
+                                    <select id="resourceSubCategory" class="admin-input"></select>
+                                    <input id="resourceLecturer" placeholder="Lecturer name" class="admin-input" />
+                                    <input id="resourceLecturerContact" value="0789995159" placeholder="Lecturer WhatsApp" class="admin-input" />
+                                    <select id="resourceMediaType" class="admin-input">
+                                        <option value="pdf">PDF</option>
+                                        <option value="audio">Audio</option>
+                                        <option value="video">Video</option>
+                                        <option value="youtube">YouTube</option>
+                                    </select>
+                                    <input id="resourcePreviewUrl" placeholder="Preview URL" class="admin-input md:col-span-2" />
+                                    <input id="resourceThumbnail" placeholder="Thumbnail URL (optional)" class="admin-input md:col-span-2" />
+                                    <textarea id="resourceDescription" rows="2" placeholder="Short description (optional)" class="admin-input md:col-span-2"></textarea>
+                                    <input id="resourceDownloadUrl" placeholder="Download URL (optional)" class="admin-input md:col-span-2" />
+                                </div>
+                                <p class="mt-3 text-[11px] text-rose-100/35">For YouTube: paste YouTube URL. For Google Drive: paste share link.</p>
+                                <button id="addResourceBtn" onclick="addResource()" class="rose-btn mt-4 rounded-2xl px-5 py-3 font-black"><i class="fa-solid fa-plus mr-2"></i> Add Resource</button>
+                                <button id="updateResourceBtn" onclick="updateResource()" class="hidden rose-btn mt-4 rounded-2xl px-5 py-3 font-black" style="background:linear-gradient(135deg,#f59e0b,#d97706);"><i class="fa-solid fa-pen mr-2"></i> Update Resource</button>
+                            </div>
+                            <div class="mt-4">
+                                <div class="flex gap-2 mb-3 flex-wrap">
+                                    <input id="adminSearch" placeholder="Search resources..." class="admin-input flex-1 min-w-[150px]" oninput="filterAdminResources()" />
+                                    <select id="adminCategoryFilter" class="admin-input w-auto" onchange="filterAdminResources()">
+                                        <option value="all">All Categories</option>
+                                        <option value="N5">N5</option>
+                                        <option value="N4">N4</option>
+                                        <option value="N3">N3</option>
+                                        <option value="N2">N2</option>
+                                        <option value="N1">N1</option>
+                                        <option value="SSW">SSW</option>
+                                        <option value="CLASSES">CLASSES</option>
+                                        <option value="SURVIVAL GUIDE">SURVIVAL GUIDE</option>
+                                    </select>
+                                    <button onclick="selectAllResources()" class="rounded-xl border border-rose-500/15 bg-white/5 px-3 py-2 text-xs text-rose-200 hover:bg-white/10 transition">Select All</button>
+                                    <button onclick="clearBulkSelection()" class="rounded-xl border border-rose-500/15 bg-white/5 px-3 py-2 text-xs text-rose-200 hover:bg-white/10 transition">Clear</button>
+                                    <button onclick="bulkDelete()" class="rounded-xl bg-red-500/10 px-3 py-2 text-xs font-bold text-red-300 hover:bg-red-500/20 transition">Delete Selected</button>
+                                </div>
+                                <div id="adminResourcesList" class="space-y-2 max-h-96 overflow-y-auto"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- TAB: News -->
+                    <div id="tab-news" class="admin-tab-content mt-4 hidden">
+                        <div class="rounded-3xl border border-rose-500/10 bg-black/20 p-5">
+                            <div class="mb-4 text-lg font-black text-white">📰 Manage News</div>
+                            <div class="grid gap-3">
+                                <input id="newsTitle" placeholder="News title" class="admin-input" />
+                                <select id="newsCategory" class="admin-input">
+                                    <option value="VISA">VISA</option>
+                                    <option value="JAPAN LIFE">JAPAN LIFE</option>
+                                    <option value="WORK">WORK</option>
+                                    <option value="STUDY">STUDY</option>
+                                    <option value="EXAMS">EXAMS</option>
+                                </select>
+                                <textarea id="newsDescription" rows="4" placeholder="Description" class="admin-input"></textarea>
+                                <input id="newsLink" placeholder="Article link (optional)" class="admin-input" />
+                            </div>
+                            <button onclick="addNews()" class="mt-4 rounded-2xl border border-rose-500/20 bg-rose-500/10 px-5 py-3 font-black text-rose-200 hover:bg-rose-500/20 transition"><i class="fa-solid fa-newspaper mr-2"></i> Publish Update</button>
+                            <div class="mt-4">
+                                <div id="adminNewsList" class="space-y-2 max-h-96 overflow-y-auto"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- TAB: Ads -->
+                    <div id="tab-ads" class="admin-tab-content mt-4 hidden">
+                        <div class="rounded-3xl border border-rose-500/10 bg-black/20 p-5">
+                            <div class="mb-4 text-lg font-black text-white">📢 Manage Advertisements (728×90)</div>
+                            <div class="grid gap-3">
+                                <input id="adTitle" placeholder="Ad title" class="admin-input" />
+                                <input id="adImageUrl" placeholder="Banner image URL (728×90 recommended)" class="admin-input" />
+                                <input id="adLink" placeholder="Ad website link" class="admin-input" />
+                                <select id="adPlacement" class="admin-input">
+                                    <option value="TOP">Top</option>
+                                    <option value="MIDDLE">Middle</option>
+                                    <option value="VIEWER">Resource Viewer</option>
+                                </select>
+                            </div>
+                            <button onclick="addAdvertisement()" class="mt-4 rounded-2xl border border-yellow-500/20 bg-yellow-500/10 px-5 py-3 font-black text-yellow-300 hover:bg-yellow-500/20 transition"><i class="fa-solid fa-bullhorn mr-2"></i> Publish Ad</button>
+                            <div class="mt-4">
+                                <div id="adminAdsList" class="space-y-2 max-h-96 overflow-y-auto"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- TAB: Quiz -->
+                    <div id="tab-quiz" class="admin-tab-content mt-4 hidden">
+                        <div class="rounded-3xl border border-rose-500/10 bg-black/20 p-5">
+                            <div class="mb-4 flex items-center justify-between flex-wrap gap-2">
+                                <div class="text-lg font-black text-white">🧠 Manage Quiz Questions</div>
+                                <button onclick="toggleQuizForm()" class="rose-btn rounded-2xl px-4 py-2 text-sm font-black">
+                                    <i class="fa-solid fa-plus mr-2"></i> Add Question
+                                </button>
+                            </div>
+                            <div id="quizFormContainer" class="hidden rounded-3xl border border-rose-500/10 bg-black/20 p-5 mb-4">
+                                <div class="mb-4 flex items-center justify-between">
+                                    <div class="text-lg font-black text-white">Add / Edit Quiz Question</div>
+                                    <button id="cancelQuizEditBtn" onclick="cancelEditQuiz()" class="hidden rounded-xl border border-rose-500/15 bg-white/5 px-3 py-1 text-xs text-rose-200 hover:bg-white/10 transition">Cancel Edit</button>
+                                </div>
+                                <div class="grid gap-3">
+                                    <input id="quizQuestion" placeholder="Enter question..." class="admin-input" />
+                                    <div class="grid gap-2 sm:grid-cols-2">
+                                        <input id="quizOption1" placeholder="Option 1" class="admin-input" />
+                                        <input id="quizOption2" placeholder="Option 2" class="admin-input" />
+                                        <input id="quizOption3" placeholder="Option 3" class="admin-input" />
+                                        <input id="quizOption4" placeholder="Option 4" class="admin-input" />
+                                    </div>
+                                    <select id="quizCorrect" class="admin-input">
+                                        <option value="0">Correct: Option 1</option>
+                                        <option value="1">Correct: Option 2</option>
+                                        <option value="2">Correct: Option 3</option>
+                                        <option value="3">Correct: Option 4</option>
+                                    </select>
+                                </div>
+                                <button id="addQuizBtn" onclick="addQuizQuestion()" class="rose-btn mt-4 rounded-2xl px-5 py-3 font-black">
+                                    <i class="fa-solid fa-plus mr-2"></i> Add Question
+                                </button>
+                                <button id="updateQuizBtn" onclick="updateQuizQuestion()" class="hidden rose-btn mt-4 rounded-2xl px-5 py-3 font-black" style="background:linear-gradient(135deg,#f59e0b,#d97706);">
+                                    <i class="fa-solid fa-pen mr-2"></i> Update Question
+                                </button>
+                            </div>
+                            <div id="adminQuizList" class="space-y-2 max-h-96 overflow-y-auto"></div>
+                        </div>
+                    </div>
+
+                    <!-- TAB: Flashcards -->
+                    <div id="tab-flashcards" class="admin-tab-content mt-4 hidden">
+                        <div class="rounded-3xl border border-rose-500/10 bg-black/20 p-5">
+                            <div class="mb-4 flex items-center justify-between flex-wrap gap-2">
+                                <div class="text-lg font-black text-white">🃏 Manage Flashcards</div>
+                                <button onclick="toggleFlashcardForm()" class="rose-btn rounded-2xl px-4 py-2 text-sm font-black">
+                                    <i class="fa-solid fa-plus mr-2"></i> Add Flashcard
+                                </button>
+                            </div>
+                            <div id="flashcardFormContainer" class="hidden rounded-3xl border border-rose-500/10 bg-black/20 p-5 mb-4">
+                                <div class="mb-4 flex items-center justify-between">
+                                    <div class="text-lg font-black text-white">Add / Edit Flashcard</div>
+                                    <button id="cancelFlashcardEditBtn" onclick="cancelEditFlashcard()" class="hidden rounded-xl border border-rose-500/15 bg-white/5 px-3 py-1 text-xs text-rose-200 hover:bg-white/10 transition">Cancel Edit</button>
+                                </div>
+                                <div class="grid gap-3">
+                                    <input id="flashcardFront" placeholder="Front (Question/Word)" class="admin-input" />
+                                    <input id="flashcardBack" placeholder="Back (Answer/Meaning)" class="admin-input" />
+                                    <select id="flashcardCategory" class="admin-input">
+                                        <option value="N5">N5</option>
+                                        <option value="N4">N4</option>
+                                        <option value="N3">N3</option>
+                                        <option value="N2">N2</option>
+                                        <option value="N1">N1</option>
+                                        <option value="General">General</option>
+                                    </select>
+                                </div>
+                                <button id="addFlashcardBtn" onclick="addFlashcard()" class="rose-btn mt-4 rounded-2xl px-5 py-3 font-black">
+                                    <i class="fa-solid fa-plus mr-2"></i> Add Flashcard
+                                </button>
+                                <button id="updateFlashcardBtn" onclick="updateFlashcard()" class="hidden rose-btn mt-4 rounded-2xl px-5 py-3 font-black" style="background:linear-gradient(135deg,#f59e0b,#d97706);">
+                                    <i class="fa-solid fa-pen mr-2"></i> Update Flashcard
+                                </button>
+                            </div>
+                            <div id="adminFlashcardList" class="space-y-2 max-h-96 overflow-y-auto"></div>
+                        </div>
+                    </div>
+
+                    <!-- TAB: Mock Tests -->
+                    <div id="tab-mocktests" class="admin-tab-content mt-4 hidden">
+                        <div class="rounded-3xl border border-rose-500/10 bg-black/20 p-5">
+                            <div class="mb-4 flex items-center justify-between flex-wrap gap-2">
+                                <div class="text-lg font-black text-white">📝 Manage Mock Tests</div>
+                                <button onclick="toggleMockTestForm()" class="rose-btn rounded-2xl px-4 py-2 text-sm font-black">
+                                    <i class="fa-solid fa-plus mr-2"></i> Add Mock Test
+                                </button>
+                            </div>
+                            <div id="mockTestFormContainer" class="hidden rounded-3xl border border-rose-500/10 bg-black/20 p-5 mb-4">
+                                <div class="mb-4 flex items-center justify-between">
+                                    <div class="text-lg font-black text-white">Add / Edit Mock Test</div>
+                                    <button onclick="cancelEditMockTest()" class="hidden rounded-xl border border-rose-500/15 bg-white/5 px-3 py-1 text-xs text-rose-200 hover:bg-white/10 transition">Cancel Edit</button>
+                                </div>
+                                <div class="grid gap-3">
+                                    <input id="mockTestTitle" placeholder="Test title" class="admin-input" />
+                                    <select id="mockTestLevel" class="admin-input">
+                                        <option value="N5">N5</option>
+                                        <option value="N4">N4</option>
+                                        <option value="N3">N3</option>
+                                        <option value="N2">N2</option>
+                                        <option value="N1">N1</option>
+                                    </select>
+                                    <div id="mockQuestionsContainer">
+                                        <div class="flex items-center justify-between">
+                                            <span class="text-sm font-bold text-rose-200">Questions</span>
+                                            <button onclick="addMockQuestionField()" class="text-xs bg-rose-500/10 px-3 py-1 rounded-full text-rose-300 hover:bg-rose-500/20 transition">
+                                                <i class="fa-solid fa-plus mr-1"></i> Add Question
+                                            </button>
+                                        </div>
+                                        <div id="mockQuestionsList" class="space-y-3 mt-2"></div>
+                                    </div>
+                                </div>
+                                <button id="addMockTestBtn" onclick="addMockTest()" class="rose-btn mt-4 rounded-2xl px-5 py-3 font-black">
+                                    <i class="fa-solid fa-plus mr-2"></i> Add Mock Test
+                                </button>
+                            </div>
+                            <div id="adminMockTestList" class="space-y-2 max-h-96 overflow-y-auto"></div>
+                        </div>
+                    </div>
+
+                    <!-- TAB: Vocabulary -->
+                    <div id="tab-vocabulary" class="admin-tab-content mt-4 hidden">
+                        <div class="rounded-3xl border border-rose-500/10 bg-black/20 p-5">
+                            <div class="mb-4 flex items-center justify-between flex-wrap gap-2">
+                                <div class="text-lg font-black text-white">📚 Manage Vocabulary</div>
+                                <button onclick="toggleVocabForm()" class="rose-btn rounded-2xl px-4 py-2 text-sm font-black">
+                                    <i class="fa-solid fa-plus mr-2"></i> Add Word
+                                </button>
+                            </div>
+                            <div id="vocabFormContainer" class="hidden rounded-3xl border border-rose-500/10 bg-black/20 p-5 mb-4">
+                                <div class="grid gap-3">
+                                    <input id="vocabJapanese" placeholder="Japanese word" class="admin-input" />
+                                    <input id="vocabReading" placeholder="Reading" class="admin-input" />
+                                    <input id="vocabMeaning" placeholder="Meaning" class="admin-input" />
+                                    <input id="vocabExample" placeholder="Example sentence" class="admin-input" />
+                                    <select id="vocabLevel" class="admin-input">
+                                        <option value="N5">N5</option>
+                                        <option value="N4">N4</option>
+                                        <option value="N3">N3</option>
+                                    </select>
+                                </div>
+                                <button onclick="addVocabularyWord()" class="rose-btn mt-4 rounded-2xl px-5 py-3 font-black">
+                                    <i class="fa-solid fa-plus mr-2"></i> Add Word
+                                </button>
+                            </div>
+                            <div id="adminVocabList" class="space-y-2 max-h-96 overflow-y-auto"></div>
+                        </div>
+                    </div>
+
+                    <!-- TAB: Grammar -->
+                    <div id="tab-grammar" class="admin-tab-content mt-4 hidden">
+                        <div class="rounded-3xl border border-rose-500/10 bg-black/20 p-5">
+                            <div class="mb-4 flex items-center justify-between flex-wrap gap-2">
+                                <div class="text-lg font-black text-white">📝 Manage Grammar</div>
+                                <button onclick="toggleGrammarForm()" class="rose-btn rounded-2xl px-4 py-2 text-sm font-black">
+                                    <i class="fa-solid fa-plus mr-2"></i> Add Grammar
+                                </button>
+                            </div>
+                            <div id="grammarFormContainer" class="hidden rounded-3xl border border-rose-500/10 bg-black/20 p-5 mb-4">
+                                <div class="grid gap-3">
+                                    <input id="grammarTitle" placeholder="Grammar point" class="admin-input" />
+                                    <input id="grammarLevel" placeholder="Level (e.g. N5)" class="admin-input" />
+                                    <textarea id="grammarExplanation" rows="3" placeholder="Explanation" class="admin-input"></textarea>
+                                    <input id="grammarExample" placeholder="Example sentence" class="admin-input" />
+                                </div>
+                                <button onclick="addGrammarPoint()" class="rose-btn mt-4 rounded-2xl px-5 py-3 font-black">
+                                    <i class="fa-solid fa-plus mr-2"></i> Add Grammar
+                                </button>
+                            </div>
+                            <div id="adminGrammarList" class="space-y-2 max-h-96 overflow-y-auto"></div>
+                        </div>
+                    </div>
+
+                    <!-- TAB: Kanji -->
+                    <div id="tab-kanji" class="admin-tab-content mt-4 hidden">
+                        <div class="rounded-3xl border border-rose-500/10 bg-black/20 p-5">
+                            <div class="mb-4 flex items-center justify-between flex-wrap gap-2">
+                                <div class="text-lg font-black text-white">🈴 Manage Kanji</div>
+                                <button onclick="toggleKanjiForm()" class="rose-btn rounded-2xl px-4 py-2 text-sm font-black">
+                                    <i class="fa-solid fa-plus mr-2"></i> Add Kanji
+                                </button>
+                            </div>
+                            <div id="kanjiFormContainer" class="hidden rounded-3xl border border-rose-500/10 bg-black/20 p-5 mb-4">
+                                <div class="grid gap-3">
+                                    <input id="kanjiChar" placeholder="Kanji character" class="admin-input" />
+                                    <input id="kanjiMeaning" placeholder="Meaning" class="admin-input" />
+                                    <input id="kanjiReading" placeholder="Reading" class="admin-input" />
+                                    <input id="kanjiLevel" placeholder="Level (e.g. N5)" class="admin-input" />
+                                </div>
+                                <button onclick="addKanji()" class="rose-btn mt-4 rounded-2xl px-5 py-3 font-black">
+                                    <i class="fa-solid fa-plus mr-2"></i> Add Kanji
+                                </button>
+                            </div>
+                            <div id="adminKanjiList" class="space-y-2 max-h-96 overflow-y-auto"></div>
+                        </div>
+                    </div>
+
+                    <!-- TAB: Listening -->
+                    <div id="tab-listening" class="admin-tab-content mt-4 hidden">
+                        <div class="rounded-3xl border border-rose-500/10 bg-black/20 p-5">
+                            <div class="mb-4 flex items-center justify-between flex-wrap gap-2">
+                                <div class="text-lg font-black text-white">🎧 Manage Listening</div>
+                                <button onclick="toggleListeningForm()" class="rose-btn rounded-2xl px-4 py-2 text-sm font-black">
+                                    <i class="fa-solid fa-plus mr-2"></i> Add Listening
+                                </button>
+                            </div>
+                            <div id="listeningFormContainer" class="hidden rounded-3xl border border-rose-500/10 bg-black/20 p-5 mb-4">
+                                <div class="grid gap-3">
+                                    <input id="listeningTitle" placeholder="Title" class="admin-input" />
+                                    <input id="listeningAudioUrl" placeholder="Audio URL" class="admin-input" />
+                                    <input id="listeningLevel" placeholder="Level (e.g. N5)" class="admin-input" />
+                                    <textarea id="listeningTranscript" rows="3" placeholder="Transcript" class="admin-input"></textarea>
+                                </div>
+                                <button onclick="addListening()" class="rose-btn mt-4 rounded-2xl px-5 py-3 font-black">
+                                    <i class="fa-solid fa-plus mr-2"></i> Add Listening
+                                </button>
+                            </div>
+                            <div id="adminListeningList" class="space-y-2 max-h-96 overflow-y-auto"></div>
+                        </div>
+                    </div>
+
+                    <!-- TAB: Reading -->
+                    <div id="tab-reading" class="admin-tab-content mt-4 hidden">
+                        <div class="rounded-3xl border border-rose-500/10 bg-black/20 p-5">
+                            <div class="mb-4 flex items-center justify-between flex-wrap gap-2">
+                                <div class="text-lg font-black text-white">📖 Manage Reading</div>
+                                <button onclick="toggleReadingForm()" class="rose-btn rounded-2xl px-4 py-2 text-sm font-black">
+                                    <i class="fa-solid fa-plus mr-2"></i> Add Reading
+                                </button>
+                            </div>
+                            <div id="readingFormContainer" class="hidden rounded-3xl border border-rose-500/10 bg-black/20 p-5 mb-4">
+                                <div class="grid gap-3">
+                                    <input id="readingTitle" placeholder="Title" class="admin-input" />
+                                    <input id="readingLevel" placeholder="Level (e.g. N5)" class="admin-input" />
+                                    <textarea id="readingContent" rows="4" placeholder="Content" class="admin-input"></textarea>
+                                    <textarea id="readingTranslation" rows="3" placeholder="Translation" class="admin-input"></textarea>
+                                </div>
+                                <button onclick="addReading()" class="rose-btn mt-4 rounded-2xl px-5 py-3 font-black">
+                                    <i class="fa-solid fa-plus mr-2"></i> Add Reading
+                                </button>
+                            </div>
+                            <div id="adminReadingList" class="space-y-2 max-h-96 overflow-y-auto"></div>
+                        </div>
+                    </div>
+
+                    <!-- TAB: Lesson Plans -->
+                    <div id="tab-lessonplans" class="admin-tab-content mt-4 hidden">
+                        <div class="rounded-3xl border border-rose-500/10 bg-black/20 p-5">
+                            <div class="mb-4 flex items-center justify-between flex-wrap gap-2">
+                                <div class="text-lg font-black text-white">📋 Manage Lesson Plans</div>
+                                <button onclick="toggleLessonPlanForm()" class="rose-btn rounded-2xl px-4 py-2 text-sm font-black">
+                                    <i class="fa-solid fa-plus mr-2"></i> Add Lesson Plan
+                                </button>
+                            </div>
+                            <div id="lessonPlanFormContainer" class="hidden rounded-3xl border border-rose-500/10 bg-black/20 p-5 mb-4">
+                                <div class="grid gap-3">
+                                    <input id="lessonPlanTitle" placeholder="Title" class="admin-input" />
+                                    <input id="lessonPlanLevel" placeholder="Level" class="admin-input" />
+                                    <textarea id="lessonPlanDescription" rows="3" placeholder="Description" class="admin-input"></textarea>
+                                    <input id="lessonPlanDuration" placeholder="Duration (e.g. 1 week)" class="admin-input" />
+                                </div>
+                                <button onclick="addLessonPlan()" class="rose-btn mt-4 rounded-2xl px-5 py-3 font-black">
+                                    <i class="fa-solid fa-plus mr-2"></i> Add Lesson Plan
+                                </button>
+                            </div>
+                            <div id="adminLessonPlanList" class="space-y-2 max-h-96 overflow-y-auto"></div>
+                        </div>
+                    </div>
+
+                    <!-- TAB: Badges -->
+                    <div id="tab-badges" class="admin-tab-content mt-4 hidden">
+                        <div class="rounded-3xl border border-rose-500/10 bg-black/20 p-5">
+                            <div class="mb-4 flex items-center justify-between flex-wrap gap-2">
+                                <div class="text-lg font-black text-white">🎖️ Manage Badges</div>
+                                <button onclick="toggleBadgeForm()" class="rose-btn rounded-2xl px-4 py-2 text-sm font-black">
+                                    <i class="fa-solid fa-plus mr-2"></i> Add Badge
+                                </button>
+                            </div>
+                            <div id="badgeFormContainer" class="hidden rounded-3xl border border-rose-500/10 bg-black/20 p-5 mb-4">
+                                <div class="grid gap-3">
+                                    <input id="badgeName" placeholder="Badge name" class="admin-input" />
+                                    <input id="badgeIcon" placeholder="Icon (e.g. 🏆)" class="admin-input" />
+                                    <input id="badgeRequirement" placeholder="Requirement" class="admin-input" />
+                                    <select id="badgeTier" class="admin-input">
+                                        <option value="bronze">Bronze</option>
+                                        <option value="silver">Silver</option>
+                                        <option value="gold">Gold</option>
+                                    </select>
+                                </div>
+                                <button onclick="addBadge()" class="rose-btn mt-4 rounded-2xl px-5 py-3 font-black">
+                                    <i class="fa-solid fa-plus mr-2"></i> Add Badge
+                                </button>
+                            </div>
+                            <div id="adminBadgeList" class="space-y-2 max-h-96 overflow-y-auto"></div>
+                        </div>
+                    </div>
+
+                    <!-- TAB: Forum -->
+                    <div id="tab-forum" class="admin-tab-content mt-4 hidden">
+                        <div class="rounded-3xl border border-rose-500/10 bg-black/20 p-5">
+                            <div class="mb-4 text-lg font-black text-white">💬 Manage Forum</div>
+                            <div id="adminForumList" class="space-y-2 max-h-96 overflow-y-auto"></div>
+                            <button onclick="clearAllForumPosts()" class="mt-4 rounded-2xl border border-red-500/15 bg-red-500/5 px-5 py-3 text-sm font-bold text-red-300 hover:bg-red-500/10 transition">
+                                <i class="fa-solid fa-trash mr-2"></i> Clear All Posts
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- TAB: Blog -->
+                    <div id="tab-blog" class="admin-tab-content mt-4 hidden">
+                        <div class="rounded-3xl border border-rose-500/10 bg-black/20 p-5">
+                            <div class="mb-4 flex items-center justify-between flex-wrap gap-2">
+                                <div class="text-lg font-black text-white">📝 Manage Blog</div>
+                                <button onclick="toggleBlogForm()" class="rose-btn rounded-2xl px-4 py-2 text-sm font-black">
+                                    <i class="fa-solid fa-plus mr-2"></i> Add Post
+                                </button>
+                            </div>
+                            <div id="blogFormContainer" class="hidden rounded-3xl border border-rose-500/10 bg-black/20 p-5 mb-4">
+                                <div class="grid gap-3">
+                                    <input id="blogTitle" placeholder="Title" class="admin-input" />
+                                    <input id="blogImage" placeholder="Image URL" class="admin-input" />
+                                    <textarea id="blogContent" rows="4" placeholder="Content" class="admin-input"></textarea>
+                                    <input id="blogCategory" placeholder="Category" class="admin-input" />
+                                </div>
+                                <button onclick="addBlogPost()" class="rose-btn mt-4 rounded-2xl px-5 py-3 font-black">
+                                    <i class="fa-solid fa-plus mr-2"></i> Add Post
+                                </button>
+                            </div>
+                            <div id="adminBlogList" class="space-y-2 max-h-96 overflow-y-auto"></div>
+                        </div>
+                    </div>
+
+                    <!-- TAB: Spaced Repetition -->
+                    <div id="tab-spacedrepetition" class="admin-tab-content mt-4 hidden">
+                        <div class="rounded-3xl border border-rose-500/10 bg-black/20 p-5">
+                            <div class="mb-4 text-lg font-black text-white">🔄 Manage Spaced Repetition</div>
+                            <p class="text-xs text-rose-100/45 mb-4">Users' vocabulary review progress</p>
+                            <div id="adminReviewList" class="space-y-2 max-h-96 overflow-y-auto"></div>
+                        </div>
+                    </div>
+
+                    <!-- TAB: Users -->
+                    <div id="tab-users" class="admin-tab-content mt-4 hidden">
+                        <div class="rounded-3xl border border-rose-500/10 bg-black/20 p-5">
+                            <div class="mb-4 text-lg font-black text-white">👥 User Management</div>
+                            <div class="flex gap-2 mb-3 flex-wrap">
+                                <input id="userSearch" placeholder="Search users..." class="admin-input flex-1 min-w-[150px]" oninput="filterUsers()" />
+                            </div>
+                            <div id="adminUsersList" class="space-y-2 max-h-96 overflow-y-auto"></div>
+                        </div>
+                    </div>
+
+                    <!-- TAB: Settings -->
+                    <div id="tab-settings" class="admin-tab-content mt-4 hidden">
+                        <div class="rounded-3xl border border-rose-500/10 bg-black/20 p-5">
+                            <div class="mb-2 text-lg font-black text-white">⚙️ Settings</div>
+                            <div class="grid gap-3">
+                                <input id="coffeeUrl" placeholder="Buy Me a Coffee URL" class="admin-input" />
+                                <div class="flex gap-2 flex-wrap">
+                                    <button onclick="saveCoffeeUrl()" class="rose-btn rounded-2xl px-5 py-3 text-sm font-black"><i class="fa-solid fa-floppy-disk mr-2"></i> Save</button>
+                                    <button onclick="removeCoffeeUrl()" class="rounded-2xl border border-red-500/15 bg-red-500/5 px-5 py-3 text-sm font-bold text-red-300 hover:bg-red-500/10 transition">Remove</button>
+                                    <button onclick="refreshAllData()" class="rounded-2xl border border-blue-500/20 bg-blue-500/10 px-5 py-3 text-sm font-black text-blue-300 hover:bg-blue-500/20 transition">
+                                        <i class="fa-solid fa-rotate mr-2"></i> Refresh All
+                                    </button>
+                                    <button onclick="generateSitemap()" class="rounded-2xl border border-green-500/20 bg-green-500/10 px-5 py-3 text-sm font-black text-green-300 hover:bg-green-500/20 transition">
+                                        <i class="fa-solid fa-sitemap mr-2"></i> Generate Sitemap
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- TAB: Analytics -->
+                    <div id="tab-analytics" class="admin-tab-content mt-4 hidden">
+                        <div class="rounded-3xl border border-rose-500/10 bg-black/20 p-5">
+                            <div class="mb-4 text-lg font-black text-white">📊 Analytics</div>
+                            <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                                <div class="glass rounded-2xl p-4 text-center">
+                                    <div class="text-2xl font-black text-rose-400" id="totalResources">0</div>
+                                    <div class="text-xs text-gray-400">Total Resources</div>
+                                </div>
+                                <div class="glass rounded-2xl p-4 text-center">
+                                    <div class="text-2xl font-black text-rose-400" id="totalViews">0</div>
+                                    <div class="text-xs text-gray-400">Total Views</div>
+                                </div>
+                                <div class="glass rounded-2xl p-4 text-center">
+                                    <div class="text-2xl font-black text-rose-400" id="totalDownloads">0</div>
+                                    <div class="text-xs text-gray-400">Total Downloads</div>
+                                </div>
+                                <div class="glass rounded-2xl p-4 text-center">
+                                    <div class="text-2xl font-black text-rose-400" id="totalUsers">0</div>
+                                    <div class="text-xs text-gray-400">Total Users</div>
+                                </div>
+                            </div>
+                            <div class="mt-4">
+                                <h4 class="font-bold mb-2 text-white">🏆 Top Resources</h4>
+                                <div id="topResourcesList" class="space-y-1"></div>
+                            </div>
+                            <div class="mt-4">
+                                <h4 class="font-bold mb-2 text-white">🔥 Daily Streak</h4>
+                                <div id="streakAnalytics" class="glass rounded-2xl p-4">
+                                    <div class="flex items-center gap-3">
+                                        <span class="text-3xl">🔥</span>
+                                        <div>
+                                            <div class="text-2xl font-black text-rose-400" id="streakAnalyticsCount">0</div>
+                                            <div class="text-xs text-gray-400">Day streak</div>
+                                        </div>
+                                    </div>
+                                    <div id="streakDots" class="mt-3 flex flex-wrap gap-1"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button onclick="logoutAdmin()" class="mt-6 w-full rounded-2xl border border-red-500/15 bg-red-500/5 px-5 py-3 text-sm font-bold text-red-300 hover:bg-red-500/10 transition">Logout Admin</button>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- TOAST -->
+        <div id="toast" class="fixed bottom-5 left-1/2 z-[200] hidden -translate-x-1/2 rounded-2xl border border-rose-500/20 bg-[#160509] px-5 py-3 text-sm font-bold shadow-2xl"></div>
+
+        <!-- FAB -->
+        <div class="fab">
+            <button onclick="scrollToTop()" class="fab-btn hover:bg-rose-500/20" title="Scroll to top">
+                <i class="fa-solid fa-arrow-up"></i>
+            </button>
+            <button onclick="openSearch()" class="fab-btn hover:bg-rose-500/20" title="Search">
+                <i class="fa-solid fa-search"></i>
+            </button>
+            <button onclick="toggleChatbot()" class="fab-btn hover:bg-rose-500/20" title="AI Chatbot">
+                <i class="fa-solid fa-robot"></i>
+            </button>
+            <button onclick="openQuiz()" class="fab-btn hover:bg-rose-500/20" title="Quiz">
+                <i class="fa-solid fa-brain"></i>
+            </button>
+            <button onclick="openFlashcards()" class="fab-btn hover:bg-rose-500/20" title="Flashcards">
+                <i class="fa-solid fa-cards"></i>
+            </button>
+            <button onclick="openContact()" class="fab-btn hover:bg-rose-500/20" title="Contact">
+                <i class="fa-solid fa-headset"></i>
+            </button>
+        </div>
+
+    </div>
+
+    <!-- FIREBASE -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js">
+    </script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js">
+    </script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js">
+    </script>
+
+    <script>
+      window.addEventListener('error', function(e){ console.error('SL Sakura startup error:', e.message, e.filename, e.lineno); });
+      window.addEventListener('unhandledrejection', function(e){ console.error('SL Sakura async error:', e.reason); });
+    </script>
+    <script src="js/language.js" defer></script>
+    <script src="js/core.js" defer></script>
+
+<!-- ================= SL SAKURA ADVANCED FEATURE PACK ================= -->
+<script src="js/features.js" defer></script>
+<!-- ================= END ADVANCED FEATURE PACK ================= -->
+<!-- ================= NEXT-GEN FEATURE PACK ================= -->
+
+<script src="js/member-features.js" defer></script>
+<!-- ================= END NEXT-GEN FEATURE PACK ================= -->
+
+<!-- ================= MEMBER HUB + ADMIN CONTROL PATCH ================= -->
+
+<script src="js/nextlevel.js" defer></script>
+<!-- ================= END MEMBER HUB + ADMIN CONTROL PATCH ================= -->
+
+<!-- ================= STABILITY + PERFORMANCE PATCH ================= -->
+
+<script src="js/performance.js" defer></script>
+<!-- ================= END STABILITY + PERFORMANCE PATCH ================= -->
+
+<!-- ================= NEXT LEVEL PLATFORM IMPROVEMENTS PATCH ================= -->
+
+<div id="sls-next-hub">
+  <div class="slsh-title">🚀 Next-Level Learning Hub</div><p class="slsh-sub">Personal dashboard, smart practice, AI-style study tools and community features.</p>
+  <div class="slsh-grid" id="sls-next-grid"></div>
+</div>
+<div id="sls-next-modal"><div class="box"><button class="x" aria-label="Close">×</button><div id="sls-next-content"></div></div></div>
+<script src="js/extras.js" defer></script>
+<script src="js/repair.js" defer></script>
+<!-- ================= END NEXT LEVEL PLATFORM IMPROVEMENTS PATCH ================= -->
+
+</body>
+</html>
