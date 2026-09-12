@@ -1,0 +1,2764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>SL Sakura 🌸 - Japanese Language Resources</title>
+<meta name="description" content="SL Sakura - Your Gateway to Japanese Language, Classes, Exams and Life in Japan" />
+<meta name="theme-color" content="#8b5cf6" />
+<link rel="preconnect" href="https://sl-sakura-default-rtdb.asia-southeast1.firebasedatabase.app" />
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+
+<style>
+:root{
+  --bg-0:#0a0a14;--bg-1:#12101f;--bg-2:#1a1530;
+  --surface:rgba(255,255,255,.05);--surface-2:rgba(255,255,255,.08);
+  --border:rgba(139,92,246,.18);--border-2:rgba(139,92,246,.35);
+  --violet:#8b5cf6;--violet-2:#a78bfa;--teal:#14b8a6;--teal-2:#5eead4;
+  --gold:#f59e0b;--gold-2:#fbbf24;--pink:#ec4899;--pink-2:#f472b6;
+  --text:#f1f0f8;--muted:#a1a1c2;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:radial-gradient(circle at 10% 5%,rgba(139,92,246,.18),transparent 40%),radial-gradient(circle at 95% 15%,rgba(20,184,166,.13),transparent 38%),radial-gradient(circle at 50% 100%,rgba(236,72,153,.10),transparent 45%),linear-gradient(180deg,var(--bg-0),var(--bg-1) 50%,var(--bg-2));color:var(--text);font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;min-height:100vh;overflow-x:hidden;line-height:1.6}
+.glass{background:var(--surface);border:1px solid var(--border);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);transition:.2s}
+.glass:hover{background:var(--surface-2);border-color:var(--border-2)}
+.neon{box-shadow:0 0 25px rgba(139,92,246,.15),inset 0 0 20px rgba(139,92,246,.03)}
+.grad-violet{background:linear-gradient(135deg,#8b5cf6,#6d28d9)}
+.grad-gold{background:linear-gradient(135deg,#f59e0b,#d97706)}
+.rose-btn{background:linear-gradient(135deg,#8b5cf6,#6d28d9);box-shadow:0 8px 25px rgba(139,92,246,.28);transition:all .3s cubic-bezier(.34,1.56,.64,1);border:none;cursor:pointer;color:#fff;padding:12px 24px;border-radius:16px;font-weight:700;font-size:14px}
+.rose-btn:hover{filter:brightness(1.1);transform:translateY(-2px) scale(1.02);box-shadow:0 12px 35px rgba(139,92,246,.45)}
+.rose-btn:disabled{opacity:.6;cursor:not-allowed;transform:none!important}
+.quick-btn{border-radius:999px;border:1px solid rgba(139,92,246,.30);background:rgba(139,92,246,.14);padding:8px 20px;font-size:13px;font-weight:800;color:#fff;transition:.2s;cursor:pointer}
+.quick-btn:hover{background:rgba(139,92,246,.28);transform:scale(1.05);border-color:rgba(139,92,246,.55)}
+.action-btn{background:rgba(139,92,246,.10);border:1px solid rgba(139,92,246,.22);border-radius:12px;padding:8px 16px;font-size:12px;font-weight:700;color:#fff;transition:.2s;cursor:pointer}
+.action-btn:hover{background:rgba(139,92,246,.22);border-color:rgba(139,92,246,.42);transform:translateY(-2px)}
+.tab-active{background:rgba(139,92,246,.22)!important;border-color:rgba(139,92,246,.65)!important;color:#fff!important;box-shadow:0 0 20px rgba(139,92,246,.18)}
+.text-white{color:#fff!important}
+.text-gray-300{color:#d1d5db!important}
+.text-gray-400{color:#9ca3af!important}
+.text-gray-500{color:#6b7280!important}
+.sakura{position:fixed;top:-30px;pointer-events:none;z-index:1;animation:fall linear infinite;opacity:.6}
+@keyframes fall{0%{transform:translateY(-30px) rotate(0) scale(.8)}100%{transform:translateY(110vh) rotate(720deg) scale(1.2)}}
+.page{position:relative;z-index:5}
+.drawer{transition:transform .3s cubic-bezier(.34,1.56,.64,1),opacity .3s ease}
+.drawer-hidden{transform:translateX(110%);opacity:0;pointer-events:none}
+.drawer-overlay{transition:opacity .3s ease}
+.modal-bg{background:rgba(5,5,15,.88);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+.media-frame{min-height:380px;background:#050510;border:1px solid var(--border);border-radius:20px;overflow:hidden;position:relative}
+.media-frame iframe,.media-frame video{width:100%;height:380px;border:0}
+@keyframes toastIn{from{opacity:0;transform:translateY(20px) scale(.95)}to{opacity:1;transform:translateY(0) scale(1)}}
+.toast{animation:toastIn .3s cubic-bezier(.34,1.56,.64,1)}
+.line-clamp-2{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.line-clamp-3{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.spinner{display:inline-block;width:30px;height:30px;border:3px solid rgba(139,92,246,.15);border-radius:50%;border-top-color:var(--violet);animation:spin .8s ease-in-out infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.loading-overlay{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:40px 20px;color:rgba(255,255,255,.5);font-size:14px}
+.ad-banner-728{width:100%;max-width:728px;min-height:90px;margin:0 auto;border-radius:12px;overflow:hidden;background:rgba(255,255,255,.03);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;position:relative}
+.ad-banner-728 img{width:100%;height:auto;max-height:90px;object-fit:contain}
+.ad-banner-728 .ad-label{position:absolute;top:4px;right:8px;font-size:8px;color:rgba(255,255,255,.25);background:rgba(0,0,0,.5);padding:2px 8px;border-radius:10px}
+.menu-item{width:100%;display:flex;align-items:center;gap:10px;border:1px solid var(--border);background:rgba(255,255,255,.035);border-radius:16px;padding:13px 14px;text-align:left;font-size:13px;font-weight:700;color:rgba(241,240,248,.85);transition:.2s;cursor:pointer}
+.menu-item:hover{background:rgba(139,92,246,.12);border-color:var(--border-2);transform:translateX(4px)}
+.submenu-item{display:block;padding:10px 12px;border-radius:12px;color:rgba(241,240,248,.7);font-size:12px;font-weight:700;text-decoration:none;transition:.2s}
+.submenu-item:hover{background:rgba(139,92,246,.12);color:#fff;transform:translateX(4px)}
+.exam-btn{display:flex;align-items:center;justify-content:center;gap:7px;border:1px solid rgba(20,184,166,.25);background:rgba(20,184,166,.08);border-radius:15px;padding:12px;color:#fff;font-size:12px;font-weight:900;transition:.2s;text-decoration:none}
+.exam-btn:hover{background:rgba(20,184,166,.20);border-color:rgba(20,184,166,.5);transform:translateY(-2px)}
+.exam-btn i{color:var(--teal-2)}
+.footer-link{border:1px solid var(--border);background:rgba(255,255,255,.03);padding:7px 10px;border-radius:10px;transition:.2s;text-decoration:none;color:rgba(241,240,248,.7);font-size:12px}
+.footer-link:hover{background:rgba(139,92,246,.12);border-color:var(--border-2);color:#fff}
+.admin-input{width:100%;border-radius:15px;border:1px solid var(--border);background:rgba(0,0,0,.35);padding:12px 14px;font-size:13px;outline:none;color:#fff;transition:.2s}
+.admin-input:focus{border-color:var(--violet);box-shadow:0 0 20px rgba(139,92,246,.15)}
+.admin-input:disabled{cursor:not-allowed;opacity:.5}
+.admin-input option{background:#1a1530}
+.admin-input::placeholder{color:rgba(255,255,255,.3)}
+.resource-card{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:20px;transition:all .4s cubic-bezier(.34,1.56,.64,1);overflow:hidden;position:relative}
+.resource-card:hover{transform:translateY(-8px) scale(1.01);box-shadow:0 20px 40px rgba(139,92,246,.18);border-color:var(--border-2)}
+.resource-card .media-badge{position:absolute;top:12px;right:12px;background:rgba(139,92,246,.65);backdrop-filter:blur(8px);padding:4px 12px;border-radius:20px;font-size:10px;font-weight:700;color:#fff;z-index:2}
+.resource-card .media-badge.teal{background:rgba(20,184,166,.65)}
+.resource-card .media-badge.gold{background:rgba(245,158,11,.65)}
+.resource-card .media-badge.pink{background:rgba(236,72,153,.65)}
+.bulk-checkbox{width:18px;height:18px;accent-color:var(--violet);cursor:pointer}
+.editing-mode{border-color:var(--gold)!important;box-shadow:0 0 30px rgba(245,158,11,.2)}
+.admin-tab{padding:10px 20px;border-radius:12px;font-weight:700;font-size:13px;cursor:pointer;transition:.2s;border:1px solid transparent;color:rgba(255,255,255,.5);background:transparent}
+.admin-tab:hover{background:rgba(255,255,255,.05);color:#fff}
+.admin-tab.active{background:rgba(139,92,246,.18);border-color:var(--border-2);color:#fff}
+.share-btn{display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border-radius:12px;font-size:13px;font-weight:700;border:none;cursor:pointer;transition:.3s;text-decoration:none;color:#fff}
+.share-btn:hover{transform:translateY(-2px) scale(1.05)}
+.share-btn.facebook{background:#1877f2}.share-btn.twitter{background:#000}
+.share-btn.whatsapp{background:#25d366}.share-btn.linkedin{background:#0a66c2}
+.share-btn.telegram{background:#0088cc}.share-btn.email{background:#ea4335}
+.share-btn.copy{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2)}
+::-webkit-scrollbar{width:6px;height:6px}
+::-webkit-scrollbar-track{background:rgba(255,255,255,.05);border-radius:10px}
+::-webkit-scrollbar-thumb{background:rgba(139,92,246,.4);border-radius:10px}
+::-webkit-scrollbar-thumb:hover{background:rgba(139,92,246,.65)}
+#progressBar{position:fixed;top:0;left:0;z-index:100;height:3px;background:linear-gradient(90deg,#8b5cf6,#14b8a6,#ec4899);width:0%;transition:width .1s ease}
+.fab{position:fixed;bottom:24px;right:24px;z-index:50;display:flex;flex-direction:column;gap:10px}
+.fab-btn{width:48px;height:48px;border-radius:50%;border:1px solid var(--border-2);background:rgba(10,10,20,.7);backdrop-filter:blur(12px);color:#fff;font-size:18px;cursor:pointer;transition:.3s;display:flex;align-items:center;justify-content:center}
+.fab-btn:hover{transform:scale(1.1);background:rgba(139,92,246,.25);border-color:var(--violet)}
+.quiz-option{display:block;width:100%;padding:12px 16px;border-radius:12px;border:1px solid var(--border);background:rgba(255,255,255,.03);color:var(--text);text-align:left;cursor:pointer;transition:.2s;font-weight:600}
+.quiz-option:hover{background:rgba(139,92,246,.12);border-color:var(--border-2)}
+.quiz-option.correct{background:rgba(16,185,129,.25);border-color:rgba(16,185,129,.5)}
+.quiz-option.wrong{background:rgba(239,68,68,.2);border-color:rgba(239,68,68,.4)}
+.quiz-progress{height:4px;background:rgba(139,92,246,.12);border-radius:4px;overflow:hidden}
+.quiz-progress-bar{height:100%;background:linear-gradient(90deg,#8b5cf6,#14b8a6);transition:width .3s ease}
+.flashcard{perspective:1000px;cursor:pointer;min-height:200px}
+.flashcard-inner{position:relative;width:100%;height:100%;min-height:200px;transition:transform .6s;transform-style:preserve-3d}
+.flashcard.flipped .flashcard-inner{transform:rotateY(180deg)}
+.flashcard-front,.flashcard-back{position:absolute;width:100%;min-height:200px;backface-visibility:hidden;border-radius:16px;padding:24px;display:flex;align-items:center;justify-content:center;text-align:center;font-size:1.1rem}
+.flashcard-front{background:rgba(139,92,246,.15);border:1px solid rgba(139,92,246,.3)}
+.flashcard-back{transform:rotateY(180deg);background:rgba(20,184,166,.15);border:1px solid rgba(20,184,166,.3)}
+.streak-dot{display:inline-block;width:12px;height:12px;border-radius:50%;margin:2px;background:rgba(255,255,255,.1)}
+.streak-dot.active{background:var(--gold-2);box-shadow:0 0 15px rgba(251,191,36,.4)}
+.streak-dot.today{background:var(--pink);box-shadow:0 0 20px rgba(236,72,153,.5);animation:pulse 1s infinite}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.3)}}
+.resource-thumb-wrap{height:9rem;width:100%;overflow:hidden;background:rgba(0,0,0,.25)}
+.resource-thumb-wrap img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s ease}
+.resource-card:hover .resource-thumb-wrap img{transform:scale(1.06)}
+.resource-thumb-placeholder{height:9rem;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,rgba(139,92,246,.25),rgba(20,184,166,.15),rgba(10,10,20,.9));border-bottom:1px solid var(--border);font-size:2.5rem}
+.load-more-status{text-align:center;font-size:.75rem;color:rgba(241,240,248,.5);margin-bottom:.75rem}
+.chatbot-messages{height:300px;overflow-y:auto;padding:10px}
+.leaderboard-item{display:flex;align-items:center;gap:12px;padding:10px 14px;border-radius:12px;border:1px solid var(--border);transition:.2s}
+.leaderboard-item:hover{background:rgba(255,255,255,.03);border-color:var(--border-2)}
+.leaderboard-item .rank{font-size:18px;font-weight:900;color:rgba(255,255,255,.3);min-width:32px;text-align:center}
+.leaderboard-item .rank.gold{color:var(--gold-2)}
+.leaderboard-item .rank.silver{color:#c0c0d0}
+.leaderboard-item .rank.bronze{color:#cd7f32}
+.vocab-card{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:16px;padding:20px;text-align:center;min-height:180px;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.grammar-card{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:16px;padding:16px;transition:.3s}
+.grammar-card:hover{transform:translateY(-4px);border-color:var(--border-2);box-shadow:0 10px 30px rgba(139,92,246,.15)}
+.kanji-card{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:16px;padding:16px;text-align:center;transition:.3s}
+.kanji-card:hover{transform:translateY(-4px);border-color:var(--border-2)}
+.kanji-card .kanji-char{font-size:3rem;font-weight:900;background:linear-gradient(135deg,#8b5cf6,#ec4899);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.forum-post{background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:16px;padding:16px;transition:.2s}
+.forum-post:hover{border-color:var(--border-2);background:rgba(255,255,255,.05)}
+.forum-post .post-meta{font-size:11px;color:rgba(255,255,255,.35)}
+.blog-card{background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:16px;padding:16px;transition:.3s;overflow:hidden}
+.blog-card:hover{transform:translateY(-4px);border-color:var(--border-2);box-shadow:0 10px 30px rgba(139,92,246,.12)}
+.blog-card .blog-image{width:100%;height:160px;object-fit:cover;border-radius:12px;margin-bottom:12px}
+.review-card{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:16px;padding:20px;text-align:center;min-height:150px;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:.3s}
+.review-card:hover{transform:translateY(-4px);border-color:var(--border-2)}
+.review-card .review-status{font-size:12px;color:rgba(255,255,255,.4);margin-top:8px}
+.badge-item{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border-radius:20px;font-size:12px;font-weight:700;border:1px solid var(--border);background:rgba(139,92,246,.08)}
+.badge-item.gold{border-color:var(--gold-2);background:rgba(245,158,11,.15);color:var(--gold-2)}
+.badge-item.silver{border-color:#c0c0d0;background:rgba(192,192,208,.15);color:#c0c0d0}
+.badge-item.bronze{border-color:#cd7f32;background:rgba(205,127,50,.15);color:#cd7f32}
+.onboarding-step{position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.75);backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;padding:16px}
+.onboarding-step.active{display:flex}
+.onboarding-card{background:linear-gradient(160deg,#1a1530,#0f0d20);border:1px solid var(--border-2);border-radius:24px;padding:30px;max-width:420px;text-align:center;box-shadow:0 30px 80px rgba(139,92,246,.25)}
+.feature-tile{border-radius:16px;padding:14px;text-align:center;cursor:pointer;transition:.3s;border:1px solid var(--border);background:linear-gradient(160deg,rgba(139,92,246,.10),rgba(255,255,255,.02))}
+.feature-tile:hover{transform:translateY(-4px);border-color:var(--border-2);box-shadow:0 12px 30px rgba(139,92,246,.18)}
+.feature-tile.teal{background:linear-gradient(160deg,rgba(20,184,166,.10),rgba(255,255,255,.02));border-color:rgba(20,184,166,.25)}
+.feature-tile.teal:hover{border-color:rgba(20,184,166,.5);box-shadow:0 12px 30px rgba(20,184,166,.18)}
+.feature-tile.gold{background:linear-gradient(160deg,rgba(245,158,11,.10),rgba(255,255,255,.02));border-color:rgba(245,158,11,.25)}
+.feature-tile.gold:hover{border-color:rgba(245,158,11,.5);box-shadow:0 12px 30px rgba(245,158,11,.18)}
+.feature-tile.pink{background:linear-gradient(160deg,rgba(236,72,153,.10),rgba(255,255,255,.02));border-color:rgba(236,72,153,.25)}
+.feature-tile.pink:hover{border-color:rgba(236,72,153,.5);box-shadow:0 12px 30px rgba(236,72,153,.18)}
+.sl-live-game{border:1px solid rgba(139,92,246,.3);background:linear-gradient(135deg,rgba(139,92,246,.12),rgba(20,184,166,.06));border-radius:24px;padding:18px;box-shadow:0 12px 32px rgba(139,92,246,.15)}
+.sl-live-game-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:14px;padding:11px 18px;font-weight:900;background:linear-gradient(135deg,#8b5cf6,#14b8a6);color:#fff;box-shadow:0 8px 20px rgba(139,92,246,.28);border:none;cursor:pointer}
+.sl-live-game-btn:hover{transform:translateY(-1px);filter:brightness(1.08)}
+.admin-resource-item{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:16px;padding:12px;transition:.2s}
+.admin-resource-item:hover{background:rgba(255,255,255,.08);border-color:var(--border-2)}
+@media(max-width:640px){
+  .media-frame iframe,.media-frame video{height:260px}
+  .ad-banner-728{min-height:60px}
+  .fab{bottom:16px;right:16px}
+  .fab-btn{width:42px;height:42px;font-size:15px}
+  .flashcard-front,.flashcard-back{font-size:.95rem;padding:16px;min-height:150px}
+  .kanji-card .kanji-char{font-size:2rem}
+}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<div id="progressBar"></div>
+<div id="sakuraLayer"></div>
+
+<!-- ONBOARDING -->
+<div id="onboardingOverlay" class="onboarding-step">
+  <div class="onboarding-card">
+    <div class="text-5xl mb-4">🌸</div>
+    <h2 class="text-2xl font-black mb-2 text-white">Welcome to SL Sakura!</h2>
+    <p class="text-gray-300 text-sm mb-4">Your gateway to Japanese language, JLPT resources, and life in Japan.</p>
+    <button onclick="closeOnboarding()" class="rose-btn mt-4 w-full"><i class="fa-solid fa-rocket mr-2"></i> Get Started</button>
+  </div>
+</div>
+
+<div class="page">
+
+<!-- HEADER -->
+<header class="sticky top-0 z-40 border-b border-violet-500/15 bg-[#0a0a14]/90 backdrop-blur-xl">
+  <div class="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-3">
+    <button onclick="goHome()" class="text-left hover:opacity-80 transition">
+      <div class="text-xl font-black text-white">SL Sakura <span class="text-violet-400">🌸</span></div>
+      <div class="hidden text-[10px] text-gray-400 sm:block">Your Gateway to Japanese Language, Classes & Life in Japan</div>
+    </button>
+    <div class="flex items-center gap-2">
+      <div id="streakDisplay" class="hidden items-center gap-1 bg-amber-500/12 px-3 py-2 rounded-xl border border-amber-500/25">
+        <span class="text-amber-400 text-lg">🔥</span>
+        <span id="streakCount" class="text-xs font-bold text-amber-200">0</span>
+      </div>
+      <button onclick="toggleUserMenu()" class="flex h-10 w-10 items-center justify-center rounded-xl border border-violet-500/30 bg-violet-500/10 text-violet-100 hover:bg-violet-500/20 transition">
+        <i id="userIcon" class="fa-solid fa-user"></i>
+      </button>
+      <button id="adminAccessBtn" onclick="openAdminLogin()" class="hidden sm:flex items-center gap-2 rounded-xl border border-teal-500/30 bg-teal-500/10 px-3 py-2 text-xs font-black text-teal-100 hover:bg-teal-500/20 transition">
+        <i class="fa-solid fa-shield-halved"></i><span>Admin</span>
+      </button>
+      <button id="themeToggleBtn" onclick="toggleTheme()" class="flex h-10 w-10 items-center justify-center rounded-xl border border-violet-500/30 bg-violet-500/10 text-violet-100 hover:bg-violet-500/20 transition">
+        <i id="themeToggleIcon" class="fa-solid fa-sun"></i>
+      </button>
+      <button id="menuBtn" onclick="openMenu()" class="flex h-10 w-10 items-center justify-center rounded-xl border border-violet-500/30 bg-violet-500/10 text-violet-100 hover:bg-violet-500/20 transition">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- USER MENU -->
+<div id="userMenu" class="hidden fixed right-4 top-16 z-50 glass rounded-2xl p-4 min-w-[220px] shadow-2xl">
+  <div id="userInfo" class="text-sm">
+    <div class="font-bold text-white">Guest</div>
+    <div class="text-xs text-gray-400">Not logged in</div>
+  </div>
+  <hr class="my-2 border-violet-500/15" />
+  <button onclick="openLoginModal()" id="loginBtn" class="w-full rounded-xl bg-violet-500/12 px-3 py-2 text-sm font-bold text-violet-200 hover:bg-violet-500/22 transition"><i class="fa-solid fa-sign-in-alt mr-2"></i> Login</button>
+  <button onclick="logoutUser()" id="logoutBtn" class="hidden w-full rounded-xl bg-red-500/12 px-3 py-2 text-sm font-bold text-red-300 hover:bg-red-500/22 transition"><i class="fa-solid fa-sign-out-alt mr-2"></i> Logout</button>
+  <button onclick="openFavorites()" class="w-full mt-1 rounded-xl bg-pink-500/12 px-3 py-2 text-sm font-bold text-pink-200 hover:bg-pink-500/22 transition"><i class="fa-solid fa-heart mr-2"></i> Favorites</button>
+  <button onclick="openStudyProgress()" class="w-full mt-1 rounded-xl bg-teal-500/12 px-3 py-2 text-sm font-bold text-teal-200 hover:bg-teal-500/22 transition"><i class="fa-solid fa-chart-line mr-2"></i> Progress</button>
+  <button onclick="openFlashcards()" class="w-full mt-1 rounded-xl bg-violet-500/12 px-3 py-2 text-sm font-bold text-violet-200 hover:bg-violet-500/22 transition"><i class="fa-solid fa-clone mr-2"></i> Flashcards</button>
+  <button onclick="openLeaderboard()" class="w-full mt-1 rounded-xl bg-amber-500/12 px-3 py-2 text-sm font-bold text-amber-200 hover:bg-amber-500/22 transition"><i class="fa-solid fa-trophy mr-2"></i> Leaderboard</button>
+  <button onclick="openBadges()" class="w-full mt-1 rounded-xl bg-amber-500/12 px-3 py-2 text-sm font-bold text-amber-200 hover:bg-amber-500/22 transition"><i class="fa-solid fa-medal mr-2"></i> Badges</button>
+  <button onclick="openForum()" class="w-full mt-1 rounded-xl bg-teal-500/12 px-3 py-2 text-sm font-bold text-teal-200 hover:bg-teal-500/22 transition"><i class="fa-solid fa-comments mr-2"></i> Forum</button>
+  <button onclick="openBlog()" class="w-full mt-1 rounded-xl bg-teal-500/12 px-3 py-2 text-sm font-bold text-teal-200 hover:bg-teal-500/22 transition"><i class="fa-solid fa-pen-nib mr-2"></i> Blog</button>
+  <button onclick="openSpacedRepetition()" class="w-full mt-1 rounded-xl bg-violet-500/12 px-3 py-2 text-sm font-bold text-violet-200 hover:bg-violet-500/22 transition"><i class="fa-solid fa-rotate mr-2"></i> Review</button>
+</div>
+
+<!-- SIDE MENU -->
+<div id="menuOverlay" onclick="closeMenu()" class="drawer-overlay fixed inset-0 z-50 hidden bg-black/70"></div>
+<aside id="sideMenu" class="drawer drawer-hidden fixed right-0 top-0 z-[60] h-full w-[310px] max-w-[90vw] overflow-y-auto border-l border-violet-500/25 bg-[#12101f] p-5 shadow-2xl">
+  <div class="mb-6 flex items-center justify-between">
+    <div><div class="text-lg font-black text-white">SL Sakura <span class="text-violet-400">🌸</span></div><div class="text-xs text-gray-400">Quick Menu</div></div>
+    <button onclick="closeMenu()" class="h-9 w-9 rounded-xl bg-white/5 text-violet-200 hover:bg-white/10 transition"><i class="fa-solid fa-xmark"></i></button>
+  </div>
+  <div class="space-y-2">
+    <button onclick="menuSearch()" class="menu-item">🔍 Search Resources</button>
+    <button onclick="menuResources()" class="menu-item">📚 Resources</button>
+    <button onclick="menuNews()" class="menu-item">📰 Japan Updates</button>
+    <button onclick="openAdminLogin(); closeMenu();" class="menu-item">🛡️ Admin Panel</button>
+    <button onclick="openForum()" class="menu-item">💬 Forum</button>
+    <button onclick="openBlog()" class="menu-item">📝 Blog</button>
+    <button onclick="openSpacedRepetition()" class="menu-item">🔄 Review</button>
+    <div class="rounded-2xl border border-violet-500/15 bg-white/[.025] p-2">
+      <div class="px-3 py-2 text-sm font-black text-violet-200">📖 Learning Tools</div>
+      <button onclick="openGrammarGuide()" class="submenu-item">📝 Grammar Guide</button>
+      <button onclick="openKanjiDictionary()" class="submenu-item">🈴 Kanji Dictionary</button>
+      <button onclick="openListeningPractice()" class="submenu-item">🎧 Listening Practice</button>
+      <button onclick="openReadingPractice()" class="submenu-item">📖 Reading Practice</button>
+      <button onclick="openLessonPlans()" class="submenu-item">📋 Lesson Plans</button>
+    </div>
+    <div class="rounded-2xl border border-teal-500/15 bg-teal-500/[.025] p-2">
+      <div class="px-3 py-2 text-sm font-black text-teal-200">📝 Exam Websites</div>
+      <a href="https://www.jlpt.jp/e/" target="_blank" rel="noopener" class="submenu-item">JLPT</a>
+      <a href="https://www.nat-test.com/" target="_blank" rel="noopener" class="submenu-item">NAT</a>
+      <a href="https://jlct.jp/en/" target="_blank" rel="noopener" class="submenu-item">JLCT</a>
+      <a href="https://www.jpf.go.jp/jft-basic/e/" target="_blank" rel="noopener" class="submenu-item">JFT-Basic</a>
+    </div>
+    <button onclick="openContact(); closeMenu()" class="menu-item">📧 Contact / Email</button>
+    <a href="https://wa.me/94789995159" target="_blank" rel="noopener" class="menu-item">📱 WhatsApp Support</a>
+    <button onclick="openFlashcards()" class="menu-item">🃏 Flashcards</button>
+    <button onclick="openMockTest('N5')" class="menu-item">📝 JLPT Mock Test</button>
+    <button onclick="openVocabulary('N5')" class="menu-item">📚 Vocabulary</button>
+    <button onclick="openQuiz()" class="menu-item">🧠 Quiz</button>
+    <button onclick="openLeaderboard()" class="menu-item">🏆 Leaderboard</button>
+    <button onclick="openBadges()" class="menu-item">🎖️ Badges</button>
+    <button onclick="toggleChatbot()" class="menu-item">🤖 AI Chatbot</button>
+  </div>
+  <div class="mt-8 rounded-2xl border border-violet-500/15 bg-violet-500/5 p-4">
+    <div class="text-xs text-violet-300">Support</div>
+    <div class="mt-1 text-sm font-bold text-white">0789995159</div>
+    <div class="mt-1 break-all text-xs text-violet-100/45">dilnathbudmina39@gmail.com</div>
+  </div>
+</aside>
+
+<!-- HOME -->
+<main id="homePage">
+  <section class="mx-auto max-w-7xl px-4 pb-5 pt-8">
+    <div class="glass neon rounded-3xl p-6 text-center sm:p-10">
+      <div class="mb-3 text-5xl animate-bounce">🌸</div>
+      <h1 class="text-3xl font-black sm:text-5xl text-white">Learn Japanese. <span class="bg-gradient-to-r from-violet-400 via-teal-400 to-pink-400 bg-clip-text text-transparent">Build Your Future.</span></h1>
+      <p class="mx-auto mt-4 max-w-2xl text-sm leading-6 text-gray-300 sm:text-base">Japanese language resources, JLPT, SSW, classes, exam preparation and useful Japan life information.</p>
+
+      <div class="mt-6 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+        <div class="feature-tile" onclick="menuResources()"><div class="text-3xl">📚</div><div class="text-sm font-bold mt-1 text-white">Resources</div><div class="text-[11px] text-gray-400">JLPT N5-N1</div></div>
+        <div class="feature-tile pink" onclick="document.getElementById('slLiveQuizGame')?.scrollIntoView({behavior:'smooth',block:'center'})"><div class="text-3xl">🎮</div><div class="text-sm font-bold mt-1 text-white">Live Quiz</div><div class="text-[11px] text-gray-400">Join game</div></div>
+        <div class="feature-tile teal" onclick="openFlashcards()"><div class="text-3xl">🃏</div><div class="text-sm font-bold mt-1 text-white">Flashcards</div><div class="text-[11px] text-gray-400">Study anywhere</div></div>
+        <div class="feature-tile gold" onclick="openMockTest('N5')"><div class="text-3xl">📝</div><div class="text-sm font-bold mt-1 text-white">Mock Tests</div><div class="text-[11px] text-gray-400">JLPT practice</div></div>
+        <div class="feature-tile" onclick="openVocabulary('N5')"><div class="text-3xl">📚</div><div class="text-sm font-bold mt-1 text-white">Vocabulary</div><div class="text-[11px] text-gray-400">Build words</div></div>
+        <div class="feature-tile gold" onclick="openLeaderboard()"><div class="text-3xl">🏆</div><div class="text-sm font-bold mt-1 text-white">Leaderboard</div><div class="text-[11px] text-gray-400">Compete</div></div>
+        <div class="feature-tile teal" onclick="toggleChatbot()"><div class="text-3xl">🤖</div><div class="text-sm font-bold mt-1 text-white">AI Chatbot</div><div class="text-[11px] text-gray-400">Ask anything</div></div>
+        <div class="feature-tile pink"><div class="text-3xl">🔥</div><div class="text-sm font-bold mt-1 text-white">Daily Streak</div><div class="text-[11px] text-gray-400">Stay consistent</div></div>
+        <div class="feature-tile" onclick="openGrammarGuide()"><div class="text-3xl">📝</div><div class="text-sm font-bold mt-1 text-white">Grammar</div><div class="text-[11px] text-gray-400">JLPT grammar</div></div>
+        <div class="feature-tile" onclick="openKanjiDictionary()"><div class="text-3xl">🈴</div><div class="text-sm font-bold mt-1 text-white">Kanji</div><div class="text-[11px] text-gray-400">Dictionary</div></div>
+        <div class="feature-tile teal" onclick="openListeningPractice()"><div class="text-3xl">🎧</div><div class="text-sm font-bold mt-1 text-white">Listening</div><div class="text-[11px] text-gray-400">Practice</div></div>
+        <div class="feature-tile teal" onclick="openReadingPractice()"><div class="text-3xl">📖</div><div class="text-sm font-bold mt-1 text-white">Reading</div><div class="text-[11px] text-gray-400">Practice</div></div>
+      </div>
+
+      <div id="loginFeatures" class="mt-6 glass rounded-2xl p-4 border border-violet-500/20">
+        <div class="flex items-center justify-between flex-wrap gap-2">
+          <div class="flex items-center gap-2">
+            <span class="text-2xl">🔐</span>
+            <div class="text-left">
+              <div class="text-sm font-bold text-white">Login to Unlock More!</div>
+              <div class="text-xs text-gray-400">Personalized learning experience</div>
+            </div>
+          </div>
+          <button onclick="openLoginModal()" class="rose-btn rounded-xl px-4 py-2 text-sm font-black"><i class="fa-solid fa-sign-in-alt mr-2"></i> Login / Sign Up</button>
+        </div>
+      </div>
+
+      <div id="userDashboard" class="mt-6 hidden glass rounded-2xl p-4 border border-violet-500/20">
+        <div class="flex items-center gap-3 mb-3">
+          <div class="text-3xl">👤</div>
+          <div class="text-left">
+            <div class="text-sm font-bold text-white" id="userDisplayName">User</div>
+            <div class="text-xs text-gray-400" id="userEmail">user@email.com</div>
+          </div>
+          <button onclick="logoutUser()" class="ml-auto text-xs bg-red-500/12 px-3 py-1 rounded-full text-red-300 hover:bg-red-500/22 transition"><i class="fa-solid fa-sign-out-alt mr-1"></i> Logout</button>
+        </div>
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+          <div class="glass rounded-xl p-2 text-center border border-amber-500/15"><div class="text-xl font-black text-amber-400" id="userStreak">0</div><div class="text-[9px] text-gray-400">🔥 Streak</div></div>
+          <div class="glass rounded-xl p-2 text-center border border-pink-500/15"><div class="text-xl font-black text-pink-400" id="userFavorites">0</div><div class="text-[9px] text-gray-400">❤️ Favorites</div></div>
+          <div class="glass rounded-xl p-2 text-center border border-violet-500/15"><div class="text-xl font-black text-violet-400" id="userViewed">0</div><div class="text-[9px] text-gray-400">📚 Viewed</div></div>
+          <div class="glass rounded-xl p-2 text-center border border-teal-500/15"><div class="text-xl font-black text-teal-400" id="userBadges">0</div><div class="text-[9px] text-gray-400">🎖️ Badges</div></div>
+        </div>
+      </div>
+
+      <div class="mt-5 flex flex-wrap justify-center gap-2">
+        <button onclick="selectMain('N5')" class="quick-btn">N5</button>
+        <button onclick="selectMain('N4')" class="quick-btn">N4</button>
+        <button onclick="selectMain('N3')" class="quick-btn">N3</button>
+        <button onclick="selectMain('N2')" class="quick-btn">N2</button>
+        <button onclick="selectMain('N1')" class="quick-btn">N1</button>
+      </div>
+
+      <section id="slLiveQuizGame" class="sl-live-game text-left hidden mt-4">
+        <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <div>
+            <div class="text-xs font-black uppercase tracking-widest text-violet-300">🎮 Live Quiz Game</div>
+            <h3 id="liveQuizGameTitle" class="mt-1 text-xl font-black text-white">Live Quiz Game</h3>
+            <p id="liveQuizGameDescription" class="mt-1 text-sm text-gray-400">Join the live quiz.</p>
+            <div id="liveQuizPasscodeWrap" class="mt-3 hidden text-sm text-gray-300"><span class="text-gray-500">Passcode:</span> <strong id="liveQuizPasscode" class="text-violet-300 tracking-widest"></strong></div>
+          </div>
+          <button id="liveQuizJoinBtn" type="button" class="sl-live-game-btn"><i class="fa-solid fa-gamepad"></i> Join Game</button>
+        </div>
+      </section>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-7xl px-4 pb-5">
+    <div id="topAd728" class="ad-banner-728"><div class="text-center text-violet-100/25 text-sm p-4">📢 Advertisement Space</div></div>
+  </section>
+
+  <section id="searchSection" class="mx-auto max-w-7xl px-4 pb-4">
+    <div class="relative">
+      <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-violet-400"></i>
+      <input id="resourceSearch" type="search" placeholder="Search resources..." class="w-full rounded-2xl border border-violet-500/25 bg-black/40 py-4 pl-12 pr-4 text-sm text-white outline-none focus:border-violet-500 focus:ring-2 focus:ring-violet-500/20 transition" />
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-7xl px-4 pb-5">
+    <div class="glass rounded-3xl p-4">
+      <div class="mb-3 text-xs font-black uppercase tracking-widest text-teal-300">Official Exam Websites</div>
+      <div class="grid grid-cols-2 gap-2 sm:grid-cols-4">
+        <a href="https://www.jlpt.jp/e/" target="_blank" rel="noopener" class="exam-btn"><i class="fa-solid fa-language"></i> JLPT</a>
+        <a href="https://www.nat-test.com/" target="_blank" rel="noopener" class="exam-btn"><i class="fa-solid fa-file-pen"></i> NAT</a>
+        <a href="https://jlct.jp/en/" target="_blank" rel="noopener" class="exam-btn"><i class="fa-solid fa-book-open"></i> JLCT</a>
+        <a href="https://www.jpf.go.jp/jft-basic/e/" target="_blank" rel="noopener" class="exam-btn"><i class="fa-solid fa-globe"></i> JFT</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="resourcesSection" class="mx-auto max-w-7xl px-4">
+    <div id="mainTabs" class="flex gap-2 overflow-x-auto pb-3"></div>
+    <div id="subTabs" class="flex flex-wrap gap-2 pb-5"></div>
+  </section>
+
+  <section class="mx-auto max-w-7xl px-4 pb-5">
+    <div id="middleAd728" class="ad-banner-728"><div class="text-center text-violet-100/25 text-sm p-4">📢 Advertisement Space</div></div>
+  </section>
+
+  <section class="mx-auto max-w-7xl px-4 pb-12">
+    <div class="mb-5 flex items-end justify-between gap-4 flex-wrap">
+      <div>
+        <p class="text-xs font-black uppercase tracking-widest text-violet-400">Resource Library</p>
+        <h2 class="mt-1 text-2xl font-black text-white">Available Resources</h2>
+      </div>
+      <div class="flex items-center gap-2">
+        <select id="resourceSort" onchange="changeResourceSort(this.value)" class="rounded-full border border-violet-500/20 bg-white/5 px-3 py-1 text-xs text-violet-200/80 outline-none">
+          <option value="newest">Newest</option>
+          <option value="popular">Most viewed</option>
+          <option value="title">A–Z</option>
+        </select>
+        <div class="rounded-full border border-violet-500/20 bg-white/5 px-3 py-1 text-xs text-violet-200/70">
+          <i class="fa-solid fa-book mr-1"></i> <span id="resourceCountText">0</span> loaded
+        </div>
+      </div>
+    </div>
+    <div id="resourceLoading" class="loading-overlay hidden"><div class="spinner"></div><span>Loading resources...</span></div>
+    <div id="resourceGrid" class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3"></div>
+    <div id="loadMoreWrap" class="mt-6 hidden flex-col items-center justify-center">
+      <div id="loadMoreStatus" class="load-more-status"></div>
+      <button id="loadMoreBtn" onclick="loadMoreResources()" class="rose-btn rounded-2xl px-8 py-3 text-sm font-black text-white"><i class="fa-solid fa-plus mr-2"></i> Load More Resources</button>
+    </div>
+  </section>
+
+  <!-- Learning sections -->
+  <section id="grammarSection" class="mx-auto max-w-7xl px-4 pb-12 hidden">
+    <div class="glass neon rounded-3xl p-5">
+      <div class="flex items-center justify-between gap-4 mb-4"><div><p class="text-xs font-black uppercase tracking-widest text-violet-400">Learning</p><h2 class="mt-1 text-2xl font-black text-white">📝 Grammar Guide</h2></div><button onclick="closeGrammarGuide()" class="text-violet-100/50 hover:text-violet-300 transition"><i class="fa-solid fa-times text-xl"></i></button></div>
+      <div id="grammarGrid" class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3"></div>
+    </div>
+  </section>
+
+  <section id="kanjiSection" class="mx-auto max-w-7xl px-4 pb-12 hidden">
+    <div class="glass neon rounded-3xl p-5">
+      <div class="flex items-center justify-between gap-4 mb-4"><div><p class="text-xs font-black uppercase tracking-widest text-violet-400">Learning</p><h2 class="mt-1 text-2xl font-black text-white">🈴 Kanji Dictionary</h2></div><button onclick="closeKanjiDictionary()" class="text-violet-100/50 hover:text-violet-300 transition"><i class="fa-solid fa-times text-xl"></i></button></div>
+      <div class="relative mb-4"><i class="fa-solid fa-search absolute left-4 top-1/2 -translate-y-1/2 text-violet-400"></i><input id="kanjiSearch" type="text" placeholder="Search kanji..." class="w-full rounded-2xl border border-violet-500/25 bg-black/40 py-4 pl-12 pr-4 text-sm text-white outline-none focus:border-violet-500 transition" oninput="filterKanji()" /></div>
+      <div id="kanjiGrid" class="grid gap-4 sm:grid-cols-3 lg:grid-cols-4"></div>
+    </div>
+  </section>
+
+  <section id="listeningSection" class="mx-auto max-w-7xl px-4 pb-12 hidden">
+    <div class="glass neon rounded-3xl p-5">
+      <div class="flex items-center justify-between gap-4 mb-4"><div><p class="text-xs font-black uppercase tracking-widest text-teal-400">Practice</p><h2 class="mt-1 text-2xl font-black text-white">🎧 Listening Practice</h2></div><button onclick="closeListeningPractice()" class="text-violet-100/50 hover:text-violet-300 transition"><i class="fa-solid fa-times text-xl"></i></button></div>
+      <div id="listeningGrid" class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3"></div>
+    </div>
+  </section>
+
+  <section id="readingSection" class="mx-auto max-w-7xl px-4 pb-12 hidden">
+    <div class="glass neon rounded-3xl p-5">
+      <div class="flex items-center justify-between gap-4 mb-4"><div><p class="text-xs font-black uppercase tracking-widest text-teal-400">Practice</p><h2 class="mt-1 text-2xl font-black text-white">📖 Reading Practice</h2></div><button onclick="closeReadingPractice()" class="text-violet-100/50 hover:text-violet-300 transition"><i class="fa-solid fa-times text-xl"></i></button></div>
+      <div id="readingGrid" class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3"></div>
+    </div>
+  </section>
+
+  <section id="lessonPlansSection" class="mx-auto max-w-7xl px-4 pb-12 hidden">
+    <div class="glass neon rounded-3xl p-5">
+      <div class="flex items-center justify-between gap-4 mb-4"><div><p class="text-xs font-black uppercase tracking-widest text-violet-400">Learning</p><h2 class="mt-1 text-2xl font-black text-white">📋 Lesson Plans</h2></div><button onclick="closeLessonPlans()" class="text-violet-100/50 hover:text-violet-300 transition"><i class="fa-solid fa-times text-xl"></i></button></div>
+      <div id="lessonPlansGrid" class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3"></div>
+    </div>
+  </section>
+
+  <section id="badgesSection" class="mx-auto max-w-7xl px-4 pb-12 hidden">
+    <div class="glass neon rounded-3xl p-5">
+      <div class="flex items-center justify-between gap-4 mb-4"><div><p class="text-xs font-black uppercase tracking-widest text-amber-400">Achievements</p><h2 class="mt-1 text-2xl font-black text-white">🎖️ Your Badges</h2></div><button onclick="closeBadges()" class="text-violet-100/50 hover:text-violet-300 transition"><i class="fa-solid fa-times text-xl"></i></button></div>
+      <div id="badgesGrid" class="flex flex-wrap gap-3"></div>
+    </div>
+  </section>
+
+  <section id="forumSection" class="mx-auto max-w-7xl px-4 pb-12 hidden">
+    <div class="glass neon rounded-3xl p-5">
+      <div class="flex items-center justify-between gap-4 mb-4"><div><p class="text-xs font-black uppercase tracking-widest text-teal-400">Community</p><h2 class="mt-1 text-2xl font-black text-white">💬 Discussion Forum</h2></div><button onclick="closeForum()" class="text-violet-100/50 hover:text-violet-300 transition"><i class="fa-solid fa-times text-xl"></i></button></div>
+      <div class="mb-4 flex gap-2"><input id="forumPostInput" placeholder="Start a discussion..." class="flex-1 rounded-2xl border border-violet-500/20 bg-black/40 px-4 py-3 text-sm text-white outline-none focus:border-violet-500 transition" /><button onclick="addForumPost()" class="rose-btn rounded-2xl px-4 py-3 text-sm font-black">Post</button></div>
+      <div id="forumPosts" class="space-y-3 max-h-96 overflow-y-auto"></div>
+    </div>
+  </section>
+
+  <section id="blogSection" class="mx-auto max-w-7xl px-4 pb-12 hidden">
+    <div class="glass neon rounded-3xl p-5">
+      <div class="flex items-center justify-between gap-4 mb-4"><div><p class="text-xs font-black uppercase tracking-widest text-teal-400">Content</p><h2 class="mt-1 text-2xl font-black text-white">📝 Blog</h2></div><button onclick="closeBlog()" class="text-violet-100/50 hover:text-violet-300 transition"><i class="fa-solid fa-times text-xl"></i></button></div>
+      <div id="blogGrid" class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3"></div>
+    </div>
+  </section>
+
+  <section id="spacedRepetitionSection" class="mx-auto max-w-7xl px-4 pb-12 hidden">
+    <div class="glass neon rounded-3xl p-5">
+      <div class="flex items-center justify-between gap-4 mb-4"><div><p class="text-xs font-black uppercase tracking-widest text-violet-400">Review</p><h2 class="mt-1 text-2xl font-black text-white">🔄 Spaced Repetition</h2></div><button onclick="closeSpacedRepetition()" class="text-violet-100/50 hover:text-violet-300 transition"><i class="fa-solid fa-times text-xl"></i></button></div>
+      <div id="reviewContainer" class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3"></div>
+    </div>
+  </section>
+
+  <section id="newsSection" class="mx-auto max-w-7xl scroll-mt-24 px-4 pb-12">
+    <div class="glass neon rounded-3xl p-5">
+      <div class="flex items-center justify-between gap-4">
+        <div><p class="text-xs font-black uppercase tracking-widest text-teal-400">Japan Updates</p><h2 class="mt-1 text-2xl font-black text-white">Visa & Japan News 🇯🇵</h2><p class="mt-2 text-sm text-gray-400">Useful updates about visas, studies, work and life in Japan.</p></div>
+        <div class="text-3xl">📰</div>
+      </div>
+      <div id="newsLoading" class="loading-overlay hidden"><div class="spinner"></div><span>Loading updates...</span></div>
+      <div id="newsGrid" class="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3"></div>
+    </div>
+  </section>
+
+  <footer class="border-t border-violet-500/15 bg-black/30">
+    <div class="mx-auto max-w-7xl px-4 py-8">
+      <div class="grid gap-6 sm:grid-cols-4">
+        <div>
+          <div class="text-xl font-black text-white">SL Sakura 🌸</div>
+          <p class="mt-2 text-sm text-gray-400">Your Gateway to Japanese Language, Classes & Life in Japan.</p>
+        </div>
+        <div>
+          <div class="font-bold text-violet-200">Contact</div>
+          <a href="https://wa.me/94789995159" target="_blank" rel="noopener" class="mt-2 block text-sm text-gray-400 hover:text-violet-300 transition">📱 0789995159</a>
+          <a href="mailto:dilnathbudmina39@gmail.com" class="mt-1 block break-all text-sm text-gray-400 hover:text-violet-300 transition">📧 dilnathbudmina39@gmail.com</a>
+        </div>
+        <div>
+          <div class="font-bold text-teal-200">Exams</div>
+          <div class="mt-2 flex flex-wrap gap-2 text-xs">
+            <a href="https://www.jlpt.jp/e/" target="_blank" rel="noopener" class="footer-link">JLPT</a>
+            <a href="https://www.nat-test.com/" target="_blank" rel="noopener" class="footer-link">NAT</a>
+            <a href="https://jlct.jp/en/" target="_blank" rel="noopener" class="footer-link">JLCT</a>
+            <a href="https://www.jpf.go.jp/jft-basic/e/" target="_blank" rel="noopener" class="footer-link">JFT</a>
+          </div>
+        </div>
+        <div>
+          <div class="font-bold text-teal-200">Quick Links</div>
+          <a href="#" onclick="menuResources();return false" class="mt-2 block text-sm text-gray-400 hover:text-violet-300 transition">📚 Resources</a>
+          <a href="#" onclick="openForum();return false" class="mt-1 block text-sm text-gray-400 hover:text-violet-300 transition">💬 Forum</a>
+          <a href="#" onclick="openBlog();return false" class="mt-1 block text-sm text-gray-400 hover:text-violet-300 transition">📝 Blog</a>
+          <a href="#" onclick="openQuiz();return false" class="mt-1 block text-sm text-gray-400 hover:text-violet-300 transition">🧠 Quiz</a>
+        </div>
+      </div>
+      <div class="mt-8 border-t border-violet-500/15 pt-5 text-center text-xs text-violet-100/35">© 2026 SL Sakura 🌸 | Made with ❤️</div>
+    </div>
+  </footer>
+</main>
+
+<!-- VIEWER -->
+<section id="viewerPage" class="hidden min-h-screen">
+  <div class="mx-auto max-w-5xl px-4 py-6">
+    <div class="flex items-center gap-2 mb-5 flex-wrap">
+      <button onclick="goHome()" class="rounded-xl border border-violet-500/25 bg-white/5 px-4 py-2 text-sm font-bold text-violet-200 hover:bg-white/10 transition"><i class="fa-solid fa-arrow-left mr-2"></i> Back</button>
+    </div>
+    <div class="glass neon rounded-3xl p-5">
+      <div class="mb-5">
+        <p id="viewerCategory" class="text-xs font-black uppercase tracking-widest text-violet-400"></p>
+        <h1 id="viewerTitle" class="mt-2 text-2xl font-black text-white"></h1>
+        <p id="viewerLecturer" class="mt-2 text-sm text-gray-400"></p>
+        <p class="mt-1 text-xs text-violet-100/45"><i class="fa-regular fa-eye mr-1"></i> <span id="viewCountDisplay">0</span> views</p>
+        <a id="viewerContactBtn" href="#" target="_blank" rel="noopener" class="mt-3 hidden w-fit rounded-xl bg-green-500/15 px-4 py-2 text-xs font-bold text-green-300"></a>
+      </div>
+      <div id="viewerMedia" class="media-frame flex items-center justify-center"></div>
+      <div class="mt-5"><div id="viewerAdContainer"></div></div>
+      <div id="countdownBox" class="mt-5 rounded-2xl border border-violet-500/20 bg-violet-500/8 p-5 text-center">
+        <div class="text-xs uppercase tracking-widest text-violet-300/70">Download available in</div>
+        <div id="countdown" class="mt-1 text-4xl font-black text-violet-400">8</div>
+        <div id="downloadReadyMessage" class="mt-3 hidden text-sm font-bold text-green-300">✓ Ready</div>
+        <a id="viewerDownloadButton" href="#" target="_blank" rel="noopener" class="rose-btn mt-4 hidden inline-flex items-center justify-center rounded-2xl px-6 py-3 font-black text-white" onclick="trackDownload()"><i class="fa-solid fa-download mr-2"></i> Download File</a>
+      </div>
+      <div id="youtubeOnlyMessage" class="mt-5 hidden rounded-2xl border border-red-500/20 bg-red-500/8 p-4 text-center text-sm text-red-200/80">▶️ YouTube resource — online viewing only.</div>
+    </div>
+  </div>
+</section>
+
+<!-- MODALS -->
+<div id="loginModal" class="modal-bg fixed inset-0 z-[100] hidden items-center justify-center p-4">
+  <div class="glass w-full max-w-sm rounded-3xl p-6">
+    <div class="flex items-center justify-between"><h2 class="text-xl font-black text-white">Login / Sign Up</h2><button onclick="closeLoginModal()" class="h-9 w-9 rounded-xl bg-white/5 hover:bg-white/10 transition"><i class="fa-solid fa-xmark"></i></button></div>
+    <input id="loginEmail" type="email" placeholder="Email" class="mt-5 w-full rounded-2xl border border-violet-500/20 bg-black/40 px-4 py-3 text-sm text-white outline-none focus:border-violet-500 transition" />
+    <input id="loginPassword" type="password" placeholder="Password" class="mt-3 w-full rounded-2xl border border-violet-500/20 bg-black/40 px-4 py-3 text-sm text-white outline-none focus:border-violet-500 transition" />
+    <button onclick="loginUser()" class="rose-btn mt-3 w-full rounded-2xl px-5 py-3 font-black">Login</button>
+    <button onclick="signupUser()" class="mt-2 w-full rounded-2xl border border-violet-500/20 bg-white/5 px-5 py-3 text-sm font-bold text-violet-200 hover:bg-white/10 transition">Sign Up</button>
+    <button onclick="googleLogin()" class="mt-2 w-full rounded-2xl border border-violet-500/20 bg-white/5 px-5 py-3 text-sm font-bold text-violet-200 hover:bg-white/10 transition"><i class="fa-brands fa-google mr-2"></i> Sign in with Google</button>
+  </div>
+</div>
+
+<div id="contactModal" class="modal-bg fixed inset-0 z-[100] hidden items-center justify-center p-4">
+  <div class="glass w-full max-w-md rounded-3xl p-6">
+    <div class="flex items-center justify-between"><div><div class="text-xl font-black text-white">Contact & Support</div><div class="text-xs text-gray-400">SL Sakura 🌸</div></div><button onclick="closeContact()" class="h-9 w-9 rounded-xl bg-white/5 hover:bg-white/10 transition"><i class="fa-solid fa-xmark"></i></button></div>
+    <div class="mt-5 space-y-3">
+      <a href="https://wa.me/94789995159" target="_blank" rel="noopener" class="block rounded-2xl border border-green-500/20 bg-green-500/8 p-4 hover:bg-green-500/15 transition"><div class="font-bold text-green-300"><i class="fa-brands fa-whatsapp mr-2"></i> WhatsApp</div><div class="mt-1 text-xs text-green-100/60">0789995159</div></a>
+      <a href="mailto:dilnathbudmina39@gmail.com" class="block rounded-2xl border border-pink-500/20 bg-pink-500/8 p-4 hover:bg-pink-500/15 transition"><div class="font-bold text-pink-300"><i class="fa-solid fa-envelope mr-2"></i> Email</div><div class="mt-1 break-all text-xs text-pink-100/60">dilnathbudmina39@gmail.com</div></a>
+    </div>
+  </div>
+</div>
+
+<div id="quizModal" class="modal-bg fixed inset-0 z-[100] hidden items-center justify-center p-4">
+  <div class="glass w-full max-w-2xl rounded-3xl p-6 max-h-[90vh] overflow-y-auto">
+    <div class="flex items-center justify-between mb-4"><h2 class="text-xl font-black text-white"><i class="fa-solid fa-brain mr-2 text-violet-400"></i> Quiz</h2><button onclick="closeQuiz()" class="h-9 w-9 rounded-xl bg-white/5 hover:bg-white/10 transition"><i class="fa-solid fa-xmark"></i></button></div>
+    <div id="quizContainer"></div>
+  </div>
+</div>
+
+<div id="flashcardModal" class="modal-bg fixed inset-0 z-[100] hidden items-center justify-center p-4">
+  <div class="glass w-full max-w-2xl rounded-3xl p-6 max-h-[90vh] overflow-y-auto">
+    <div class="flex items-center justify-between mb-4"><h2 class="text-xl font-black text-white"><i class="fa-solid fa-clone mr-2 text-teal-400"></i> Flashcards</h2><button onclick="closeFlashcards()" class="h-9 w-9 rounded-xl bg-white/5 hover:bg-white/10 transition"><i class="fa-solid fa-xmark"></i></button></div>
+    <div id="flashcardContainer"></div>
+  </div>
+</div>
+
+<div id="mockTestModal" class="modal-bg fixed inset-0 z-[100] hidden items-center justify-center p-4">
+  <div class="glass w-full max-w-2xl rounded-3xl p-6 max-h-[90vh] overflow-y-auto">
+    <div class="flex items-center justify-between mb-4"><h2 class="text-xl font-black text-white"><i class="fa-solid fa-file-pen mr-2 text-amber-400"></i> JLPT Mock Test</h2><button onclick="closeMockTest()" class="h-9 w-9 rounded-xl bg-white/5 hover:bg-white/10 transition"><i class="fa-solid fa-xmark"></i></button></div>
+    <div class="flex gap-2 mb-4 flex-wrap"><button onclick="openMockTest('N5')" class="action-btn">N5</button><button onclick="openMockTest('N4')" class="action-btn">N4</button><button onclick="openMockTest('N3')" class="action-btn">N3</button></div>
+    <div id="mockTestContainer"></div>
+  </div>
+</div>
+
+<div id="vocabularyModal" class="modal-bg fixed inset-0 z-[100] hidden items-center justify-center p-4">
+  <div class="glass w-full max-w-2xl rounded-3xl p-6 max-h-[90vh] overflow-y-auto">
+    <div class="flex items-center justify-between mb-4"><h2 class="text-xl font-black text-white"><i class="fa-solid fa-book-open mr-2 text-violet-400"></i> Vocabulary</h2><button onclick="closeVocabulary()" class="h-9 w-9 rounded-xl bg-white/5 hover:bg-white/10 transition"><i class="fa-solid fa-xmark"></i></button></div>
+    <div class="flex gap-2 mb-4 flex-wrap"><button onclick="openVocabulary('N5')" class="action-btn">N5</button><button onclick="openVocabulary('N4')" class="action-btn">N4</button><button onclick="openVocabulary('N3')" class="action-btn">N3</button></div>
+    <div id="vocabularyContainer"></div>
+  </div>
+</div>
+
+<div id="leaderboardModal" class="modal-bg fixed inset-0 z-[100] hidden items-center justify-center p-4">
+  <div class="glass w-full max-w-2xl rounded-3xl p-6 max-h-[90vh] overflow-y-auto">
+    <div class="flex items-center justify-between mb-4"><h2 class="text-xl font-black text-white"><i class="fa-solid fa-trophy mr-2 text-amber-400"></i> Leaderboard</h2><button onclick="closeLeaderboard()" class="h-9 w-9 rounded-xl bg-white/5 hover:bg-white/10 transition"><i class="fa-solid fa-xmark"></i></button></div>
+    <div id="leaderboardContainer"></div>
+  </div>
+</div>
+
+<div id="chatbotModal" class="modal-bg fixed inset-0 z-[100] hidden items-center justify-center p-4">
+  <div class="glass w-full max-w-md rounded-3xl p-6 max-h-[90vh]">
+    <div class="flex items-center justify-between mb-4"><h2 class="text-xl font-black text-white"><i class="fa-solid fa-robot mr-2 text-teal-400"></i> AI Chatbot</h2><button onclick="toggleChatbot()" class="h-9 w-9 rounded-xl bg-white/5 hover:bg-white/10 transition"><i class="fa-solid fa-xmark"></i></button></div>
+    <div id="chatbotMessages" class="chatbot-messages glass rounded-2xl p-3 mb-3">
+      <div class="flex justify-start mb-3"><div class="glass px-4 py-3 rounded-2xl rounded-tl-none max-w-[80%] border border-violet-500/15"><span class="text-violet-400 text-xs font-bold">🌸 Sakura AI</span><br><span class="text-white">Hello! Ask me about JLPT, vocabulary, grammar, or Japanese culture! 🇯🇵</span></div></div>
+    </div>
+    <div class="flex gap-2"><input id="chatbotInput" type="text" placeholder="Type..." class="flex-1 rounded-2xl border border-violet-500/20 bg-black/40 px-4 py-3 text-sm text-white outline-none focus:border-violet-500 transition" onkeydown="if(event.key==='Enter') sendChatbotMessage()" /><button onclick="sendChatbotMessage()" class="rose-btn rounded-2xl px-4 py-3 text-sm font-black">Send</button></div>
+  </div>
+</div>
+
+<div id="progressModal" class="modal-bg fixed inset-0 z-[100] hidden items-center justify-center p-4">
+  <div class="glass w-full max-w-2xl rounded-3xl p-6 max-h-[90vh] overflow-y-auto">
+    <div class="flex items-center justify-between mb-4"><h2 class="text-xl font-black text-white"><i class="fa-solid fa-chart-line mr-2 text-teal-400"></i> Study Progress</h2><button onclick="closeProgress()" class="h-9 w-9 rounded-xl bg-white/5 hover:bg-white/10 transition"><i class="fa-solid fa-xmark"></i></button></div>
+    <div id="progressContainer"></div>
+  </div>
+</div>
+
+<div id="adminLoginModal" class="modal-bg fixed inset-0 z-[100] hidden items-center justify-center p-4">
+  <div class="glass w-full max-w-sm rounded-3xl p-6">
+    <div class="flex items-center justify-between"><h2 class="text-xl font-black text-white">Admin Login</h2><button onclick="closeAdminLogin()" class="h-9 w-9 rounded-xl bg-white/5 hover:bg-white/10 transition"><i class="fa-solid fa-xmark"></i></button></div>
+    <input id="adminEmail" type="email" placeholder="Admin email" class="mt-5 w-full rounded-2xl border border-violet-500/20 bg-black/40 px-4 py-3 text-sm text-white outline-none focus:border-violet-500 transition" />
+    <input id="adminPassword" type="password" placeholder="Admin password" class="mt-3 w-full rounded-2xl border border-violet-500/20 bg-black/40 px-4 py-3 text-sm text-white outline-none focus:border-violet-500 transition" />
+    <button onclick="loginAdmin()" class="rose-btn mt-3 w-full rounded-2xl px-5 py-3 font-black">Login</button>
+    <p class="mt-3 text-[11px] text-violet-100/40">Only whitelisted admin accounts can access this panel.</p>
+  </div>
+</div>
+
+<!-- ADMIN PANEL -->
+<div id="adminPanel" class="modal-bg fixed inset-0 z-[110] hidden overflow-y-auto p-4">
+  <div class="mx-auto my-5 max-w-6xl">
+    <div class="glass rounded-3xl p-5">
+      <div class="flex items-center justify-between gap-3 flex-wrap">
+        <div><div class="text-xl font-black text-white">Admin Dashboard</div><div class="text-xs text-gray-400">Manage Everything</div></div>
+        <div class="flex gap-2">
+          <button onclick="exportData()" class="rounded-xl border border-green-500/25 bg-green-500/10 px-3 py-2 text-xs font-bold text-green-300 hover:bg-green-500/20 transition"><i class="fa-solid fa-download mr-1"></i> Backup</button>
+          <button onclick="document.getElementById('importFile').click()" class="rounded-xl border border-amber-500/25 bg-amber-500/10 px-3 py-2 text-xs font-bold text-amber-300 hover:bg-amber-500/20 transition"><i class="fa-solid fa-upload mr-1"></i> Restore</button>
+          <input type="file" id="importFile" accept=".json" class="hidden" onchange="importData(event)" />
+          <button onclick="closeAdminPanel()" class="h-10 w-10 rounded-xl bg-white/5 hover:bg-white/10 transition"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+      </div>
+      <div class="mt-4 flex gap-2 overflow-x-auto border-b border-violet-500/15 pb-2">
+        <button class="admin-tab active" data-tab="resources" onclick="switchAdminTab('resources')"><i class="fa-solid fa-book mr-2"></i> Resources</button>
+        <button class="admin-tab" data-tab="news" onclick="switchAdminTab('news')"><i class="fa-solid fa-newspaper mr-2"></i> News</button>
+        <button class="admin-tab" data-tab="ads" onclick="switchAdminTab('ads')"><i class="fa-solid fa-bullhorn mr-2"></i> Ads</button>
+        <button class="admin-tab" data-tab="quiz" onclick="switchAdminTab('quiz')"><i class="fa-solid fa-brain mr-2"></i> Quiz</button>
+        <button class="admin-tab" data-tab="flashcards" onclick="switchAdminTab('flashcards')"><i class="fa-solid fa-clone mr-2"></i> Flashcards</button>
+        <button class="admin-tab" data-tab="mocktests" onclick="switchAdminTab('mocktests')"><i class="fa-solid fa-file-pen mr-2"></i> Mock Tests</button>
+        <button class="admin-tab" data-tab="vocabulary" onclick="switchAdminTab('vocabulary')"><i class="fa-solid fa-book-open mr-2"></i> Vocabulary</button>
+        <button class="admin-tab" data-tab="grammar" onclick="switchAdminTab('grammar')"><i class="fa-solid fa-book mr-2"></i> Grammar</button>
+        <button class="admin-tab" data-tab="kanji" onclick="switchAdminTab('kanji')"><i class="fa-solid fa-pen mr-2"></i> Kanji</button>
+        <button class="admin-tab" data-tab="listening" onclick="switchAdminTab('listening')"><i class="fa-solid fa-headphones mr-2"></i> Listening</button>
+        <button class="admin-tab" data-tab="reading" onclick="switchAdminTab('reading')"><i class="fa-solid fa-book-open mr-2"></i> Reading</button>
+        <button class="admin-tab" data-tab="lessonplans" onclick="switchAdminTab('lessonplans')"><i class="fa-solid fa-list-check mr-2"></i> Lesson Plans</button>
+        <button class="admin-tab" data-tab="badges" onclick="switchAdminTab('badges')"><i class="fa-solid fa-medal mr-2"></i> Badges</button>
+        <button class="admin-tab" data-tab="forum" onclick="switchAdminTab('forum')"><i class="fa-solid fa-comments mr-2"></i> Forum</button>
+        <button class="admin-tab" data-tab="blog" onclick="switchAdminTab('blog')"><i class="fa-solid fa-pen-nib mr-2"></i> Blog</button>
+        <button class="admin-tab" data-tab="users" onclick="switchAdminTab('users')"><i class="fa-solid fa-users mr-2"></i> Users</button>
+        <button class="admin-tab" data-tab="settings" onclick="switchAdminTab('settings')"><i class="fa-solid fa-gear mr-2"></i> Settings</button>
+        <button class="admin-tab" data-tab="analytics" onclick="switchAdminTab('analytics')"><i class="fa-solid fa-chart-bar mr-2"></i> Analytics</button>
+      </div>
+
+      <!-- Resources tab -->
+      <div id="tab-resources" class="admin-tab-content mt-4">
+        <div class="rounded-3xl border border-violet-500/15 bg-black/25 p-5">
+          <div class="mb-4 flex items-center justify-between flex-wrap gap-2">
+            <div class="text-lg font-black text-white">📚 Manage Resources</div>
+            <button onclick="toggleResourceForm()" class="rose-btn rounded-2xl px-4 py-2 text-sm font-black"><i class="fa-solid fa-plus mr-2"></i> Add New</button>
+          </div>
+          <div id="resourceFormContainer" class="hidden rounded-3xl border border-violet-500/15 bg-black/25 p-5 mb-4">
+            <div class="mb-4 flex items-center justify-between">
+              <div class="text-lg font-black text-white">Add / Edit Resource</div>
+              <button id="cancelEditBtn" onclick="cancelEditResource()" class="hidden rounded-xl border border-violet-500/20 bg-white/5 px-3 py-1 text-xs text-violet-200 hover:bg-white/10 transition">Cancel</button>
+            </div>
+            <div class="grid gap-3 md:grid-cols-2">
+              <input id="resourceTitle" placeholder="Resource title" class="admin-input" />
+              <select id="resourceMainCategory" class="admin-input"><option value="N5">N5</option><option value="N4">N4</option><option value="N3">N3</option><option value="N2">N2</option><option value="N1">N1</option><option value="SSW">SSW</option><option value="CLASSES">CLASSES</option><option value="SURVIVAL GUIDE">SURVIVAL GUIDE</option></select>
+              <select id="resourceSubCategory" class="admin-input"></select>
+              <input id="resourceLecturer" placeholder="Lecturer name" class="admin-input" />
+              <input id="resourceLecturerContact" value="0789995159" placeholder="WhatsApp" class="admin-input" />
+              <select id="resourceMediaType" class="admin-input"><option value="pdf">PDF</option><option value="audio">Audio</option><option value="video">Video</option><option value="youtube">YouTube</option></select>
+              <input id="resourcePreviewUrl" placeholder="Preview URL" class="admin-input md:col-span-2" />
+              <input id="resourceThumbnail" placeholder="Thumbnail URL (optional)" class="admin-input md:col-span-2" />
+              <textarea id="resourceDescription" rows="2" placeholder="Description (optional)" class="admin-input md:col-span-2"></textarea>
+              <input id="resourceDownloadUrl" placeholder="Download URL (optional)" class="admin-input md:col-span-2" />
+            </div>
+            <button id="addResourceBtn" onclick="addResource()" class="rose-btn mt-4 rounded-2xl px-5 py-3 font-black"><i class="fa-solid fa-plus mr-2"></i> Add Resource</button>
+            <button id="updateResourceBtn" onclick="updateResource()" class="hidden mt-4 rounded-2xl px-5 py-3 font-black grad-gold" style="color:#fff"><i class="fa-solid fa-pen mr-2"></i> Update Resource</button>
+          </div>
+
+          <div class="mt-4">
+            <div class="flex gap-2 mb-3 flex-wrap">
+              <input id="adminSearch" placeholder="Search in loaded items..." class="admin-input flex-1 min-w-[150px]" oninput="filterAdminResources()" />
+              <select id="adminCategoryFilter" class="admin-input w-auto" onchange="filterAdminResources()">
+                <option value="all">All Categories</option><option value="N5">N5</option><option value="N4">N4</option><option value="N3">N3</option><option value="N2">N2</option><option value="N1">N1</option><option value="SSW">SSW</option><option value="CLASSES">CLASSES</option><option value="SURVIVAL GUIDE">SURVIVAL GUIDE</option>
+              </select>
+              <button onclick="selectAllResources()" class="rounded-xl border border-violet-500/20 bg-white/5 px-3 py-2 text-xs text-violet-200 hover:bg-white/10 transition">Select All</button>
+              <button onclick="clearBulkSelection()" class="rounded-xl border border-violet-500/20 bg-white/5 px-3 py-2 text-xs text-violet-200 hover:bg-white/10 transition">Clear</button>
+              <button onclick="bulkDelete()" class="rounded-xl bg-red-500/12 px-3 py-2 text-xs font-bold text-red-300 hover:bg-red-500/22 transition">Delete Selected</button>
+            </div>
+
+            <div id="adminResourceStats" class="text-xs text-violet-200/60 mb-3"></div>
+            <div id="adminResourcesList" class="space-y-2 max-h-[500px] overflow-y-auto"></div>
+
+            <!-- ADMIN Load More button -->
+            <div id="adminLoadMoreWrap" class="mt-4 hidden flex-col items-center justify-center gap-2">
+              <div id="adminLoadMoreStatus" class="text-xs text-violet-200/50"></div>
+              <button id="adminLoadMoreBtn" onclick="loadMoreAdminResources()" class="rose-btn rounded-2xl px-6 py-2.5 text-sm font-black">
+                <i class="fa-solid fa-plus mr-2"></i> Load More (12)
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="tab-news" class="admin-tab-content mt-4 hidden">
+        <div class="rounded-3xl border border-violet-500/15 bg-black/25 p-5">
+          <div class="mb-4 text-lg font-black text-white">📰 Manage News</div>
+          <div class="grid gap-3">
+            <input id="newsTitle" placeholder="News title" class="admin-input" />
+            <select id="newsCategory" class="admin-input"><option>VISA</option><option>JAPAN LIFE</option><option>WORK</option><option>STUDY</option><option>EXAMS</option></select>
+            <textarea id="newsDescription" rows="4" placeholder="Description" class="admin-input"></textarea>
+            <input id="newsLink" placeholder="Link (optional)" class="admin-input" />
+          </div>
+          <button onclick="addNews()" class="mt-4 rounded-2xl border border-violet-500/25 bg-violet-500/12 px-5 py-3 font-black text-violet-200 hover:bg-violet-500/22 transition"><i class="fa-solid fa-newspaper mr-2"></i> Publish</button>
+          <div id="adminNewsList" class="mt-4 space-y-2 max-h-96 overflow-y-auto"></div>
+        </div>
+      </div>
+
+      <div id="tab-ads" class="admin-tab-content mt-4 hidden">
+        <div class="rounded-3xl border border-violet-500/15 bg-black/25 p-5">
+          <div class="mb-4 text-lg font-black text-white">📢 Manage Ads</div>
+          <div class="grid gap-3">
+            <input id="adTitle" placeholder="Ad title" class="admin-input" />
+            <input id="adImageUrl" placeholder="Banner image URL" class="admin-input" />
+            <input id="adLink" placeholder="Ad link" class="admin-input" />
+            <select id="adPlacement" class="admin-input"><option>TOP</option><option>MIDDLE</option><option>VIEWER</option></select>
+          </div>
+          <button onclick="addAdvertisement()" class="mt-4 rounded-2xl border border-amber-500/25 bg-amber-500/12 px-5 py-3 font-black text-amber-300 hover:bg-amber-500/22 transition"><i class="fa-solid fa-bullhorn mr-2"></i> Publish Ad</button>
+          <div id="adminAdsList" class="mt-4 space-y-2 max-h-96 overflow-y-auto"></div>
+        </div>
+      </div>
+
+      <div id="tab-quiz" class="admin-tab-content mt-4 hidden">
+        <div class="rounded-3xl border border-violet-500/15 bg-black/25 p-5">
+          <div class="mb-4 flex items-center justify-between flex-wrap gap-2">
+            <div class="text-lg font-black text-white">🧠 Manage Quiz</div>
+            <button onclick="toggleQuizForm()" class="rose-btn rounded-2xl px-4 py-2 text-sm font-black"><i class="fa-solid fa-plus mr-2"></i> Add Question</button>
+          </div>
+          <div id="quizFormContainer" class="hidden rounded-3xl border border-violet-500/15 bg-black/25 p-5 mb-4">
+            <div class="grid gap-3">
+              <input id="quizQuestion" placeholder="Question..." class="admin-input" />
+              <div class="grid gap-2 sm:grid-cols-2">
+                <input id="quizOption1" placeholder="Option 1" class="admin-input" />
+                <input id="quizOption2" placeholder="Option 2" class="admin-input" />
+                <input id="quizOption3" placeholder="Option 3" class="admin-input" />
+                <input id="quizOption4" placeholder="Option 4" class="admin-input" />
+              </div>
+              <select id="quizCorrect" class="admin-input"><option value="0">Correct: Option 1</option><option value="1">Correct: Option 2</option><option value="2">Correct: Option 3</option><option value="3">Correct: Option 4</option></select>
+            </div>
+            <button onclick="addQuizQuestion()" class="rose-btn mt-4 rounded-2xl px-5 py-3 font-black"><i class="fa-solid fa-plus mr-2"></i> Add Question</button>
+          </div>
+          <div id="adminQuizList" class="space-y-2 max-h-96 overflow-y-auto"></div>
+        </div>
+      </div>
+
+      <div id="tab-flashcards" class="admin-tab-content mt-4 hidden">
+        <div class="rounded-3xl border border-violet-500/15 bg-black/25 p-5">
+          <div class="mb-4 flex items-center justify-between flex-wrap gap-2">
+            <div class="text-lg font-black text-white">🃏 Manage Flashcards</div>
+            <button onclick="toggleFlashcardForm()" class="rose-btn rounded-2xl px-4 py-2 text-sm font-black"><i class="fa-solid fa-plus mr-2"></i> Add Card</button>
+          </div>
+          <div id="flashcardFormContainer" class="hidden rounded-3xl border border-violet-500/15 bg-black/25 p-5 mb-4">
+            <div class="grid gap-3">
+              <input id="flashcardFront" placeholder="Front" class="admin-input" />
+              <input id="flashcardBack" placeholder="Back" class="admin-input" />
+              <select id="flashcardCategory" class="admin-input"><option>N5</option><option>N4</option><option>N3</option><option>N2</option><option>N1</option><option>General</option></select>
+            </div>
+            <button onclick="addFlashcard()" class="rose-btn mt-4 rounded-2xl px-5 py-3 font-black"><i class="fa-solid fa-plus mr-2"></i> Add Flashcard</button>
+          </div>
+          <div id="adminFlashcardList" class="space-y-2 max-h-96 overflow-y-auto"></div>
+        </div>
+      </div>
+
+      <div id="tab-mocktests" class="admin-tab-content mt-4 hidden">
+        <div class="rounded-3xl border border-violet-500/15 bg-black/25 p-5">
+          <div class="mb-4 flex items-center justify-between flex-wrap gap-2">
+            <div class="text-lg font-black text-white">📝 Manage Mock Tests</div>
+            <button onclick="toggleMockTestForm()" class="rose-btn rounded-2xl px-4 py-2 text-sm font-black"><i class="fa-solid fa-plus mr-2"></i> Add Test</button>
+          </div>
+          <div id="mockTestFormContainer" class="hidden rounded-3xl border border-violet-500/15 bg-black/25 p-5 mb-4">
+            <div class="grid gap-3">
+              <input id="mockTestTitle" placeholder="Test title" class="admin-input" />
+              <select id="mockTestLevel" class="admin-input"><option>N5</option><option>N4</option><option>N3</option><option>N2</option><option>N1</option></select>
+              <div>
+                <div class="flex items-center justify-between">
+                  <span class="text-sm font-bold text-violet-200">Questions</span>
+                  <button onclick="addMockQuestionField()" class="text-xs bg-violet-500/15 px-3 py-1 rounded-full text-violet-300 hover:bg-violet-500/25 transition"><i class="fa-solid fa-plus mr-1"></i> Add</button>
+                </div>
+                <div id="mockQuestionsList" class="space-y-3 mt-2"></div>
+              </div>
+            </div>
+            <button onclick="addMockTest()" class="rose-btn mt-4 rounded-2xl px-5 py-3 font-black"><i class="fa-solid fa-plus mr-2"></i> Add Mock Test</button>
+          </div>
+          <div id="adminMockTestList" class="space-y-2 max-h-96 overflow-y-auto"></div>
+        </div>
+      </div>
+
+      <div id="tab-vocabulary" class="admin-tab-content mt-4 hidden">
+        <div class="rounded-3xl border border-violet-500/15 bg-black/25 p-5">
+          <div class="mb-4 flex items-center justify-between flex-wrap gap-2">
+            <div class="text-lg font-black text-white">📚 Manage Vocabulary</div>
+            <button onclick="toggleVocabForm()" class="rose-btn rounded-2xl px-4 py-2 text-sm font-black"><i class="fa-solid fa-plus mr-2"></i> Add Word</button>
+          </div>
+          <div id="vocabFormContainer" class="hidden rounded-3xl border border-violet-500/15 bg-black/25 p-5 mb-4">
+            <div class="grid gap-3">
+              <input id="vocabJapanese" placeholder="Japanese" class="admin-input" />
+              <input id="vocabReading" placeholder="Reading" class="admin-input" />
+              <input id="vocabMeaning" placeholder="Meaning" class="admin-input" />
+              <input id="vocabExample" placeholder="Example" class="admin-input" />
+              <select id="vocabLevel" class="admin-input"><option>N5</option><option>N4</option><option>N3</option><option>N2</option><option>N1</option></select>
+            </div>
+            <button onclick="addVocabularyWord()" class="rose-btn mt-4 rounded-2xl px-5 py-3 font-black"><i class="fa-solid fa-plus mr-2"></i> Add Word</button>
+          </div>
+          <div id="adminVocabList" class="space-y-2 max-h-96 overflow-y-auto"></div>
+        </div>
+      </div>
+
+      <div id="tab-grammar" class="admin-tab-content mt-4 hidden">
+        <div class="rounded-3xl border border-violet-500/15 bg-black/25 p-5">
+          <div class="mb-4 flex items-center justify-between flex-wrap gap-2">
+            <div class="text-lg font-black text-white">📝 Manage Grammar</div>
+            <button onclick="toggleGrammarForm()" class="rose-btn rounded-2xl px-4 py-2 text-sm font-black"><i class="fa-solid fa-plus mr-2"></i> Add</button>
+          </div>
+          <div id="grammarFormContainer" class="hidden rounded-3xl border border-violet-500/15 bg-black/25 p-5 mb-4">
+            <div class="grid gap-3">
+              <input id="grammarTitle" placeholder="Grammar point" class="admin-input" />
+              <input id="grammarLevel" placeholder="Level (N5)" class="admin-input" />
+              <textarea id="grammarExplanation" rows="3" placeholder="Explanation" class="admin-input"></textarea>
+              <input id="grammarExample" placeholder="Example" class="admin-input" />
+            </div>
+            <button onclick="addGrammarPoint()" class="rose-btn mt-4 rounded-2xl px-5 py-3 font-black"><i class="fa-solid fa-plus mr-2"></i> Add Grammar</button>
+          </div>
+          <div id="adminGrammarList" class="space-y-2 max-h-96 overflow-y-auto"></div>
+        </div>
+      </div>
+
+      <div id="tab-kanji" class="admin-tab-content mt-4 hidden">
+        <div class="rounded-3xl border border-violet-500/15 bg-black/25 p-5">
+          <div class="mb-4 flex items-center justify-between flex-wrap gap-2">
+            <div class="text-lg font-black text-white">🈴 Manage Kanji</div>
+            <button onclick="toggleKanjiForm()" class="rose-btn rounded-2xl px-4 py-2 text-sm font-black"><i class="fa-solid fa-plus mr-2"></i> Add</button>
+          </div>
+          <div id="kanjiFormContainer" class="hidden rounded-3xl border border-violet-500/15 bg-black/25 p-5 mb-4">
+            <div class="grid gap-3">
+              <input id="kanjiChar" placeholder="Kanji" class="admin-input" />
+              <input id="kanjiMeaning" placeholder="Meaning" class="admin-input" />
+              <input id="kanjiReading" placeholder="Reading" class="admin-input" />
+              <input id="kanjiLevel" placeholder="Level (N5)" class="admin-input" />
+            </div>
+            <button onclick="addKanji()" class="rose-btn mt-4 rounded-2xl px-5 py-3 font-black"><i class="fa-solid fa-plus mr-2"></i> Add Kanji</button>
+          </div>
+          <div id="adminKanjiList" class="space-y-2 max-h-96 overflow-y-auto"></div>
+        </div>
+      </div>
+
+      <div id="tab-listening" class="admin-tab-content mt-4 hidden">
+        <div class="rounded-3xl border border-violet-500/15 bg-black/25 p-5">
+          <div class="mb-4 flex items-center justify-between flex-wrap gap-2">
+            <div class="text-lg font-black text-white">🎧 Manage Listening</div>
+            <button onclick="toggleListeningForm()" class="rose-btn rounded-2xl px-4 py-2 text-sm font-black"><i class="fa-solid fa-plus mr-2"></i> Add</button>
+          </div>
+          <div id="listeningFormContainer" class="hidden rounded-3xl border border-violet-500/15 bg-black/25 p-5 mb-4">
+            <div class="grid gap-3">
+              <input id="listeningTitle" placeholder="Title" class="admin-input" />
+              <input id="listeningAudioUrl" placeholder="Audio URL" class="admin-input" />
+              <input id="listeningLevel" placeholder="Level (N5)" class="admin-input" />
+              <textarea id="listeningTranscript" rows="3" placeholder="Transcript" class="admin-input"></textarea>
+            </div>
+            <button onclick="addListening()" class="rose-btn mt-4 rounded-2xl px-5 py-3 font-black"><i class="fa-solid fa-plus mr-2"></i> Add</button>
+          </div>
+          <div id="adminListeningList" class="space-y-2 max-h-96 overflow-y-auto"></div>
+        </div>
+      </div>
+
+      <div id="tab-reading" class="admin-tab-content mt-4 hidden">
+        <div class="rounded-3xl border border-violet-500/15 bg-black/25 p-5">
+          <div class="mb-4 flex items-center justify-between flex-wrap gap-2">
+            <div class="text-lg font-black text-white">📖 Manage Reading</div>
+            <button onclick="toggleReadingForm()" class="rose-btn rounded-2xl px-4 py-2 text-sm font-black"><i class="fa-solid fa-plus mr-2"></i> Add</button>
+          </div>
+          <div id="readingFormContainer" class="hidden rounded-3xl border border-violet-500/15 bg-black/25 p-5 mb-4">
+            <div class="grid gap-3">
+              <input id="readingTitle" placeholder="Title" class="admin-input" />
+              <input id="readingLevel" placeholder="Level (N5)" class="admin-input" />
+              <textarea id="readingContent" rows="4" placeholder="Content" class="admin-input"></textarea>
+              <textarea id="readingTranslation" rows="3" placeholder="Translation" class="admin-input"></textarea>
+            </div>
+            <button onclick="addReading()" class="rose-btn mt-4 rounded-2xl px-5 py-3 font-black"><i class="fa-solid fa-plus mr-2"></i> Add</button>
+          </div>
+          <div id="adminReadingList" class="space-y-2 max-h-96 overflow-y-auto"></div>
+        </div>
+      </div>
+
+      <div id="tab-lessonplans" class="admin-tab-content mt-4 hidden">
+        <div class="rounded-3xl border border-violet-500/15 bg-black/25 p-5">
+          <div class="mb-4 flex items-center justify-between flex-wrap gap-2">
+            <div class="text-lg font-black text-white">📋 Manage Lesson Plans</div>
+            <button onclick="toggleLessonPlanForm()" class="rose-btn rounded-2xl px-4 py-2 text-sm font-black"><i class="fa-solid fa-plus mr-2"></i> Add</button>
+          </div>
+          <div id="lessonPlanFormContainer" class="hidden rounded-3xl border border-violet-500/15 bg-black/25 p-5 mb-4">
+            <div class="grid gap-3">
+              <input id="lessonPlanTitle" placeholder="Title" class="admin-input" />
+              <input id="lessonPlanLevel" placeholder="Level" class="admin-input" />
+              <textarea id="lessonPlanDescription" rows="3" placeholder="Description" class="admin-input"></textarea>
+              <input id="lessonPlanDuration" placeholder="Duration" class="admin-input" />
+            </div>
+            <button onclick="addLessonPlan()" class="rose-btn mt-4 rounded-2xl px-5 py-3 font-black"><i class="fa-solid fa-plus mr-2"></i> Add</button>
+          </div>
+          <div id="adminLessonPlanList" class="space-y-2 max-h-96 overflow-y-auto"></div>
+        </div>
+      </div>
+
+      <div id="tab-badges" class="admin-tab-content mt-4 hidden">
+        <div class="rounded-3xl border border-violet-500/15 bg-black/25 p-5">
+          <div class="mb-4 flex items-center justify-between flex-wrap gap-2">
+            <div class="text-lg font-black text-white">🎖️ Manage Badges</div>
+            <button onclick="toggleBadgeForm()" class="rose-btn rounded-2xl px-4 py-2 text-sm font-black"><i class="fa-solid fa-plus mr-2"></i> Add</button>
+          </div>
+          <div id="badgeFormContainer" class="hidden rounded-3xl border border-violet-500/15 bg-black/25 p-5 mb-4">
+            <div class="grid gap-3">
+              <input id="badgeName" placeholder="Name" class="admin-input" />
+              <input id="badgeIcon" placeholder="Icon (🏆)" class="admin-input" />
+              <input id="badgeRequirement" placeholder="Requirement" class="admin-input" />
+              <select id="badgeTier" class="admin-input"><option>bronze</option><option>silver</option><option>gold</option></select>
+            </div>
+            <button onclick="addBadge()" class="rose-btn mt-4 rounded-2xl px-5 py-3 font-black"><i class="fa-solid fa-plus mr-2"></i> Add</button>
+          </div>
+          <div id="adminBadgeList" class="space-y-2 max-h-96 overflow-y-auto"></div>
+        </div>
+      </div>
+
+      <div id="tab-forum" class="admin-tab-content mt-4 hidden">
+        <div class="rounded-3xl border border-violet-500/15 bg-black/25 p-5">
+          <div class="mb-4 text-lg font-black text-white">💬 Manage Forum</div>
+          <div id="adminForumList" class="space-y-2 max-h-96 overflow-y-auto"></div>
+          <button onclick="clearAllForumPosts()" class="mt-4 rounded-2xl border border-red-500/20 bg-red-500/8 px-5 py-3 text-sm font-bold text-red-300 hover:bg-red-500/15 transition"><i class="fa-solid fa-trash mr-2"></i> Clear All</button>
+        </div>
+      </div>
+
+      <div id="tab-blog" class="admin-tab-content mt-4 hidden">
+        <div class="rounded-3xl border border-violet-500/15 bg-black/25 p-5">
+          <div class="mb-4 flex items-center justify-between flex-wrap gap-2">
+            <div class="text-lg font-black text-white">📝 Manage Blog</div>
+            <button onclick="toggleBlogForm()" class="rose-btn rounded-2xl px-4 py-2 text-sm font-black"><i class="fa-solid fa-plus mr-2"></i> Add</button>
+          </div>
+          <div id="blogFormContainer" class="hidden rounded-3xl border border-violet-500/15 bg-black/25 p-5 mb-4">
+            <div class="grid gap-3">
+              <input id="blogTitle" placeholder="Title" class="admin-input" />
+              <input id="blogImage" placeholder="Image URL" class="admin-input" />
+              <textarea id="blogContent" rows="4" placeholder="Content" class="admin-input"></textarea>
+              <input id="blogCategory" placeholder="Category" class="admin-input" />
+            </div>
+            <button onclick="addBlogPost()" class="rose-btn mt-4 rounded-2xl px-5 py-3 font-black"><i class="fa-solid fa-plus mr-2"></i> Add</button>
+          </div>
+          <div id="adminBlogList" class="space-y-2 max-h-96 overflow-y-auto"></div>
+        </div>
+      </div>
+
+      <div id="tab-users" class="admin-tab-content mt-4 hidden">
+        <div class="rounded-3xl border border-violet-500/15 bg-black/25 p-5">
+          <div class="mb-4 text-lg font-black text-white">👥 User Management</div>
+          <div class="flex gap-2 mb-3 flex-wrap"><input id="userSearch" placeholder="Search users..." class="admin-input flex-1 min-w-[150px]" oninput="filterUsers()" /></div>
+          <div id="adminUsersList" class="space-y-2 max-h-96 overflow-y-auto"></div>
+        </div>
+      </div>
+
+      <div id="tab-settings" class="admin-tab-content mt-4 hidden">
+        <div class="rounded-3xl border border-violet-500/15 bg-black/25 p-5">
+          <div class="mb-2 text-lg font-black text-white">⚙️ Settings</div>
+          <div class="grid gap-3">
+            <input id="coffeeUrl" placeholder="Buy Me a Coffee URL" class="admin-input" />
+            <div class="mt-5 rounded-2xl border border-violet-500/15 bg-black/25 p-4">
+              <div class="text-base font-black text-white">🎮 Live Quiz Game</div>
+              <div class="mt-3 grid gap-3 md:grid-cols-2">
+                <input id="liveGameTitleAdmin" placeholder="Title" class="admin-input" />
+                <input id="liveGameUrlAdmin" placeholder="URL" class="admin-input" />
+                <input id="liveGamePasscodeAdmin" placeholder="Passcode" class="admin-input" />
+                <input id="liveGameDescriptionAdmin" placeholder="Description" class="admin-input" />
+              </div>
+              <label class="mt-3 flex items-center gap-2 text-sm text-gray-300"><input id="liveGameEnabledAdmin" type="checkbox" class="accent-violet-500" checked> Show on front page</label>
+              <div class="mt-3 flex gap-2 flex-wrap">
+                <button onclick="saveLiveQuizGameSettings()" class="rose-btn rounded-2xl px-5 py-3 text-sm font-black"><i class="fa-solid fa-floppy-disk mr-2"></i> Save</button>
+                <button onclick="disableLiveQuizGameSettings()" class="rounded-2xl border border-red-500/20 bg-red-500/8 px-5 py-3 text-sm font-bold text-red-300">Hide</button>
+              </div>
+            </div>
+            <div class="flex gap-2 flex-wrap">
+              <button onclick="saveCoffeeUrl()" class="rose-btn rounded-2xl px-5 py-3 text-sm font-black"><i class="fa-solid fa-floppy-disk mr-2"></i> Save Coffee</button>
+              <button onclick="removeCoffeeUrl()" class="rounded-2xl border border-red-500/20 bg-red-500/8 px-5 py-3 text-sm font-bold text-red-300">Remove</button>
+              <button onclick="refreshAllData()" class="rounded-2xl border border-teal-500/25 bg-teal-500/10 px-5 py-3 text-sm font-black text-teal-300 hover:bg-teal-500/20 transition"><i class="fa-solid fa-rotate mr-2"></i> Refresh</button>
+              <button onclick="generateSitemap()" class="rounded-2xl border border-green-500/25 bg-green-500/10 px-5 py-3 text-sm font-black text-green-300 hover:bg-green-500/20 transition"><i class="fa-solid fa-sitemap mr-2"></i> Sitemap</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="tab-analytics" class="admin-tab-content mt-4 hidden">
+        <div class="rounded-3xl border border-violet-500/15 bg-black/25 p-5">
+          <div class="mb-4 text-lg font-black text-white">📊 Analytics</div>
+          <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            <div class="glass rounded-2xl p-4 text-center"><div class="text-2xl font-black text-violet-400" id="totalResources">0</div><div class="text-xs text-gray-400">Resources (loaded)</div></div>
+            <div class="glass rounded-2xl p-4 text-center"><div class="text-2xl font-black text-teal-400" id="totalViews">0</div><div class="text-xs text-gray-400">Views</div></div>
+            <div class="glass rounded-2xl p-4 text-center"><div class="text-2xl font-black text-amber-400" id="totalDownloads">0</div><div class="text-xs text-gray-400">Downloads</div></div>
+            <div class="glass rounded-2xl p-4 text-center"><div class="text-2xl font-black text-pink-400" id="totalUsers">0</div><div class="text-xs text-gray-400">Users</div></div>
+          </div>
+          <div class="mt-4"><h4 class="font-bold mb-2 text-white">🏆 Top Resources</h4><div id="topResourcesList" class="space-y-1"></div></div>
+        </div>
+      </div>
+
+      <button onclick="logoutAdmin()" class="mt-6 w-full rounded-2xl border border-red-500/20 bg-red-500/8 px-5 py-3 text-sm font-bold text-red-300 hover:bg-red-500/15 transition">Logout Admin</button>
+    </div>
+  </div>
+</div>
+
+<div id="toast" class="fixed bottom-5 left-1/2 z-[200] hidden -translate-x-1/2 rounded-2xl border border-violet-500/25 bg-[#12101f] px-5 py-3 text-sm font-bold shadow-2xl"></div>
+
+<div class="fab">
+  <button onclick="scrollToTop()" class="fab-btn" title="Top"><i class="fa-solid fa-arrow-up"></i></button>
+  <button onclick="openSearch()" class="fab-btn" title="Search"><i class="fa-solid fa-search"></i></button>
+  <button onclick="toggleChatbot()" class="fab-btn" title="Chatbot"><i class="fa-solid fa-robot"></i></button>
+  <button onclick="openFlashcards()" class="fab-btn" title="Flashcards"><i class="fa-solid fa-clone"></i></button>
+</div>
+
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+
+<script>
+/* ============================================================
+   SL SAKURA — Complete App (Fixed 12-by-12 Pagination)
+   ============================================================ */
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDG4imqIshK4-vhzGZt7eek1oAgjdJF550",
+  authDomain: "sl-sakura.firebaseapp.com",
+  projectId: "sl-sakura",
+  storageBucket: "sl-sakura.firebasestorage.app",
+  messagingSenderId: "163142157440",
+  appId: "1:163142157440:web:b81c4dc806a77336a49265",
+  measurementId: "G-GRTPY0T1KH",
+  databaseURL: "https://sl-sakura-default-rtdb.asia-southeast1.firebasedatabase.app"
+};
+firebase.initializeApp(firebaseConfig);
+const db = firebase.database();
+const auth = firebase.auth();
+
+const ADMIN_EMAILS = ["dbw775318@gmail.com","dilnathbudmina39@gmail.com"];
+const PAGE_SIZE = 12;
+
+/* ---------- STATE ---------- */
+const state = {
+  resources: [],              // frontend paginated list
+  adminResources: [],         // admin paginated list (separate)
+  news: [], advertisements: [],
+  selectedMain:"ALL", selectedSub:"All", searchQuery:"",
+  selectedResource:null, countdownTimer:null,
+  adminLoggedIn:false, adminRole:null, coffeeUrl:"",
+  resourceSort:"newest",
+  currentResourceId:null, selectedResources:new Set(),
+  editingResourceId:null, adminTab:"resources", viewTracked:new Set(),
+  favorites:[], leaderboard:[], streak:0,
+  mockTests:[], vocabulary:[], grammar:[], kanji:[], listening:[],
+  reading:[], lessonPlans:[], badges:[], forumPosts:[], blogPosts:[],
+  reviewItems:[], quizzes:[], flashcards:[]
+};
+
+/* ---------- PAGINATION (frontend) ---------- */
+const pagination = {
+  oldestLoadedKey: null,   // oldest createdAt we have
+  hasMore: true,
+  isLoading: false,
+  totalLoaded: 0
+};
+
+/* ---------- PAGINATION (admin) ---------- */
+const adminPagination = {
+  oldestLoadedKey: null,
+  hasMore: true,
+  isLoading: false,
+  totalLoaded: 0
+};
+
+/* ---------- HELPERS ---------- */
+const $ = id => document.getElementById(id);
+function escapeHtml(v){
+  if(v==null) return "";
+  return String(v).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#039;");
+}
+function safeUrl(url){
+  if(!url) return "#";
+  try{ const u = new URL(url, location.href); if(u.protocol === "https:" || u.protocol === "http:") return u.href; }catch(e){}
+  return "#";
+}
+function showToast(msg, err=false){
+  const t = $("toast"); if(!t) return;
+  t.textContent = msg;
+  t.style.borderColor = err ? "rgba(239,68,68,.5)" : "rgba(139,92,246,.35)";
+  t.style.background = err ? "rgba(40,10,15,.95)" : "#12101f";
+  t.classList.remove("hidden");
+  clearTimeout(window.toastTimer);
+  window.toastTimer = setTimeout(() => t.classList.add("hidden"), 3000);
+}
+function showLoading(id){ const e = $(id); if(e) e.classList.remove("hidden"); }
+function hideLoading(id){ const e = $(id); if(e) e.classList.add("hidden"); }
+function isGoogleDriveUrl(u){ return u && u.includes("drive.google.com"); }
+function isYouTubeUrl(u){ return u && (u.includes("youtube.com") || u.includes("youtu.be")); }
+function getGoogleDriveFileId(url){
+  if(!url) return null;
+  const p = [/drive\.google\.com\/file\/d\/([^\/]+)/, /drive\.google\.com\/open\?id=([^&]+)/, /\/d\/([^\/]+)\//, /id=([^&]+)/];
+  for(const x of p){ const m = url.match(x); if(m) return m[1]; }
+  return null;
+}
+function getGoogleDriveDirectUrl(url){ const id = getGoogleDriveFileId(url); return id ? `https://drive.google.com/uc?export=download&id=${id}` : url; }
+function getYouTubeId(url){
+  if(!url) return null;
+  try{
+    const p = new URL(url);
+    const h = p.hostname.replace("www.","").toLowerCase();
+    if(h === "youtube.com" || h === "m.youtube.com"){
+      const v = p.searchParams.get("v"); if(v) return v;
+      if(p.pathname.startsWith("/embed/") || p.pathname.startsWith("/shorts/")) return p.pathname.split("/")[2]?.split("?")[0] || null;
+    }
+    if(h === "youtu.be") return p.pathname.substring(1).split("/")[0] || null;
+  }catch(e){}
+  return null;
+}
+function getCurrentShareUrl(){ return state.currentResourceId ? window.location.origin + window.location.pathname + "?resource=" + state.currentResourceId : window.location.href; }
+function getCurrentShareTitle(){ return state.selectedResource ? "SL Sakura - " + state.selectedResource.title : "SL Sakura 🌸 - Japanese Language Resources"; }
+
+/* ---------- THEME ---------- */
+function applyTheme(t){
+  if(t === "light"){
+    document.documentElement.setAttribute("data-theme","light");
+    const i = $("themeToggleIcon"); if(i) i.className = "fa-solid fa-moon";
+  }else{
+    document.documentElement.removeAttribute("data-theme");
+    const i = $("themeToggleIcon"); if(i) i.className = "fa-solid fa-sun";
+  }
+}
+function toggleTheme(){
+  const cur = document.documentElement.getAttribute("data-theme") === "light" ? "light" : "dark";
+  const next = cur === "light" ? "dark" : "light";
+  applyTheme(next);
+  try{ localStorage.setItem("slSakuraTheme", next); }catch(e){}
+}
+function initTheme(){ try{ applyTheme(localStorage.getItem("slSakuraTheme") || "dark"); }catch(e){ applyTheme("dark"); } }
+
+/* ---------- SAKURA ---------- */
+function createSakura(){
+  const layer = $("sakuraLayer"); if(!layer || layer.dataset.ready === "1") return;
+  layer.dataset.ready = "1";
+  const count = window.innerWidth <= 768 ? 8 : 14;
+  const frag = document.createDocumentFragment();
+  for(let i=0; i<count; i++){
+    const p = document.createElement("div");
+    p.className = "sakura"; p.textContent = "🌸";
+    p.style.left = Math.random()*100 + "%";
+    p.style.fontSize = (8 + Math.random()*12) + "px";
+    p.style.animationDuration = (10 + Math.random()*12) + "s";
+    p.style.animationDelay = Math.random()*8 + "s";
+    p.style.opacity = 0.35 + Math.random()*0.35;
+    frag.appendChild(p);
+  }
+  layer.appendChild(frag);
+}
+
+/* ---------- MENU / CONTACT ---------- */
+function openMenu(){ $("sideMenu").classList.remove("drawer-hidden"); $("menuOverlay").classList.remove("hidden"); }
+function closeMenu(){ $("sideMenu").classList.add("drawer-hidden"); $("menuOverlay").classList.add("hidden"); }
+function menuSearch(){ closeMenu(); openSearch(); }
+function menuResources(){ closeMenu(); $("resourcesSection").scrollIntoView({behavior:"smooth"}); }
+function menuNews(){ closeMenu(); $("newsSection").scrollIntoView({behavior:"smooth"}); }
+function openContact(){ const m = $("contactModal"); m.classList.remove("hidden"); m.classList.add("flex"); }
+function closeContact(){ const m = $("contactModal"); m.classList.add("hidden"); m.classList.remove("flex"); }
+
+/* ---------- AUTH ---------- */
+function toggleUserMenu(){ $("userMenu").classList.toggle("hidden"); }
+function openLoginModal(){ $("userMenu").classList.add("hidden"); const m = $("loginModal"); m.classList.remove("hidden"); m.classList.add("flex"); }
+function closeLoginModal(){ const m = $("loginModal"); m.classList.add("hidden"); m.classList.remove("flex"); }
+function loginUser(){
+  const e = $("loginEmail").value.trim(), p = $("loginPassword").value;
+  if(!e || !p){ showToast("Enter email and password", true); return; }
+  auth.signInWithEmailAndPassword(e, p).then(() => { closeLoginModal(); showToast("Welcome back! 🌸"); }).catch(err => showToast(err.message, true));
+}
+function signupUser(){
+  const e = $("loginEmail").value.trim(), p = $("loginPassword").value;
+  if(!e || !p){ showToast("Enter email and password", true); return; }
+  if(p.length < 6){ showToast("Password min 6 chars", true); return; }
+  auth.createUserWithEmailAndPassword(e, p).then(() => { closeLoginModal(); showToast("Account created! 🌸"); }).catch(err => showToast(err.message, true));
+}
+function googleLogin(){
+  const provider = new firebase.auth.GoogleAuthProvider();
+  auth.signInWithPopup(provider).then(() => { closeLoginModal(); showToast("Welcome! 🌸"); }).catch(err => showToast(err.message, true));
+}
+function logoutUser(){ auth.signOut().then(() => { showToast("Logged out"); $("userMenu").classList.add("hidden"); }); }
+
+/* ---------- ADMIN AUTH ---------- */
+async function resolveAdminRole(user){
+  if(!user) return null;
+  if(ADMIN_EMAILS.map(e => e.toLowerCase()).includes((user.email || "").toLowerCase())) return "super_admin";
+  try{
+    const snap = await db.ref("users/" + user.uid + "/role").once("value");
+    const role = snap.val();
+    if(role && ["super_admin","admin","moderator","editor"].includes(role)) return role;
+  }catch(e){}
+  return null;
+}
+
+/* ---------- AUTH STATE ---------- */
+let _bootstrapped = false;
+auth.onAuthStateChanged(async user => {
+  updateUserUI(user);
+  updateLoginFeatures(user);
+  if(user){
+    state.adminRole = await resolveAdminRole(user);
+    state.adminLoggedIn = !!state.adminRole;
+    const btn = $("adminAccessBtn"); if(btn) btn.classList.toggle("hidden", !state.adminLoggedIn);
+  }else{
+    state.adminRole = null; state.adminLoggedIn = false;
+    const btn = $("adminAccessBtn"); if(btn) btn.classList.add("hidden");
+    const panel = $("adminPanel"); if(panel) panel.classList.add("hidden");
+  }
+  if(!_bootstrapped){
+    _bootstrapped = true;
+    loadResourcesPaginated(false);
+    loadNewsAndAds();
+    handleUrlParams();
+    loadLiveQuizGame();
+  }
+});
+
+function updateUserUI(user){
+  const info = $("userInfo"); if(!info) return;
+  const loginBtn = $("loginBtn"), logoutBtn = $("logoutBtn"), userIcon = $("userIcon");
+  if(user){
+    info.innerHTML = `<div class="font-bold text-white">${escapeHtml(user.displayName || user.email || "User")}</div><div class="text-xs text-gray-400">${escapeHtml(user.email || "")}</div>`;
+    if(loginBtn) loginBtn.classList.add("hidden");
+    if(logoutBtn) logoutBtn.classList.remove("hidden");
+    if(userIcon) userIcon.className = "fa-solid fa-user-check";
+    updateStreak(); loadFavorites(); updateUserDashboard();
+  }else{
+    info.innerHTML = `<div class="font-bold text-white">Guest</div><div class="text-xs text-gray-400">Not logged in</div>`;
+    if(loginBtn) loginBtn.classList.remove("hidden");
+    if(logoutBtn) logoutBtn.classList.add("hidden");
+    if(userIcon) userIcon.className = "fa-solid fa-user";
+    $("streakDisplay")?.classList.add("hidden");
+  }
+}
+function updateLoginFeatures(user){
+  const lf = $("loginFeatures"), ud = $("userDashboard");
+  if(user){ lf?.classList.add("hidden"); ud?.classList.remove("hidden"); updateUserDashboard(); }
+  else{ lf?.classList.remove("hidden"); ud?.classList.add("hidden"); }
+}
+function updateUserDashboard(){
+  const user = auth.currentUser; if(!user) return;
+  const ne = $("userDisplayName"), ee = $("userEmail");
+  if(ne) ne.textContent = user.displayName || user.email || "User";
+  if(ee) ee.textContent = user.email || "";
+  db.ref("users/" + user.uid).once("value").then(snap => {
+    const d = snap.val() || {};
+    const set = (id, v) => { const el = $(id); if(el) el.textContent = v; };
+    set("userStreak", (d.streak && d.streak.count) || 0);
+    set("userFavorites", (d.favorites || []).length);
+    set("userViewed", d.viewedCount || 0);
+    set("userBadges", (d.badges || []).length);
+  }).catch(() => {});
+}
+
+/* ---------- STREAK ---------- */
+function updateStreak(){
+  const user = auth.currentUser;
+  if(!user){ $("streakDisplay")?.classList.add("hidden"); return; }
+  const ref = db.ref("users/" + user.uid + "/streak");
+  ref.once("value").then(snap => {
+    const d = snap.val() || {};
+    const today = new Date().toDateString();
+    const last = d.lastDate || "";
+    let streak = d.count || 0;
+    if(last === today){ }
+    else if(last === new Date(Date.now() - 86400000).toDateString()) streak++;
+    else streak = 1;
+    if(last !== today) ref.set({count:streak, lastDate:today, updatedAt:Date.now()}).catch(() => {});
+    state.streak = streak;
+    const dd = $("streakDisplay"), cc = $("streakCount");
+    dd?.classList.remove("hidden");
+    if(cc) cc.textContent = streak;
+  }).catch(() => {});
+}
+
+/* ---------- LEADERBOARD ---------- */
+let _lbLoaded = false;
+function updateLeaderboard(force=false){
+  if(_lbLoaded && !force) return;
+  db.ref("users").once("value").then(snap => {
+    const users = snap.val() || {};
+    const list = [];
+    for(const [uid, d] of Object.entries(users)){
+      if(d && d.streak) list.push({uid, name: d.displayName || d.email || "User", streak: d.streak.count || 0});
+    }
+    list.sort((a,b) => b.streak - a.streak);
+    state.leaderboard = list.slice(0, 50);
+    _lbLoaded = true;
+    renderLeaderboard();
+  }).catch(() => {});
+}
+function openLeaderboard(){ const m = $("leaderboardModal"); m.classList.remove("hidden"); m.classList.add("flex"); updateLeaderboard(true); }
+function closeLeaderboard(){ const m = $("leaderboardModal"); m.classList.add("hidden"); m.classList.remove("flex"); }
+function renderLeaderboard(){
+  const c = $("leaderboardContainer"); if(!c) return;
+  if(!state.leaderboard.length){
+    c.innerHTML = `<div class="text-center p-8"><div class="text-4xl mb-4">🏆</div><h3 class="text-xl font-black text-white">No data yet</h3><p class="text-gray-400 mt-2">Start studying to appear here!</p></div>`;
+    return;
+  }
+  const cu = auth.currentUser;
+  c.innerHTML = `<div class="space-y-2">${state.leaderboard.map((u, i) => {
+    const cls = i === 0 ? "gold" : i === 1 ? "silver" : i === 2 ? "bronze" : "";
+    const me = cu && u.uid === cu.uid;
+    return `<div class="leaderboard-item ${me ? "border-violet-500/40 bg-violet-500/8" : ""}"><span class="rank ${cls}">${i+1}</span><div class="flex-1"><div class="font-bold text-sm text-white">${escapeHtml(u.name)} ${me ? "👈" : ""}</div><div class="text-xs text-gray-400">🔥 ${u.streak} day streak</div></div><div class="text-violet-400 font-bold">${u.streak}</div></div>`;
+  }).join("")}</div>`;
+}
+
+/* ---------- FAVORITES ---------- */
+function loadFavorites(){
+  const u = auth.currentUser; if(!u) return;
+  db.ref("users/" + u.uid + "/favorites").once("value").then(s => { state.favorites = s.val() || []; }).catch(() => {});
+}
+function openFavorites(){
+  $("userMenu").classList.add("hidden");
+  if(!auth.currentUser){ showToast("Please login", true); openLoginModal(); return; }
+  showToast("❤️ " + state.favorites.length + " favorites");
+}
+
+/* ---------- SHARE ---------- */
+function openShareWindow(url){ window.open(url, "_blank", "width=600,height=400"); }
+function shareOnFacebook(){ openShareWindow("https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(getCurrentShareUrl())); }
+function shareOnTwitter(){ openShareWindow("https://twitter.com/intent/tweet?text=" + encodeURIComponent(getCurrentShareTitle()) + "&url=" + encodeURIComponent(getCurrentShareUrl())); }
+function shareOnWhatsApp(){ openShareWindow("https://wa.me/?text=" + encodeURIComponent(getCurrentShareTitle() + "\n" + getCurrentShareUrl())); }
+function shareOnTelegram(){ openShareWindow("https://t.me/share/url?url=" + encodeURIComponent(getCurrentShareUrl()) + "&text=" + encodeURIComponent(getCurrentShareTitle())); }
+function copyCurrentLink(){
+  const url = getCurrentShareUrl();
+  if(navigator.clipboard) navigator.clipboard.writeText(url).then(() => showToast("✅ Copied")).catch(() => {});
+}
+function scrollToTop(){ window.scrollTo({top:0, behavior:"smooth"}); }
+function openSearch(){ $("searchSection").scrollIntoView({behavior:"smooth", block:"center"}); setTimeout(() => $("resourceSearch")?.focus(), 500); }
+
+/* ---------- CATEGORIES ---------- */
+const categorySubs = {
+  N5:["All","Grammar","Kanji","Vocabulary","Choukai","Past Papers"],
+  N4:["All","Grammar","Kanji","Vocabulary","Choukai","Past Papers"],
+  N3:["All","Grammar","Kanji","Vocabulary","Choukai","Past Papers"],
+  N2:["All","Grammar","Kanji","Vocabulary","Choukai","Past Papers"],
+  N1:["All","Grammar","Kanji","Vocabulary","Choukai","Past Papers"],
+  SSW:["All","Food Service","Nursing Care","Agriculture","Hospitality/Hotel"],
+  CLASSES:["All","Lecturer Wise Filter","Grammar Tutorials","Live Class Recordings","Exam Preparation"],
+  "SURVIVAL GUIDE":["All","Visa & CoE","Part-Time Jobs (Arubaito)","Bank & SIM Cards","Garbage & Rules"]
+};
+const mainCategories = ["ALL","N5","N4","N3","N2","N1","SSW","CLASSES","SURVIVAL GUIDE"];
+
+function renderMainTabs(){
+  const icons = {"ALL":"fa-solid fa-layer-group","N5":"fa-solid fa-1","N4":"fa-solid fa-2","N3":"fa-solid fa-3","N2":"fa-solid fa-4","N1":"fa-solid fa-5","SSW":"fa-solid fa-briefcase","CLASSES":"fa-solid fa-chalkboard-user","SURVIVAL GUIDE":"fa-solid fa-compass"};
+  const el = $("mainTabs"); if(!el) return;
+  el.innerHTML = mainCategories.map(c => {
+    const a = state.selectedMain === c ? "tab-active" : "";
+    const cnt = c === "ALL" ? state.resources.length : state.resources.filter(r => r.mainCategory === c).length;
+    return `<button onclick="selectMain('${c}')" class="shrink-0 rounded-xl border border-violet-500/20 bg-white/5 px-4 py-2 text-xs font-black text-violet-100/80 ${a}"><i class="${icons[c]||'fa-solid fa-tag'} mr-1"></i> ${c} <span class="text-violet-100/45">(${cnt})</span></button>`;
+  }).join("");
+}
+function selectMain(c){ state.selectedMain = c; state.selectedSub = "All"; renderMainTabs(); renderSubTabs(); renderResources(); }
+
+function renderSubTabs(){
+  const el = $("subTabs"); if(!el) return;
+  if(state.selectedMain === "ALL"){ el.innerHTML = ""; return; }
+  const subs = categorySubs[state.selectedMain] || ["All"];
+  el.innerHTML = subs.map(s => {
+    const a = state.selectedSub === s ? "tab-active" : "";
+    const cnt = s === "All" ? state.resources.filter(r => r.mainCategory === state.selectedMain).length : state.resources.filter(r => r.mainCategory === state.selectedMain && r.subCategory === s).length;
+    return `<button onclick="selectSub('${escapeHtml(s)}')" class="rounded-full border border-violet-500/15 bg-white/5 px-3 py-2 text-[11px] font-bold text-violet-100/70 ${a}">${escapeHtml(s)} <span class="text-violet-100/40">(${cnt})</span></button>`;
+  }).join("");
+}
+function selectSub(s){ state.selectedSub = s; renderSubTabs(); renderResources(); }
+
+/* ============================================================
+   FRONTEND PAGINATION — 12 at a time
+   ============================================================ */
+function loadResourcesPaginated(append=false){
+  if(pagination.isLoading) return;
+
+  if(!append){
+    pagination.oldestLoadedKey = null;
+    pagination.hasMore = true;
+    pagination.totalLoaded = 0;
+    state.resources = [];
+  }
+
+  if(append && !pagination.hasMore){
+    showToast("✅ All resources loaded");
+    return;
+  }
+
+  pagination.isLoading = true;
+  showLoading("resourceLoading");
+
+  const btn = $("loadMoreBtn");
+  if(btn){
+    btn.disabled = true;
+    btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-2"></i> Loading...';
+  }
+
+  // Query: fetch PAGE_SIZE+1 items, ordered by createdAt descending
+  // limitToLast(N) with endBefore(pivot) — orderByChild ascends, so last N = newest N
+  let q;
+  if(pagination.oldestLoadedKey !== null && pagination.oldestLoadedKey !== undefined){
+    q = db.ref("resources").orderByChild("createdAt").endBefore(pagination.oldestLoadedKey).limitToLast(PAGE_SIZE + 1);
+  } else {
+    q = db.ref("resources").orderByChild("createdAt").limitToLast(PAGE_SIZE + 1);
+  }
+
+  q.once("value").then(snap => {
+    const data = snap.val() || {};
+    const entries = Object.entries(data);      // ascending by createdAt
+    const hasExtra = entries.length > PAGE_SIZE;
+    // Keep the newest PAGE_SIZE items (they're at the end of the ascending list)
+    const kept = hasExtra ? entries.slice(entries.length - PAGE_SIZE) : entries;
+
+    // Save the oldest createdAt we now hold
+    if(kept.length){
+      pagination.oldestLoadedKey = kept[0][1].createdAt || 0;
+    }
+    pagination.hasMore = hasExtra;
+
+    const newRes = kept.map(([id, v]) => ({id, ...v}));
+    state.resources = append ? [...state.resources, ...newRes] : newRes;
+    // Sort descending for display (newest first)
+    state.resources.sort((a,b) => (b.createdAt||0) - (a.createdAt||0));
+
+    pagination.totalLoaded = state.resources.length;
+    pagination.isLoading = false;
+    hideLoading("resourceLoading");
+    if(btn) btn.disabled = false;
+
+    renderMainTabs();
+    renderSubTabs();
+    renderResources();
+    updateAnalytics();
+
+    if(!pagination.hasMore){
+      showToast("✅ All resources loaded");
+      if(btn){ btn.innerHTML = "✅ All loaded"; btn.disabled = true; }
+    }
+  }).catch(err => {
+    console.error("[frontend pagination]", err);
+    pagination.isLoading = false;
+    hideLoading("resourceLoading");
+    if(btn){ btn.disabled = false; btn.innerHTML = '<i class="fa-solid fa-rotate mr-2"></i> Retry'; }
+    showToast("❌ Failed to load", true);
+  });
+}
+
+function loadMoreResources(){
+  if(pagination.isLoading) return;
+  if(!pagination.hasMore){
+    showToast("✅ All resources already loaded");
+    return;
+  }
+  loadResourcesPaginated(true);
+}
+
+/* ---------- FRONTEND FILTER ---------- */
+function getFilteredResources(){
+  const q = state.searchQuery.trim().toLowerCase();
+  const filtered = state.resources.filter(r => {
+    const m = state.selectedMain === "ALL" || r.mainCategory === state.selectedMain;
+    const sub = state.selectedSub === "All" || r.subCategory === state.selectedSub;
+    const txt = [r.title, r.lecturer, r.mainCategory, r.subCategory, r.description].filter(Boolean).join(" ").toLowerCase();
+    return m && sub && (!q || txt.includes(q));
+  });
+  return filtered.sort((a,b) => {
+    if(state.resourceSort === "popular") return (b.viewCount||0) - (a.viewCount||0);
+    if(state.resourceSort === "title") return String(a.title||"").localeCompare(String(b.title||""));
+    return (b.createdAt||0) - (a.createdAt||0);
+  });
+}
+function changeResourceSort(v){ state.resourceSort = v || "newest"; renderResources(); }
+
+/* ---------- RENDER FRONTEND RESOURCES ---------- */
+function renderResources(){
+  const full = getFilteredResources();
+  const ct = $("resourceCountText");
+  if(ct) ct.textContent = full.length;
+
+  if(!full.length && !pagination.isLoading){
+    $("resourceGrid").innerHTML = `<div class="glass col-span-full rounded-3xl p-8 text-center"><div class="text-4xl mb-3">📚</div><div class="mt-3 font-black text-xl text-white">No resources yet</div><div class="mt-2 text-sm text-gray-400">Try another category or search.</div></div>`;
+    $("loadMoreWrap").classList.add("hidden");
+    $("loadMoreWrap").classList.remove("flex");
+    renderAds();
+    return;
+  }
+
+  const iconMap = {pdf:"fa-regular fa-file-pdf",audio:"fa-solid fa-music",video:"fa-solid fa-video",youtube:"fa-brands fa-youtube"};
+  const badgeClass = {pdf:"",audio:"teal",video:"gold",youtube:"pink"};
+  let html = "";
+  for(const r of full){
+    const icon = iconMap[r.mediaType] || "fa-regular fa-file";
+    const bCls = badgeClass[r.mediaType] || "";
+    const thumb = r.thumbnailUrl ? safeUrl(r.thumbnailUrl) : "";
+    const hasThumb = thumb && thumb !== "#";
+    const isSel = state.selectedResources.has(r.id);
+    const adminBulk = state.adminLoggedIn ? `<div class="absolute top-3 left-3 z-10"><input type="checkbox" class="bulk-checkbox" ${isSel?"checked":""} onchange="toggleBulk('${r.id}')" /></div>` : "";
+    const thumbHtml = hasThumb ? `<div class="resource-thumb-wrap"><img src="${thumb}" alt="" loading="lazy" onerror="this.parentElement.outerHTML='<div class=\\'resource-thumb-placeholder\\'><i class=\\'${icon}\\'></i></div>'"></div>` : `<div class="resource-thumb-placeholder"><i class="${icon}"></i></div>`;
+    const isClass = r.mainCategory === "CLASSES";
+    html += `<div class="resource-card">
+      ${adminBulk}
+      <span class="media-badge ${bCls}"><i class="${icon}"></i></span>
+      ${thumbHtml}
+      <div class="p-4">
+        <h3 class="font-black leading-6 break-words text-white">${escapeHtml(r.title || "Untitled")}</h3>
+        <div class="mt-1 text-xs text-gray-400">${escapeHtml(r.subCategory || "All")}</div>
+        ${r.description ? `<p class="mt-2 line-clamp-2 text-xs leading-5 text-gray-400">${escapeHtml(r.description)}</p>` : ""}
+        ${r.lecturer ? `<div class="mt-2 text-sm font-bold text-violet-100/80">👨‍🏫 ${escapeHtml(r.lecturer)}</div>` : ""}
+        <div class="mt-2 flex items-center justify-between gap-3 text-xs text-violet-100/45"><span><i class="fa-regular fa-eye mr-1"></i>${r.viewCount||0} views</span></div>
+        ${isClass ? `<a href="https://wa.me/${(r.lecturerContact||"94789995159").replace(/^0/,"94")}" target="_blank" rel="noopener" class="mt-3 inline-flex items-center rounded-xl bg-green-500/15 px-3 py-1.5 text-[11px] font-bold text-green-300 hover:bg-green-500/25 transition"><i class="fa-brands fa-whatsapp mr-1"></i>${escapeHtml(r.lecturerContact||"0789995159")}</a>` : ""}
+        <button onclick="openResource('${r.id}')" class="rose-btn mt-3 w-full rounded-2xl px-4 py-2.5 text-sm font-black text-white"><i class="fa-solid fa-eye mr-2"></i> View Resource</button>
+      </div>
+    </div>`;
+  }
+  $("resourceGrid").innerHTML = html;
+
+  // Load More button — based on pagination.hasMore
+  const statusEl = $("loadMoreStatus");
+  const wrap = $("loadMoreWrap");
+  const btn = $("loadMoreBtn");
+
+  if(pagination.hasMore){
+    wrap.classList.remove("hidden");
+    wrap.classList.add("flex");
+    if(statusEl) statusEl.textContent = `Showing ${full.length} resources • more available`;
+    if(btn){
+      btn.innerHTML = '<i class="fa-solid fa-plus mr-2"></i> Load More Resources';
+      btn.disabled = false;
+    }
+  }else{
+    wrap.classList.add("hidden");
+    wrap.classList.remove("flex");
+    if(statusEl) statusEl.textContent = `✅ All ${full.length} resources loaded`;
+  }
+
+  renderAds();
+}
+
+/* ---------- BULK SELECT ---------- */
+function toggleBulk(id){ state.selectedResources.has(id) ? state.selectedResources.delete(id) : state.selectedResources.add(id); renderResources(); }
+function selectAllResources(){ getFilteredResources().forEach(r => state.selectedResources.add(r.id)); renderResources(); }
+function clearBulkSelection(){ state.selectedResources.clear(); renderResources(); }
+function bulkDelete(){
+  if(!state.adminLoggedIn || !state.selectedResources.size) return;
+  if(!confirm(`Delete ${state.selectedResources.size} resources?`)) return;
+  const ids = [...state.selectedResources];
+  Promise.all(ids.map(id => db.ref("resources/" + id).remove()))
+    .then(() => {
+      showToast("🗑️ Deleted");
+      state.selectedResources.clear();
+      loadResourcesPaginated(false);
+      if(state.adminLoggedIn){ adminPagination.oldestLoadedKey = null; adminPagination.hasMore = true; adminPagination.totalLoaded = 0; state.adminResources = []; loadAdminResourcesPaginated(false); }
+    })
+    .catch(() => showToast("Error", true));
+}
+
+/* ---------- RESOURCE VIEWER ---------- */
+function openResource(id){
+  const r = state.resources.find(x => x.id === id) || state.adminResources.find(x => x.id === id);
+  if(!r){ showToast("Not found", true); return; }
+  state.selectedResource = r; state.currentResourceId = id;
+  trackView(id);
+  $("homePage").classList.add("hidden");
+  $("viewerPage").classList.remove("hidden");
+  $("viewerTitle").textContent = r.title || "Resource";
+  $("viewerCategory").textContent = `${r.mainCategory||""} • ${r.subCategory||""}`;
+  $("viewerLecturer").textContent = r.lecturer ? `Lecturer: ${r.lecturer}` : "";
+  $("viewCountDisplay").textContent = r.viewCount || 0;
+  const cb = $("viewerContactBtn");
+  if(r.mainCategory === "CLASSES"){
+    const num = r.lecturerContact || "0789995159";
+    cb.href = `https://wa.me/${num.replace(/^0/,"94")}`;
+    cb.innerHTML = `<i class="fa-brands fa-whatsapp mr-1"></i> ${escapeHtml(num)}`;
+    cb.classList.remove("hidden");
+  }else cb.classList.add("hidden");
+  renderMedia(r);
+  renderAds();
+  startCountdown();
+  window.scrollTo({top:0, behavior:"smooth"});
+}
+function goHome(){
+  clearInterval(state.countdownTimer);
+  state.selectedResource = null; state.currentResourceId = null;
+  $("viewerPage").classList.add("hidden");
+  $("homePage").classList.remove("hidden");
+  window.scrollTo({top:0, behavior:"smooth"});
+}
+function trackView(id){
+  if(state.viewTracked.has(id)) return;
+  state.viewTracked.add(id);
+  db.ref("resources/" + id).transaction(cur => {
+    if(!cur) return {viewCount:1};
+    cur.viewCount = (cur.viewCount||0) + 1;
+    return cur;
+  }).catch(() => {});
+}
+function trackDownload(){
+  const r = state.selectedResource; if(!r) return;
+  db.ref("resources/" + r.id).transaction(cur => {
+    if(!cur) return {downloadCount:1};
+    cur.downloadCount = (cur.downloadCount||0) + 1;
+    return cur;
+  }).catch(() => {});
+}
+function renderMedia(r){
+  const box = $("viewerMedia");
+  let url = r.previewUrl || "";
+  $("viewerDownloadButton").classList.add("hidden");
+  $("youtubeOnlyMessage").classList.add("hidden");
+  $("downloadReadyMessage").classList.add("hidden");
+  if(!url){ box.innerHTML = `<div class="p-8 text-center"><div class="text-4xl">📚</div><div class="mt-3 font-bold text-white">No preview URL</div></div>`; return; }
+  if(r.mediaType === "youtube" || isYouTubeUrl(url)){
+    const vid = getYouTubeId(url);
+    if(!vid){ box.innerHTML = `<div class="p-8 text-center text-red-300">Invalid YouTube URL</div>`; return; }
+    box.innerHTML = `<iframe src="https://www.youtube.com/embed/${vid}" allowfullscreen style="width:100%;height:100%;border:0;"></iframe>`;
+    $("youtubeOnlyMessage").classList.remove("hidden");
+    $("countdownBox").classList.add("hidden");
+    return;
+  }
+  if(r.mediaType === "pdf" || isGoogleDriveUrl(url) || url.includes(".pdf")){
+    const fid = getGoogleDriveFileId(url);
+    if(fid){
+      const embed = `https://drive.google.com/file/d/${fid}/preview`;
+      const direct = `https://drive.google.com/uc?export=download&id=${fid}`;
+      r.downloadUrl = direct;
+      box.innerHTML = `<div style="width:100%;height:380px;background:#f5f5f5;border-radius:12px;overflow:hidden;"><iframe src="${embed}" style="width:100%;height:100%;border:0;" allowfullscreen></iframe></div><div class="text-center text-xs text-gray-400 mt-2"><a href="${direct}" target="_blank" class="text-violet-400 underline">Open directly</a></div>`;
+      $("countdownBox").classList.remove("hidden");
+      startCountdown();
+      return;
+    }
+    box.innerHTML = `<div class="p-8 text-center text-red-300">Invalid Google Drive URL</div>`;
+    return;
+  }
+  if(r.mediaType === "audio"){
+    box.innerHTML = `<div class="flex min-h-[320px] flex-col items-center justify-center gap-6 p-6"><div class="text-6xl">🎵</div><audio controls src="${safeUrl(url)}" style="width:90%;max-width:500px;"></audio></div>`;
+    return;
+  }
+  if(r.mediaType === "video"){
+    box.innerHTML = `<video controls playsinline src="${safeUrl(url)}" style="width:100%;height:100%;object-fit:contain;"></video>`;
+    return;
+  }
+  box.innerHTML = `<div class="p-8 text-center">Unsupported: ${escapeHtml(r.mediaType||"")}</div>`;
+}
+function startCountdown(){
+  clearInterval(state.countdownTimer);
+  const r = state.selectedResource; if(!r) return;
+  if(r.mediaType === "youtube" || isYouTubeUrl(r.previewUrl)){ $("countdownBox").classList.add("hidden"); return; }
+  $("countdownBox").classList.remove("hidden");
+  $("viewerDownloadButton").classList.add("hidden");
+  $("downloadReadyMessage").classList.add("hidden");
+  let sec = 8;
+  $("countdown").textContent = sec;
+  state.countdownTimer = setInterval(() => {
+    sec--;
+    if(sec > 0) $("countdown").textContent = sec;
+    if(sec <= 0){
+      clearInterval(state.countdownTimer);
+      $("countdown").textContent = "✓";
+      $("downloadReadyMessage").classList.remove("hidden");
+      let dl = r.downloadUrl || r.previewUrl;
+      if(dl && isGoogleDriveUrl(dl)) dl = getGoogleDriveDirectUrl(dl);
+      if(dl && dl !== "#"){
+        const btn = $("viewerDownloadButton");
+        btn.href = safeUrl(dl);
+        btn.classList.remove("hidden");
+        btn.onclick = function(){ trackDownload(); };
+      }
+    }
+  }, 1000);
+}
+
+/* ---------- ADS ---------- */
+function renderAds(){
+  const place = ["TOP","MIDDLE","VIEWER"];
+  const cont = ["topAd728","middleAd728","viewerAdContainer"];
+  place.forEach((p, i) => {
+    const ads = state.advertisements.filter(a => a.active !== false && a.placement === p);
+    const el = $(cont[i]); if(!el) return;
+    if(!ads.length){ el.innerHTML = `<div class="text-center text-violet-100/25 text-sm p-4">📢 Ad Space</div>`; return; }
+    const ad = ads[0];
+    el.innerHTML = `<a href="${safeUrl(ad.link)}" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;width:100%;min-height:90px;background:rgba(255,255,255,.03);border-radius:12px;overflow:hidden;"><img src="${safeUrl(ad.imageUrl)}" alt="${escapeHtml(ad.title)}" style="width:100%;height:auto;max-height:90px;object-fit:contain;" loading="lazy"><span class="ad-label">Ad</span></a>`;
+  });
+}
+
+/* ---------- NEWS ---------- */
+function loadNewsAndAds(){
+  showLoading("newsLoading");
+  db.ref("news").once("value").then(s => {
+    state.news = Object.entries(s.val() || {}).map(([id, v]) => ({id, ...v}));
+    hideLoading("newsLoading");
+    renderNews();
+    renderAdminLists();
+  }).catch(() => hideLoading("newsLoading"));
+  db.ref("advertisements").once("value").then(s => {
+    state.advertisements = Object.entries(s.val() || {}).map(([id, v]) => ({id, ...v}));
+    renderAds();
+  }).catch(() => {});
+  db.ref("settings/buyMeACoffeeUrl").once("value").then(s => {
+    state.coffeeUrl = s.val() || "";
+    if(state.adminLoggedIn){ const el = $("coffeeUrl"); if(el) el.value = state.coffeeUrl; }
+  }).catch(() => {});
+}
+function renderNews(){
+  const list = [...state.news].sort((a,b) => (b.createdAt||0) - (a.createdAt||0)).slice(0, 6);
+  const el = $("newsGrid"); if(!el) return;
+  if(!list.length){ el.innerHTML = `<div class="col-span-full rounded-2xl border border-violet-500/15 bg-black/15 p-5 text-center text-sm text-gray-400">Japan updates coming soon.</div>`; return; }
+  el.innerHTML = list.map(n => {
+    const hasLink = n.link && safeUrl(n.link) !== "#";
+    return `<div class="rounded-2xl border border-violet-500/15 bg-black/25 p-4 hover:bg-white/5 transition"><span class="rounded-full bg-violet-500/15 px-3 py-1 text-[10px] font-black text-violet-300">${escapeHtml(n.category||"UPDATE")}</span><h3 class="mt-3 font-black text-white">${escapeHtml(n.title)}</h3><p class="mt-2 line-clamp-2 text-sm leading-6 text-gray-400">${escapeHtml(n.description)}</p>${hasLink ? `<a href="${safeUrl(n.link)}" target="_blank" class="mt-3 inline-flex rounded-xl bg-violet-500/15 px-4 py-2 text-xs font-bold text-violet-300 hover:bg-violet-500/25 transition">Read More →</a>` : ""}</div>`;
+  }).join("");
+}
+
+/* ============================================================
+   ADMIN PANEL
+   ============================================================ */
+function openAdminLogin(){ const m = $("adminLoginModal"); m.classList.remove("hidden"); m.classList.add("flex"); setTimeout(() => $("adminPassword")?.focus(), 100); }
+function closeAdminLogin(){ const m = $("adminLoginModal"); m.classList.add("hidden"); m.classList.remove("flex"); }
+
+async function loginAdmin(){
+  const e = $("adminEmail").value.trim();
+  const p = $("adminPassword").value;
+  if(!e || !p){ showToast("Enter email and password", true); return; }
+  try{
+    const cred = await auth.signInWithEmailAndPassword(e, p);
+    const role = await resolveAdminRole(cred.user);
+    if(!role){ await auth.signOut(); showToast("❌ No admin permission for: " + cred.user.email, true); return; }
+    state.adminRole = role;
+    state.adminLoggedIn = true;
+    $("adminEmail").value = ""; $("adminPassword").value = "";
+    closeAdminLogin();
+    $("adminPanel").classList.remove("hidden");
+    const cu = $("coffeeUrl"); if(cu) cu.value = state.coffeeUrl || "";
+
+    // Load admin lists
+    adminPagination.oldestLoadedKey = null;
+    adminPagination.hasMore = true;
+    adminPagination.totalLoaded = 0;
+    state.adminResources = [];
+    loadAdminResourcesPaginated(false);
+
+    renderAdminLists();
+    updateAnalytics();
+    loadQuizzes(); loadFlashcards(); loadMockTestsAdmin(); loadVocabularyAdmin();
+    loadGrammarAdmin(); loadKanjiAdmin(); loadListeningAdmin(); loadReadingAdmin();
+    loadLessonPlansAdmin(); loadBadgesAdmin(); loadForumPosts(); loadBlogPosts();
+    loadReviewItems(); loadUsersAdmin(); loadLiveQuizGameSettings();
+    showToast("✅ Admin: " + role);
+  }catch(err){
+    console.error(err);
+    showToast("❌ " + (err.message || "Login failed"), true);
+  }
+}
+function closeAdminPanel(){ $("adminPanel").classList.add("hidden"); }
+function logoutAdmin(){ auth.signOut().then(() => { closeAdminPanel(); showToast("Logged out"); }); }
+function switchAdminTab(tab){
+  state.adminTab = tab;
+  document.querySelectorAll(".admin-tab").forEach(el => el.classList.toggle("active", el.dataset.tab === tab));
+  document.querySelectorAll(".admin-tab-content").forEach(el => el.classList.toggle("hidden", el.id !== "tab-" + tab));
+  renderAdminLists();
+  if(tab === "analytics") updateAnalytics();
+  const loaders = {quiz:"loadQuizzes",flashcards:"loadFlashcards",mocktests:"loadMockTestsAdmin",vocabulary:"loadVocabularyAdmin",grammar:"loadGrammarAdmin",kanji:"loadKanjiAdmin",listening:"loadListeningAdmin",reading:"loadReadingAdmin",lessonplans:"loadLessonPlansAdmin",badges:"loadBadgesAdmin",forum:"loadForumPosts",blog:"loadBlogPosts",users:"loadUsersAdmin"};
+  const fn = loaders[tab];
+  if(fn && typeof window[fn] === "function") window[fn]();
+}
+
+/* ============================================================
+   ADMIN PAGINATION — 12 at a time (separate from frontend)
+   ============================================================ */
+function loadAdminResourcesPaginated(append=false){
+  if(!state.adminLoggedIn) return;
+  if(adminPagination.isLoading) return;
+
+  if(!append){
+    adminPagination.oldestLoadedKey = null;
+    adminPagination.hasMore = true;
+    adminPagination.totalLoaded = 0;
+    state.adminResources = [];
+  }
+
+  if(append && !adminPagination.hasMore){
+    showToast("✅ All admin resources loaded");
+    return;
+  }
+
+  adminPagination.isLoading = true;
+
+  const btn = $("adminLoadMoreBtn");
+  if(btn){ btn.disabled = true; btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-2"></i> Loading...'; }
+
+  let q;
+  if(adminPagination.oldestLoadedKey !== null && adminPagination.oldestLoadedKey !== undefined){
+    q = db.ref("resources").orderByChild("createdAt").endBefore(adminPagination.oldestLoadedKey).limitToLast(PAGE_SIZE + 1);
+  } else {
+    q = db.ref("resources").orderByChild("createdAt").limitToLast(PAGE_SIZE + 1);
+  }
+
+  q.once("value").then(snap => {
+    const data = snap.val() || {};
+    const entries = Object.entries(data);
+    const hasExtra = entries.length > PAGE_SIZE;
+    const kept = hasExtra ? entries.slice(entries.length - PAGE_SIZE) : entries;
+
+    if(kept.length){
+      adminPagination.oldestLoadedKey = kept[0][1].createdAt || 0;
+    }
+    adminPagination.hasMore = hasExtra;
+
+    const newRes = kept.map(([id, v]) => ({id, ...v}));
+    state.adminResources = append ? [...state.adminResources, ...newRes] : newRes;
+    state.adminResources.sort((a,b) => (b.createdAt||0) - (a.createdAt||0));
+
+    adminPagination.totalLoaded = state.adminResources.length;
+    adminPagination.isLoading = false;
+    if(btn) btn.disabled = false;
+
+    renderAdminResourcesList();
+    updateAdminStats();
+    if(!adminPagination.hasMore){
+      showToast("✅ All admin resources loaded");
+    }
+  }).catch(err => {
+    console.error("[admin pagination]", err);
+    adminPagination.isLoading = false;
+    if(btn){ btn.disabled = false; btn.innerHTML = '<i class="fa-solid fa-rotate mr-2"></i> Retry'; }
+    showToast("❌ Failed to load admin resources", true);
+  });
+}
+
+function loadMoreAdminResources(){
+  if(adminPagination.isLoading) return;
+  if(!adminPagination.hasMore){
+    showToast("✅ All admin resources already loaded");
+    return;
+  }
+  loadAdminResourcesPaginated(true);
+}
+
+function updateAdminStats(){
+  const el = $("adminResourceStats");
+  if(!el) return;
+  el.textContent = `Loaded ${state.adminResources.length} resources ${adminPagination.hasMore ? "(more available)" : "(all loaded)"}`;
+}
+
+/* ---------- RENDER ADMIN RESOURCES LIST ---------- */
+function renderAdminResourcesList(){
+  if(!state.adminLoggedIn) return;
+  const search = ($("adminSearch")?.value || "").toLowerCase();
+  const cat = $("adminCategoryFilter")?.value || "all";
+
+  let list = state.adminResources;
+  if(search) list = list.filter(r => (r.title||"").toLowerCase().includes(search));
+  if(cat !== "all") list = list.filter(r => r.mainCategory === cat);
+
+  const c = $("adminResourcesList");
+  if(c){
+    c.innerHTML = list.length ? list.map(r => {
+      const isSel = state.selectedResources.has(r.id);
+      return `<div class="admin-resource-item">
+        <div class="flex items-start gap-2">
+          <input type="checkbox" class="bulk-checkbox mt-1" ${isSel?"checked":""} onchange="toggleAdminBulk('${r.id}')" />
+          <div class="flex-1 min-w-0">
+            <div class="text-sm font-bold truncate text-white">${escapeHtml(r.title||"Untitled")}</div>
+            <div class="mt-1 text-[10px] text-gray-400">${escapeHtml(r.mainCategory||"")} • ${escapeHtml(r.mediaType||"")} <span class="text-violet-100/40">(${r.viewCount||0} views)</span></div>
+          </div>
+          <div class="flex gap-1">
+            <button onclick="editResource('${r.id}')" class="rounded-lg bg-amber-500/15 px-2 py-1 text-[10px] font-bold text-amber-300 hover:bg-amber-500/25" title="Edit"><i class="fa-solid fa-pen"></i></button>
+            <button onclick="deleteResource('${r.id}')" class="rounded-lg bg-red-500/15 px-2 py-1 text-[10px] font-bold text-red-300 hover:bg-red-500/25" title="Delete"><i class="fa-solid fa-trash"></i></button>
+          </div>
+        </div>
+      </div>`;
+    }).join("") : `<div class="text-xs text-gray-400 text-center py-4">No resources in this page</div>`;
+  }
+
+  // Load more button
+  const wrap = $("adminLoadMoreWrap");
+  const statusEl = $("adminLoadMoreStatus");
+  const btn = $("adminLoadMoreBtn");
+
+  if(adminPagination.hasMore){
+    wrap.classList.remove("hidden");
+    wrap.classList.add("flex");
+    if(statusEl) statusEl.textContent = `${state.adminResources.length} loaded • more available`;
+    if(btn){
+      btn.innerHTML = '<i class="fa-solid fa-plus mr-2"></i> Load More (12)';
+      btn.disabled = false;
+    }
+  }else{
+    wrap.classList.add("hidden");
+    wrap.classList.remove("flex");
+    if(statusEl) statusEl.textContent = `✅ All ${state.adminResources.length} resources loaded`;
+  }
+
+  // Other admin lists (news, ads)
+  const nEl = $("adminNewsList");
+  if(nEl) nEl.innerHTML = state.news.length ? state.news.map(n => `
+    <div class="rounded-2xl border border-violet-500/15 bg-white/5 p-3 hover:bg-white/10 transition">
+      <div class="flex items-start justify-between gap-2">
+        <div class="flex-1 min-w-0"><div class="text-sm font-bold truncate text-white">${escapeHtml(n.title)}</div><div class="mt-1 text-[10px] text-gray-400">${escapeHtml(n.category||"UPDATE")}</div></div>
+        <button onclick="deleteNews('${n.id}')" class="rounded-lg bg-red-500/15 px-2 py-1 text-[10px] font-bold text-red-300 hover:bg-red-500/25"><i class="fa-solid fa-trash"></i></button>
+      </div>
+    </div>`).join("") : `<div class="text-xs text-gray-400">No news</div>`;
+
+  const aEl = $("adminAdsList");
+  if(aEl) aEl.innerHTML = state.advertisements.length ? state.advertisements.map(a => `
+    <div class="rounded-2xl border border-violet-500/15 bg-white/5 p-3 hover:bg-white/10 transition">
+      <div class="flex items-start justify-between gap-2">
+        <div class="flex-1 min-w-0"><div class="text-sm font-bold truncate text-white">${escapeHtml(a.title)}</div><div class="mt-1 text-[10px] text-gray-400">${escapeHtml(a.placement||"")}</div></div>
+        <button onclick="deleteAdvertisement('${a.id}')" class="rounded-lg bg-red-500/15 px-2 py-1 text-[10px] font-bold text-red-300 hover:bg-red-500/25"><i class="fa-solid fa-trash"></i></button>
+      </div>
+    </div>`).join("") : `<div class="text-xs text-gray-400">No ads</div>`;
+}
+
+function toggleAdminBulk(id){
+  state.selectedResources.has(id) ? state.selectedResources.delete(id) : state.selectedResources.add(id);
+  renderAdminResourcesList();
+}
+
+function renderAdminLists(){ renderAdminResourcesList(); }
+function filterAdminResources(){ renderAdminResourcesList(); }
+
+/* ---------- RESOURCE CRUD ---------- */
+function toggleResourceForm(){ const f = $("resourceFormContainer"); f.classList.toggle("hidden"); if(!f.classList.contains("hidden")) f.scrollIntoView({behavior:"smooth", block:"center"}); }
+function updateAdminSubcats(){ const m = $("resourceMainCategory").value; const list = categorySubs[m] || ["All"]; $("resourceSubCategory").innerHTML = list.map(s => `<option value="${escapeHtml(s)}">${escapeHtml(s)}</option>`).join(""); }
+function updateDownloadField(){
+  const t = $("resourceMediaType").value;
+  const inp = $("resourceDownloadUrl");
+  if(t === "youtube"){ inp.value = ""; inp.placeholder = "Not needed"; inp.disabled = true; inp.classList.add("opacity-40"); }
+  else{ inp.placeholder = "Download URL"; inp.disabled = false; inp.classList.remove("opacity-40"); }
+}
+function getResourceFormData(){
+  const title = $("resourceTitle").value.trim();
+  const preview = $("resourcePreviewUrl").value.trim();
+  if(!title || !preview){ showToast("Title + Preview URL required", true); return null; }
+  return {
+    title, mainCategory: $("resourceMainCategory").value, subCategory: $("resourceSubCategory").value,
+    lecturer: $("resourceLecturer").value.trim(), lecturerContact: $("resourceLecturerContact").value.trim() || "0789995159",
+    mediaType: $("resourceMediaType").value, previewUrl: preview,
+    thumbnailUrl: $("resourceThumbnail").value.trim(), description: $("resourceDescription").value.trim(),
+    downloadUrl: $("resourceDownloadUrl").value.trim(), updatedAt: Date.now()
+  };
+}
+function clearResourceForm(){
+  ["resourceTitle","resourceLecturer","resourceLecturerContact","resourcePreviewUrl","resourceThumbnail","resourceDescription","resourceDownloadUrl"].forEach(id => $(id).value = "");
+  $("resourceMainCategory").value = "N5"; updateAdminSubcats(); $("resourceSubCategory").value = "All"; $("resourceMediaType").value = "pdf"; updateDownloadField();
+}
+function addResource(){
+  if(!state.adminLoggedIn) return;
+  const d = getResourceFormData(); if(!d) return;
+  d.createdAt = Date.now();
+  db.ref("resources").push(d).then(() => {
+    showToast("✅ Added");
+    clearResourceForm();
+    // Reload frontend
+    pagination.oldestLoadedKey = null; pagination.hasMore = true; pagination.totalLoaded = 0;
+    loadResourcesPaginated(false);
+    // Reload admin
+    adminPagination.oldestLoadedKey = null; adminPagination.hasMore = true; adminPagination.totalLoaded = 0;
+    state.adminResources = [];
+    loadAdminResourcesPaginated(false);
+    toggleResourceForm();
+  }).catch(err => showToast("❌ " + err.message, true));
+}
+function editResource(id){
+  if(!state.adminLoggedIn) return;
+  const r = state.adminResources.find(x => x.id === id) || state.resources.find(x => x.id === id);
+  if(!r){ showToast("Resource not found", true); return; }
+  state.editingResourceId = id;
+  $("resourceTitle").value = r.title || "";
+  $("resourceMainCategory").value = r.mainCategory || "N5"; updateAdminSubcats();
+  $("resourceSubCategory").value = r.subCategory || "All";
+  $("resourceLecturer").value = r.lecturer || "";
+  $("resourceLecturerContact").value = r.lecturerContact || "0789995159";
+  $("resourceMediaType").value = r.mediaType || "pdf";
+  $("resourcePreviewUrl").value = r.previewUrl || "";
+  $("resourceThumbnail").value = r.thumbnailUrl || "";
+  $("resourceDescription").value = r.description || "";
+  $("resourceDownloadUrl").value = r.downloadUrl || "";
+  updateDownloadField();
+  $("addResourceBtn").classList.add("hidden");
+  $("updateResourceBtn").classList.remove("hidden");
+  $("cancelEditBtn").classList.remove("hidden");
+  $("resourceFormContainer").classList.remove("hidden");
+  $("resourceFormContainer").classList.add("editing-mode");
+  $("resourceFormContainer").scrollIntoView({behavior:"smooth"});
+  showToast("✏️ Editing");
+}
+function updateResource(){
+  if(!state.adminLoggedIn || !state.editingResourceId) return;
+  const d = getResourceFormData(); if(!d) return;
+  db.ref("resources/" + state.editingResourceId).update(d).then(() => {
+    showToast("✅ Updated");
+    cancelEditResource();
+    pagination.oldestLoadedKey = null; pagination.hasMore = true;
+    loadResourcesPaginated(false);
+    adminPagination.oldestLoadedKey = null; adminPagination.hasMore = true;
+    state.adminResources = [];
+    loadAdminResourcesPaginated(false);
+  }).catch(err => showToast("❌ " + err.message, true));
+}
+function cancelEditResource(){
+  state.editingResourceId = null;
+  clearResourceForm();
+  $("addResourceBtn").classList.remove("hidden");
+  $("updateResourceBtn").classList.add("hidden");
+  $("cancelEditBtn").classList.add("hidden");
+  $("resourceFormContainer").classList.remove("editing-mode");
+  $("resourceFormContainer").classList.add("hidden");
+}
+function deleteResource(id){
+  if(!state.adminLoggedIn || !confirm("Delete this resource?")) return;
+  db.ref("resources/" + id).remove().then(() => {
+    showToast("🗑️ Deleted");
+    pagination.oldestLoadedKey = null; pagination.hasMore = true;
+    loadResourcesPaginated(false);
+    adminPagination.oldestLoadedKey = null; adminPagination.hasMore = true;
+    state.adminResources = [];
+    loadAdminResourcesPaginated(false);
+  });
+}
+
+/* ---------- NEWS / ADS CRUD ---------- */
+function addNews(){
+  if(!state.adminLoggedIn) return;
+  const t = $("newsTitle").value.trim(), d = $("newsDescription").value.trim();
+  if(!t || !d){ showToast("Title and description required", true); return; }
+  db.ref("news").push({title:t, category:$("newsCategory").value, description:d, link:$("newsLink").value.trim(), createdAt:Date.now()})
+    .then(() => { showToast("✅ News published"); $("newsTitle").value = ""; $("newsDescription").value = ""; $("newsLink").value = ""; loadNewsAndAds(); })
+    .catch(err => showToast("❌ " + err.message, true));
+}
+function deleteNews(id){ if(!state.adminLoggedIn || !confirm("Delete?")) return; db.ref("news/" + id).remove().then(() => { showToast("🗑️"); loadNewsAndAds(); }); }
+
+function addAdvertisement(){
+  if(!state.adminLoggedIn) return;
+  const t = $("adTitle").value.trim(), i = $("adImageUrl").value.trim(), l = $("adLink").value.trim();
+  if(!t || !i || !l){ showToast("All fields required", true); return; }
+  db.ref("advertisements").push({title:t, imageUrl:i, link:l, placement:$("adPlacement").value, active:true, createdAt:Date.now()})
+    .then(() => { showToast("✅ Ad published"); $("adTitle").value = ""; $("adImageUrl").value = ""; $("adLink").value = ""; loadNewsAndAds(); })
+    .catch(err => showToast("❌ " + err.message, true));
+}
+function deleteAdvertisement(id){ if(!state.adminLoggedIn || !confirm("Delete?")) return; db.ref("advertisements/" + id).remove().then(() => { showToast("🗑️"); loadNewsAndAds(); }); }
+
+/* ---------- QUIZ ---------- */
+function loadQuizzes(){
+  db.ref("quizzes").once("value").then(s => {
+    state.quizzes = Object.entries(s.val() || {}).map(([id, v]) => ({id, ...v}));
+    const c = $("adminQuizList"); if(!c) return;
+    c.innerHTML = state.quizzes.length ? state.quizzes.map(q => `
+      <div class="rounded-2xl border border-violet-500/15 bg-white/5 p-3 hover:bg-white/10 transition">
+        <div class="flex items-start justify-between gap-2">
+          <div class="flex-1 min-w-0"><div class="text-sm font-bold truncate text-white">${escapeHtml(q.question||"")}</div><div class="mt-1 text-[10px] text-gray-400">Answer: ${escapeHtml((q.options&&q.options[q.correct])||"")}</div></div>
+          <button onclick="deleteQuizQuestion('${q.id}')" class="rounded-lg bg-red-500/15 px-2 py-1 text-[10px] font-bold text-red-300"><i class="fa-solid fa-trash"></i></button>
+        </div>
+      </div>`).join("") : `<div class="text-xs text-gray-400">No quiz questions</div>`;
+  }).catch(() => {});
+}
+function toggleQuizForm(){ const f = $("quizFormContainer"); f.classList.toggle("hidden"); }
+function addQuizQuestion(){
+  if(!state.adminLoggedIn) return;
+  const q = $("quizQuestion").value.trim();
+  const opts = [$("quizOption1").value.trim(), $("quizOption2").value.trim(), $("quizOption3").value.trim(), $("quizOption4").value.trim()];
+  if(!q || opts.some(o => !o)){ showToast("Fill all fields", true); return; }
+  db.ref("quizzes").push({question:q, options:opts, correct:Number($("quizCorrect").value), createdAt:Date.now()})
+    .then(() => { showToast("✅ Added"); ["quizQuestion","quizOption1","quizOption2","quizOption3","quizOption4"].forEach(id => $(id).value = ""); loadQuizzes(); toggleQuizForm(); });
+}
+function deleteQuizQuestion(id){ if(!state.adminLoggedIn || !confirm("Delete?")) return; db.ref("quizzes/" + id).remove().then(() => { showToast("🗑️"); loadQuizzes(); }); }
+
+/* ---------- FLASHCARDS ---------- */
+function loadFlashcards(){
+  db.ref("flashcards").once("value").then(s => {
+    state.flashcards = Object.entries(s.val() || {}).map(([id, v]) => ({id, ...v}));
+    const c = $("adminFlashcardList"); if(!c) return;
+    c.innerHTML = state.flashcards.length ? state.flashcards.map(f => `
+      <div class="rounded-2xl border border-violet-500/15 bg-white/5 p-3 hover:bg-white/10 transition">
+        <div class="flex items-start justify-between gap-2">
+          <div class="flex-1 min-w-0"><div class="text-sm font-bold truncate text-white">${escapeHtml(f.front||"")}</div><div class="mt-1 text-[10px] text-gray-400">→ ${escapeHtml(f.back||"")}</div></div>
+          <button onclick="deleteFlashcard('${f.id}')" class="rounded-lg bg-red-500/15 px-2 py-1 text-[10px] font-bold text-red-300"><i class="fa-solid fa-trash"></i></button>
+        </div>
+      </div>`).join("") : `<div class="text-xs text-gray-400">No flashcards</div>`;
+  }).catch(() => {});
+}
+function toggleFlashcardForm(){ const f = $("flashcardFormContainer"); f.classList.toggle("hidden"); }
+function addFlashcard(){
+  if(!state.adminLoggedIn) return;
+  const front = $("flashcardFront").value.trim(), back = $("flashcardBack").value.trim();
+  if(!front || !back){ showToast("Front and back required", true); return; }
+  db.ref("flashcards").push({front, back, category:$("flashcardCategory").value, createdAt:Date.now()})
+    .then(() => { showToast("✅ Added"); $("flashcardFront").value = ""; $("flashcardBack").value = ""; loadFlashcards(); toggleFlashcardForm(); });
+}
+function deleteFlashcard(id){ if(!state.adminLoggedIn || !confirm("Delete?")) return; db.ref("flashcards/" + id).remove().then(() => { showToast("🗑️"); loadFlashcards(); }); }
+
+/* ---------- MOCK TESTS ---------- */
+function loadMockTestsAdmin(){
+  db.ref("mockTests").once("value").then(s => {
+    state.mockTests = Object.entries(s.val() || {}).map(([id, v]) => ({id, ...v}));
+    const c = $("adminMockTestList"); if(!c) return;
+    c.innerHTML = state.mockTests.length ? state.mockTests.map(t => `
+      <div class="rounded-2xl border border-violet-500/15 bg-white/5 p-3 hover:bg-white/10 transition">
+        <div class="flex items-start justify-between gap-2">
+          <div class="flex-1 min-w-0"><div class="text-sm font-bold truncate text-white">${escapeHtml(t.title||"Test")}</div><div class="mt-1 text-[10px] text-gray-400">${t.level||"N5"} • ${(t.questions||[]).length} Q</div></div>
+          <button onclick="deleteMockTest('${t.id}')" class="rounded-lg bg-red-500/15 px-2 py-1 text-[10px] font-bold text-red-300"><i class="fa-solid fa-trash"></i></button>
+        </div>
+      </div>`).join("") : `<div class="text-xs text-gray-400">No mock tests</div>`;
+  }).catch(() => {});
+}
+function toggleMockTestForm(){ const f = $("mockTestFormContainer"); f.classList.toggle("hidden"); }
+function addMockQuestionField(){
+  const list = $("mockQuestionsList");
+  const n = list.children.length + 1;
+  const div = document.createElement("div");
+  div.className = "mock-question-item glass rounded-2xl p-3";
+  div.innerHTML = `<div class="flex items-center justify-between mb-2"><span class="text-xs font-bold text-violet-200">Question ${n}</span><button type="button" onclick="this.parentElement.parentElement.remove()" class="text-red-400 text-xs"><i class="fa-solid fa-times"></i></button></div><input class="mock-question-text admin-input mb-2" placeholder="Question" /><div class="grid grid-cols-2 gap-2"><input class="mock-option-0 admin-input" placeholder="Option 1" /><input class="mock-option-1 admin-input" placeholder="Option 2" /><input class="mock-option-2 admin-input" placeholder="Option 3" /><input class="mock-option-3 admin-input" placeholder="Option 4" /></div><select class="mock-correct admin-input mt-2"><option value="0">Correct: 1</option><option value="1">Correct: 2</option><option value="2">Correct: 3</option><option value="3">Correct: 4</option></select>`;
+  list.appendChild(div);
+}
+function getMockTestQuestions(){
+  const out = [];
+  document.querySelectorAll(".mock-question-item").forEach(c => {
+    const q = c.querySelector(".mock-question-text")?.value.trim();
+    const opts = [0,1,2,3].map(i => c.querySelector(".mock-option-" + i)?.value.trim()).filter(Boolean);
+    const correct = parseInt(c.querySelector(".mock-correct")?.value || 0);
+    if(q && opts.length === 4) out.push({question:q, options:opts, correct});
+  });
+  return out;
+}
+function addMockTest(){
+  if(!state.adminLoggedIn) return;
+  const t = $("mockTestTitle").value.trim(), l = $("mockTestLevel").value || "N5", q = getMockTestQuestions();
+  if(!t){ showToast("Title required", true); return; }
+  if(q.length < 3){ showToast("Min 3 questions", true); return; }
+  db.ref("mockTests").push({title:t, level:l, questions:q, createdAt:Date.now()})
+    .then(() => { showToast("✅ Added"); $("mockTestTitle").value = ""; $("mockQuestionsList").innerHTML = ""; loadMockTestsAdmin(); toggleMockTestForm(); });
+}
+function deleteMockTest(id){ if(!state.adminLoggedIn || !confirm("Delete?")) return; db.ref("mockTests/" + id).remove().then(() => { showToast("🗑️"); loadMockTestsAdmin(); }); }
+function openMockTest(level){
+  const m = $("mockTestModal"); m.classList.remove("hidden"); m.classList.add("flex");
+  const c = $("mockTestContainer");
+  c.innerHTML = `<div class="text-center py-8"><div class="spinner mx-auto"></div></div>`;
+  db.ref("mockTests").once("value").then(s => {
+    const all = Object.entries(s.val() || {}).map(([id, v]) => ({id, ...v}));
+    const list = level ? all.filter(t => t.level === level) : all;
+    if(!list.length){ c.innerHTML = `<div class="text-center text-gray-400 py-8">No mock tests for ${escapeHtml(level)}</div>`; return; }
+    const t = list[0];
+    let i = 0, score = 0;
+    const render = () => {
+      if(i >= t.questions.length){ c.innerHTML = `<div class="text-center py-6"><div class="text-5xl">🎯</div><h3 class="mt-3 text-2xl font-black text-white">${score} / ${t.questions.length}</h3><button onclick="closeMockTest()" class="rose-btn mt-5">Close</button></div>`; return; }
+      const q = t.questions[i];
+      c.innerHTML = `<div class="text-xs text-gray-400 mb-2">${i+1} / ${t.questions.length}</div><h3 class="text-lg font-black text-white mb-4">${escapeHtml(q.question)}</h3><div class="space-y-2">${q.options.map((o, n) => `<button class="quiz-option" data-n="${n}">${String.fromCharCode(65+n)}. ${escapeHtml(o)}</button>`).join("")}</div>`;
+      c.querySelectorAll("[data-n]").forEach(b => b.onclick = () => {
+        if(Number(b.dataset.n) === q.correct){ score++; b.classList.add("correct"); } else { b.classList.add("wrong"); }
+        setTimeout(() => { i++; render(); }, 600);
+      });
+    };
+    render();
+  });
+}
+function closeMockTest(){ const m = $("mockTestModal"); m.classList.add("hidden"); m.classList.remove("flex"); }
+
+/* ---------- GRAMMAR ---------- */
+function loadGrammarAdmin(){
+  db.ref("grammar").once("value").then(s => {
+    state.grammar = Object.entries(s.val() || {}).map(([id, v]) => ({id, ...v}));
+    const c = $("adminGrammarList"); if(!c) return;
+    c.innerHTML = state.grammar.length ? state.grammar.map(g => `
+      <div class="rounded-2xl border border-violet-500/15 bg-white/5 p-3 hover:bg-white/10 transition">
+        <div class="flex items-start justify-between gap-2">
+          <div class="flex-1 min-w-0"><div class="text-sm font-bold truncate text-white">${escapeHtml(g.title)}</div><div class="mt-1 text-[10px] text-gray-400">${escapeHtml(g.level||"N5")}</div></div>
+          <button onclick="deleteGrammarPoint('${g.id}')" class="rounded-lg bg-red-500/15 px-2 py-1 text-[10px] font-bold text-red-300"><i class="fa-solid fa-trash"></i></button>
+        </div>
+      </div>`).join("") : `<div class="text-xs text-gray-400">No grammar</div>`;
+  }).catch(() => {});
+}
+function toggleGrammarForm(){ const f = $("grammarFormContainer"); f.classList.toggle("hidden"); }
+function addGrammarPoint(){
+  if(!state.adminLoggedIn) return;
+  const t = $("grammarTitle").value.trim(), e = $("grammarExplanation").value.trim();
+  if(!t || !e){ showToast("Title + explanation required", true); return; }
+  db.ref("grammar").push({title:t, explanation:e, level:$("grammarLevel").value.trim() || "N5", example:$("grammarExample").value.trim(), createdAt:Date.now()})
+    .then(() => { showToast("✅ Added"); ["grammarTitle","grammarLevel","grammarExplanation","grammarExample"].forEach(id => $(id).value = ""); loadGrammarAdmin(); toggleGrammarForm(); });
+}
+function deleteGrammarPoint(id){ if(!state.adminLoggedIn || !confirm("Delete?")) return; db.ref("grammar/" + id).remove().then(() => { showToast("🗑️"); loadGrammarAdmin(); }); }
+function openGrammarGuide(){ const s = $("grammarSection"); s.classList.remove("hidden"); s.scrollIntoView({behavior:"smooth"}); renderGrammar(); }
+function closeGrammarGuide(){ $("grammarSection").classList.add("hidden"); }
+function renderGrammar(){
+  const c = $("grammarGrid"); if(!c) return;
+  c.innerHTML = state.grammar.length ? state.grammar.map(g => `
+    <div class="grammar-card"><div class="text-violet-400 font-bold text-sm">${escapeHtml(g.level||"N5")}</div><h3 class="text-lg font-bold mt-2 text-white">${escapeHtml(g.title)}</h3><p class="text-sm text-gray-400 mt-2 line-clamp-3">${escapeHtml(g.explanation)}</p>${g.example ? `<p class="text-xs text-violet-100/50 mt-2">例: ${escapeHtml(g.example)}</p>` : ""}</div>`).join("") : `<div class="col-span-full text-center text-gray-400 py-8">No grammar yet</div>`;
+}
+
+/* ---------- KANJI ---------- */
+function loadKanjiAdmin(){
+  db.ref("kanji").once("value").then(s => {
+    state.kanji = Object.entries(s.val() || {}).map(([id, v]) => ({id, ...v}));
+    const c = $("adminKanjiList"); if(!c) return;
+    c.innerHTML = state.kanji.length ? state.kanji.map(k => `
+      <div class="rounded-2xl border border-violet-500/15 bg-white/5 p-3 hover:bg-white/10 transition">
+        <div class="flex items-start justify-between gap-2">
+          <div class="flex-1 min-w-0"><div class="text-sm font-bold truncate text-white">${escapeHtml(k.kanji)} - ${escapeHtml(k.meaning)}</div><div class="mt-1 text-[10px] text-gray-400">${escapeHtml(k.reading)} • ${escapeHtml(k.level||"N5")}</div></div>
+          <button onclick="deleteKanji('${k.id}')" class="rounded-lg bg-red-500/15 px-2 py-1 text-[10px] font-bold text-red-300"><i class="fa-solid fa-trash"></i></button>
+        </div>
+      </div>`).join("") : `<div class="text-xs text-gray-400">No kanji</div>`;
+  }).catch(() => {});
+}
+function toggleKanjiForm(){ const f = $("kanjiFormContainer"); f.classList.toggle("hidden"); }
+function addKanji(){
+  if(!state.adminLoggedIn) return;
+  const k = $("kanjiChar").value.trim(), m = $("kanjiMeaning").value.trim(), r = $("kanjiReading").value.trim();
+  if(!k || !m || !r){ showToast("All fields required", true); return; }
+  db.ref("kanji").push({kanji:k, meaning:m, reading:r, level:$("kanjiLevel").value.trim() || "N5", createdAt:Date.now()})
+    .then(() => { showToast("✅ Added"); ["kanjiChar","kanjiMeaning","kanjiReading","kanjiLevel"].forEach(id => $(id).value = ""); loadKanjiAdmin(); toggleKanjiForm(); });
+}
+function deleteKanji(id){ if(!state.adminLoggedIn || !confirm("Delete?")) return; db.ref("kanji/" + id).remove().then(() => { showToast("🗑️"); loadKanjiAdmin(); }); }
+function openKanjiDictionary(){ const s = $("kanjiSection"); s.classList.remove("hidden"); s.scrollIntoView({behavior:"smooth"}); renderKanji(); }
+function closeKanjiDictionary(){ $("kanjiSection").classList.add("hidden"); }
+function renderKanji(){
+  const c = $("kanjiGrid"); if(!c) return;
+  c.innerHTML = state.kanji.length ? state.kanji.map(k => `
+    <div class="kanji-card"><div class="kanji-char">${escapeHtml(k.kanji)}</div><div class="text-xs text-gray-400 mt-1">${escapeHtml(k.reading)}</div><div class="text-sm font-bold mt-2 text-white">${escapeHtml(k.meaning)}</div><div class="text-xs text-gray-400 mt-1">${escapeHtml(k.level||"N5")}</div></div>`).join("") : `<div class="col-span-full text-center text-gray-400 py-8">No kanji yet</div>`;
+}
+function filterKanji(){
+  const s = ($("kanjiSearch")?.value || "").toLowerCase();
+  const c = $("kanjiGrid"); if(!c) return;
+  const f = state.kanji.filter(k => (k.kanji||"").includes(s) || (k.meaning||"").toLowerCase().includes(s) || (k.reading||"").toLowerCase().includes(s));
+  c.innerHTML = f.length ? f.map(k => `<div class="kanji-card"><div class="kanji-char">${escapeHtml(k.kanji)}</div><div class="text-xs text-gray-400 mt-1">${escapeHtml(k.reading)}</div><div class="text-sm font-bold mt-2 text-white">${escapeHtml(k.meaning)}</div><div class="text-xs text-gray-400 mt-1">${escapeHtml(k.level||"N5")}</div></div>`).join("") : `<div class="col-span-full text-center text-gray-400 py-8">No matches</div>`;
+}
+
+/* ---------- VOCABULARY ---------- */
+function loadVocabularyAdmin(){
+  db.ref("vocabulary").once("value").then(s => {
+    state.vocabulary = Object.entries(s.val() || {}).map(([id, v]) => ({id, ...v}));
+    const c = $("adminVocabList"); if(!c) return;
+    c.innerHTML = state.vocabulary.length ? state.vocabulary.map(w => `
+      <div class="rounded-2xl border border-violet-500/15 bg-white/5 p-3 hover:bg-white/10 transition">
+        <div class="flex items-start justify-between gap-2">
+          <div class="flex-1 min-w-0"><div class="text-sm font-bold truncate text-white">${escapeHtml(w.japanese)} - ${escapeHtml(w.meaning)}</div><div class="mt-1 text-[10px] text-gray-400">${escapeHtml(w.reading)} • ${escapeHtml(w.level||"N5")}</div></div>
+          <button onclick="deleteVocabularyWord('${w.id}')" class="rounded-lg bg-red-500/15 px-2 py-1 text-[10px] font-bold text-red-300"><i class="fa-solid fa-trash"></i></button>
+        </div>
+      </div>`).join("") : `<div class="text-xs text-gray-400">No vocabulary</div>`;
+  }).catch(() => {});
+}
+function toggleVocabForm(){ const f = $("vocabFormContainer"); f.classList.toggle("hidden"); }
+function addVocabularyWord(){
+  if(!state.adminLoggedIn) return;
+  const j = $("vocabJapanese").value.trim(), r = $("vocabReading").value.trim(), m = $("vocabMeaning").value.trim();
+  if(!j || !r || !m){ showToast("Required fields missing", true); return; }
+  db.ref("vocabulary").push({japanese:j, reading:r, meaning:m, example:$("vocabExample").value.trim(), level:$("vocabLevel").value || "N5", createdAt:Date.now()})
+    .then(() => { showToast("✅ Added"); ["vocabJapanese","vocabReading","vocabMeaning","vocabExample"].forEach(id => $(id).value = ""); loadVocabularyAdmin(); toggleVocabForm(); });
+}
+function deleteVocabularyWord(id){ if(!state.adminLoggedIn || !confirm("Delete?")) return; db.ref("vocabulary/" + id).remove().then(() => { showToast("🗑️"); loadVocabularyAdmin(); }); }
+function openVocabulary(level){
+  const m = $("vocabularyModal"); m.classList.remove("hidden"); m.classList.add("flex");
+  db.ref("vocabulary").once("value").then(s => {
+    const all = Object.entries(s.val() || {}).map(([id, v]) => ({id, ...v}));
+    const words = level ? all.filter(w => w.level === level) : all;
+    const c = $("vocabularyContainer");
+    c.innerHTML = words.length ? `<div class="grid gap-3 sm:grid-cols-2">${words.map(w => `<div class="vocab-card"><div class="text-3xl font-black text-violet-400">${escapeHtml(w.japanese)}</div><div class="text-xs text-gray-400 mt-1">${escapeHtml(w.reading)}</div><div class="text-lg font-bold mt-2 text-white">${escapeHtml(w.meaning)}</div>${w.example ? `<div class="text-xs text-gray-400 mt-2">${escapeHtml(w.example)}</div>` : ""}</div>`).join("")}</div>` : `<div class="text-center text-gray-400 py-8">No vocabulary for ${escapeHtml(level)}</div>`;
+  });
+}
+function closeVocabulary(){ const m = $("vocabularyModal"); m.classList.add("hidden"); m.classList.remove("flex"); }
+
+/* ---------- LISTENING ---------- */
+function loadListeningAdmin(){
+  db.ref("listening").once("value").then(s => {
+    state.listening = Object.entries(s.val() || {}).map(([id, v]) => ({id, ...v}));
+    const c = $("adminListeningList"); if(!c) return;
+    c.innerHTML = state.listening.length ? state.listening.map(l => `
+      <div class="rounded-2xl border border-violet-500/15 bg-white/5 p-3 hover:bg-white/10 transition">
+        <div class="flex items-start justify-between gap-2">
+          <div class="flex-1 min-w-0"><div class="text-sm font-bold truncate text-white">${escapeHtml(l.title)}</div><div class="mt-1 text-[10px] text-gray-400">${escapeHtml(l.level||"N5")}</div></div>
+          <button onclick="deleteListening('${l.id}')" class="rounded-lg bg-red-500/15 px-2 py-1 text-[10px] font-bold text-red-300"><i class="fa-solid fa-trash"></i></button>
+        </div>
+      </div>`).join("") : `<div class="text-xs text-gray-400">No listening</div>`;
+  }).catch(() => {});
+}
+function toggleListeningForm(){ const f = $("listeningFormContainer"); f.classList.toggle("hidden"); }
+function addListening(){
+  if(!state.adminLoggedIn) return;
+  const t = $("listeningTitle").value.trim(), u = $("listeningAudioUrl").value.trim();
+  if(!t || !u){ showToast("Required fields missing", true); return; }
+  db.ref("listening").push({title:t, audioUrl:u, level:$("listeningLevel").value.trim() || "N5", transcript:$("listeningTranscript").value.trim(), createdAt:Date.now()})
+    .then(() => { showToast("✅ Added"); ["listeningTitle","listeningAudioUrl","listeningLevel","listeningTranscript"].forEach(id => $(id).value = ""); loadListeningAdmin(); toggleListeningForm(); });
+}
+function deleteListening(id){ if(!state.adminLoggedIn || !confirm("Delete?")) return; db.ref("listening/" + id).remove().then(() => { showToast("🗑️"); loadListeningAdmin(); }); }
+function openListeningPractice(){ const s = $("listeningSection"); s.classList.remove("hidden"); s.scrollIntoView({behavior:"smooth"}); renderListening(); }
+function closeListeningPractice(){ $("listeningSection").classList.add("hidden"); }
+function renderListening(){
+  const c = $("listeningGrid"); if(!c) return;
+  c.innerHTML = state.listening.length ? state.listening.map(l => `<div class="glass rounded-2xl p-4 border border-violet-500/15 hover:border-violet-500/40 transition"><div class="text-teal-400 font-bold text-sm">${escapeHtml(l.level||"N5")}</div><h3 class="text-lg font-bold mt-1 text-white">${escapeHtml(l.title)}</h3><audio controls src="${safeUrl(l.audioUrl)}" class="w-full mt-3"></audio>${l.transcript ? `<details class="mt-2"><summary class="text-xs text-gray-400 cursor-pointer">Transcript</summary><p class="text-xs text-gray-400 mt-1">${escapeHtml(l.transcript)}</p></details>` : ""}</div>`).join("") : `<div class="col-span-full text-center text-gray-400 py-8">No listening yet</div>`;
+}
+
+/* ---------- READING ---------- */
+function loadReadingAdmin(){
+  db.ref("reading").once("value").then(s => {
+    state.reading = Object.entries(s.val() || {}).map(([id, v]) => ({id, ...v}));
+    const c = $("adminReadingList"); if(!c) return;
+    c.innerHTML = state.reading.length ? state.reading.map(r => `
+      <div class="rounded-2xl border border-violet-500/15 bg-white/5 p-3 hover:bg-white/10 transition">
+        <div class="flex items-start justify-between gap-2">
+          <div class="flex-1 min-w-0"><div class="text-sm font-bold truncate text-white">${escapeHtml(r.title)}</div><div class="mt-1 text-[10px] text-gray-400">${escapeHtml(r.level||"N5")}</div></div>
+          <button onclick="deleteReading('${r.id}')" class="rounded-lg bg-red-500/15 px-2 py-1 text-[10px] font-bold text-red-300"><i class="fa-solid fa-trash"></i></button>
+        </div>
+      </div>`).join("") : `<div class="text-xs text-gray-400">No reading</div>`;
+  }).catch(() => {});
+}
+function toggleReadingForm(){ const f = $("readingFormContainer"); f.classList.toggle("hidden"); }
+function addReading(){
+  if(!state.adminLoggedIn) return;
+  const t = $("readingTitle").value.trim(), c = $("readingContent").value.trim();
+  if(!t || !c){ showToast("Required fields missing", true); return; }
+  db.ref("reading").push({title:t, content:c, level:$("readingLevel").value.trim() || "N5", translation:$("readingTranslation").value.trim(), createdAt:Date.now()})
+    .then(() => { showToast("✅ Added"); ["readingTitle","readingLevel","readingContent","readingTranslation"].forEach(id => $(id).value = ""); loadReadingAdmin(); toggleReadingForm(); });
+}
+function deleteReading(id){ if(!state.adminLoggedIn || !confirm("Delete?")) return; db.ref("reading/" + id).remove().then(() => { showToast("🗑️"); loadReadingAdmin(); }); }
+function openReadingPractice(){ const s = $("readingSection"); s.classList.remove("hidden"); s.scrollIntoView({behavior:"smooth"}); renderReading(); }
+function closeReadingPractice(){ $("readingSection").classList.add("hidden"); }
+function renderReading(){
+  const c = $("readingGrid"); if(!c) return;
+  c.innerHTML = state.reading.length ? state.reading.map(r => `<div class="glass rounded-2xl p-4 border border-violet-500/15 hover:border-violet-500/40 transition"><div class="text-teal-400 font-bold text-sm">${escapeHtml(r.level||"N5")}</div><h3 class="text-lg font-bold mt-1 text-white">${escapeHtml(r.title)}</h3><p class="text-sm text-gray-400 mt-2 line-clamp-3">${escapeHtml(r.content)}</p>${r.translation ? `<details class="mt-2"><summary class="text-xs text-gray-400 cursor-pointer">Translation</summary><p class="text-xs text-gray-400 mt-1">${escapeHtml(r.translation)}</p></details>` : ""}</div>`).join("") : `<div class="col-span-full text-center text-gray-400 py-8">No reading yet</div>`;
+}
+
+/* ---------- LESSON PLANS ---------- */
+function loadLessonPlansAdmin(){
+  db.ref("lessonPlans").once("value").then(s => {
+    state.lessonPlans = Object.entries(s.val() || {}).map(([id, v]) => ({id, ...v}));
+    const c = $("adminLessonPlanList"); if(!c) return;
+    c.innerHTML = state.lessonPlans.length ? state.lessonPlans.map(lp => `
+      <div class="rounded-2xl border border-violet-500/15 bg-white/5 p-3 hover:bg-white/10 transition">
+        <div class="flex items-start justify-between gap-2">
+          <div class="flex-1 min-w-0"><div class="text-sm font-bold truncate text-white">${escapeHtml(lp.title)}</div><div class="mt-1 text-[10px] text-gray-400">${escapeHtml(lp.level||"N5")} • ${escapeHtml(lp.duration||"")}</div></div>
+          <button onclick="deleteLessonPlan('${lp.id}')" class="rounded-lg bg-red-500/15 px-2 py-1 text-[10px] font-bold text-red-300"><i class="fa-solid fa-trash"></i></button>
+        </div>
+      </div>`).join("") : `<div class="text-xs text-gray-400">No lesson plans</div>`;
+  }).catch(() => {});
+}
+function toggleLessonPlanForm(){ const f = $("lessonPlanFormContainer"); f.classList.toggle("hidden"); }
+function addLessonPlan(){
+  if(!state.adminLoggedIn) return;
+  const t = $("lessonPlanTitle").value.trim(), d = $("lessonPlanDescription").value.trim();
+  if(!t || !d){ showToast("Required fields missing", true); return; }
+  db.ref("lessonPlans").push({title:t, description:d, level:$("lessonPlanLevel").value.trim() || "N5", duration:$("lessonPlanDuration").value.trim(), createdAt:Date.now()})
+    .then(() => { showToast("✅ Added"); ["lessonPlanTitle","lessonPlanLevel","lessonPlanDescription","lessonPlanDuration"].forEach(id => $(id).value = ""); loadLessonPlansAdmin(); toggleLessonPlanForm(); });
+}
+function deleteLessonPlan(id){ if(!state.adminLoggedIn || !confirm("Delete?")) return; db.ref("lessonPlans/" + id).remove().then(() => { showToast("🗑️"); loadLessonPlansAdmin(); }); }
+function openLessonPlans(){ const s = $("lessonPlansSection"); s.classList.remove("hidden"); s.scrollIntoView({behavior:"smooth"}); renderLessonPlans(); }
+function closeLessonPlans(){ $("lessonPlansSection").classList.add("hidden"); }
+function renderLessonPlans(){
+  const c = $("lessonPlansGrid"); if(!c) return;
+  c.innerHTML = state.lessonPlans.length ? state.lessonPlans.map(lp => `<div class="glass rounded-2xl p-4 border border-violet-500/15 hover:border-violet-500/40 transition"><div class="text-violet-400 font-bold text-sm">${escapeHtml(lp.level||"N5")} • ${escapeHtml(lp.duration||"")}</div><h3 class="text-lg font-bold mt-1 text-white">${escapeHtml(lp.title)}</h3><p class="text-sm text-gray-400 mt-2 line-clamp-3">${escapeHtml(lp.description)}</p></div>`).join("") : `<div class="col-span-full text-center text-gray-400 py-8">No lesson plans yet</div>`;
+}
+
+/* ---------- BADGES ---------- */
+function loadBadgesAdmin(){
+  db.ref("badges").once("value").then(s => {
+    state.badges = Object.entries(s.val() || {}).map(([id, v]) => ({id, ...v}));
+    const c = $("adminBadgeList"); if(!c) return;
+    c.innerHTML = state.badges.length ? state.badges.map(b => `
+      <div class="rounded-2xl border border-violet-500/15 bg-white/5 p-3 hover:bg-white/10 transition">
+        <div class="flex items-start justify-between gap-2">
+          <div class="flex-1 min-w-0"><div class="text-sm font-bold truncate text-white">${escapeHtml(b.name)} ${escapeHtml(b.icon||"")}</div><div class="mt-1 text-[10px] text-gray-400">${escapeHtml(b.tier||"bronze")} • ${escapeHtml(b.requirement||"")}</div></div>
+          <button onclick="deleteBadge('${b.id}')" class="rounded-lg bg-red-500/15 px-2 py-1 text-[10px] font-bold text-red-300"><i class="fa-solid fa-trash"></i></button>
+        </div>
+      </div>`).join("") : `<div class="text-xs text-gray-400">No badges</div>`;
+  }).catch(() => {});
+}
+function toggleBadgeForm(){ const f = $("badgeFormContainer"); f.classList.toggle("hidden"); }
+function addBadge(){
+  if(!state.adminLoggedIn) return;
+  const n = $("badgeName").value.trim(), r = $("badgeRequirement").value.trim();
+  if(!n || !r){ showToast("Required fields missing", true); return; }
+  db.ref("badges").push({name:n, requirement:r, icon:$("badgeIcon").value.trim() || "🏆", tier:$("badgeTier").value || "bronze", createdAt:Date.now()})
+    .then(() => { showToast("✅ Added"); ["badgeName","badgeIcon","badgeRequirement"].forEach(id => $(id).value = ""); loadBadgesAdmin(); toggleBadgeForm(); });
+}
+function deleteBadge(id){ if(!state.adminLoggedIn || !confirm("Delete?")) return; db.ref("badges/" + id).remove().then(() => { showToast("🗑️"); loadBadgesAdmin(); }); }
+function openBadges(){ const s = $("badgesSection"); s.classList.remove("hidden"); s.scrollIntoView({behavior:"smooth"}); renderBadges(); }
+function closeBadges(){ $("badgesSection").classList.add("hidden"); }
+function renderBadges(){
+  const c = $("badgesGrid"); if(!c) return;
+  c.innerHTML = state.badges.length ? state.badges.map(b => `<div class="badge-item ${b.tier||"bronze"}">${escapeHtml(b.icon||"🏆")} ${escapeHtml(b.name)}</div>`).join("") : `<div class="col-span-full text-center text-gray-400 py-8">No badges yet</div>`;
+}
+
+/* ---------- FORUM ---------- */
+function loadForumPosts(){
+  db.ref("forumPosts").once("value").then(s => {
+    state.forumPosts = Object.entries(s.val() || {}).map(([id, v]) => ({id, ...v}));
+    renderForumPosts();
+    const c = $("adminForumList");
+    if(c){
+      const sorted = [...state.forumPosts].sort((a,b) => (b.createdAt||0) - (a.createdAt||0));
+      c.innerHTML = sorted.length ? sorted.map(p => `<div class="rounded-2xl border border-violet-500/15 bg-white/5 p-3 hover:bg-white/10 transition"><div class="flex items-start justify-between gap-2"><div class="flex-1 min-w-0"><div class="text-sm font-bold truncate text-white">${escapeHtml(p.author||"Anon")}</div><div class="mt-1 text-[10px] text-gray-400">${escapeHtml(p.content)}</div></div><button onclick="deleteForumPost('${p.id}')" class="rounded-lg bg-red-500/15 px-2 py-1 text-[10px] font-bold text-red-300"><i class="fa-solid fa-trash"></i></button></div></div>`).join("") : `<div class="text-xs text-gray-400">No posts</div>`;
+    }
+  }).catch(() => {});
+}
+function renderForumPosts(){
+  const c = $("forumPosts"); if(!c) return;
+  const sorted = [...state.forumPosts].sort((a,b) => (b.createdAt||0) - (a.createdAt||0));
+  c.innerHTML = sorted.length ? sorted.map(p => `<div class="forum-post"><div class="flex items-center justify-between"><div class="font-bold text-white">${escapeHtml(p.author||"Anon")}</div><div class="post-meta">${new Date(p.createdAt||Date.now()).toLocaleDateString()}</div></div><div class="mt-1 text-sm text-gray-300">${escapeHtml(p.content)}</div></div>`).join("") : `<div class="text-center text-gray-400 py-4">No discussions yet.</div>`;
+}
+function addForumPost(){
+  const input = $("forumPostInput"); const content = input.value.trim();
+  if(!content){ showToast("Write something", true); return; }
+  const user = auth.currentUser;
+  db.ref("forumPosts").push({content, author:user ? (user.displayName || user.email || "User") : "Anon", userId:user ? user.uid : null, createdAt:Date.now()})
+    .then(() => { input.value = ""; showToast("✅ Posted"); loadForumPosts(); });
+}
+function deleteForumPost(id){ if(!state.adminLoggedIn || !confirm("Delete?")) return; db.ref("forumPosts/" + id).remove().then(() => { showToast("🗑️"); loadForumPosts(); }); }
+function clearAllForumPosts(){ if(!state.adminLoggedIn || !confirm("Delete ALL posts?")) return; db.ref("forumPosts").remove().then(() => { showToast("🗑️"); loadForumPosts(); }); }
+function openForum(){ const s = $("forumSection"); s.classList.remove("hidden"); s.scrollIntoView({behavior:"smooth"}); loadForumPosts(); }
+function closeForum(){ $("forumSection").classList.add("hidden"); }
+
+/* ---------- BLOG ---------- */
+function loadBlogPosts(){
+  db.ref("blogPosts").once("value").then(s => {
+    state.blogPosts = Object.entries(s.val() || {}).map(([id, v]) => ({id, ...v}));
+    renderBlogPosts();
+    const c = $("adminBlogList");
+    if(c){
+      const sorted = [...state.blogPosts].sort((a,b) => (b.createdAt||0) - (a.createdAt||0));
+      c.innerHTML = sorted.length ? sorted.map(p => `<div class="rounded-2xl border border-violet-500/15 bg-white/5 p-3 hover:bg-white/10 transition"><div class="flex items-start justify-between gap-2"><div class="flex-1 min-w-0"><div class="text-sm font-bold truncate text-white">${escapeHtml(p.title)}</div><div class="mt-1 text-[10px] text-gray-400">${escapeHtml(p.category||"General")}</div></div><button onclick="deleteBlogPost('${p.id}')" class="rounded-lg bg-red-500/15 px-2 py-1 text-[10px] font-bold text-red-300"><i class="fa-solid fa-trash"></i></button></div></div>`).join("") : `<div class="text-xs text-gray-400">No blog posts</div>`;
+    }
+  }).catch(() => {});
+}
+function renderBlogPosts(){
+  const c = $("blogGrid"); if(!c) return;
+  const sorted = [...state.blogPosts].sort((a,b) => (b.createdAt||0) - (a.createdAt||0));
+  c.innerHTML = sorted.length ? sorted.map(p => `<div class="blog-card">${p.image ? `<img src="${safeUrl(p.image)}" alt="" class="blog-image" onerror="this.style.display='none'" />` : ""}<div class="text-teal-400 text-xs font-bold">${escapeHtml(p.category||"General")}</div><h3 class="text-lg font-bold mt-1 text-white">${escapeHtml(p.title)}</h3><p class="text-sm text-gray-400 mt-2 line-clamp-3">${escapeHtml(p.content)}</p></div>`).join("") : `<div class="col-span-full text-center text-gray-400 py-8">No blog posts</div>`;
+}
+function toggleBlogForm(){ const f = $("blogFormContainer"); f.classList.toggle("hidden"); }
+function addBlogPost(){
+  if(!state.adminLoggedIn) return;
+  const t = $("blogTitle").value.trim(), c = $("blogContent").value.trim();
+  if(!t || !c){ showToast("Title and content required", true); return; }
+  db.ref("blogPosts").push({title:t, content:c, image:$("blogImage").value.trim(), category:$("blogCategory").value.trim() || "General", createdAt:Date.now()})
+    .then(() => { showToast("✅ Added"); ["blogTitle","blogImage","blogContent","blogCategory"].forEach(id => $(id).value = ""); loadBlogPosts(); toggleBlogForm(); });
+}
+function deleteBlogPost(id){ if(!state.adminLoggedIn || !confirm("Delete?")) return; db.ref("blogPosts/" + id).remove().then(() => { showToast("🗑️"); loadBlogPosts(); }); }
+function openBlog(){ const s = $("blogSection"); s.classList.remove("hidden"); s.scrollIntoView({behavior:"smooth"}); loadBlogPosts(); }
+function closeBlog(){ $("blogSection").classList.add("hidden"); }
+
+/* ---------- USERS ---------- */
+function loadUsersAdmin(){
+  db.ref("users").once("value").then(s => {
+    const users = s.val() || {};
+    const search = ($("userSearch")?.value || "").toLowerCase();
+    const filtered = Object.entries(users).filter(([uid, d]) => ((d.email||"").toLowerCase().includes(search) || (d.displayName||"").toLowerCase().includes(search))).slice(0, 50);
+    const c = $("adminUsersList"); if(!c) return;
+    c.innerHTML = filtered.length ? filtered.map(([uid, d]) => `<div class="rounded-2xl border border-violet-500/15 bg-white/5 p-3 hover:bg-white/10 transition"><div class="flex items-start justify-between gap-2"><div class="flex-1 min-w-0"><div class="text-sm font-bold truncate text-white">${escapeHtml(d.displayName || d.email || "User")}</div><div class="mt-1 text-[10px] text-gray-400">${escapeHtml(d.email||"")} • 🔥 ${(d.streak&&d.streak.count)||0} • ${escapeHtml(d.role||"student")}</div></div><button onclick="deleteUser('${uid}')" class="rounded-lg bg-red-500/15 px-2 py-1 text-[10px] font-bold text-red-300"><i class="fa-solid fa-trash"></i></button></div></div>`).join("") : `<div class="text-xs text-gray-400">No users</div>`;
+  }).catch(() => {});
+}
+function filterUsers(){ loadUsersAdmin(); }
+function deleteUser(uid){ if(!state.adminLoggedIn || !confirm("Delete this user record?")) return; db.ref("users/" + uid).remove().then(() => { showToast("🗑️"); loadUsersAdmin(); }); }
+
+/* ---------- USER FEATURES ---------- */
+function openQuiz(){
+  const m = $("quizModal"); m.classList.remove("hidden"); m.classList.add("flex");
+  const c = $("quizContainer"); c.innerHTML = `<div class="text-center py-8"><div class="spinner mx-auto"></div></div>`;
+  db.ref("quizzes").once("value").then(s => {
+    const list = Object.entries(s.val() || {}).map(([id, v]) => ({id, ...v}));
+    if(!list.length){ c.innerHTML = `<div class="text-center text-gray-400 py-8">No quiz questions yet.</div>`; return; }
+    let i = 0, score = 0;
+    const render = () => {
+      if(i >= list.length){ c.innerHTML = `<div class="text-center py-6"><div class="text-5xl">🎉</div><h3 class="mt-3 text-2xl font-black text-white">${score} / ${list.length}</h3><button onclick="closeQuiz()" class="rose-btn mt-5">Close</button></div>`; return; }
+      const q = list[i];
+      c.innerHTML = `<div class="quiz-progress mb-3"><div class="quiz-progress-bar" style="width:${Math.round(i/list.length*100)}%"></div></div><div class="text-xs text-gray-400 mb-2">${i+1} / ${list.length}</div><h3 class="text-lg font-black text-white mb-4">${escapeHtml(q.question)}</h3><div class="space-y-2">${q.options.map((o, n) => `<button class="quiz-option" data-n="${n}">${String.fromCharCode(65+n)}. ${escapeHtml(o)}</button>`).join("")}</div>`;
+      c.querySelectorAll("[data-n]").forEach(b => b.onclick = () => {
+        const n = Number(b.dataset.n);
+        if(n === q.correct){ score++; b.classList.add("correct"); } else { b.classList.add("wrong"); c.querySelectorAll("[data-n]")[q.correct]?.classList.add("correct"); }
+        c.querySelectorAll("[data-n]").forEach(x => x.disabled = true);
+        setTimeout(() => { i++; render(); }, 800);
+      });
+    };
+    render();
+  });
+}
+function closeQuiz(){ const m = $("quizModal"); m.classList.add("hidden"); m.classList.remove("flex"); }
+
+function openFlashcards(){
+  const m = $("flashcardModal"); m.classList.remove("hidden"); m.classList.add("flex");
+  const c = $("flashcardContainer"); c.innerHTML = `<div class="text-center py-8"><div class="spinner mx-auto"></div></div>`;
+  db.ref("flashcards").once("value").then(s => {
+    const cards = Object.entries(s.val() || {}).map(([id, v]) => ({id, ...v}));
+    if(!cards.length){ c.innerHTML = `<div class="text-center text-gray-400 py-8">No flashcards yet.</div>`; return; }
+    let i = 0;
+    const render = () => {
+      const card = cards[i];
+      c.innerHTML = `<div class="text-xs text-gray-400 mb-3 text-center">Card ${i+1} / ${cards.length}</div><div class="flashcard mb-4" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="flashcard-front"><div><div class="text-xs text-violet-300 mb-2">${escapeHtml(card.category||"General")}</div><div class="text-2xl font-black text-white">${escapeHtml(card.front)}</div><div class="mt-3 text-xs text-gray-400">Tap to flip</div></div></div><div class="flashcard-back"><div class="text-xl font-bold text-white">${escapeHtml(card.back)}</div></div></div></div><div class="flex justify-between gap-2"><button id="fcPrev" class="action-btn">← Prev</button><button id="fcNext" class="rose-btn">Next →</button></div>`;
+      $("fcPrev").onclick = () => { if(i > 0){ i--; render(); } };
+      $("fcNext").onclick = () => { if(i < cards.length - 1){ i++; render(); } else { i = 0; render(); } };
+    };
+    render();
+  });
+}
+function closeFlashcards(){ const m = $("flashcardModal"); m.classList.add("hidden"); m.classList.remove("flex"); }
+
+function openStudyProgress(){
+  const m = $("progressModal"); m.classList.remove("hidden"); m.classList.add("flex");
+  const c = $("progressContainer");
+  const user = auth.currentUser;
+  if(!user){ c.innerHTML = `<div class="text-center text-gray-400 py-8">Login to view progress.</div>`; return; }
+  db.ref("users/" + user.uid).once("value").then(s => {
+    const d = s.val() || {};
+    c.innerHTML = `<div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+      <div class="glass rounded-2xl p-4 text-center"><div class="text-3xl">🔥</div><div class="text-2xl font-black text-amber-400 mt-2">${(d.streak&&d.streak.count)||0}</div><div class="text-xs text-gray-400">Day Streak</div></div>
+      <div class="glass rounded-2xl p-4 text-center"><div class="text-3xl">❤️</div><div class="text-2xl font-black text-pink-400 mt-2">${(d.favorites||[]).length}</div><div class="text-xs text-gray-400">Favorites</div></div>
+      <div class="glass rounded-2xl p-4 text-center"><div class="text-3xl">📚</div><div class="text-2xl font-black text-violet-400 mt-2">${d.viewedCount||0}</div><div class="text-xs text-gray-400">Viewed</div></div>
+      <div class="glass rounded-2xl p-4 text-center"><div class="text-3xl">🎖️</div><div class="text-2xl font-black text-teal-400 mt-2">${(d.badges||[]).length}</div><div class="text-xs text-gray-400">Badges</div></div>
+    </div>`;
+  });
+}
+function closeProgress(){ const m = $("progressModal"); m.classList.add("hidden"); m.classList.remove("flex"); }
+
+/* ---------- ANALYTICS ---------- */
+function updateAnalytics(){
+  const total = state.resources.length;
+  const views = state.resources.reduce((s, r) => s + (r.viewCount||0), 0);
+  const dl = state.resources.reduce((s, r) => s + (r.downloadCount||0), 0);
+  const set = (id, v) => { const e = $(id); if(e) e.textContent = v; };
+  set("totalResources", total);
+  set("totalViews", views);
+  set("totalDownloads", dl);
+  db.ref("users").once("value").then(s => { set("totalUsers", Object.keys(s.val() || {}).length); }).catch(() => {});
+  const top = [...state.resources].sort((a,b) => (b.viewCount||0) - (a.viewCount||0)).slice(0, 5);
+  const el = $("topResourcesList");
+  if(el) el.innerHTML = top.length ? top.map((r, i) => `<div class="flex items-center justify-between text-sm border-b border-violet-500/10 py-1"><span class="text-white">${i+1}. ${escapeHtml(r.title)}</span><span class="text-violet-400">${r.viewCount||0} views</span></div>`).join("") : `<div class="text-gray-400 text-sm">No data</div>`;
+}
+
+/* ---------- BACKUP ---------- */
+function exportData(){
+  if(!state.adminLoggedIn) return;
+  const data = {resources: state.adminResources, news: state.news, advertisements: state.advertisements, exportedAt: new Date().toISOString()};
+  const blob = new Blob([JSON.stringify(data, null, 2)], {type:"application/json"});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url; a.download = `slsakura-${Date.now()}.json`; a.click();
+  URL.revokeObjectURL(url);
+  showToast("✅ Exported (loaded items only)");
+}
+function importData(e){
+  if(!state.adminLoggedIn) return;
+  const file = e.target.files[0]; if(!file) return;
+  const r = new FileReader();
+  r.onload = ev => {
+    try{
+      const data = JSON.parse(ev.target.result);
+      if(!data.resources) return showToast("Invalid backup", true);
+      if(!confirm(`Import ${data.resources.length} resources?`)) return;
+      Promise.all(data.resources.map(x => { const {id, ...rest} = x; return db.ref("resources/" + id).set(rest); }))
+        .then(() => {
+          showToast("✅ Imported");
+          pagination.oldestLoadedKey = null; pagination.hasMore = true;
+          loadResourcesPaginated(false);
+          adminPagination.oldestLoadedKey = null; adminPagination.hasMore = true;
+          state.adminResources = [];
+          loadAdminResourcesPaginated(false);
+        });
+    }catch(err){ showToast("Invalid JSON", true); }
+  };
+  r.readAsText(file); e.target.value = "";
+}
+
+/* ---------- SETTINGS ---------- */
+function saveCoffeeUrl(){
+  if(!state.adminLoggedIn) return;
+  const u = $("coffeeUrl").value.trim();
+  if(!u || safeUrl(u) === "#") return showToast("Invalid URL", true);
+  db.ref("settings/buyMeACoffeeUrl").set(safeUrl(u)).then(() => showToast("✅ Saved"));
+}
+function removeCoffeeUrl(){
+  if(!state.adminLoggedIn || !confirm("Remove?")) return;
+  db.ref("settings/buyMeACoffeeUrl").remove().then(() => { $("coffeeUrl").value = ""; showToast("Removed"); });
+}
+function refreshAllData(){
+  if(!state.adminLoggedIn) return;
+  showToast("🔄 Refreshing...");
+  pagination.oldestLoadedKey = null; pagination.hasMore = true;
+  loadResourcesPaginated(false);
+  adminPagination.oldestLoadedKey = null; adminPagination.hasMore = true;
+  state.adminResources = [];
+  loadAdminResourcesPaginated(false);
+  loadNewsAndAds();
+  loadQuizzes(); loadFlashcards(); loadMockTestsAdmin(); loadVocabularyAdmin();
+  loadGrammarAdmin(); loadKanjiAdmin(); loadListeningAdmin(); loadReadingAdmin();
+  loadLessonPlansAdmin(); loadBadgesAdmin(); loadForumPosts(); loadBlogPosts();
+  loadUsersAdmin();
+}
+function generateSitemap(){
+  if(!state.adminLoggedIn) return;
+  const base = window.location.origin;
+  let xml = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n';
+  xml += `<url><loc>${base}</loc><priority>1.0</priority></url>\n`;
+  state.adminResources.forEach(r => { xml += `<url><loc>${base}/?resource=${r.id}</loc><priority>0.8</priority></url>\n`; });
+  xml += "</urlset>";
+  const blob = new Blob([xml], {type:"application/xml"});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a"); a.href = url; a.download = "sitemap.xml"; a.click();
+  URL.revokeObjectURL(url);
+  showToast("✅ Sitemap generated");
+}
+
+/* ---------- LIVE QUIZ GAME ---------- */
+function loadLiveQuizGame(){
+  db.ref("settings/liveQuizGame").once("value").then(s => {
+    const c = s.val() || {};
+    const box = $("slLiveQuizGame"); if(!box) return;
+    if(!c || c.enabled === false || !c.url){ box.classList.add("hidden"); return; }
+    box.classList.remove("hidden");
+    if($("liveQuizGameTitle")) $("liveQuizGameTitle").textContent = c.title || "Live Quiz Game";
+    if($("liveQuizGameDescription")) $("liveQuizGameDescription").textContent = c.description || "Join the live quiz.";
+    if($("liveQuizPasscodeWrap")){ $("liveQuizPasscodeWrap").classList.toggle("hidden", !c.passcode); if($("liveQuizPasscode")) $("liveQuizPasscode").textContent = c.passcode || ""; }
+    if($("liveQuizJoinBtn")) $("liveQuizJoinBtn").onclick = () => { try{ window.open(new URL(c.url, location.href).href, "_blank", "noopener"); }catch(e){} };
+  }).catch(() => {});
+}
+function saveLiveQuizGameSettings(){
+  if(!state.adminLoggedIn) return;
+  const title = $("liveGameTitleAdmin").value.trim() || "Live Quiz Game";
+  const url = $("liveGameUrlAdmin").value.trim();
+  const passcode = $("liveGamePasscodeAdmin").value.trim();
+  const description = $("liveGameDescriptionAdmin").value.trim() || "Join the live quiz.";
+  const enabled = $("liveGameEnabledAdmin").checked;
+  if(!url) return showToast("Add game URL", true);
+  try{ new URL(url); }catch(e){ return showToast("Invalid URL", true); }
+  db.ref("settings/liveQuizGame").set({title, url, passcode, description, enabled, updatedAt:Date.now()}).then(() => { showToast("✅ Saved"); loadLiveQuizGame(); });
+}
+function disableLiveQuizGameSettings(){
+  if(!state.adminLoggedIn) return;
+  db.ref("settings/liveQuizGame/enabled").set(false).then(() => { $("liveGameEnabledAdmin").checked = false; $("slLiveQuizGame").classList.add("hidden"); showToast("Hidden"); });
+}
+function loadLiveQuizGameSettings(){
+  db.ref("settings/liveQuizGame").once("value").then(s => {
+    const c = s.val() || {};
+    if($("liveGameTitleAdmin")) $("liveGameTitleAdmin").value = c.title || "";
+    if($("liveGameUrlAdmin")) $("liveGameUrlAdmin").value = c.url || "";
+    if($("liveGamePasscodeAdmin")) $("liveGamePasscodeAdmin").value = c.passcode || "";
+    if($("liveGameDescriptionAdmin")) $("liveGameDescriptionAdmin").value = c.description || "";
+    if($("liveGameEnabledAdmin")) $("liveGameEnabledAdmin").checked = c.enabled !== false;
+  }).catch(() => {});
+}
+
+/* ---------- CHATBOT ---------- */
+const chatbotResponses = {
+  hello:["こんにちは！How can I help you learn Japanese?"], hi:["Hi! Ready to learn?"],
+  jlpt:["JLPT has 5 levels: N5 (easiest) to N1 (hardest)."], n5:["N5 is beginner — about 100 kanji and 800 vocab."],
+  n4:["N4 is elementary — about 300 kanji and 1500 vocab."], n3:["N3 is intermediate — about 650 kanji and 3000 vocab."],
+  n2:["N2 is upper-intermediate — about 1000 kanji and 6000 vocab."], n1:["N1 is advanced — about 2000 kanji."],
+  study:["Study tip: 15 minutes daily beats cramming!"], kanji:["Learn radicals first!"],
+  grammar:["Japanese is SOV. Example: 私は本を読みます."], vocabulary:["Use spaced repetition — review at 1, 3, 7, 30 days."],
+  default:["Ask me about JLPT, grammar, kanji, or vocabulary! 🌸"]
+};
+function getChatbotResponse(msg){
+  const m = String(msg||"").toLowerCase().trim();
+  if(/[ぁ-んァ-ヶ一-龯]/.test(msg)) return "Japanese particles: は topic, を object, に direction, で place.";
+  for(const [k, v] of Object.entries(chatbotResponses)) if(m.includes(k)) return v[0];
+  return chatbotResponses.default[0];
+}
+function toggleChatbot(){ const m = $("chatbotModal"); m.classList.toggle("hidden"); m.classList.toggle("flex"); if(!m.classList.contains("hidden")) $("chatbotInput").focus(); }
+function sendChatbotMessage(){
+  const inp = $("chatbotInput"); const msgs = $("chatbotMessages");
+  const v = inp.value.trim(); if(!v) return;
+  msgs.innerHTML += `<div class="flex justify-end mb-3"><div class="glass px-4 py-3 rounded-2xl rounded-tr-none max-w-[80%] bg-violet-500/12 border border-violet-500/20 text-white">${escapeHtml(v)}</div></div>`;
+  setTimeout(() => {
+    const r = getChatbotResponse(v);
+    msgs.innerHTML += `<div class="flex justify-start mb-3"><div class="glass px-4 py-3 rounded-2xl rounded-tl-none max-w-[80%] border border-violet-500/15"><span class="text-violet-400 text-xs font-bold">🌸 Sakura AI</span><br><span class="text-white">${escapeHtml(r)}</span></div></div>`;
+    msgs.scrollTop = msgs.scrollHeight;
+  }, 300);
+  inp.value = ""; msgs.scrollTop = msgs.scrollHeight;
+}
+
+/* ---------- ONBOARDING ---------- */
+function closeOnboarding(){ $("onboardingOverlay").classList.remove("active"); try{ localStorage.setItem("slSakuraOnboarding", "done"); }catch(e){} }
+function checkOnboarding(){ try{ if(!localStorage.getItem("slSakuraOnboarding")){ setTimeout(() => $("onboardingOverlay").classList.add("active"), 1000); } }catch(e){} }
+
+/* ---------- URL PARAMS ---------- */
+function handleUrlParams(){
+  const id = new URLSearchParams(location.search).get("resource");
+  if(id){
+    const r = state.resources.find(x => x.id === id);
+    if(r) setTimeout(() => openResource(id), 400);
+  }
+}
+
+/* ---------- KEYBOARD / SCROLL ---------- */
+document.addEventListener("keydown", e => {
+  if((e.ctrlKey || e.metaKey) && e.key === "k"){ e.preventDefault(); openSearch(); }
+  if(e.key === "Escape"){
+    ["contactModal","adminLoginModal","quizModal","flashcardModal","mockTestModal","vocabularyModal","leaderboardModal","progressModal"].forEach(id => { const el = $(id); if(el && !el.classList.contains("hidden")){ el.classList.add("hidden"); el.classList.remove("flex"); } });
+    const cb = $("chatbotModal"); if(cb && !cb.classList.contains("hidden")) toggleChatbot();
+    closeMenu();
+  }
+});
+window.addEventListener("scroll", () => {
+  const t = window.scrollY, h = document.documentElement.scrollHeight - window.innerHeight;
+  const p = h > 0 ? (t/h)*100 : 0;
+  const b = $("progressBar"); if(b) b.style.width = p + "%";
+}, {passive:true});
+
+/* ---------- SEARCH (frontend) ---------- */
+document.addEventListener("DOMContentLoaded", () => {
+  const s = $("resourceSearch");
+  if(s){
+    let timer;
+    s.addEventListener("input", function(){
+      const v = this.value;
+      clearTimeout(timer);
+      timer = setTimeout(() => { state.searchQuery = v; renderResources(); }, 300);
+    });
+  }
+  const mc = $("resourceMainCategory"); if(mc) mc.addEventListener("change", updateAdminSubcats);
+  const mt = $("resourceMediaType"); if(mt) mt.addEventListener("change", updateDownloadField);
+  const ap = $("adminPassword"); if(ap) ap.addEventListener("keydown", e => { if(e.key === "Enter") loginAdmin(); });
+});
+
+/* ---------- INIT ---------- */
+initTheme();
+createSakura();
+checkOnboarding();
+updateAdminSubcats();
+
+/* ---------- SAFETY ---------- */
+(function(){
+  const needed = ["openFlashcards","closeFlashcards","openQuiz","closeQuiz","openMockTest","closeMockTest","openVocabulary","closeVocabulary","openStudyProgress","closeProgress","openLeaderboard","closeLeaderboard","openBadges","closeBadges","openForum","closeForum","openBlog","closeBlog","openSpacedRepetition","closeSpacedRepetition","openGrammarGuide","closeGrammarGuide","openKanjiDictionary","closeKanjiDictionary","openListeningPractice","closeListeningPractice","openReadingPractice","closeReadingPractice","openLessonPlans","closeLessonPlans","openAdminLogin","closeAdminLogin","loginAdmin","closeAdminPanel","logoutAdmin","switchAdminTab","loadMoreAdminResources","loadMoreResources"];
+  needed.forEach(n => { if(typeof window[n] !== "function"){ console.warn("[SL] Missing:", n); window[n] = () => {}; } });
+})();
+
+/* ---------- SPACED REPETITION (stub) ---------- */
+function openSpacedRepetition(){ const s = $("spacedRepetitionSection"); s.classList.remove("hidden"); s.scrollIntoView({behavior:"smooth"}); renderReviewItems(); }
+function closeSpacedRepetition(){ $("spacedRepetitionSection").classList.add("hidden"); }
+function renderReviewItems(){ const c = $("reviewContainer"); if(c) c.innerHTML = `<div class="col-span-full text-center text-gray-400 py-8">No review items yet</div>`; }
+
+console.log("🌸 SL Sakura loaded. Admin whitelist:", ADMIN_EMAILS.join(", "));
+console.log("📄 Frontend page size:", PAGE_SIZE, "• Admin page size:", PAGE_SIZE);
+</script>
+</body>
+</html>
